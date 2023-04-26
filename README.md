@@ -19,7 +19,34 @@ Both music21 and CAMAT require rudimentary knowledge of Python command syntax. I
 
 ### I-MaT: Features and Accessibility
 
-I-MaT allows users to quickly obtain results by navigating through simple dialog windows and selecting methods and tools from predefined displayed options, shown in an easy-to-understand text-based command-line interface (CLI), i.e. the MS Windows Command shell (cmd) or PowerShell. Therefore, music21 commands on which the program is based are not visible to the user. Results such as visualizations, diagrams, transformed sheet music files, and CSV files can then be exported and displayed within I-MaT as well as in external programs such as MuseScore, matplotlib or PSPP, in which they can be further processed or analysed.
+```
+I-MaT - Interactive music analysis tool, (2.2, 01.2022)
+
+Fellowship project "Computer-assisted Music Analysis"
+
+
+Fellowship for innovations in digital university teaching
+
+----------------------------------------------------------------------
+
+-- Start menu --
+
+Please select:
+
+No.  Menu item                                                         <Explanation>
+
+1    PROG: Analysis of a single piece of music                         <Analysis of a single piece of music>
+2    SETT: Settings                                                    <View the settings in the music21 environment file>
+3    HELP: Project overview                                            <Information about the project "Computer-Aided Music Analysis">
+4    LANG: Ändere Ausgabesprache auf DEUTSCH                           <Ändert die Ausgabesprache des Programms auf Deutsch>
+5    EXIT: Exit programm                                               <Exits the Python script>
+
+Which menu item should be executed? (<No. of menu item>):
+```
+
+Figure 1: *I-Mat - Start menu*
+
+I-MaT allows users to quickly obtain results by navigating through simple dialog windows and selecting methods and tools from predefined displayed options (*cf. figure 1*), shown in an easy-to-understand text-based command-line interface (CLI), i.e. the MS Windows Command shell (cmd) or PowerShell. Therefore, music21 commands on which the program is based are not visible to the user. Results such as visualizations, diagrams, transformed sheet music files, and CSV files can then be exported and displayed within I-MaT as well as in external programs such as MuseScore, matplotlib or PSPP, in which they can be further processed or analysed (*cf. figures 2-7*).
 
 Moreover, the modular structure of I-MaT not only facilitates the addition of new analysis modules based on music21 or other libraries, but also enables easier maintenance and updates of the tool as new analysis methods and techniques become available over time. This makes I-MaT a flexible and therefore powerful tool that can cater to the needs of a diverse range of users, from novice music analysts to advanced researchers.
 
@@ -50,6 +77,186 @@ The Fellowship project uses several, under the Common Licence freely available o
 - [Tobi's Notenarchiv](http://www.tobis-notenarchiv.de/noten/index.htm).
 - [Sethus Calvisius' cantional settings, edited by Dr. Franz Kaern-Biederstedt](https://analyse.hfm-weimar.de/doku.php?id=en:calvisius).
 - [Music21 Corpus, MIT](https://web.mit.edu/music21/doc/about/referenceCorpus.html).
+
+## Figures
+
+```
+I-MaT - Interactive music analysis tool, (2.2, 01.2022)
+
+Fellowship project "Computer-assisted Music Analysis"
+
+
+Fellowship for innovations in digital university teaching
+
+----------------------------------------------------------------------
+
+-- main menu individual piece --
+
+Please select:
+
+No.  Menu item                                                         <Explanation>
+
+1    FILE: Menu selection                                              <Basic functions>
+2    TOOL: Menu selection (statistical analysis)                       <Selection of various statistical analysis tools>      
+3    TOOL: Menu selection (visualisation)                              <Selection of different visualisation tools>
+4    TOOL: Menu selection (pattern search)                             <Selection of different tools for pattern search>      
+5    SETT: Settings                                                    <Settings in the music21 environment file/language settings>
+6    HELP: Project overview                                            <Information about the project "Computer-Aided Music Analysis">
+7    EXIT: Exit program                                                <Exits the Python script>
+
+Which menu item should be executed? (<No. of menu item>):
+```
+
+
+Figure 2:  *I-Mat - main menu*
+
+
+```
+I-MaT - Interactive music analysis tool, (2.2, 01.2022)
+
+Fellowship project "Computer-assisted Music Analysis"
+
+
+Fellowship for innovations in digital university teaching
+
+----------------------------------------------------------------------
+
+-- Submenu individual piece (Files) --
+
+Please select:
+
+No.  Menu item                                                         <Explanation>
+
+1    FILE: Select new score                                            <Allows you to select a new score>
+2    SHOW: Show metadata (score)                                       <Displays the metadata of the selected score>
+3    PLAY: Play selected score (midi)                                  <Plays score as midi>
+4    NAME: Change the names of the individual voices                   <Allows you to rename the individual voices>
+5    NAME: Show names of individual voices                             <Displays the names of the individual voices>
+6    EXPO: Export file                                                 <Saves a selection of notes as .xml/.midi/.ly/.pdf file>
+7    BACK: Back to the main menu                                       <Return to the main menu>
+
+Which menu item should be executed? (<No. of menu item>): 
+```
+
+
+Figure 3:  *I-Mat - Submenu individual piece (Files)*
+
+
+```
+I-MaT - Interactive music analysis tool, (2.2, 01.2022)
+
+Fellowship project "Computer-assisted Music Analysis"
+
+
+Fellowship for innovations in digital university teaching
+
+----------------------------------------------------------------------
+
+-- Submenu individual piece (statistical analysis) --
+
+Please select:
+
+No.  Menu item                                                         <Explanation>
+
+1    STAT: Ambitus
+2    STAT: Ambitus (comparison)
+3    STAT: Interval types                                              <Attention: currently only consistently monodic melody lines are correctly analyzed>.
+4    STAT: Interval types and frequency                                <Attention: currently only consistently monodic melody lines are correctly analyzed>
+5    STAT: Interval types and frequency (comparison)                   <Attention: currently only consistently monodic melody lines are correctly analyzed>
+6    STAT: Number of intervals                                         <Attention: currently only consistently monodic melody lines are correctly analyzed>
+7    STAT: Number of tones                                             <Attention: currently only consistently monodic melody lines are correctly analyzed>
+8    HIST: Sound events per pitch                                      <A histogram of the pitch space>
+9    HIST: Sound events per pitch class                                <A pitch class histogram>
+10   HIST: Sound events per tone durations                             <A histogram of the pitch lengths>
+11   BARS: Pitches over time (pitch lengths)                           <A graph of events sorted by pitch space over time>    
+12   BARS: Pitch classes over time (pitch durations)                   <A graph of events sorted by pitch space over time>    
+13   HIST: Tone starting frequency on types of metrical positions      <Metric weight; Explanations: https://analyse.hfm-weimar.de/doku.php?id=basics1>
+14   MORE: Further graphs                                              <Two-dimensional frequency distributions/scatter diagrams>
+15   BACK: Back to the main menu                                       <Return to the main menu>
+
+Which menu item should be executed? (<No. of menu item>):
+```
+
+
+Figure 4:  *I-Mat - Submenu individual piece (statistical analysis), page 1*
+
+
+```
+I-MaT - Interactive music analysis tool, (2.2, 01.2022)
+
+Fellowship project "Computer-assisted Music Analysis"
+
+
+Fellowship for innovations in digital university teaching
+
+----------------------------------------------------------------------
+
+-- Results --
+
+
+Identifier                 Rhythm value (quarter = 1.0)       Rhythm value name (x-axis)       Frequency (y-axis)
+
+
+Partitur, Meas. 1-71       1.0                                Quarter                          142
+
+Partitur, Meas. 1-71       2.0                                Half                             201
+
+Partitur, Meas. 1-71       3.0                                Dotted Half                      36
+
+Partitur, Meas. 1-71       4.0                                Whole                            153
+
+Partitur, Meas. 1-71       6.0                                Dotted Whole                     29
+
+Partitur, Meas. 1-71       8.0                                Breve                            50
+
+Partitur, Meas. 1-71       12.0                               Dotted Breve                     30
+
+Partitur, Meas. 1-71       14.0                               Double Dotted Breve              1
+
+Partitur, Meas. 1-71       16.0                               Imperfect Longa                  10
+
+Partitur, Meas. 1-71       24.0                               Perfect Longa                    1
+
+Partitur, Meas. 1-71       32.0                               Imperfect Maxima                 3
+
+
+
+<To continue, please press Enter>
+```
+
+
+Figure 5:  *I-Mat - statistical analyzes: 10  HIST: Sound events per tone durations (results)*
+
+
+```
+I-MaT - Interactive music analysis tool, (2.2, 01.2022)
+
+Fellowship project "Computer-assisted Music Analysis"
+
+
+Fellowship for innovations in digital university teaching
+
+----------------------------------------------------------------------
+
+Please select:
+
+No.  Menu item                                                         <Explanation>
+
+1    REPT: New score selection                                         <Repeat the tool with new score selection>
+2    EXPT: Export results as CSV file                                  <Exports and saves the results as CSV file>
+3    GRPH: Display results as graphic                                  <Exports and saves the results as graphic> 
+4    BACK: Back to the main menu                                       <Return to the main menu>
+
+Which menu item should be executed? (<No. of menu item>):
+```
+
+Figure 6:  *I-Mat - statistical analyzes: 10  HIST: Sound events per tone durations (export menu)*
+
+
+![Figure 7](https://user-images.githubusercontent.com/130949054/234640457-f6768147-4e48-4ec8-9bdc-c9ce5ba2ec75.PNG)
+
+
+Figure 7:  *I-Mat - statistical analyzes: 10  HIST: Sound events per tone durations (3 GRPH: Display results as graphic)*
 
 ## References
 
