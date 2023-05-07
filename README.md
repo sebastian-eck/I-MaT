@@ -46,7 +46,7 @@ Which menu item should be executed? (<No. of menu item>):
 
 Figure 1: *I-Mat - Start menu*
 
-I-MaT allows users to quickly obtain results by navigating through simple dialog windows and selecting methods and tools from predefined displayed options (*cf. figure 1*), shown in an easy-to-understand text-based command-line interface (CLI), i.e. the MS Windows Command shell (cmd) or PowerShell. Therefore, music21 commands on which the program is based are not visible to the user. Results such as visualizations, diagrams, transformed sheet music files, and CSV files can then be exported and displayed within I-MaT as well as in external programs such as MuseScore, matplotlib or PSPP, in which they can be further processed or analysed (*cf. figures 2-7*).
+I-MaT allows users to quickly obtain results by navigating through simple dialog windows and selecting methods and tools from predefined displayed options (*cf. figure 1*), shown in an easy-to-understand text-based command-line interface (CLI), i.e. the MS Windows Command shell (cmd) or PowerShell. Therefore, music21 commands on which the program is based are not visible to the user. Results such as visualizations, diagrams, transformed sheet music files, and CSV files can then be exported and displayed within I-MaT as well as in external programs such as MuseScore, matplotlib or PSPP, in which they can be further processed or analysed (*cf. figures 2-12*).
 
 Moreover, the modular structure of I-MaT not only facilitates the addition of new analysis modules based on music21 or other libraries, but also enables easier maintenance and updates of the tool as new analysis methods and techniques become available over time. This makes I-MaT a flexible and therefore powerful tool that can cater to the needs of a diverse range of users, from novice music analysts to advanced researchers.
 
@@ -80,7 +80,9 @@ The fellowship project uses several, under the Common Licence freely available o
 - [Sethus Calvisius' cantional settings, edited by Dr. Franz Kaern-Biederstedt](https://analyse.hfm-weimar.de/doku.php?id=en:calvisius).
 - [Music21 Corpus, MIT](https://web.mit.edu/music21/doc/about/referenceCorpus.html).
 
-## Figures
+## Appendix: Figures
+
+### General
 
 ```
 I-MaT - Interactive music analysis tool, (2.2, 01.2022)
@@ -142,6 +144,9 @@ Which menu item should be executed? (<No. of menu item>):
 
 
 Figure 3:  *I-Mat - Submenu individual piece (Files)*
+
+
+### Statistical Analysis
 
 
 ```
@@ -259,6 +264,179 @@ Figure 6:  *I-Mat - statistical analyzes: 10  HIST: Sound events per tone durati
 
 
 Figure 7:  *I-Mat - statistical analyzes: 10  HIST: Sound events per tone durations (3 GRPH: Display results as graphic)*
+
+
+### Pattern Search
+
+
+```
+I-MaT - Interactive music analysis tool, (2.2, 01.2022)
+
+Fellowship project "Computer-assisted Music Analysis"
+
+
+Fellowship for innovations in digital university teaching
+
+----------------------------------------------------------------------
+
+-- Submenu individual piece (Pattern search) --
+
+Please select:
+
+No.  Menu item                                                         <Explanation>
+
+1    SEAR: Pattern search (without rhythmic values)                    <Search for a sequence of notes (without rhythmic values)>
+2    SEAR: Pattern search (without rhythmic values/transposed)         <Search for a sequence of notes and all of its transpositions (without rhythmic values)>
+3    SEAR: Pattern search (with rhythmic values)                       <Search for a sequence of notes (with rhythmic values)>
+4    SEAR: Pattern search (with rhythmic values/transposed)            <Search for a sequence of notes and all of its transpositions (with rhythmic values)>   
+5    SEAR: Pattern search (only rhythm)                                <Search for a specific rhythm>
+6    BACK: Back to the main menu                                       <Return to the main menu>
+
+Which menu item should be executed? (<No. of menu item>):
+```
+
+Figure 8: *I-Mat - Submenu individual piece (Pattern search)*
+
+
+```
+I-MaT - Interactive music analysis tool, (2.2, 01.2022)
+
+Fellowship project "Computer-assisted Music Analysis"
+
+
+Fellowship for innovations in digital university teaching
+
+----------------------------------------------------------------------
+
+Please enter the note / rhythm pattern (1.0 = quarter) used for the pattern search here.
+
+Selection: ['C', 'D', 'C']
+
+Please select:
+
+No.  Menu item
+
+1    ‾‾‾‾  -   C-flat
+2    C         C
+3    ____  ♯   C-sharp
+4    ‾‾‾‾  -   D-flat
+5    D         D
+6    ____  ♯   D-sharp
+7    ‾‾‾‾  -   E-flat
+8    E         E
+9    ____  ♯   E-sharp
+10   ‾‾‾‾  -   F-flat
+11   F         F
+12   ____  ♯   F-sharp
+13   ‾‾‾‾  -   G-flat
+14   G         G
+15   ____  ♯   G-sharp
+16   ‾‾‾‾  -   A-flat
+17   A         A
+18   ____  ♯   A-sharp
+19   ‾‾‾‾  -   B-flat
+20   B         B
+21   ____  ♯   B-sharp
+22   BACK: Remove the last note entered
+23   DONE: Finish input
+
+Which menu item should be executed? (<No. of menu item>):
+```
+
+Figure 9: *I-Mat - 2  SEAR: Pattern search (without rhythmic values/transposed) (search pattern input menu)*
+
+
+```
+I-MaT - Interactive music analysis tool, (2.2, 01.2022)
+
+Fellowship project "Computer-assisted Music Analysis"
+
+
+Fellowship for innovations in digital university teaching
+
+----------------------------------------------------------------------
+
+-- Results --
+
+
+No.       Pitch                       Measure       Beat       Voice          Search pattern       
+
+
+1         <music21.note.Note C>       5             1.0        Superius       C D C
+
+2         <music21.note.Note C>       62            1.0        Superius       C D C
+
+3         <music21.note.Note C>       67            3.0        Superius       C D C
+
+4         <music21.note.Note C>       33            2.0        Tenor          C D C
+
+5         <music21.note.Note C>       16            2.0        Bassus         C D C
+
+6         <music21.note.Note C>       53            1.0        Bassus         C D C
+
+7         <music21.note.Note F>       3             2.5        Altus          F G F
+
+8         <music21.note.Note F>       33            2.25       Altus          F G F
+
+9         <music21.note.Note F>       52            1.0        Altus          F G F
+
+10        <music21.note.Note F>       40            2.0        Bassus         F G F
+
+11        <music21.note.Note G>       14            3.5        Superius       G A G
+
+12        <music21.note.Note G>       36            2.0        Superius       G A G
+
+13        <music21.note.Note G>       57            1.0        Superius       G A G
+
+14        <music21.note.Note G>       57            3.0        Superius       G A G
+
+15        <music21.note.Note G>       24            1.0        Altus          G A G
+
+16        <music21.note.Note G>       47            2.5        Altus          G A G
+
+17        <music21.note.Note G>       47            1.0        Tenor          G A G
+
+18        <music21.note.Note G>       10            1.0        Bassus         G A G
+
+
+
+<To continue, please press Enter>
+```
+
+Figure 10: *I-Mat - 2  SEAR: Pattern search (without rhythmic values/transposed) (results)*
+
+
+```
+I-MaT - Interactive music analysis tool, (2.2, 01.2022)
+
+Fellowship project "Computer-assisted Music Analysis"
+
+
+Fellowship for innovations in digital university teaching
+
+----------------------------------------------------------------------
+
+Please select:
+
+No.  Menu item                                                         <Explanation>
+
+1    REPT: New search pattern selection                                <Repeat the tool with new score selection>
+2    EXPT: Export results as CSV file                                  <Exports and saves the results as CSV file>
+3    GRPH: Export results as XML file                                  <Exports and saves the results highlighted in a xml file>
+4    BACK: Back to the main menu                                       <Return to the main menu>
+
+Which menu item should be executed? (<No. of menu item>):
+```
+
+Figure 11: *I-Mat - 2  SEAR: Pattern search (without rhythmic values/transposed) (export menu)*
+
+
+![I-Mat - 2  SEAR Pattern search (without rhythmic values - transposed) (3  GRPH Export results as XML file)](https://user-images.githubusercontent.com/130949054/236673524-30fee5c7-0a66-4156-8b6b-fe24661aad18.png)
+
+
+Figure 12: *I-Mat - 2  SEAR: Pattern search (without rhythmic values/transposed) (3  GRPH: Export results as XML file)*
+
+
 
 ## References
 
