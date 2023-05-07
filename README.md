@@ -2,7 +2,7 @@
 
 The **Interactive Music Analysis Tool (I-MaT)**[^1] is a modular program designed for producing visualizations and statistical analyses of sheet music files. It is based on the **music21** python library ([GitHub repository](https://github.com/cuthbertLab/music21.git)), developed by the Massachusetts Institute of Technology (MIT),[^2] and was originally created as a sub-project of the fellowship project Computer-assisted Music Analysis in Digital University Teaching ([Computergestützte Musikanalyse in der digitalen Hochschullehre, 2021, project report (PDF)](https://stifterverband.org/file/10986/download?token=tl9S2EL_)).[^3]
 
-The project was located at the Institute for Musicology Weimar-Jena at the Franz Liszt University of Music Weimar[^4] and was funded by the Thuringian Ministry for Economy, Science and Digital Change and the Deutscher Stifterverband.[^5]
+The project was located at the Department of Musicology Weimar-Jena at the Franz Liszt University of Music Weimar[^4] and was funded by the Thuringian Ministry for Economy, Science and Digital Change and the Deutscher Stifterverband.[^5]
 
 ## Project Overview
 
@@ -13,7 +13,7 @@ The aim of the aforementioned project was to design, test, teach with and evalua
 - the search for musical patterns (rhythms, melodies, harmony connections, etc.),
 - and the comparison of interpretation"[^6]
 
-Within the project "Computer-assisted Music Analysis [...]", three computerized approaches to music score analysis were utilized, namely music21,[^7] CAMAT,[^8] and I-MaT itself. Music21 is a Python library developed at MIT for symbolic music representation and processing. CAMAT ([GitHub repository](https://github.com/Christon-Ragavan/CAMAT)), on the other hand, is a Computer-Assisted Music Analysis Toolkit developed by Egor Poliakov[^9] and Christon R. Nadar[^10] within the Fellowship project. CAMAT uses its own unique data structure, developed within the project to overcome certain design problems found within the music21 framework.[^11] Tutorials for musicological courses were prepared using music examples and code that can be executed as Jupyter Notebooks.[^12]
+Within the project "Computer-assisted Music Analysis [...]", three computerized approaches to music score analysis were utilized, namely music21,[^7] CAMAT,[^8] and I-MaT itself. Music21 is a Python library developed at MIT for symbolic music representation and processing. CAMAT ([GitHub repository](https://github.com/Christon-Ragavan/CAMAT)), on the other hand, is a Computer-Assisted Music Analysis Toolkit developed by Egor Poliakov[^9] and Christon R. Nadar[^10] within the fellowship project. CAMAT uses its own unique data structure, developed within the project to overcome certain design problems found within the music21 framework.[^11] Tutorials for musicological courses were prepared using music examples and code that can be executed as Jupyter Notebooks.[^12]
 
 Both music21 and CAMAT require rudimentary knowledge of Python command syntax. In contrast, the Interactive Music Analysis Tool (I-MaT) is designed for users who have none to only limited knowledge of computer commands or programming languages as it utilizes a new and innovative approach to access and work with the music21 toolkit.
 
@@ -52,9 +52,11 @@ Moreover, the modular structure of I-MaT not only facilitates the addition of ne
 
 ### Education and Training
 
-I-MaT is an innovative tool for music analysis that can provide valuable support for music and musicology courses at both high school and university levels. Its user-friendly interface and modular design make it an ideal tool for students to quickly obtain results and explore various analytical approaches using computational methods, allowing them to gain a deeper understanding of the musical works they are studying. In addition to its analytical capabilities, I-MaT can serve as an effective didactic tool to introduce students to computer-assisted musicology and programming concepts in general, as well as music21 or other libraries used in the tool. 
+I-MaT is an innovative tool for music analysis that can provide valuable support for music and musicology courses at both high school and university levels. Its user-friendly interface and modular design make it an ideal tool for students to quickly obtain results and explore various analytical approaches using computational methods, allowing them to gain a deeper understanding of the musical works they are studying. In addition to its analytical capabilities, I-MaT can serve as an effective didactic tool to introduce students to computer-assisted musicology and programming concepts in general, as well as music21 or other libraries used in the tool.
 
-By using I-MaT, students can develop valuable skills that will be useful not only in music but also in other areas of the humanities where digital methods are becoming increasingly important. Lastly, I-MaT's modular structure enables collaborative work not only in the classroom, but also bears the possibility to connect through platforms like GitHub, providing opportunities for global collaboration in musicology and other related disciplines.
+By using I-MaT, students can develop valuable analytical skills that will be useful not only in musicology but also in other areas of the humanities where data-driven methods are becoming increasingly important.
+
+Lastly, I-MaT's modular structure enables collaborative work not only in the classroom but also bears the possibility to connect through platforms like GitHub, providing opportunities for its further development.
 
 I-MaT should be seen as a contribution to Computational Musicology or Digital Musicology within the Digital Humanities.
 
@@ -62,14 +64,14 @@ Author: Sebastian Oliver Eck (Student Project Assistant - Institute for Musicolo
 
 ## Sheet Music Databases curated within the project
 
-The Fellowship project contains two larger databases:[^13]
+The fellowship project contains two larger databases:[^13]
 
 - The main database[^14] comprises of several thousand individual sheet music files (MusicXML).
 - The subcorpus[^15] contains all scores used in the two teaching modules for score analysis[^16] and was carefully curated by student members of the project team.
 
 ### List of incorporated databases (last accessed on: 2023-04-25)
 
-The Fellowship project uses several, under the Common Licence freely available online databases as sources for its own sheet music corpora. These include:
+The fellowship project uses several, under the Common Licence freely available online databases as sources for its own sheet music corpora. These include:
 
 - The Classical Music Score Digitization Project (weblink not longer available).
 - [Josquin Research Project, Standford University](http://jrp.stanford.edu).
@@ -270,9 +272,9 @@ Figure 7:  *I-Mat - statistical analyzes: 10  HIST: Sound events per tone durati
 [^8]: Official project website: 1) "Module Basics Sheet Music Analysis with CAMAT", https://analyse.hfm-weimar.de/doku.php?id=en:camat; 2) "Module Advanced: Sheet Music Analysis with CAMAT", https://analyse.hfm-weimar.de/doku.php?id=en:advanced_camat (last accessed on: 2023-04-25).
 [^9]: Egor Poliakov (HMT Leipzig, Germany, egor.poliakov@hmt-leipzig.de).
 [^10]: Christon R. Nadar (Semantic Music Technologies, Fraunhofer IDMT, Ilmenau, Germany).
-[^11]: Cf. Egor Poliakovand Christon R. Nada (2021) (see footnote 6).
+[^11]: Cf. Egor Poliakovand Christon R. Nada (2021) (see footnote 6). For further information on the development of CAMAT, cf. Martin Pfleiderer, Egor Polyakov and Christon-Ragavan Nadar: Analyze! Development and integration of software-based tools for musicology music theory, in: Proceedings Innovation in Music 2022 Conference, edited by Jan-Olof Gullo, Russ Hepworth-Sawyer, Justin Paterson and Rob Toulson, Milton Park: Routledge 2023 (in print).
 [^12]: Official project website: "Sheet Music Analysis", https://analyse.hfm-weimar.de/doku.php?id=en:noten (last accessed on: 2023-04-25).
 [^13]: Official project website: "Sheet Music Database", https://analyse.hfm-weimar.de/doku.php?id=en:datenbank (last accessed on: 2023-04-25).
-[^14]: Official project website: "Sheet Music database. Main Database", https://analyse.hfm-weimar.de/doku.php?id=en:komponisten (last accessed on: 2023-04-25).
+[^14]: Official project website: "Sheet Music Database. Main Database", https://analyse.hfm-weimar.de/doku.php?id=en:komponisten (last accessed on: 2023-04-25).
 [^15]: Official project website: "Sheet Music Database. Subcorpus", https://analyse.hfm-weimar.de/doku.php?id=en:datenbank (last accessed on: 2023-04-25).
 [^16]: Cf. footnotes 7 and 8.
