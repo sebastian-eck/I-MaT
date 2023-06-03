@@ -86,8 +86,8 @@ To use the Interactive Music Analysis Tool (I-MaT), follow these steps:
 
 1. **Install Anaconda or Miniconda**: Download and install Anaconda or Miniconda on your system.
    - For installation instructions, refer to the [installation guide](https://analyse.hfm-weimar.de/doku.php?id=en:jupyter-anaconda).
-   - Make sure to include the current version of the HfM environment (`hfm_x.x.x.yml`). You can download it from [here](https://analyse.hfm-weimar.de/scripts/hfm_1.1.2.yml).
-   - Additionally, install [MuseScore](en:installation#musescore)  (right click: save link as..).
+   - Make sure to include the current version of the HfM environment (`hfm_x.x.x.yml`). You can download it from [here](https://analyse.hfm-weimar.de/scripts/hfm_1.1.2.yml) (right click: save link as..).
+   - Additionally, install [MuseScore](https://musescore.org/en).
 
 2. **Download the I-MaT program**:
    - Right-click on the [Download link](https://analyse.hfm-weimar.de/jupyter/I-MaT-InteraktivesMusikanalyse-Tool.py) for the Python script.
