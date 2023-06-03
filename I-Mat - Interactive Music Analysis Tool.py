@@ -1848,14 +1848,17 @@ global LANGUAGE
 LANGUAGE = "EN"
 
 try:
+
+    import os
+    from os import system, name
+    from copy import deepcopy
+    import sys
+    import time
+
     import numpy as np
     import matplotlib.pyplot as plt
-    import os
-    import sys
     import pandas as pd
     from IPython.display import HTML, display
-
-    import time
     from scipy import interpolate
 
     from music21 import graph
@@ -1869,9 +1872,6 @@ try:
     from music21 import search
     from music21 import note
     from music21 import stream
-
-    from os import system, name
-    from copy import deepcopy
 
 except Exception as e:
     print(text_exception_modules(e))
@@ -9657,17 +9657,24 @@ def Start_Ausgabe_Text():
         "{:<50} {}\n".format("Egor Polyakov", "<egor.polyakov@hfm-weimar.de>"),
         "{:<50} {}\n\n".format("Christon-Ragavan Nadar", ""),
         "-- Student staff --\n\n",
-        "{:<50} {}\n".format("Sebastian Oliver Eck", "<sebastian.eck@hfm.uni-weimar.de>"),
-        "{:<50} {}\n".format("Juan Sebastián Paez Medina", "<juan.sebastian.paez.medina@hfm.uni-weimar.de>"),
-        "{:<50} {}\n".format("Andres Romero Varon", "<andres.romero.varon@hfm.uni-weimar.de>"),
+        "{:<50} {}\n".format("Sebastian Oliver Eck",
+                             "<sebastian.eck@hfm.uni-weimar.de>"),
+        "{:<50} {}\n".format("Juan Sebastián Paez Medina",
+                             "<juan.sebastian.paez.medina@hfm.uni-weimar.de>"),
+        "{:<50} {}\n".format("Andres Romero Varon",
+                             "<andres.romero.varon@hfm.uni-weimar.de>"),
         "{:<50} {}\n".format("Esther Johanna Barta", ""),
         "{:<50} {}\n\n".format("Clarissa Henriette Mühlhausen", ""),
         "-- Program code --\n\n",
-        "{:<50} {}\n\n".format("Sebastian Oliver Eck", "<sebastian.eck@hfm.uni-weimar.de>"),
+        "{:<50} {}\n\n".format("Sebastian Oliver Eck",
+                               "<sebastian.eck@hfm.uni-weimar.de>"),
         "-- Search routines --\n\n",
-        "{:<50} {}\n".format("Sebastian Oliver Eck", "<sebastian.eck@hfm.uni-weimar.de>"),
-        "{:<50} {}\n".format("Juan Sebastián Paez Medina", "<juan.sebastian.paez.medina@hfm.uni-weimar.de>"),
-        "{:<50} {}\n".format("Andres Romero Varon", "<andres.romero.varon@hfm.uni-weimar.de>"),
+        "{:<50} {}\n".format("Sebastian Oliver Eck",
+                             "<sebastian.eck@hfm.uni-weimar.de>"),
+        "{:<50} {}\n".format("Juan Sebastián Paez Medina",
+                             "<juan.sebastian.paez.medina@hfm.uni-weimar.de>"),
+        "{:<50} {}\n".format("Andres Romero Varon",
+                             "<andres.romero.varon@hfm.uni-weimar.de>"),
         "{:<50} {}\n".format("Egor Polyakov", "<egor.polyakov@hfm-weimar.de>"),
         "{:<50} {}\n\n".format("Christon-Ragavan Nadar", ""),
         "Using Music21 (MIT, Massachusetts, Cambridge, USA): [https://web.mit.edu/music21/]\n\n",
