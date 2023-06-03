@@ -9640,7 +9640,7 @@ def Modul_Navigation_Konvertierung():
 # In[4]:
 
 
-def Start_Ausgabe_Text():2
+def Start_Ausgabe_Text():
     clear_Screen()
 
     text = (
