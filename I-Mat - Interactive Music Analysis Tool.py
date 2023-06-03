@@ -7,71 +7,71 @@
 
 def text_headers(identifier):
     dict_de = {
-        "Ambitus_Analyse_Textausgabe": ["Notenauswahl", "Ambitus"],
-        "Ambitus_Vergleich_Textausgabe": ["Notenauswahl", "Ambitus"],
-        "Intervallstruktur_Intervalltypen_Textausgabe": [
+        "range_analysis_textOutput": ["Notenauswahl", "Ambitus"],
+        "range_comparison_textOutput": ["Notenauswahl", "Ambitus"],
+        "intervalStructure_intervalTypes_textOutput": [
             "Notenauswahl",
             "Anzahl der Intervalltypen",
             "Intervalltypen",
         ],
-        "Intervallstruktur_Intervalltypen_Anzahl_Textausgabe": [
+        "intervalStructure_intervalTypes_quantity_textOutput": [
             "Notenauswahl",
             "Intervall",
             "Vorkommen",
         ],
-        "Intervallstruktur_Intervalltypen_Vergleich_Textausgabe": [
+        "intervalStructure_intervalTypes_comparison_textOutput": [
             "Notenauswahl",
             "Intervall",
             "Vorkommen",
             "Differenz zur anderen Notenauswahl (+/-)",
         ],
-        "Intervallstruktur_Intervalle_Anzahl_Textausgabe": [
+        "intervalStructure_Intervalle_quantity_textOutput": [
             "Notenauswahl",
             "Anzahl Intervalle",
         ],
-        "Metrum_Metrisches_Gewicht_Textausgabe": [
+        "meter_metricWeight_textOutput": [
             "Kennung",
             "Metrisches Gewicht (x-Achse)",
             "Haeufigkeit (y-Achse)",
         ],
-        "Metrum_Tonklassen_metrischen_Positionen_Textausgabe": [
+        "meter_pitchClass_metricPosition_textOutput": [
             "Kennung",
             "Tonhoehe (x-Achse)",
             "Metrisches Gewicht (y-Achse)",
             "Haeufigkeit (z-Achse)",
         ],
-        "Tonmaterial_Töne_Anzahl_gesamt_Textausgabe": ["Kennung", "Anzahl Töne"],
-        "Tonmaterial_Töne_Anzahl_Tonhöhen_Textausgabe": [
+        "notes_notesQuantity_total_textOutput": ["Kennung", "Anzahl Töne"],
+        "notes_notesQuantity_pitches_textOutput": [
             "Kennung",
             "Tonhoehen",
             "Pitch",
         ],
-        "Vordefinierte_Darstellungen_HistogramPitchSpace": [
+        "predefinedVisualizations_HistogramPitchSpace": [
             "Kennung",
             "Tonstufe (Midi)",
             "Tonstufenname (x-Achse)",
             "Haeufigkeit (y-Achse)",
         ],
-        "Vordefinierte_Darstellungen_HistogramPitchClass": [
+        "predefinedVisualizations_HistogramPitchClass": [
             "Kennung",
             "Tonklasse (Midi)",
             "Tonklassenname (x-Achse)",
             "Haeufigkeit (y-Achse)",
         ],
-        "Vordefinierte_Darstellungen_HistogramQuarterLength": [
+        "predefinedVisualizations_HistogramQuarterLength": [
             "Kennung",
             "Notenwert (Viertel = 1.0)",
             "Notenwertname (x-Achse)",
             "Haeufigkeit (y-Achse)",
         ],
-        "Vordefinierte_Darstellungen_HorizontalBarPitchSpaceOffset": [
+        "predefinedVisualizations_HorizontalBarPitchSpaceOffset": [
             "Kennung",
             "Tonstufe (Midi)",
             "Tonstufenname (y-Achse)",
             "Offset (x-Achse)",
             "Dargestellte Tonlaenge",
         ],
-        "Vordefinierte_Darstellungen_ScatterWeightedPitchSpaceQuarterLength": [
+        "predefinedVisualizations_ScatterWeightedPitchSpaceQuarterLength": [
             "Kennung",
             "Notenwert (Viertel = 1.0)",
             "Notenwertname (x-Achse)",
@@ -79,7 +79,7 @@ def text_headers(identifier):
             "Tonstufenname (y-Achse)",
             "Haeufigkeit",
         ],
-        "Vordefinierte_Darstellungen_Plot3DBarsPitchSpaceQuarterLength": [
+        "predefinedVisualizations_Plot3DBarsPitchSpaceQuarterLength": [
             "Kennung",
             "Notenwert (Viertel = 1.0)",
             "Notenwertname (x-Achse)",
@@ -87,7 +87,7 @@ def text_headers(identifier):
             "Tonstufenname (y-Achse)",
             "Haeufigkeit (z-Achse)",
         ],
-        "Vordefinierte_Darstellungen_ScatterWeightedPitchClassQuarterLength": [
+        "predefinedVisualizations_ScatterWeightedPitchClassQuarterLength": [
             "Kennung",
             "Notenwert (Viertel = 1.0)",
             "Notenwertname (x-Achse)",
@@ -95,27 +95,27 @@ def text_headers(identifier):
             "Tonklassenname (y-Achse)",
             "Haeufigkeit",
         ],
-        "Vordefinierte_Darstellungen_ScatterPitchClassOffset": [
+        "predefinedVisualizations_ScatterPitchClassOffset": [
             "Kennung",
             "Tonklasse",
             "Tonklassenname (y-Achse)",
             "Offset (x-Achse)",
         ],
-        "Vordefinierte_Darstellungen_ScatterWeightedPitchSpaceDynamicSymbol": [
+        "predefinedVisualizations_ScatterWeightedPitchSpaceDynamicSymbol": [
             "Kennung",
             "Tonstufe (Midi)",
             "Tonstufenname (x-Achse)",
             "Dynamik (y-Achse)",
             "Haeufigkeit",
         ],
-        "Vordefinierte_Darstellungen_HorizontalBarPitchClassOffset": [
+        "predefinedVisualizations_HorizontalBarPitchClassOffset": [
             "Kennung",
             "Tonklasse (Midi)",
             "Tonklassenname (y-Achse)",
             "Offset (x-Achse)",
             "Dargestellte Tonlaenge",
         ],
-        "Mustersuche_Menuestruktur_Tonfolge_ohne_Transposition_ohne_Rhythmus": [
+        "patternSearch_menuStructure_toneSequence_withoutTransposition_withoutRhythm": [
             "Nr.",
             "Tonhoehe",
             "Takt",
@@ -123,7 +123,7 @@ def text_headers(identifier):
             "Stimme",
             "Suchmuster",
         ],
-        "Mustersuche_Menuestruktur_Tonfolge_mit_Transposition_ohne_Rhythmus": [
+        "patternSearch_menuStructure_toneSequence_withTransposition_withoutRhythm": [
             "Nr.",
             "Tonhoehe",
             "Takt",
@@ -131,7 +131,7 @@ def text_headers(identifier):
             "Stimme",
             "Suchmuster",
         ],
-        "Mustersuche_Menuestruktur_Tonfolge_ohne_Transposition_mit_Rhythmus": [
+        "patternSearch_menuStructure_toneSequence_withoutTransposition_withRhythm": [
             "Nr.",
             "Tonhoehe",
             "Takt",
@@ -139,7 +139,7 @@ def text_headers(identifier):
             "Stimme",
             "Suchmuster (1.0 = Viertelnote)",
         ],
-        "Mustersuche_Menuestruktur_Tonfolge_mit_Transposition_mit_Rhythmus": [
+        "patternSearch_menuStructure_toneSequence_withTransposition_withRhythm": [
             "Nr.",
             "Tonhoehe",
             "Takt",
@@ -147,7 +147,7 @@ def text_headers(identifier):
             "Stimme",
             "Suchmuster (1.0 = Viertelnote",
         ],
-        "Mustersuche_Menuestruktur_Rhythmus_ohne_Tonhöhen": [
+        "patternSearch_menuStructure_rhythm_withoutPitch": [
             "Nr.",
             "Tonhoehe",
             "Takt",
@@ -155,77 +155,77 @@ def text_headers(identifier):
             "Stimme",
             "Suchmuster (1.0 = Viertelnote",
         ],
-        "Einzelstimmen_Namen_Anzeigen": ["Nr.", "Name der Stimme"],
-        "Benennen_der_Einzelstimmen": ["Nr.", "Name der Stimme"],
-        "Anzeige_Metadaten_Partitur": ["Nr.", "Metadata", "Wert"],
+        "show_names_individualVoices": ["Nr.", "Name der Stimme"],
+        "helpers_name_individualVoices": ["Nr.", "Name der Stimme"],
+        "show_score_metadata": ["Nr.", "Metadata", "Wert"],
     }
 
     dict_en = {
-        "Ambitus_Analyse_Textausgabe": ["Notenauswahl", "Ambitus"],
-        "Ambitus_Vergleich_Textausgabe": ["Note selection", "Ambitus"],
-        "Intervallstruktur_Intervalltypen_Textausgabe": [
+        "range_analysis_textOutput": ["Notenauswahl", "Ambitus"],
+        "range_comparison_textOutput": ["Note selection", "Ambitus"],
+        "intervalStructure_intervalTypes_textOutput": [
             "Note selection",
             "Number of interval types",
             "Interval types",
         ],
-        "Intervallstruktur_Intervalltypen_Anzahl_Textausgabe": [
+        "intervalStructure_intervalTypes_quantity_textOutput": [
             "Note selection",
             "Interval",
             "Frequency",
         ],
-        "Intervallstruktur_Intervalltypen_Vergleich_Textausgabe": [
+        "intervalStructure_intervalTypes_comparison_textOutput": [
             "Note selection",
             "Interval",
             "Frequency",
             "Difference to other note selection (+/-)",
         ],
-        "Intervallstruktur_Intervalle_Anzahl_Textausgabe": [
+        "intervalStructure_Intervalle_quantity_textOutput": [
             "Note selection",
             "Number of intervals",
         ],
-        "Metrum_Metrisches_Gewicht_Textausgabe": [
+        "meter_metricWeight_textOutput": [
             "Identifier",
             "Metric weight (x-axis)",
             "Frequency (y-axis)",
         ],
-        "Metrum_Tonklassen_metrischen_Positionen_Textausgabe": [
+        "meter_pitchClass_metricPosition_textOutput": [
             "Identifier",
             "Pitch (x-axis)",
             "Metric weight (y-axis)",
             "Frequency (z-axis)",
         ],
-        "Tonmaterial_Töne_Anzahl_gesamt_Textausgabe": ["Identifier", "Number of tones"],
-        "Tonmaterial_Töne_Anzahl_Tonhöhen_Textausgabe": [
+        "notes_notesQuantity_total_textOutput": ["Identifier", "Number of tones"],
+        "notes_notesQuantity_pitches_textOutput": [
             "Identifier",
             "Pitch",
             "Pitch",
         ],
-        "Vordefinierte_Darstellungen_HistogramPitchSpace": [
+        "predefinedVisualizations_HistogramPitchSpace": [
             "Identifier",
             "Pitch (midi)",
             "Pitch name (x-axis)",
             "Frequency (y-axis)",
         ],
-        "Vordefinierte_Darstellungen_HistogramPitchClass": [
+        "predefinedVisualizations_HistogramPitchClass": [
             "Identifier",
             "Tone class (Midi)",
             "Tone class name (x-axis)",
             "Frequency (y-axis)",
         ],
-        "Vordefinierte_Darstellungen_HistogramQuarterLength": [
+        "predefinedVisualizations_HistogramQuarterLength": [
             "Identifier",
             "Rhythm value (quarter = 1.0)",
             "Rhythm value name (x-axis)",
             "Frequency (y-axis)",
         ],
-        "Vordefinierte_Darstellungen_HorizontalBarPitchSpaceOffset": [
+        "predefinedVisualizations_HorizontalBarPitchSpaceOffset": [
             "Identifier",
             "Pitch (midi)",
             "Pitch name (y-axis)",
             "Offset (x-axis)",
             "Displayed length",
         ],
-        "Vordefinierte_Darstellungen_ScatterWeightedPitchSpaceQuarterLength": [
+        "predefinedVisualizations_ScatterWeightedPitchSpaceQuarterLength": [
             "Identifier",
             "Rhythm value (quarter = 1.0)",
             "Rhythm value name (x-axis)",
@@ -233,7 +233,7 @@ def text_headers(identifier):
             "Pitch name (y-axis)",
             "Frequency",
         ],
-        "Vordefinierte_Darstellungen_Plot3DBarsPitchSpaceQuarterLength": [
+        "predefinedVisualizations_Plot3DBarsPitchSpaceQuarterLength": [
             "Identifier",
             "Rhythm value (quarter = 1.0)",
             "Rhythm value name (x-axis)",
@@ -241,7 +241,7 @@ def text_headers(identifier):
             "Pitch name (y-axis)",
             "Frequency (z-axis)",
         ],
-        "Vordefinierte_Darstellungen_ScatterWeightedPitchClassQuarterLength": [
+        "predefinedVisualizations_ScatterWeightedPitchClassQuarterLength": [
             "Identifier",
             "rhythm value (quarter = 1.0)",
             "rhythm value name (x-axis)",
@@ -249,27 +249,27 @@ def text_headers(identifier):
             "pitch class name (y-axis)",
             "frequency",
         ],
-        "Vordefinierte_Darstellungen_ScatterPitchClassOffset": [
+        "predefinedVisualizations_ScatterPitchClassOffset": [
             "Identifier",
             "pitch class",
             "pitch class name (y-axis)",
             "offset (x-axis)",
         ],
-        "Vordefinierte_Darstellungen_ScatterWeightedPitchSpaceDynamicSymbol": [
+        "predefinedVisualizations_ScatterWeightedPitchSpaceDynamicSymbol": [
             "Identifier",
             "Pitch (midi)",
             "Pitch name (x-axis)",
             "Dynamics (y-axis)",
             "Frequency",
         ],
-        "Vordefinierte_Darstellungen_HorizontalBarPitchClassOffset": [
+        "predefinedVisualizations_HorizontalBarPitchClassOffset": [
             "Identifier",
             "Tone class (Midi)",
             "Tone class name (y-axis)",
             "Offset (x-axis)",
             "Displayed pitch length",
         ],
-        "Mustersuche_Menuestruktur_Tonfolge_ohne_Transposition_ohne_Rhythmus": [
+        "patternSearch_menuStructure_toneSequence_withoutTransposition_withoutRhythm": [
             "No.",
             "Pitch",
             "Measure",
@@ -277,7 +277,7 @@ def text_headers(identifier):
             "Voice",
             "Search pattern",
         ],
-        "Mustersuche_Menuestruktur_Tonfolge_mit_Transposition_ohne_Rhythmus": [
+        "patternSearch_menuStructure_toneSequence_withTransposition_withoutRhythm": [
             "No.",
             "Pitch",
             "Measure",
@@ -285,7 +285,7 @@ def text_headers(identifier):
             "Voice",
             "Search pattern",
         ],
-        "Mustersuche_Menuestruktur_Tonfolge_ohne_Transposition_mit_Rhythmus": [
+        "patternSearch_menuStructure_toneSequence_withoutTransposition_withRhythm": [
             "No.",
             "Pitch",
             "Measure",
@@ -293,7 +293,7 @@ def text_headers(identifier):
             "Voice",
             "Search pattern (1.0 = quarter)",
         ],
-        "Mustersuche_Menuestruktur_Tonfolge_mit_Transposition_mit_Rhythmus": [
+        "patternSearch_menuStructure_toneSequence_withTransposition_withRhythm": [
             "No.",
             "Pitch",
             "Measure",
@@ -301,7 +301,7 @@ def text_headers(identifier):
             "Voice",
             "Search pattern (1.0 = quarter)",
         ],
-        "Mustersuche_Menuestruktur_Rhythmus_ohne_Tonhöhen": [
+        "patternSearch_menuStructure_rhythm_withoutPitch": [
             "No.",
             "Pitch",
             "Measure",
@@ -309,9 +309,9 @@ def text_headers(identifier):
             "Voice",
             "Search pattern (1.0 = quarter)",
         ],
-        "Einzelstimmen_Namen_Anzeigen": ["No.", "Part name"],
-        "Benennen_der_Einzelstimmen": ["No.", "Part name"],
-        "Anzeige_Metadaten_Partitur": ["No.", "Metadata", "Value"],
+        "show_names_individualVoices": ["No.", "Part name"],
+        "helpers_name_individualVoices": ["No.", "Part name"],
+        "show_score_metadata": ["No.", "Metadata", "Value"],
     }
 
     if LANGUAGE == "DE":
@@ -328,18 +328,18 @@ def text_headers(identifier):
 # In[ ]:
 
 
-def text_environment_create(Environment_Pfad):
+def text_environmentFile_createNewFile(environmentFile_path):
     text_de = (
         "KEINE ENVIRONMENT-DATEI VORHANDEN\n\n"
         "Erwartete Datei: "
-        + str(Environment_Pfad)
+        + str(environmentFile_path)
         + "\n\nEs wurde keine Environment-Datei gefunden. Das Erstellen dieser Datei ist zur korrekten Ausführung des Programs notwendig.\n\nMöchten Sie jetzt eine neue Environment-Datei erstellen? (ja/nein): "
     )
 
     text_en = (
         "NO ENVIRONMENT-DATEI FOUND\n\n"
         "Expected File: "
-        + str(Environment_Pfad)
+        + str(environmentFile_path)
         + "\n\nNo environment file was found. The creation of this file is necessary for the correct execution of the program.\n\nDo you want to create a new environment file now? (yes/no): "
     )
 
@@ -355,16 +355,16 @@ def text_environment_create(Environment_Pfad):
 # In[ ]:
 
 
-def text_environment_create_new_file_created(Environment_Pfad):
+def text_environmentFile_createNewFile_created(environmentFile_path):
     text_de = (
         "Es wurde eine neue Environment-Datei in folgendem Verzeichnis erstellt:\n\n"
-        + str(Environment_Pfad)
+        + str(environmentFile_path)
         + '\n\nFalls Sie die Datei im Explorer/Finder nicht sehen können, müssen Sie die Option "ausgeblendete Dateien anzeigen" aktivieren:\n\nWINDOWS: Explorer > Ansicht > Ein-/ausblenden > Ausgeblendete Elemente\n\nMAC: Im Finder Tastenkombination "Befehlstaste (cmd/command) + Umschalttaste + Punkt"'
     )
 
     text_en = (
         "A new environment file has been created in the following directory:\n\n"
-        + str(Environment_Pfad)
+        + str(environmentFile_path)
         + '\n\nIf you cannot see the file in Explorer / Finder, you have to activate the option "View hidden files":\n\nWINDOWS: View > Show/hide > Hidden items\n\nMAC: In the Finder key combination "Command key (cmd / command) + Shift key + period"'
     )
 
@@ -380,7 +380,7 @@ def text_environment_create_new_file_created(Environment_Pfad):
 # In[ ]:
 
 
-def text_environment_create_no_file_created():
+def text_environmentFile_createNewFile_noFileCreated():
     text_de = (
         "Wenn Sie die Environment-Datei nicht erstellen, können Sie das Programm zwar verwenden, aber keine Notendateien in Ihrem Noteneditor anzeigen lassen oder Notendateien aus dem Internet herunterladen.\n\n"
         'Um die environment-Datei nachträglich zu erstellen, öffnen Sie "SETT: Einstellungen > Environment: Einstellungen neu konfigurieren\n'
@@ -407,7 +407,7 @@ def text_environment_create_no_file_created():
 # In[ ]:
 
 
-def text_environment_reconfigure_ask_delete():
+def text_environmentFile_reconfigure_askDelete():
     text_de = "Möchten Sie die Environment-Datei löschen? (ja(nein): "
 
     text_en = "Do you want to delete the Environment file? (yes/no): "
@@ -424,7 +424,7 @@ def text_environment_reconfigure_ask_delete():
 # In[ ]:
 
 
-def text_environment_reconfigure_deleted():
+def text_environmentFile_reconfigure_deleted():
     text_de = "Die Environment-Datei wurde erfolgreich gelöscht."
 
     text_en = "The Environment file was deleted successfully."
@@ -441,7 +441,7 @@ def text_environment_reconfigure_deleted():
 # In[ ]:
 
 
-def text_environment_reconfigure_not_deleted():
+def text_environmentFile_reconfigure_notDeleted():
     text_de = "Die Environment-Datei wurde nicht gelöscht."
 
     text_en = "The Environment file was not deleted."
@@ -458,16 +458,16 @@ def text_environment_reconfigure_not_deleted():
 # In[ ]:
 
 
-def text_environment_show_environment_path(path):
+def text_environmentFile_showPath(environmentFile_path):
     text_de = (
-        "Der Pfad der Environmentdatei lautet: " + str(path) + "\n\n"
+        "Der Pfad der Environmentdatei lautet: " + str(environmentFile_path) + "\n\n"
         'Falls Sie die Datei nicht sehen können, müssen Sie die Option "ausgeblendete Dateien anzeigen" aktivieren:\n\n'
         "WINDOWS: Explorer > Ansicht > Ein-/ausblenden > Ausgeblendete Elemente\n\n"
         'MAC: Im Finder Tastenkombination "Befehlstaste (cmd/command) + Umschalttaste + Punkt"'
     )
 
     text_en = (
-        "The path of the environment file is: " + str(path) + "\n\n"
+        "The path of the environment file is: " + str(environmentFile_path) + "\n\n"
         'If you cannot see the file, you have to activate the option "Show hidden files":\n\n'
         "WINDOWS: Explorer > View > Show / hide > Hidden items\n\n"
         'MAC: In the Finder key combination "Command key (cmd / command) + Shift key + period"'
@@ -487,7 +487,7 @@ def text_environment_show_environment_path(path):
 # In[ ]:
 
 
-def text_environment_musescore_path():
+def text_environmentFile_configure_musescorePath():
     text_de = (
         "Bitte geben Sie den Pfad zu Ihrer MuseScore3.exe (Windows) bzw. MuseScore3.app (Mac) - Datei an.\n\n"
         "Unter Windows finden Sie diese üblicherweise im Ordner: C:\\Program Files\\MuseScore 3\\bin\\MuseScore3.exe\n\n"
@@ -522,7 +522,7 @@ def text_environment_musescore_path():
 # In[ ]:
 
 
-def text_environment_scratch_path():
+def text_environmentFile_configure_scratchPath():
     text_de = (
         "Bitte geben Sie den Pfad zu dem Ordner an, in dem Ihre von music21 exportierten Dateien gespeichert werden sollen.\n\n"
         'WINDOWS: Ziehen Sie hierzu einfach das Icon des gewünschten Ordners in das Terminal und drücken Sie "Eingabe".\n\n'
@@ -553,36 +553,38 @@ def text_environment_scratch_path():
 # In[2]:
 
 
-def text_exception_modules(error_message):
+def text_exception_modules(exception_text):
     tb = sys.exc_info()[2]
 
     text_de = (
         "Es fehlen Pakete auf Ihrem System. Bitte wenden Sie sich an einen Tutor (Fehlercode: MOD). Notwendig sind folgende Pakete:\n\n"
-        "numpy~=1.20.3\n"
-        "matplotlib~=3.4.3\n"
-        "pandas~=1.2.5\n"
-        "music21~=6.7.1\n"
-        "ipython~=7.24.1\n"
-        "scipy~=1.6.2\n\n"
+        "python==3.10.*\n"
+        "numpy==1.20.*\n"
+        "matplotlib==3.4.*\n"
+        "pandas==1.2.*\n"
+        "ipython==7.24.*\n"
+        "scipy==1.6.*\n"
+        "music21==6.7.*\n\n"
         "Fehler in Zeile: "
         + str(tb.tb_lineno)
         + " -> "
-        + str(error_message)
+        + str(exception_text)
         + "\n\nSollte das Problem weiterhin bestehen, wenden Sie sich bitte an den Projekt-Support.\n\nSupport: analyse@hfm-weimar.de"
     )
 
     text_en = (
         "Packages are missing on your system. Please contact a tutor (error code: MOD). The following packages are required:\n\n"
-        "numpy~=1.20.3\n"
-        "matplotlib~=3.4.3\n"
-        "pandas~=1.2.5\n"
-        "music21~=6.7.1\n"
-        "ipython~=7.24.1\n"
-        "scipy~=1.6.2\n\n"
+        "python==3.10.*\n"
+        "numpy==1.20.*\n"
+        "matplotlib==3.4.*\n"
+        "pandas==1.2.*\n"
+        "ipython==7.24.*\n"
+        "scipy==1.6.*\n"
+        "music21==6.7.*\n\n"
         "Error in line: "
         + str(tb.tb_lineno)
         + " -> "
-        + str(error_message)
+        + str(exception_text)
         + "\n\nIf the problem persists, please contact project support.\n\nSupport: analyse@hfm-weimar.de"
     )
 
@@ -598,14 +600,14 @@ def text_exception_modules(error_message):
 # In[3]:
 
 
-def text_exception_general(error_message, function_name):
+def text_exception_general(exception_text, function_name):
     tb = sys.exc_info()[2]
 
     text_de = (
         "Bei der Ausführung des Programms wurde ein Fehler festgestellt:\n\n\Fehler in Zeile: "
         + str(tb.tb_lineno)
         + "\n\nFehlercode: "
-        + str(error_message)
+        + str(exception_text)
         + "\n\nIn Funktion: "
         + str(function_name)
         + "\n\nSollte das Problem weiterhin bestehen, wenden Sie sich bitte an den Projekt-Support.\n\nSupport: analyse@hfm-weimar.de"
@@ -615,7 +617,7 @@ def text_exception_general(error_message, function_name):
         "An error was encountered while executing the program:\n\n\Error in line: "
         + str(tb.tb_lineno)
         + "\n\nError code: "
-        + str(error_message)
+        + str(exception_text)
         + "\n\nIn function: "
         + str(function_name)
         + "\n\nIf the problem persists, please contact project support.\n\nSupport: analyse@hfm-weimar.de"
@@ -662,7 +664,7 @@ def text_general_title():
 # In[ ]:
 
 
-def text_general_check_entry():
+def text_general_checkEntry():
     text_de = "Ist die Eingabe korrekt? (ja/nein): "
 
     text_en = "Is the entry correct? (yes/no): "
@@ -696,7 +698,7 @@ def text_general_proceed():
 # In[6]:
 
 
-def text_general_restricted_yes_no():
+def text_general_input_RestrictedToYesAndNo():
     text_de = (
         "<Eingabe beschränkt auf ja/nein (alternativ: 1/0). Bitte erneut eingeben.>"
     )
@@ -715,14 +717,14 @@ def text_general_restricted_yes_no():
 # In[ ]:
 
 
-def text_general_restricted_numbers(Input):
+def text_general_input_restrictedToNumbers(input_text):
     text_de = (
         "Fehler: '"
-        + Input
+        + input_text
         + "' - Eingabe beschränkt auf Zahlen. Bitte erneut eingeben."
     )
 
-    text_en = "Error: '" + Input + "' - Input restricted to numbers. Please re-enter."
+    text_en = "Error: '" + input_text + "' - Input restricted to numbers. Please re-enter."
 
     if LANGUAGE == "DE":
         return text_de
@@ -736,7 +738,7 @@ def text_general_restricted_numbers(Input):
 # In[7]:
 
 
-def text_general_close_MuseScore3():
+def text_general_close_museScore3():
     text_de = (
         "Hinweis 1: um fortzufahren, bitte MuseScore schließen.\n\n"
         "Hinweis 2: zum Exportieren der Datei als PDF in MuseScore bitte '> Datei > Export...' verwenden.\n\n"
@@ -761,7 +763,7 @@ def text_general_close_MuseScore3():
 # In[ ]:
 
 
-def text_general_close_player():
+def text_general_close_audioPlayer():
     text_de = "Hinweis: um fortzufahren, bitte den Audio-Player schließen."
 
     text_en = "Note: please close the audio player to continue."
@@ -778,7 +780,7 @@ def text_general_close_player():
 # In[ ]:
 
 
-def text_general_enter_new_path():
+def text_general_enter_newPath():
     text_de = "Geben Sie den Pfad/die URL ein: "
 
     text_en = "Enter Path/URL: "
@@ -795,10 +797,10 @@ def text_general_enter_new_path():
 # In[3]:
 
 
-def text_general_show_entered_path(path):
-    text_de = 'Folgender Pfad/Url wurde eingegeben: "' + str(path) + '"'
+def text_general_show_enteredPath(enteredPath):
+    text_de = 'Folgender Pfad/Url wurde eingegeben: "' + str(enteredPath) + '"'
 
-    text_en = 'The following path/URL was entered: "' + str(path) + '"'
+    text_en = 'The following path/URL was entered: "' + str(enteredPath) + '"'
 
     if LANGUAGE == "DE":
         return text_de
@@ -812,7 +814,7 @@ def text_general_show_entered_path(path):
 # In[ ]:
 
 
-def text_general_informations():
+def text_general_projectDescription():
     text_de = (
         "Lehrveranstaltungen zur musikalischen Analyse sind an Universitäten und Musikhochschulen ein fester Bestandteil\n"
         "sowohl der musikwissenschaftlichen Studiengänge als auch der Ausbildung von Musiklehrer*innen und Musiker*innen.\n"
@@ -899,12 +901,12 @@ def text_general_informations():
 
     try:
         if LANGUAGE == "DE":
-            clear_Screen()
+            clear_screen()
 
             print(text_de)
 
         elif LANGUAGE == "EN":
-            clear_Screen()
+            clear_screen()
 
             print(text_en)
 
@@ -921,7 +923,7 @@ def text_general_informations():
 # In[ ]:
 
 
-def text_general_choose_key():
+def text_general_chooseKey():
     text_de = "Wählen Sie im nachfolgenden Auswahlmenü die Tonart des ausgewählten Notenabschnittes aus."
 
     text_en = "Please select the key of the selected score section in the following selection menu."
@@ -938,7 +940,7 @@ def text_general_choose_key():
 # In[ ]:
 
 
-def text_general_diagram_export_unavailable():
+def text_general_exportToDiagrammUnavailable():
     text_de = "Für dieses Tool ist ein Datenexport als Grafikdiagramm nicht vorgesehen."
 
     text_en = "Data export as a graphic is not intended for this tool."
@@ -955,7 +957,7 @@ def text_general_diagram_export_unavailable():
 # In[ ]:
 
 
-def text_general_no_results():
+def text_general_noResults():
     text_de = "Fehler: Die Auswertung der Notendatei lieferte keine Ergebnisse."
 
     text_en = "Error: The analysis of the score file did not produce any results."
@@ -974,7 +976,7 @@ def text_general_no_results():
 # In[ ]:
 
 
-def text_display_show_score_selection():
+def text_display_showScoreSelection():
     text_de = "Möchten Sie den ausgewählten/eingegebenen Notentext anzeigen lassen? (ja/nein): "
 
     text_en = "Would you like to display the selected/entered music text? (yes/no): "
@@ -993,7 +995,7 @@ def text_display_show_score_selection():
 # In[8]:
 
 
-def text_export_filename():
+def text_export_fileName():
     text_de = "Unter welchem Namen soll die Datei gespeichert werden? Dateiname: "
 
     text_en = "Under what name should the file be saved? Filename: "
@@ -1010,7 +1012,7 @@ def text_export_filename():
 # In[9]:
 
 
-def text_general_terminate():
+def text_general_terminateProgram():
     text_de = "<Um das Programm zu beenden, bitte Eingabe drücken>"
 
     text_en = "<To terminate the program, please press Enter>"
@@ -1027,7 +1029,7 @@ def text_general_terminate():
 # In[10]:
 
 
-def text_general_save(path, name, extension):
+def text_general_exportSuccessful(path, name, extension):
     text_de = (
         "Die Datei wurde erfolgreich gespeichert.\n\n"
         "Speicherort: " + str(path) + "\n\n"
@@ -1052,7 +1054,7 @@ def text_general_save(path, name, extension):
 # In[11]:
 
 
-def text_general_save_images(path):
+def text_general_exportGraph(path):
     text_de = (
         "Die Datei wurde erfolgreich gespeichert.\n\n"
         "Speicherort: " + str(path) + "\n\n"
@@ -1077,7 +1079,7 @@ def text_general_save_images(path):
 # In[ ]:
 
 
-def text_general_save_images_name():
+def text_general_exportGraphName():
     text_de = (
         "Bitte wählen Sie einen Titel für das zu exportierende Grafikdiagramm aus: "
     )
@@ -1098,7 +1100,7 @@ def text_general_save_images_name():
 # In[ ]:
 
 
-def text_pattern_search_show_pattern_selection(selection):
+def text_patternSearch_showPatternSelection(selection):
     text_de = "Auswahl (englische Tonnamen): " + str(selection)
 
     text_en = "Selection: " + str(selection)
@@ -1115,7 +1117,7 @@ def text_pattern_search_show_pattern_selection(selection):
 # In[ ]:
 
 
-def text_pattern_search_delete_selection():
+def text_patternSearch_deleteSelection():
     text_de = "Die Eingabe wurde gelöscht. Bitte geben Sie die Suchmuster erneut ein."
 
     text_en = "The entry has been deleted. Please re-enter the search pattern."
@@ -1132,12 +1134,12 @@ def text_pattern_search_delete_selection():
 # In[1]:
 
 
-def text_pattern_search_patterns_found(number):
+def text_patternSearch_patternsFound(result_quantity):
     text_de = "Das eingegebene Suchmuster wurde genau " + \
-        str(number) + "-mal gefunden."
+        str(result_quantity) + "-mal gefunden."
 
     text_en = "The search pattern entered was found exactly " + \
-        str(number) + " times."
+        str(result_quantity) + " times."
 
     if LANGUAGE == "DE":
         return text_de
@@ -1151,7 +1153,7 @@ def text_pattern_search_patterns_found(number):
 # In[ ]:
 
 
-def text_pattern_search_include_rests():
+def text_patternSearch_includeRests():
     text_de = (
         "Sollen Muster über Pausen hinweg gesucht werden?\n\n"
         "[ja = Pausen werden bei der Mustersuche ignoniert] (ja/nein): "
@@ -1174,7 +1176,7 @@ def text_pattern_search_include_rests():
 # In[ ]:
 
 
-def text_pattern_search_enter_custom_rhythm():
+def text_patternSearch_enter_customRhythm():
     text_de = (
         "Bitte geben Sie nachfolgend einen selbstgewählten Rhythmuswert ein.\n\n"
         "Hinweis 1: 1.0 = Viertelnote; 2.0 = Halbe Note etc.\n\n"
@@ -1204,7 +1206,7 @@ def text_pattern_search_enter_custom_rhythm():
 
 # ### Selection
 
-# #### Header
+# #### Headers
 
 # In[ ]:
 
@@ -1260,7 +1262,7 @@ def text_menu_selection_repeat():
 # In[ ]:
 
 
-def text_menu_selection_no_previous_selection():
+def text_menu_selection_noPreviousSelection():
     text_de = (
         "Es liegt noch keine Notenauswahl vor, auf die zurückgegriffen werden kann.\n\n"
         "Bitte wählen Sie aus Menüpunkt 1 oder 2."
@@ -1285,43 +1287,43 @@ def text_menu_selection_no_previous_selection():
 
 def text_menu_headers(identifier):
     dict_de = {
-        "Oeffne_Hauptmenue_Einzelwerk": "-- Hauptmenü Einzelwerk --",
-        "Oeffne_Untermenue_Einzelwerk_Files": "-- Untermenü Einzelwerk (Files) --",
-        "Oeffne_Untermenue_Einzelwerk_statistische_Analysen": "-- Untermenü Einzelwerk (statistische Analysen) --",
-        "Oeffne_Untermenue_Einzelwerk_statistische_Analysen_Darstellungen": "-- Untermenü Einzelwerk (statistische Analysen - Darstellungen zweidimensionaler Häufigkeitsverteilungen) --",
-        "Oeffne_Untermenue_Einzelwerk_Darstellungen": "-- Untermenü Einzelwerk (Darstellungen) --",
-        "Oeffne_Untermenue_Einzelwerk_Mustersuche": "-- Untermenü Einzelwerk (Mustersuche) --",
-        "Oeffne_Untermenue_Einzelwerk_Einstellungen": "-- Untermenü Einzelwerk (Einstellungen) --ACHTUNG: Erstellen Sie vor der Bearbeitung der Environment-Datei eine Sicherungskopie!",
-        "Oeffne_Startmenue": "-- Startmenü --",
-        "Environment_Einstellungen_Anzeigen": "Ihre Environment-Datei 'music21-settings' ist wie folgt definiert:",
-        "Oeffne_Untermenue_Mustersuche": "Bitte geben Sie hier das zur Mustersuche verwendete Noten-/Rhythmusmuster (1.0 = Viertelnote) ein:",
-        "Auswahl_Notendatei_Pfad": "-- Auswahl einer Notendatei zur weiteren Analyse --",
-        "Auswahl_Noten": "-- Auswahl der gesamten Partitur oder einer Einzelstimme --",
-        "Menue_Frage_Auswahl_Takte": "-- Auswahl der Takte --",
-        "Einzelstimmen_Namen_Anzeigen": "-- Allgemeine Informationen (Stimmennamen) --",
-        "Anzeige_Metadaten_Partitur": "-- Allgemeine Informationen (Metadaten) --",
-        "Ergebnisliste": "-- Ergebnisse --",
-        "Benennen_der_Einzelstimmen": "-- Konfiguration: Stimmnamen --",
+        "open_mainmenu_individualPiece": "-- Hauptmenü Einzelwerk --",
+        "open_submenu_individualPiece_files": "-- Untermenü Einzelwerk (Files) --",
+        "open_submenu_individualPiece_statisticalAnalyses": "-- Untermenü Einzelwerk (statistische Analysen) --",
+        "open_submenu_individualPiece_statisticalAnalyses_visualizations": "-- Untermenü Einzelwerk (statistische Analysen - Darstellungen zweidimensionaler Häufigkeitsverteilungen) --",
+        "open_submenu_individualPiece_visualizations": "-- Untermenü Einzelwerk (Darstellungen) --",
+        "open_submenu_individualPiece_patternSearch": "-- Untermenü Einzelwerk (Mustersuche) --",
+        "open_submenu_individualPiece_settings": "-- Untermenü Einzelwerk (Einstellungen) --ACHTUNG: Erstellen Sie vor der Bearbeitung der Environment-Datei eine Sicherungskopie!",
+        "open_startmenu": "-- Startmenü --",
+        "show_environmentFile_settings": "Ihre Environment-Datei 'music21-settings' ist wie folgt definiert:",
+        "open_submenu_patternSearch": "Bitte geben Sie hier das zur Mustersuche verwendete Noten-/Rhythmusmuster (1.0 = Viertelnote) ein:",
+        "select_score_filePath": "-- Auswahl einer Notendatei zur weiteren Analyse --",
+        "select_score_completeOrIndividualVoice": "-- Auswahl der gesamten Partitur oder einer Einzelstimme --",
+        "select_bars": "-- Auswahl der Takte --",
+        "show_names_individualVoices": "-- Allgemeine Informationen (Stimmennamen) --",
+        "show_score_metadata": "-- Allgemeine Informationen (Metadaten) --",
+        "show_resultslist": "-- Ergebnisse --",
+        "helpers_name_individualVoices": "-- Konfiguration: Stimmnamen --",
     }
 
     dict_en = {
-        "Oeffne_Hauptmenue_Einzelwerk": "-- main menu individual piece --",
-        "Oeffne_Untermenue_Einzelwerk_Files": "-- Submenu individual piece (Files) --",
-        "Oeffne_Untermenue_Einzelwerk_statistische_Analysen": "-- Submenu individual piece (statistical analysis) --",
-        "Oeffne_Untermenue_Einzelwerk_statistische_Analysen_Darstellungen": "-- Submenu individual piece (statistical analyzes - representations of two-dimensional frequency distributions) --",
-        "Oeffne_Untermenue_Einzelwerk_Darstellungen": "-- Submenu individual piece (Visualisations) --",
-        "Oeffne_Untermenue_Einzelwerk_Mustersuche": "-- Submenu individual piece (Pattern search) --",
-        "Oeffne_Untermenue_Einzelwerk_Einstellungen": "-- Submenu individual piece (Settings) --ATTENTION: Make a backup copy before editing the environment file!",
-        "Oeffne_Startmenue": "-- Start menu --",
-        "Environment_Einstellungen_Anzeigen": "Your environment file 'music21-settings' is defined as follows:",
-        "Oeffne_Untermenue_Mustersuche": "Please enter the note / rhythm pattern (1.0 = quarter) used for the pattern search here.",
-        "Auswahl_Notendatei_Pfad": "-- Selection of a score file for further analysis --",
-        "Auswahl_Noten": "-- Selection of the entire score or a single part --",
-        "Menue_Frage_Auswahl_Takte": "-- Selection of bars --",
-        "Einzelstimmen_Namen_Anzeigen": "-- General information (part names) --",
-        "Anzeige_Metadaten_Partitur": "-- General information (Metadata) --",
-        "Ergebnisliste": "-- Results --",
-        "Benennen_der_Einzelstimmen": "-- Configuration: part names --",
+        "open_mainmenu_individualPiece": "-- main menu individual piece --",
+        "open_submenu_individualPiece_files": "-- Submenu individual piece (Files) --",
+        "open_submenu_individualPiece_statisticalAnalyses": "-- Submenu individual piece (statistical analysis) --",
+        "open_submenu_individualPiece_statisticalAnalyses_visualizations": "-- Submenu individual piece (statistical analyzes - representations of two-dimensional frequency distributions) --",
+        "open_submenu_individualPiece_visualizations": "-- Submenu individual piece (Visualisations) --",
+        "open_submenu_individualPiece_patternSearch": "-- Submenu individual piece (Pattern search) --",
+        "open_submenu_individualPiece_settings": "-- Submenu individual piece (Settings) --ATTENTION: Make a backup copy before editing the environment file!",
+        "open_startmenu": "-- Start menu --",
+        "show_environmentFile_settings": "Your environment file 'music21-settings' is defined as follows:",
+        "open_submenu_patternSearch": "Please enter the note / rhythm pattern (1.0 = quarter) used for the pattern search here.",
+        "select_score_filePath": "-- Selection of a score file for further analysis --",
+        "select_score_completeOrIndividualVoice": "-- Selection of the entire score or a single part --",
+        "select_bars": "-- Selection of bars --",
+        "show_names_individualVoices": "-- General information (part names) --",
+        "show_score_metadata": "-- General information (Metadata) --",
+        "show_resultslist": "-- Results --",
+        "helpers_name_individualVoices": "-- Configuration: part names --",
     }
 
     if LANGUAGE == "DE":
@@ -1333,21 +1335,21 @@ def text_menu_headers(identifier):
 
 # ### Exception
 
-# #### Out of range
+# #### Selection out of range
 
 # In[ ]:
 
 
-def text_menu_selection_exception_out_of_range(list_range):
+def text_menu_exception_selectionOutOfRange(max_value):
     text_de = (
         "Der eingegebene Wert muss eine Zahl zwischen 1 und "
-        + str(list_range)
+        + str(max_value)
         + " sein."
     )
 
     text_en = (
         "The entered value must be a number between 1 and " +
-        str(list_range) + "."
+        str(max_value) + "."
     )
 
     if LANGUAGE == "DE":
@@ -1364,7 +1366,7 @@ def text_menu_selection_exception_out_of_range(list_range):
 # In[ ]:
 
 
-def text_menu_headers_without_explenation():
+def text_menu_headers_withoutExplenation():
     list_de = ["Nr.", "Menüpunkt"]
 
     list_en = ["No.", "Menu item"]
@@ -1381,7 +1383,7 @@ def text_menu_headers_without_explenation():
 # In[ ]:
 
 
-def text_menu_headers_with_explenation():
+def text_menu_headers_withExplenation():
     list_de = ["Nr.", "Menüpunkt", "<Erläuterung>"]
 
     list_en = ["No.", "Menu item", "<Explanation>"]
@@ -1461,7 +1463,7 @@ def text_score_selection():
 # In[ ]:
 
 
-def text_score_selection_successful(time):
+def text_score_selectionSuccessful(time):
     text_de = (
         "Datei erfolgreich eingelesen.\n\n"
         "Zum Öffnen benötigte Zeit: " + str(time) + "s"
@@ -1484,7 +1486,7 @@ def text_score_selection_successful(time):
 # In[ ]:
 
 
-def text_score_selection_exception(time):
+def text_score_selectionException():
     text_de = (
         "Geben Sie den Pfad/die URL erneut ein und achten Sie auf die richtige Schreibweise.\n\n"
         "Falls Sie die URL nicht öffnen können, speichern Sie die Datei Lokal (Rechtsklick > Ziel speichern unter..) und öffnen Sie die heruntergeladene Datei lokal über deren Pfad.\n\n"
@@ -1511,7 +1513,7 @@ def text_score_selection_exception(time):
 # In[ ]:
 
 
-def text_score_bars_selection_start(number_of_bars, selected_score):
+def text_score_barsSelectionStart(number_of_bars, selected_score):
     text_de = (
         "Anzahl Takte: " + str(number_of_bars) + " Takte\n\n"
         "Notenauswahl: " + str(selected_score) + "\n\n"
@@ -1536,7 +1538,7 @@ def text_score_bars_selection_start(number_of_bars, selected_score):
 # In[ ]:
 
 
-def text_score_bars_selection_end(number_of_bars, selected_score, bars_selection_start):
+def text_score_barsSelectionEnd(number_of_bars, selected_score, bars_selection_start):
     text_de = (
         "Anzahl Takte: " + str(number_of_bars) + " Takte\n\n"
         "Notenauswahl: " + str(selected_score) + "\n\n"
@@ -1565,7 +1567,7 @@ def text_score_bars_selection_end(number_of_bars, selected_score, bars_selection
 # In[ ]:
 
 
-def text_score_bars_exception_not_number():
+def text_score_bars_exception_notNumber():
     text_de = "Bitte eine positive Zahl ohne Buchstaben/Sonderzeichen eingeben."
 
     text_en = "Please enter a positive number without letters/special characters."
@@ -1582,7 +1584,7 @@ def text_score_bars_exception_not_number():
 # In[ ]:
 
 
-def text_score_bars_exception_out_of_range(start, end):
+def text_score_bars_exception_outOfRange(start, end):
     text_de = (
         "Der eingegebene Wert muss zwischen "
         + str(start)
@@ -1610,10 +1612,10 @@ def text_score_bars_exception_out_of_range(start, end):
 # In[4]:
 
 
-def text_metadata_part_names():
+def text_metadata_partsNames():
     text_de = "Namen der Einzelstimmen:"
 
-    text_en = "Names of the individual parts:"
+    text_en = "Names of the individual parts/voices:"
 
     if LANGUAGE == "DE":
         return text_de
@@ -1627,7 +1629,7 @@ def text_metadata_part_names():
 # In[ ]:
 
 
-def text_metadata_part_names_give_name(parts_quantity, part_number):
+def text_metadata_partsNames_chooseName(parts_quantity, part_number):
     text_de = (
         "Die Partitur enthält " + str(parts_quantity) + " Stimmen.\n\n"
         "Bitte ordnen Sie den Einzelstimmen eindeutige Bezeichnungen zu (z.B. Violine I, Violine II etc.).\n\n"
@@ -1638,9 +1640,9 @@ def text_metadata_part_names_give_name(parts_quantity, part_number):
 
     text_en = (
         "The score contains " + str(parts_quantity) + " parts.\n\n"
-        "Please assign unique names to the individual parts (e.g. violin I, violin II, etc.).\n\n"
-        "You can use these names to access the individual voices directly when using the following tools.\n\n"
-        "Please start with the highest voice in the staff. This is followed by the one directly below.\n\n"
+        "Please assign unique names to the individual parts/voices (e.g. violin I, violin II, etc.).\n\n"
+        "You can use these names to access the individual parts/voices directly when using the following tools.\n\n"
+        "Please start with the highest voice/part in the staff. This is followed by the one directly below.\n\n"
         "Name part " + str(part_number) + ": "
     )
 
@@ -1656,7 +1658,7 @@ def text_metadata_part_names_give_name(parts_quantity, part_number):
 # In[ ]:
 
 
-def text_metadata_part_names_give_name_declined():
+def text_metadata_partsNames_chooseName_notUnique():
     text_de = "Name bereits vergeben. Wählen Sie einen eindeutigen Namen."
 
     text_en = "Name already given. Choose a unique name."
@@ -1673,7 +1675,7 @@ def text_metadata_part_names_give_name_declined():
 # In[ ]:
 
 
-def text_metadata_part_names_check_entered_name(
+def text_metadata_partsNames_checkEnteredName(
     parts_quantity, part_number, name_entered
 ):
     text_de = (
@@ -1686,9 +1688,9 @@ def text_metadata_part_names_check_entered_name(
 
     text_en = (
         "The score contains " + str(parts_quantity) + " parts.\n\n"
-        "Please assign unique names to the individual parts (e.g. violin I, violin II, etc.).\n\n"
-        "You can use these names to access the individual voices directly when using the following tools.\n\n"
-        "Please start with the highest voice in the score. This is followed by the one directly below.\n\n"
+        "Please assign unique names to the individual parts/voices (e.g. violin I, violin II, etc.).\n\n"
+        "You can use these names to access the individual parts/voices directly when using the following tools.\n\n"
+        "Please start with the highest voice/part in the score. This is followed by the one directly below.\n\n"
         "Part " + str(part_number) + ": " + str(name_entered)
     )
 
@@ -1704,7 +1706,7 @@ def text_metadata_part_names_check_entered_name(
 # In[ ]:
 
 
-def text_metadata_available_metadata(number):
+def text_metadata_availableMetadata(number):
     text_de = "Anzahl enthaltener Metadaten: " + str(number)
 
     text_en = "Number of metadata contained: " + str(number)
@@ -1721,7 +1723,7 @@ def text_metadata_available_metadata(number):
 # In[ ]:
 
 
-def text_metadata_available_metadata_no_metadata():
+def text_metadata_availableMetadata_noMetadataAvailable():
     text_de = "Die ausgewählte Notendatei enthält keine Metadaten!"
 
     text_en = "The selected scores do not contain any metadata!"
@@ -1740,7 +1742,7 @@ def text_metadata_available_metadata_no_metadata():
 # In[ ]:
 
 
-def text_analysis_score_selection():
+def text_analysis_scoreSelection():
     list_de = [
         "Wählen Sie bitte im nachfolgenden Menü die zu analysierenden Noten aus (Notendatei 1).",
         "Wählen Sie bitte im nachfolgenden Menü die zu analysierenden Noten aus (Notendatei 2)",
@@ -1794,21 +1796,21 @@ def text_analysis_notes_intervals():
         return text_en
 
 
-# #### Function: Melodik_Melodieverlauf_Darstellung_Liniendiagramm
+# #### Function: Melodik_Melodieverlauf_visualization_lineGraph
 
 # In[6]:
 
 
-def text_analysis_notes_Melodik_Melodieverlauf_Darstellung_Liniendiagramm():
+def text_analysis_notes_melody_melodicProgression_visualization_lineGraph():
     text_de = (
         "Hinweis 1: Auswahl auf einzelne Taktausschnitte der vollständigen Partitur beschränkt.\n\n"
-        "Hinweis 2: Die usgewählten Abschnitte müssen in allen Einzelstimmen durchgängig einstimmig sein!\n\n"
+        "Hinweis 2: Die ausgewählten Abschnitte müssen in allen Einzelstimmen durchgängig einstimmig sein!\n\n"
         "Hinweis 3: Die Taktauswahl muss mindestens zwei Takte umfassen!"
     )
 
     text_en = (
         "Note 1: Selection limited to individual bar excerpts from the full score.\n\n"
-        "Note 2: The selected sections must be consistently monodic in all individual voices!\n\n"
+        "Note 2: The selected sections must be consistently monodic in all individual parts/voices!\n\n"
         "Note 3: The measure selection must include at least two measures!"
     )
 
@@ -1819,12 +1821,12 @@ def text_analysis_notes_Melodik_Melodieverlauf_Darstellung_Liniendiagramm():
         return text_en
 
 
-# #### Function: text_analysis_notes_Vordefinierte_Darstellungen_Dolan
+# #### Function: text_analysis_notes_predefinedVisualizations_Dolan
 
 # In[ ]:
 
 
-def text_analysis_notes_Vordefinierte_Darstellungen_Dolan():
+def text_analysis_notes_predefinedVisualizations_Dolan():
     text_de = "Hinweis: Bei manchen Notendateien gelten die Dynamikbezeichnungen einer Stimme für die komplette Partitur."
 
     text_en = "Note: With some sheet music files, the dynamics of a part apply to the entire score."
@@ -1836,16 +1838,11 @@ def text_analysis_notes_Vordefinierte_Darstellungen_Dolan():
         return text_en
 
 
-# # Initialisierung
+# # Initialization
 
-# ## Importieren benötigter Module
+# ## Importing required modules
 
 # In[12]:
-
-
-global LANGUAGE
-
-LANGUAGE = "EN"
 
 try:
 
@@ -1876,34 +1873,34 @@ try:
 except Exception as e:
     print(text_exception_modules(e))
 
-    Input = input(text_general_terminate())
+    Input = input(text_general_terminateProgram())
     print("")
 
 
-# ## Environment
+# ## Environment File
 
-# ### Prüfen
+# ### Check
 
 # In[13]:
 
 
-def Pruefe_EnvironmentDatei():
+def check_environmentFile():
     try:
         us = environment.UserSettings()
 
-        Environment_Pfad = us.getSettingsPath()
+        environmentFile_path = us.getSettingsPath()
 
-        if os.path.exists(Environment_Pfad) == False:
+        if os.path.exists(environmentFile_path) == False:
             loopDone = False
 
             while not loopDone:
-                clear_Screen()
+                clear_screen()
 
-                Input = input(text_environment_create(Environment_Pfad))
+                input_text = input(text_environmentFile_createNewFile(environmentFile_path))
                 print("")
 
-                if Rueckgabe_Wahrheitswert_ja_1(Input):
-                    clear_Screen()
+                if Rueckgabe_Wahrheitswert_ja_1(input_text):
+                    clear_screen()
 
                     try:
                         us.create()
@@ -1911,20 +1908,20 @@ def Pruefe_EnvironmentDatei():
                         us["autoDownload"] = "allow"
 
                         print(
-                            text_environment_create_new_file_created(
+                            text_environmentFile_createNewFile_created(
                                 us.getSettingsPath()
                             )
                         )
                         print()
 
-                        Input = input(text_general_proceed())
+                        input_text = input(text_general_proceed())
                         print("")
 
-                        clear_Screen()
+                        clear_screen()
 
-                        Environment_Datei_Pfadeingabe_MuseScore3()
+                        EnvironmentFile_enterPath_MuseScore3()
 
-                        Environment_Datei_Pfadeingabe_Scratch_Ordner()
+                        environmentFile_enterPath_scratchFolder()
 
                         loopDone = True
 
@@ -1935,66 +1932,66 @@ def Pruefe_EnvironmentDatei():
 
                         loopDone = True
 
-                        Input = input(text_general_proceed())
+                        input_text = input(text_general_proceed())
                         print("")
 
-                elif Rueckgabe_Wahrheitswert_nein_0(Input):
-                    clear_Screen()
+                elif Rueckgabe_Wahrheitswert_nein_0(input_text):
+                    clear_screen()
 
-                    print(text_environment_create_no_file_created())
+                    print(text_environmentFile_createNewFile_noFileCreated())
                     print("")
 
                     loopDone = True
 
-                    Input = input(text_general_proceed())
+                    input_text = input(text_general_proceed())
                     print("")
 
                 else:
-                    print(text_general_restricted_yes_no())
+                    print(text_general_input_RestrictedToYesAndNo())
                     print("")
 
                     loopDone = False
 
-                    Input = input(text_general_proceed())
+                    input_text = input(text_general_proceed())
                     print("")
 
     except Exception as e:
         print(text_exception_general(e, sys._getframe().f_code.co_name))
         print("")
 
-        Input = input(text_general_proceed())
+        input_text = input(text_general_proceed())
         print("")
 
-    clear_Screen()
+    clear_screen()
 
 
-# ### Pfadeingabe MuseScore3
+# ### Path input MuseScore3
 
 # In[14]:
 
 
-def Environment_Datei_Pfadeingabe_MuseScore3():
+def EnvironmentFile_enterPath_MuseScore3():
     loopDone = False
 
     while not loopDone:
-        clear_Screen()
+        clear_screen()
 
         try:
-            print(text_environment_musescore_path())
+            print(text_environmentFile_configure_musescorePath())
             print("")
 
-            MuseScore3_Pfad_Input = str(input(text_general_enter_new_path()))
+            MuseScore3_Pfad_Input = str(input(text_general_enter_newPath()))
             print("")
 
             MuseScore3_Pfad = MuseScore3_Pfad_Input.replace('"', "")
 
-            print(text_general_show_entered_path(MuseScore3_Pfad))
+            print(text_general_show_enteredPath(MuseScore3_Pfad))
             print("")
 
             loop2Done = False
 
             while not loop2Done:
-                Input = input(text_general_check_entry())
+                Input = input(text_general_checkEntry())
                 print("")
 
                 if Rueckgabe_Wahrheitswert_ja_1(Input):
@@ -2007,16 +2004,16 @@ def Environment_Datei_Pfadeingabe_MuseScore3():
 
                     print("\n")
 
-                    clear_Screen()
+                    clear_screen()
 
                 elif Rueckgabe_Wahrheitswert_nein_0(Input):
                     loopDone = False
                     loop2Done = True
 
-                    clear_Screen()
+                    clear_screen()
 
                 else:
-                    print(text_general_restricted_yes_no())
+                    print(text_general_input_RestrictedToYesAndNo())
                     print("")
 
                     loop2Done = False
@@ -2033,37 +2030,37 @@ def Environment_Datei_Pfadeingabe_MuseScore3():
 
             loopDone = False
 
-    clear_Screen()
+    clear_screen()
 
 
-# ### Pfadeingabe Scratch-Ordner
+# ### Path input Scratch folder
 
 # In[15]:
 
 
-def Environment_Datei_Pfadeingabe_Scratch_Ordner():
+def environmentFile_enterPath_scratchFolder():
     loopDone = False
 
     while not loopDone:
-        clear_Screen()
+        clear_screen()
 
         try:
-            print(text_environment_scratch_path())
+            print(text_environmentFile_configure_scratchPath())
             print("")
 
             Scratch_Ordner_Pfad_Input = str(
-                input(text_general_enter_new_path()))
+                input(text_general_enter_newPath()))
             print("")
 
             Scratch_Ordner_Pfad = Scratch_Ordner_Pfad_Input.replace('"', "")
 
-            print(text_general_show_entered_path(Scratch_Ordner_Pfad))
+            print(text_general_show_enteredPath(Scratch_Ordner_Pfad))
             print("")
 
             loop2Done = False
 
             while not loop2Done:
-                Input = input(text_general_check_entry())
+                Input = input(text_general_checkEntry())
                 print("")
 
                 if Rueckgabe_Wahrheitswert_ja_1(Input):
@@ -2072,16 +2069,16 @@ def Environment_Datei_Pfadeingabe_Scratch_Ordner():
 
                     us["directoryScratch"] = Scratch_Ordner_Pfad
 
-                    clear_Screen()
+                    clear_screen()
 
                 elif Rueckgabe_Wahrheitswert_nein_0(Input):
                     loopDone = False
                     loop2Done = True
 
-                    clear_Screen()
+                    clear_screen()
 
                 else:
-                    print(text_general_restricted_yes_no())
+                    print(text_general_input_RestrictedToYesAndNo())
                     print("")
 
                     loop2Done = False
@@ -2098,19 +2095,26 @@ def Environment_Datei_Pfadeingabe_Scratch_Ordner():
 
             loopDone = False
 
-    clear_Screen()
+    clear_screen()
 
 
-# ## Konstanten
+# ## Constants
 
-# ### Environment-Einstellungen
+
+# ### Language
+
+global LANGUAGE
+
+LANGUAGE = "EN"
+
+# ### Environment File Settings
 
 # In[16]:
 
 
 us = environment.UserSettings()
 
-Environment_Einstellungen = [
+EnvironmentFile_settings = [
     ["autoDownload", "autoDownload", str(us["autoDownload"])],
     ["braillePath", "braillePath", str(us["braillePath"])],
     ["debug", "debug", str(us["debug"])],
@@ -2121,19 +2125,12 @@ Environment_Einstellungen = [
     ["lilypondFormat", "lilypondFormat", str(us["lilypondFormat"])],
     ["lilypondPath", "lilypondPath", str(us["lilypondPath"])],
     ["lilypondVersion", "lilypondVersion", str(us["lilypondVersion"])],
-    ["localCorporaSettings", "localCorporaSettings",
-        str(us["localCorporaSettings"])],
+    ["localCorporaSettings", "localCorporaSettings", str(us["localCorporaSettings"])],
     ["localCorpusPath", "localCorpusPath", str(us["localCorpusPath"])],
-    ["localCorpusSettings", "localCorpusSettings",
-        str(us["localCorpusSettings"])],
-    ["manualCoreCorpusPath", "manualCoreCorpusPath",
-        str(us["manualCoreCorpusPath"])],
+    ["localCorpusSettings", "localCorpusSettings", str(us["localCorpusSettings"])],
+    ["manualCoreCorpusPath", "manualCoreCorpusPath", str(us["manualCoreCorpusPath"])],
     ["midiPath", "midiPath", str(us["midiPath"])],
-    [
-        "musescoreDirectPNGPath",
-        "musescoreDirectPNGPath",
-        str(us["musescoreDirectPNGPath"]),
-    ],
+    ["musescoreDirectPNGPath", "musescoreDirectPNGPath", str(us["musescoreDirectPNGPath"])],
     ["musicxmlPath", "musicxmlPath", str(us["musicxmlPath"])],
     ["pdfPath", "pdfPath", str(us["pdfPath"])],
     ["showFormat", "showFormat", str(us["showFormat"])],
@@ -2143,27 +2140,27 @@ Environment_Einstellungen = [
 ]
 
 
-# # Hilfsprogramme
+# # Helper Programs
 
-# ## Ohne Input
+# ## Without User Input
 
-# ### Wiedergabe einer Notendatei (MIDI)
+# ### Playing back a music file (MIDI)
 
 # In[17]:
 
 
-def Wiedergabe_MIDI():
-    Notenauswahl = Auswahl_Noten()
+def helper_playback_MIDI():
+    selectedScore = select_score_completeOrIndividualVoice()
 
     # --- Nachfolgend: Hinweise zu Bedienung, eingeschränkter Kompatibilität des Tools
 
-    print(text_general_close_player())
+    print(text_general_close_audioPlayer())
     print("")
 
     # --- Unterhalb: Code des Tools ---
 
     try:
-        Notenauswahl.show("midi")
+        selectedScore.show("midi")
 
     except Exception as e:
         print(text_exception_general(e, sys._getframe().f_code.co_name))
@@ -2176,7 +2173,7 @@ def Wiedergabe_MIDI():
 
     # --- Nachfolgend: Fragt den User, ob das Tool mit einer neuen Notenauswahl wiederholt werden soll
 
-    Menue_Frage_Tool_Wiederholen(Wiedergabe_MIDI)
+    Menue_Frage_Tool_Wiederholen(helper_playback_MIDI)
 
 
 # ### Erhalte Key zu Value
@@ -2228,7 +2225,7 @@ def count(num_list):
 # In[20]:
 
 
-def gleichmaessige_Textausgabe(Input_Text, Input_Teiler):
+def gleichmaessige_textOutput(Input_Text, Input_Teiler):
     try:
         n = 0
 
@@ -2264,7 +2261,7 @@ def gleichmaessige_Textausgabe(Input_Text, Input_Teiler):
 # In[21]:
 
 
-def clear_Screen():
+def clear_screen():
     try:
         if name == "nt":
             _ = system("cls")
@@ -2280,10 +2277,10 @@ def clear_Screen():
         print(text_exception_general(e, sys._getframe().f_code.co_name))
         print("")
 
-        Input = input(text_general_terminate())
+        Input = input(text_general_terminateProgram())
         print("")
 
-        Programm_beenden()
+        terminateProgram()
 
 
 # ### Environment
@@ -2293,13 +2290,13 @@ def clear_Screen():
 # In[9]:
 
 
-def Environment_Pfad():
-    clear_Screen()
+def environmentFile_path():
+    clear_screen()
 
     try:
         us = environment.UserSettings()
 
-        print(text_environment_show_environment_path(us.getSettingsPath()))
+        print(text_environmentFile_showPath(us.getSettingsPath()))
         print("")
 
     except Exception as e:
@@ -2315,20 +2312,20 @@ def Environment_Pfad():
 # In[23]:
 
 
-def Environment_Einstellungen_Anzeigen():
+def show_environmentFile_settings():
     try:
-        Header = text_menu_headers(sys._getframe().f_code.co_name)
+        menu_header = text_menu_headers(sys._getframe().f_code.co_name)
 
-        print(Header)
+        print(menu_header)
         print("")
 
         us = environment.UserSettings()
 
-        Header = text_menu_headers_with_explenation()
+        menu_header = text_menu_headers_withExplenation()
 
-        print("{:<4} {:<65} {}\n".format(Header[0], Header[1], Header[2]))
+        print("{:<4} {:<65} {}\n".format(menu_header[0], menu_header[1], menu_header[2]))
 
-        for index, item in enumerate(Environment_Einstellungen, 1):
+        for index, item in enumerate(EnvironmentFile_settings, 1):
             print("{:<4} {:<65} {}".format(index, item[0], item[2]))
 
         print("")
@@ -2340,7 +2337,7 @@ def Environment_Einstellungen_Anzeigen():
     Input_Menueauswahl = input(text_general_proceed())
     print("")
 
-    clear_Screen()
+    clear_screen()
 
 
 # #### Einstellungen (Neukonfiguration)
@@ -2348,41 +2345,41 @@ def Environment_Einstellungen_Anzeigen():
 # In[1]:
 
 
-def Environment_Einstellungen_Neukonfiguration():
+def EnvironmentFile_settings_reconfigure():
     try:
         us = environment.UserSettings()
 
-        Environment_Pfad = us.getSettingsPath()
+        environmentFile_path = us.getSettingsPath()
 
-        if os.path.exists(Environment_Pfad):
+        if os.path.exists(environmentFile_path):
             loopDone = False
 
             while not loopDone:
-                clear_Screen()
+                clear_screen()
 
-                print(text_environment_show_environment_path(Environment_Pfad))
+                print(text_environmentFile_showPath(environmentFile_path))
                 print("")
 
-                Input = input(text_environment_reconfigure_ask_delete())
+                Input = input(text_environmentFile_reconfigure_askDelete())
                 print("")
 
                 if Rueckgabe_Wahrheitswert_ja_1(Input):
-                    os.remove(Environment_Pfad)
+                    os.remove(environmentFile_path)
 
-                    print(text_environment_reconfigure_deleted())
+                    print(text_environmentFile_reconfigure_deleted())
                     print("")
 
                     Input = input(text_general_proceed())
                     print("")
 
-                    clear_Screen()
+                    clear_screen()
 
                     us.create()
 
                     us["autoDownload"] = "allow"
 
                     print(
-                        text_environment_create_new_file_created(
+                        text_environmentFile_createNewFile_created(
                             us.getSettingsPath())
                     )
                     print("")
@@ -2390,25 +2387,25 @@ def Environment_Einstellungen_Neukonfiguration():
                     Input = input(text_general_proceed())
                     print("")
 
-                    clear_Screen()
+                    clear_screen()
 
-                    Environment_Datei_Pfadeingabe_MuseScore3()
+                    EnvironmentFile_enterPath_MuseScore3()
 
-                    Environment_Datei_Pfadeingabe_Scratch_Ordner()
+                    environmentFile_enterPath_scratchFolder()
 
                     loopDone = True
 
                 elif Rueckgabe_Wahrheitswert_nein_0(Input):
                     loopDone = True
 
-                    print(text_environment_reconfigure_not_deleted())
+                    print(text_environmentFile_reconfigure_notDeleted())
                     print()
 
                     Input = input(text_general_proceed())
                     print("")
 
                 else:
-                    print(text_general_restricted_yes_no())
+                    print(text_general_input_RestrictedToYesAndNo())
                     print("")
 
                     Input = input(text_general_proceed())
@@ -2420,9 +2417,9 @@ def Environment_Einstellungen_Neukonfiguration():
             loopDone = False
 
             while not loopDone:
-                clear_Screen()
+                clear_screen()
 
-                Input = input(text_environment_create(us.getSettingsPath()))
+                Input = input(text_environmentFile_createNewFile(us.getSettingsPath()))
                 print("")
 
                 if Rueckgabe_Wahrheitswert_ja_1(Input):
@@ -2431,7 +2428,7 @@ def Environment_Einstellungen_Neukonfiguration():
                     us["autoDownload"] = "allow"
 
                     print(
-                        text_environment_create_new_file_created(
+                        text_environmentFile_createNewFile_created(
                             us.getSettingsPath())
                     )
                     print("")
@@ -2439,16 +2436,16 @@ def Environment_Einstellungen_Neukonfiguration():
                     Input = input(text_general_proceed())
                     print("")
 
-                    clear_Screen()
+                    clear_screen()
 
-                    Environment_Datei_Pfadeingabe_MuseScore3()
+                    EnvironmentFile_enterPath_MuseScore3()
 
-                    Environment_Datei_Pfadeingabe_Scratch_Ordner()
+                    environmentFile_enterPath_scratchFolder()
 
                     loopDone = True
 
                 elif Rueckgabe_Wahrheitswert_nein_0(Input):
-                    print(text_environment_create_no_file_created())
+                    print(text_environmentFile_createNewFile_noFileCreated())
                     print("")
 
                     Input = input(text_general_proceed())
@@ -2457,7 +2454,7 @@ def Environment_Einstellungen_Neukonfiguration():
                     loopDone = True
 
                 else:
-                    print(text_general_restricted_yes_no())
+                    print(text_general_input_RestrictedToYesAndNo())
                     print("")
 
                     loopDone = False
@@ -2527,7 +2524,7 @@ def Rueckgabe_Wahrheitswert_is_number(Input):
 # In[27]:
 
 
-def Programm_beenden():
+def terminateProgram():
     exit()
 
 
@@ -2606,22 +2603,22 @@ def Liste_als_String(Liste):
 # In[32]:
 
 
-def Auswahl_Notendatei_Pfad():
+def select_score_filePath():
     try:
         # Erstellen einer globalen Variabel 'Partitur', auf die von jeder Stelle im Programm aus zugegriffen werden kann.
 
         global Partitur
 
-        clear_Screen()
+        clear_screen()
 
-        Header = text_menu_headers(sys._getframe().f_code.co_name)
+        menu_header = text_menu_headers(sys._getframe().f_code.co_name)
 
-        print(Header)
+        print(menu_header)
         print("")
 
         # Ausgabe eines Auswahlmenüs, das den Benutzer zwischen einer "Beispiel-Datei" und einer "Eigenen Auswahl" auswählen lässt (s. .
 
-        Auswahl = Oeffne_Untermenue_Daten_mit_Info(
+        Auswahl = open_submenu_Daten_mit_Info(
             menue_entries_score_selection())
 
         if Auswahl == "Beispiel-Datei":
@@ -2633,24 +2630,24 @@ def Auswahl_Notendatei_Pfad():
             loopDone = False
 
             while not loopDone:
-                clear_Screen()
+                clear_screen()
 
-                print(Header)
+                print(menu_header)
                 print("")
 
                 print(text_score_selection())
                 print("")
 
-                NotenDatei_Pfad_Input = input(text_general_enter_new_path())
+                NotenDatei_Pfad_Input = input(text_general_enter_newPath())
                 print("")
 
                 try:
                     loop2Done = False
 
                     while not loop2Done:
-                        clear_Screen()
+                        clear_screen()
 
-                        print(Header)
+                        print(menu_header)
                         print("")
 
                         print(text_score_selection())
@@ -2659,10 +2656,10 @@ def Auswahl_Notendatei_Pfad():
                         NotenDatei_Pfad = NotenDatei_Pfad_Input.replace(
                             '"', "")
 
-                        print(text_general_show_entered_path(NotenDatei_Pfad))
+                        print(text_general_show_enteredPath(NotenDatei_Pfad))
                         print("")
 
-                        Input = input(text_general_check_entry())
+                        Input = input(text_general_checkEntry())
                         print("")
 
                         if Rueckgabe_Wahrheitswert_ja_1(Input):
@@ -2672,7 +2669,7 @@ def Auswahl_Notendatei_Pfad():
                                 Partitur = converter.parse(NotenDatei_Pfad)
 
                                 print(
-                                    text_score_selection_successful(
+                                    text_score_selectionSuccessful(
                                         time.time() - start)
                                 )
                                 print("")
@@ -2683,7 +2680,7 @@ def Auswahl_Notendatei_Pfad():
                                 loopDone = True
                                 loop2Done = True
 
-                                clear_Screen()
+                                clear_screen()
 
                             except Exception as e:
                                 print(
@@ -2693,7 +2690,7 @@ def Auswahl_Notendatei_Pfad():
                                 )
                                 print("")
 
-                                print(text_score_selection_exception())
+                                print(text_score_selectionException())
                                 print("")
 
                                 Input = input(text_general_proceed())
@@ -2702,19 +2699,19 @@ def Auswahl_Notendatei_Pfad():
                                 loopDone = False
                                 loop2Done = True
 
-                                clear_Screen()
+                                clear_screen()
 
                         elif Rueckgabe_Wahrheitswert_nein_0(Input):
                             loopDone = False
                             loop2Done = True
 
-                            clear_Screen()
+                            clear_screen()
 
-                            print(Header)
+                            print(menu_header)
                             print("")
 
                         else:
-                            print(text_general_restricted_yes_no())
+                            print(text_general_input_RestrictedToYesAndNo())
                             print("")
 
                             loop2Done = False
@@ -2730,9 +2727,9 @@ def Auswahl_Notendatei_Pfad():
                     Input = input(text_general_proceed())
                     print("")
 
-        Anzeige_Metadaten_Partitur()
+        show_score_metadata()
 
-        Benennen_der_Einzelstimmen()
+        helpers_name_individualVoices()
 
     except Exception as e:
         print(text_exception_general(e, sys._getframe().f_code.co_name))
@@ -2786,7 +2783,7 @@ def menue_entries_score_selection():
 # In[33]:
 
 
-def Benennen_der_Einzelstimmen():
+def helpers_name_individualVoices():
     global Verzeichnis_Einzelstimmen
 
     global Verzeichnis_Partitur_und_Einzelstimmen
@@ -2802,17 +2799,17 @@ def Benennen_der_Einzelstimmen():
 
             n = n + 1
 
-        Auswahl = Oeffne_Untermenue_Daten_mit_Info(
-            Modul_Navigation_Benennung_Einzelstimmen()
+        Auswahl = open_submenu_Daten_mit_Info(
+            modul_navigation_Benennung_Einzelstimmen()
         )
 
         if Auswahl == "Darstellung_MuseScore":
-            print(text_general_close_MuseScore3())
+            print(text_general_close_museScore3())
             print()
 
             Partitur.show()
 
-            Benennen_der_Einzelstimmen()
+            helpers_name_individualVoices()
 
         elif Auswahl == "benutzerdefiniert":
             loop1Done = False
@@ -2821,15 +2818,15 @@ def Benennen_der_Einzelstimmen():
                 n = 0
 
                 while n < len(Partitur.parts):
-                    clear_Screen()
+                    clear_screen()
 
-                    Header = text_menu_headers(sys._getframe().f_code.co_name)
+                    menu_header = text_menu_headers(sys._getframe().f_code.co_name)
 
-                    print(Header)
+                    print(menu_header)
                     print("")
 
                     Input_Stimmen_Namen = input(
-                        text_metadata_part_names_give_name(
+                        text_metadata_partsNames_chooseName(
                             len(Partitur.parts), n + 1)
                     )
                     print("")
@@ -2838,23 +2835,23 @@ def Benennen_der_Einzelstimmen():
                         loop2Done = False
 
                         while not loop2Done:
-                            clear_Screen()
+                            clear_screen()
 
-                            Header = text_menu_headers(
+                            menu_header = text_menu_headers(
                                 sys._getframe().f_code.co_name)
 
-                            print(Header)
+                            print(menu_header)
                             print("")
 
                             print(
-                                text_metadata_part_names_check_entered_name(
+                                text_metadata_partsNames_checkEnteredName(
                                     len(Partitur.parts), n +
                                     1, Input_Stimmen_Namen
                                 )
                             )
                             print("")
 
-                            Input = input(text_general_check_entry())
+                            Input = input(text_general_checkEntry())
                             print("")
 
                             if Rueckgabe_Wahrheitswert_ja_1(Input):
@@ -2868,14 +2865,14 @@ def Benennen_der_Einzelstimmen():
                                 loop2Done = True
 
                             else:
-                                print(text_general_restricted_yes_no())
+                                print(text_general_input_RestrictedToYesAndNo())
                                 print("")
 
                                 Input = input(text_general_proceed())
                                 print("")
 
                     else:
-                        print(text_metadata_part_names_give_name_declined())
+                        print(text_metadata_partsNames_chooseName_notUnique())
 
                         Input = input(text_general_proceed())
                         print("")
@@ -2883,19 +2880,19 @@ def Benennen_der_Einzelstimmen():
                 loop2Done = False
 
                 while not loop2Done:
-                    clear_Screen()
+                    clear_screen()
 
-                    Header = text_menu_headers(sys._getframe().f_code.co_name)
+                    menu_header = text_menu_headers(sys._getframe().f_code.co_name)
 
-                    print(Header)
+                    print(menu_header)
                     print("")
 
-                    print(text_metadata_part_names())
+                    print(text_metadata_partsNames())
                     print("")
 
-                    Header = text_headers(sys._getframe().f_code.co_name)
+                    menu_header = text_headers(sys._getframe().f_code.co_name)
 
-                    print("{:<4} {:<65}\n".format(Header[0], Header[1]))
+                    print("{:<4} {:<65}\n".format(menu_header[0], menu_header[1]))
 
                     Index = 1
 
@@ -2906,11 +2903,11 @@ def Benennen_der_Einzelstimmen():
 
                     print("")
 
-                    Input = input(text_general_check_entry())
+                    Input = input(text_general_checkEntry())
                     print("")
 
                     if Rueckgabe_Wahrheitswert_ja_1(Input):
-                        clear_Screen()
+                        clear_screen()
 
                         loop1Done = True
                         loop2Done = True
@@ -2921,10 +2918,10 @@ def Benennen_der_Einzelstimmen():
 
                         Stimmen_Namen = ["none"] * len(Partitur.parts)
 
-                        clear_Screen()
+                        clear_screen()
 
                     else:
-                        print(text_general_restricted_yes_no())
+                        print(text_general_input_RestrictedToYesAndNo())
                         print("")
 
                         loop2Done = False
@@ -2948,7 +2945,7 @@ def Benennen_der_Einzelstimmen():
 
             Verzeichnis_Partitur_und_Einzelstimmen = dict(zip(keys, vals))
 
-            clear_Screen()
+            clear_screen()
 
         elif Auswahl == "generisch":
             if LANGUAGE == "DE":
@@ -2967,19 +2964,19 @@ def Benennen_der_Einzelstimmen():
 
                     n = n + 1
 
-            clear_Screen()
+            clear_screen()
 
-            Header = text_menu_headers(sys._getframe().f_code.co_name)
+            menu_header = text_menu_headers(sys._getframe().f_code.co_name)
 
-            print(Header)
+            print(menu_header)
             print("")
 
-            print(text_metadata_part_names())
+            print(text_metadata_partsNames())
             print("")
 
-            Header = text_headers(sys._getframe().f_code.co_name)
+            menu_header = text_headers(sys._getframe().f_code.co_name)
 
-            print("{:<4} {:<65}\n".format(Header[0], Header[1]))
+            print("{:<4} {:<65}\n".format(menu_header[0], menu_header[1]))
 
             Index = 1
 
@@ -3009,7 +3006,7 @@ def Benennen_der_Einzelstimmen():
 
             Verzeichnis_Partitur_und_Einzelstimmen = dict(zip(keys, vals))
 
-            clear_Screen()
+            clear_screen()
 
     except Exception as e:
         print(text_exception_general(e, sys._getframe().f_code.co_name))
@@ -3024,23 +3021,23 @@ def Benennen_der_Einzelstimmen():
 # In[34]:
 
 
-def Auswahl_Noten():
+def select_score_completeOrIndividualVoice():
     global Noten
 
     global Input_Takte_Anfang
 
     global Input_Takte_Ende
 
-    global letzte_Notenauswahl
+    global previously_selectedScore
 
     try:
-        Header = text_menu_headers(sys._getframe().f_code.co_name)
+        menu_header = text_menu_headers(sys._getframe().f_code.co_name)
 
         while True:
-            clear_Screen()
+            clear_screen()
 
-            Auswahl = Oeffne_Untermenue_Daten_mit_Info(
-                Modul_Navigation_Notenauswahl())
+            Auswahl = open_submenu_Daten_mit_Info(
+                modul_navigation_selectedScore())
 
             if Auswahl == "Komplett":
                 # global Noten
@@ -3058,9 +3055,9 @@ def Auswahl_Noten():
 
                 Input_Takte_Ende = Anzahl_Takte
 
-                # global letzte_Notenauswahl
+                # global previously_selectedScore
 
-                letzte_Notenauswahl = Noten
+                previously_selectedScore = Noten
 
                 return Noten
 
@@ -3069,24 +3066,24 @@ def Auswahl_Noten():
 
                 Noten = Menue_Frage_Auswahl_Partitur_oder_Einzelstimme()
 
-                Takte_aus_Noten = Menue_Frage_Auswahl_Takte(Noten)
+                Takte_aus_Noten = select_bars(Noten)
 
-                # global letzte_Notenauswahl
+                # global previously_selectedScore
 
-                letzte_Notenauswahl = Takte_aus_Noten
+                previously_selectedScore = Takte_aus_Noten
 
                 return Takte_aus_Noten
 
             elif Auswahl == "Wiederhole_Auswahl":
-                clear_Screen()
+                clear_screen()
 
                 try:
-                    letzte_Notenauswahl
+                    previously_selectedScore
 
-                    return letzte_Notenauswahl
+                    return previously_selectedScore
 
                 except:
-                    print(text_menu_selection_no_previous_selection())
+                    print(text_menu_selection_noPreviousSelection())
                     print("")
 
                     Input = input(text_general_proceed())
@@ -3107,11 +3104,11 @@ def Auswahl_Noten():
 
 def Menue_Frage_Auswahl_Partitur_oder_Einzelstimme():
     try:
-        clear_Screen()
+        clear_screen()
 
         global Noten
 
-        Noten = Oeffne_Untermenue_Daten(
+        Noten = open_submenu_Daten(
             list(Verzeichnis_Partitur_und_Einzelstimmen.items())
         )
 
@@ -3130,24 +3127,24 @@ def Menue_Frage_Auswahl_Partitur_oder_Einzelstimme():
 # In[36]:
 
 
-def Menue_Frage_Auswahl_Takte(Noten):
+def select_bars(Noten):
     try:
-        Header = text_menu_headers(sys._getframe().f_code.co_name)
+        menu_header = text_menu_headers(sys._getframe().f_code.co_name)
 
         Anzahl_Takte = len(Partitur.parts[0].getElementsByClass("Measure"))
 
         loopDone = False
 
         while not loopDone:
-            clear_Screen()
+            clear_screen()
 
-            print(Header)
+            print(menu_header)
             print("")
 
             global Input_Takte_Anfang
 
             Input_Takte_Anfang = input(
-                text_score_bars_selection_start(
+                text_score_barsSelectionStart(
                     Anzahl_Takte,
                     Erhalte_Key_zu_Value(
                         Noten, Verzeichnis_Partitur_und_Einzelstimmen),
@@ -3162,25 +3159,25 @@ def Menue_Frage_Auswahl_Takte(Noten):
                     loopDone = True
 
                 else:
-                    print(text_menu_selection_exception_out_of_range(Anzahl_Takte))
+                    print(text_menu_exception_selectionOutOfRange(Anzahl_Takte))
                     print("")
 
             else:
-                print(text_score_bars_exception_not_number())
+                print(text_score_bars_exception_notNumber())
                 print("")
 
         loopDone = False
 
         while not loopDone:
-            clear_Screen()
+            clear_screen()
 
-            print(Header)
+            print(menu_header)
             print("")
 
             global Input_Takte_Ende
 
             Input_Takte_Ende = input(
-                text_score_bars_selection_end(
+                text_score_barsSelectionEnd(
                     Anzahl_Takte,
                     Erhalte_Key_zu_Value(
                         Noten, Verzeichnis_Partitur_und_Einzelstimmen),
@@ -3200,14 +3197,14 @@ def Menue_Frage_Auswahl_Takte(Noten):
 
                 else:
                     print(
-                        text_score_bars_exception_out_of_range(
+                        text_score_bars_exception_outOfRange(
                             Auswahl_Takte_Anfang, Anzahl_Takte
                         )
                     )
                     print("")
 
             else:
-                print(text_score_bars_exception_not_number())
+                print(text_score_bars_exception_notNumber())
                 print("")
 
         return Noten.measures(Auswahl_Takte_Anfang, Auswahl_Takte_Ende)
@@ -3228,13 +3225,13 @@ def Menue_Frage_Auswahl_Takte(Noten):
 def Menue_Frage_Tool_Wiederholen(Tool):
     try:
         while True:
-            clear_Screen()
+            clear_screen()
 
             Input = input(text_menu_selection_repeat())
             print("")
 
             if Rueckgabe_Wahrheitswert_ja_1(Input):
-                clear_Screen()
+                clear_screen()
 
                 Tool()
 
@@ -3244,7 +3241,7 @@ def Menue_Frage_Tool_Wiederholen(Tool):
                 break
 
             else:
-                print(text_general_restricted_yes_no())
+                print(text_general_input_RestrictedToYesAndNo())
                 print("")
 
                 Input = input(text_general_proceed())
@@ -3276,235 +3273,235 @@ def Noten_speichern():
         Noten_Speichern_Pfad = us["directoryScratch"]
 
         while True:
-            Auswahl = Oeffne_Untermenue_Daten_mit_Info(
-                Modul_Navigation_Konvertierung())
+            Auswahl = open_submenu_Daten_mit_Info(
+                modul_navigation_Konvertierung())
 
             if Auswahl == "XML":
-                Notenauswahl = Auswahl_Noten()
+                selectedScore = select_score_completeOrIndividualVoice()
 
-                Dateiname = input(text_export_filename())
+                Dateiname = input(text_export_fileName())
                 print("")
 
                 Pfad_Dateiname = (
                     str(Noten_Speichern_Pfad) + "\\" + str(Dateiname) + ".xml"
                 )
 
-                mf = Notenauswahl.write("xml", fp=Pfad_Dateiname)
+                mf = selectedScore.write("xml", fp=Pfad_Dateiname)
 
-                print(text_general_save(Noten_Speichern_Pfad, Dateiname, ".xml"))
+                print(text_general_exportSuccessful(Noten_Speichern_Pfad, Dateiname, ".xml"))
                 print()
 
                 Input = input(text_general_proceed())
                 print("")
 
             elif Auswahl == "XML_Akkord":
-                Notenauswahl = Auswahl_Noten()
+                selectedScore = select_score_completeOrIndividualVoice()
 
-                Notenauswahl_Akkordverbindungen = Notenauswahl.chordify()
+                selectedScore_chordConnection = selectedScore.chordify()
 
-                Dateiname = input(text_export_filename())
+                Dateiname = input(text_export_fileName())
                 print("")
 
                 Pfad_Dateiname = (
                     str(Noten_Speichern_Pfad) + "\\" + str(Dateiname) + ".xml"
                 )
 
-                mf = Notenauswahl_Akkordverbindungen.write(
+                mf = selectedScore_chordConnection.write(
                     "xml", fp=Pfad_Dateiname)
 
-                print(text_general_save(Noten_Speichern_Pfad, Dateiname, ".xml"))
+                print(text_general_exportSuccessful(Noten_Speichern_Pfad, Dateiname, ".xml"))
                 print()
 
                 Input = input(text_general_proceed())
                 print("")
 
             elif Auswahl == "XML_Akkord_Generalbass":
-                Notenauswahl = Auswahl_Noten()
+                selectedScore = select_score_completeOrIndividualVoice()
 
-                Notenauswahl_Akkordverbindungen = Notenauswahl.chordify()
+                selectedScore_chordConnection = selectedScore.chordify()
 
                 for (
                     item
-                ) in Notenauswahl_Akkordverbindungen.recurse().getElementsByClass(
+                ) in selectedScore_chordConnection.recurse().getElementsByClass(
                     "Chord"
                 ):
                     item.closedPosition(forceOctave=4, inPlace=True)
 
                     item.annotateIntervals()
 
-                Dateiname = input(text_export_filename())
+                Dateiname = input(text_export_fileName())
                 print("")
 
                 Pfad_Dateiname = (
                     str(Noten_Speichern_Pfad) + "\\" + str(Dateiname) + ".xml"
                 )
 
-                mf = Notenauswahl_Akkordverbindungen.write(
+                mf = selectedScore_chordConnection.write(
                     "xml", fp=Pfad_Dateiname)
 
-                print(text_general_save(Noten_Speichern_Pfad, Dateiname, ".xml"))
+                print(text_general_exportSuccessful(Noten_Speichern_Pfad, Dateiname, ".xml"))
                 print()
 
                 Input = input(text_general_proceed())
                 print("")
 
             elif Auswahl == "XML_Akkord_Stufen":
-                Notenauswahl = Auswahl_Noten()
+                selectedScore = select_score_completeOrIndividualVoice()
 
-                clear_Screen()
+                clear_screen()
 
-                print(text_general_choose_key())
+                print(text_general_chooseKey())
                 print("")
 
                 Input = input(text_general_proceed())
                 print("")
 
-                Tonart = Oeffne_Untermenue_Daten(keys_list())
+                Tonart = open_submenu_Daten(keys_list())
 
-                Notenauswahl_Akkordverbindungen = Notenauswahl.chordify()
+                selectedScore_chordConnection = selectedScore.chordify()
 
                 for (
                     item
-                ) in Notenauswahl_Akkordverbindungen.recurse().getElementsByClass(
+                ) in selectedScore_chordConnection.recurse().getElementsByClass(
                     "Chord"
                 ):
                     rn = roman.romanNumeralFromChord(item, key.Key(Tonart))
 
                     item.addLyric(str(rn.figure))
 
-                Dateiname = input(text_export_filename())
+                Dateiname = input(text_export_fileName())
                 print("")
 
                 Pfad_Dateiname = (
                     str(Noten_Speichern_Pfad) + "\\" + str(Dateiname) + ".xml"
                 )
 
-                mf = Notenauswahl_Akkordverbindungen.write(
+                mf = selectedScore_chordConnection.write(
                     "xml", fp=Pfad_Dateiname)
 
-                print(text_general_save(Noten_Speichern_Pfad, Dateiname, ".xml"))
+                print(text_general_exportSuccessful(Noten_Speichern_Pfad, Dateiname, ".xml"))
                 print()
 
                 Input = input(text_general_proceed())
                 print("")
 
             elif Auswahl == "MIDI":
-                Notenauswahl = Auswahl_Noten()
+                selectedScore = select_score_completeOrIndividualVoice()
 
-                Dateiname = input(text_export_filename())
+                Dateiname = input(text_export_fileName())
                 print("")
 
                 Pfad_Dateiname = (
                     str(Noten_Speichern_Pfad) + "\\" + str(Dateiname) + ".midi"
                 )
 
-                mf = Notenauswahl.write("midi", fp=Pfad_Dateiname)
+                mf = selectedScore.write("midi", fp=Pfad_Dateiname)
 
-                print(text_general_save(Noten_Speichern_Pfad, Dateiname, ".midi"))
+                print(text_general_exportSuccessful(Noten_Speichern_Pfad, Dateiname, ".midi"))
                 print()
 
                 Input = input(text_general_proceed())
                 print("")
 
             elif Auswahl == "TXT_music21":
-                Notenauswahl = Auswahl_Noten()
+                selectedScore = select_score_completeOrIndividualVoice()
 
-                Dateiname = input(text_export_filename())
+                Dateiname = input(text_export_fileName())
                 print("")
 
                 Pfad_Dateiname = (
                     str(Noten_Speichern_Pfad) + "\\" + str(Dateiname) + ".txt"
                 )
 
-                mf = Notenauswahl.write("txt", fp=Pfad_Dateiname)
+                mf = selectedScore.write("txt", fp=Pfad_Dateiname)
 
-                print(text_general_save(Noten_Speichern_Pfad, Dateiname, ".txt"))
+                print(text_general_exportSuccessful(Noten_Speichern_Pfad, Dateiname, ".txt"))
                 print()
 
                 Input = input(text_general_proceed())
 
             elif Auswahl == "TXT_music21_textline":
-                Notenauswahl = Auswahl_Noten()
+                selectedScore = select_score_completeOrIndividualVoice()
 
-                Dateiname = input(text_export_filename())
+                Dateiname = input(text_export_fileName())
                 print("")
 
                 Pfad_Dateiname = (
                     str(Noten_Speichern_Pfad) + "\\" + str(Dateiname) + ".txt"
                 )
 
-                mf = Notenauswahl.write("textline", fp=Pfad_Dateiname)
+                mf = selectedScore.write("textline", fp=Pfad_Dateiname)
 
-                print(text_general_save(Noten_Speichern_Pfad, Dateiname, ".txt"))
+                print(text_general_exportSuccessful(Noten_Speichern_Pfad, Dateiname, ".txt"))
                 print()
 
                 Input = input(text_general_proceed())
 
             elif Auswahl == "TXT_BRAILLE":
-                Notenauswahl = Auswahl_Noten()
+                selectedScore = select_score_completeOrIndividualVoice()
 
-                Dateiname = input(text_export_filename())
+                Dateiname = input(text_export_fileName())
                 print("")
 
                 Pfad_Dateiname = (
                     str(Noten_Speichern_Pfad) + "\\" + str(Dateiname) + ".txt"
                 )
 
-                mf = Notenauswahl.write("braille", fp=Pfad_Dateiname)
+                mf = selectedScore.write("braille", fp=Pfad_Dateiname)
 
-                print(text_general_save(Noten_Speichern_Pfad, Dateiname, ".txt"))
+                print(text_general_exportSuccessful(Noten_Speichern_Pfad, Dateiname, ".txt"))
                 print()
 
                 Input = input(text_general_proceed())
                 print("")
 
             elif Auswahl == "LILY":
-                Notenauswahl = Auswahl_Noten()
+                selectedScore = select_score_completeOrIndividualVoice()
 
-                Dateiname = input(text_export_filename())
+                Dateiname = input(text_export_fileName())
                 print("")
 
                 Pfad_Dateiname = (
                     str(Noten_Speichern_Pfad) + "\\" + str(Dateiname) + ".ly"
                 )
 
-                mf = Notenauswahl.write("lily", fp=Pfad_Dateiname)
+                mf = selectedScore.write("lily", fp=Pfad_Dateiname)
 
-                print(text_general_save(Noten_Speichern_Pfad, Dateiname, ".ly"))
+                print(text_general_exportSuccessful(Noten_Speichern_Pfad, Dateiname, ".ly"))
                 print()
 
                 Input = input(text_general_proceed())
                 print("")
 
             elif Auswahl == "PDF":
-                Notenauswahl = Auswahl_Noten()
+                selectedScore = select_score_completeOrIndividualVoice()
 
-                Dateiname = input(text_export_filename().replace(" ", "_"))
+                Dateiname = input(text_export_fileName().replace(" ", "_"))
                 print("")
 
                 Pfad_Dateiname = str(Noten_Speichern_Pfad) + \
                     "\\" + str(Dateiname)
 
-                mf = Notenauswahl.write("lily.pdf", fp=str(Pfad_Dateiname))
+                mf = selectedScore.write("lily.pdf", fp=str(Pfad_Dateiname))
 
-                print(text_general_save(Noten_Speichern_Pfad, Dateiname, ".pdf"))
+                print(text_general_exportSuccessful(Noten_Speichern_Pfad, Dateiname, ".pdf"))
                 print()
 
                 Input = input(text_general_proceed())
                 print("")
 
             elif Auswahl == "PNG":
-                Notenauswahl = Auswahl_Noten()
+                selectedScore = select_score_completeOrIndividualVoice()
 
-                Dateiname = input(text_export_filename().replace(" ", "_"))
+                Dateiname = input(text_export_fileName().replace(" ", "_"))
                 print("")
 
                 Pfad_Dateiname = str(Noten_Speichern_Pfad) + \
                     "\\" + str(Dateiname)
 
-                mf = Notenauswahl.write("lily.png", fp=str(Pfad_Dateiname))
+                mf = selectedScore.write("lily.png", fp=str(Pfad_Dateiname))
 
-                print(text_general_save(Noten_Speichern_Pfad, Dateiname, ".png"))
+                print(text_general_exportSuccessful(Noten_Speichern_Pfad, Dateiname, ".png"))
                 print()
 
                 Input = input(text_general_proceed())
@@ -3530,16 +3527,16 @@ def Noten_speichern():
 
 def Darstellung_MuseScore():
     try:
-        Notenauswahl = Auswahl_Noten()
+        selectedScore = select_score_completeOrIndividualVoice()
 
         # --- Nachfolgend: Hinweise zu Bedienung, eingeschränkter Kompatibilität des Tools
 
-        print(text_general_close_MuseScore3())
+        print(text_general_close_museScore3())
         print()
 
         # --- Unterhalb: Code des Tools ---
 
-        Notenauswahl.show()
+        selectedScore.show()
 
         # --- Oberhalb: Code des Tools ---
 
@@ -3563,42 +3560,42 @@ def Darstellung_MuseScore():
 def Darstellung_Akkordverbindungen():
     # --- Nachfolgend: Fragt den User, welche Noten ausgewählt werden sollen
 
-    Notenauswahl = Auswahl_Noten()
+    selectedScore = select_score_completeOrIndividualVoice()
 
     # --- Nachfolgend: Hinweise zu Bedienung, eingeschränkter Kompatibilität des Tools
 
     # --- Unterhalb: Code des Tools ---
 
     try:
-        Notenauswahl_Akkordverbindungen = Notenauswahl.chordify()
+        selectedScore_chordConnection = selectedScore.chordify()
 
         us = environment.UserSettings()
 
         Noten_Speichern_Pfad = us["directoryScratch"]
 
         while True:
-            Auswahl = Oeffne_Untermenue_Daten_mit_Info(
-                Modul_Navigation_transformierter_Notentext()
+            Auswahl = open_submenu_Daten_mit_Info(
+                modul_navigation_transformierter_Notentext()
             )
 
             if Auswahl == "Darstellung_MuseScore":
-                print(text_general_close_MuseScore3())
+                print(text_general_close_museScore3())
                 print()
 
-                Notenauswahl_Akkordverbindungen.show()
+                selectedScore_chordConnection.show()
 
             elif Auswahl == "Noten_speichern":
-                Dateiname = input(text_export_filename())
+                Dateiname = input(text_export_fileName())
                 print("")
 
                 Pfad_Dateiname = (
                     str(Noten_Speichern_Pfad) + "\\" + str(Dateiname) + ".xml"
                 )
 
-                mf = Notenauswahl_Akkordverbindungen.write(
+                mf = selectedScore_chordConnection.write(
                     "xml", fp=Pfad_Dateiname)
 
-                print(text_general_save(Noten_Speichern_Pfad, Dateiname, ".xml"))
+                print(text_general_exportSuccessful(Noten_Speichern_Pfad, Dateiname, ".xml"))
                 print()
 
                 Input = input(text_general_proceed())
@@ -3628,16 +3625,16 @@ def Darstellung_Akkordverbindungen():
 def Darstellung_Akkordverbindungen_Generalbass():
     # --- Nachfolgend: Fragt den User, welche Noten ausgewählt werden sollen
 
-    Notenauswahl = Auswahl_Noten()
+    selectedScore = select_score_completeOrIndividualVoice()
 
     # --- Nachfolgend: Hinweise zu Bedienung, eingeschränkter Kompatibilität des Tools
 
     # --- Unterhalb: Code des Tools ---
 
     try:
-        Notenauswahl_Akkordverbindungen = Notenauswahl.chordify()
+        selectedScore_chordConnection = selectedScore.chordify()
 
-        for item in Notenauswahl_Akkordverbindungen.recurse().getElementsByClass(
+        for item in selectedScore_chordConnection.recurse().getElementsByClass(
             "Chord"
         ):
             item.closedPosition(forceOctave=4, inPlace=True)
@@ -3649,28 +3646,28 @@ def Darstellung_Akkordverbindungen_Generalbass():
         Noten_Speichern_Pfad = us["directoryScratch"]
 
         while True:
-            Auswahl = Oeffne_Untermenue_Daten_mit_Info(
-                Modul_Navigation_transformierter_Notentext()
+            Auswahl = open_submenu_Daten_mit_Info(
+                modul_navigation_transformierter_Notentext()
             )
 
             if Auswahl == "Darstellung_MuseScore":
-                print(text_general_close_MuseScore3())
+                print(text_general_close_museScore3())
                 print()
 
-                Notenauswahl_Akkordverbindungen.show()
+                selectedScore_chordConnection.show()
 
             elif Auswahl == "Noten_speichern":
-                Dateiname = input(text_export_filename())
+                Dateiname = input(text_export_fileName())
                 print("")
 
                 Pfad_Dateiname = (
                     str(Noten_Speichern_Pfad) + "\\" + str(Dateiname) + ".xml"
                 )
 
-                mf = Notenauswahl_Akkordverbindungen.write(
+                mf = selectedScore_chordConnection.write(
                     "xml", fp=Pfad_Dateiname)
 
-                print(text_general_save(Noten_Speichern_Pfad, Dateiname, ".xml"))
+                print(text_general_exportSuccessful(Noten_Speichern_Pfad, Dateiname, ".xml"))
                 print()
 
                 Input = input(text_general_proceed())
@@ -3700,26 +3697,26 @@ def Darstellung_Akkordverbindungen_Generalbass():
 def Darstellung_Akkordverbindungen_Stufenbezifferung():
     # --- Nachfolgend: Fragt den User, welche Noten ausgewählt werden sollen
 
-    Notenauswahl = Auswahl_Noten()
+    selectedScore = select_score_completeOrIndividualVoice()
 
     # --- Nachfolgend: Hinweise zu Bedienung, eingeschränkter Kompatibilität des Tools
 
     # --- Unterhalb: Code des Tools ---
 
     try:
-        clear_Screen()
+        clear_screen()
 
-        print(text_general_choose_key())
+        print(text_general_chooseKey())
         print("")
 
         Input = input(text_general_proceed())
         print("")
 
-        Tonart = Oeffne_Untermenue_Daten(keys_list())
+        Tonart = open_submenu_Daten(keys_list())
 
-        Notenauswahl_Akkordverbindungen = Notenauswahl.chordify()
+        selectedScore_chordConnection = selectedScore.chordify()
 
-        for item in Notenauswahl_Akkordverbindungen.recurse().getElementsByClass(
+        for item in selectedScore_chordConnection.recurse().getElementsByClass(
             "Chord"
         ):
             rn = roman.romanNumeralFromChord(item, key.Key(Tonart))
@@ -3731,28 +3728,28 @@ def Darstellung_Akkordverbindungen_Stufenbezifferung():
         Noten_Speichern_Pfad = us["directoryScratch"]
 
         while True:
-            Auswahl = Oeffne_Untermenue_Daten_mit_Info(
-                Modul_Navigation_transformierter_Notentext()
+            Auswahl = open_submenu_Daten_mit_Info(
+                modul_navigation_transformierter_Notentext()
             )
 
             if Auswahl == "Darstellung_MuseScore":
-                print(text_general_close_MuseScore3())
+                print(text_general_close_museScore3())
                 print()
 
-                Notenauswahl_Akkordverbindungen.show()
+                selectedScore_chordConnection.show()
 
             elif Auswahl == "Noten_speichern":
-                Dateiname = input(text_export_filename())
+                Dateiname = input(text_export_fileName())
                 print("")
 
                 Pfad_Dateiname = (
                     str(Noten_Speichern_Pfad) + "\\" + str(Dateiname) + ".xml"
                 )
 
-                mf = Notenauswahl_Akkordverbindungen.write(
+                mf = selectedScore_chordConnection.write(
                     "xml", fp=Pfad_Dateiname)
 
-                print(text_general_save(Noten_Speichern_Pfad, Dateiname, ".xml"))
+                print(text_general_exportSuccessful(Noten_Speichern_Pfad, Dateiname, ".xml"))
                 print()
 
                 Input = input(text_general_proceed())
@@ -3796,21 +3793,21 @@ def change_language():
 # In[43]:
 
 
-def Einzelstimmen_Namen_Anzeigen():
+def show_names_individualVoices():
     try:
-        clear_Screen()
+        clear_screen()
 
-        Header = text_menu_headers(sys._getframe().f_code.co_name)
+        menu_header = text_menu_headers(sys._getframe().f_code.co_name)
 
-        print(Header)
+        print(menu_header)
         print("")
 
-        print(text_metadata_part_names())
+        print(text_metadata_partsNames())
         print("")
 
-        Header = text_headers(sys._getframe().f_code.co_name)
+        menu_header = text_headers(sys._getframe().f_code.co_name)
 
-        print("{:<4} {:<65}\n".format(Header[0], Header[1]))
+        print("{:<4} {:<65}\n".format(menu_header[0], menu_header[1]))
 
         Index = 1
 
@@ -3834,27 +3831,27 @@ def Einzelstimmen_Namen_Anzeigen():
 # In[44]:
 
 
-def Anzeige_Metadaten_Partitur():
+def show_score_metadata():
     try:
-        clear_Screen()
+        clear_screen()
 
-        Header = text_menu_headers(sys._getframe().f_code.co_name)
+        menu_header = text_menu_headers(sys._getframe().f_code.co_name)
 
-        print(Header)
+        print(menu_header)
         print("")
 
         loopDone = False
 
         while not loopDone:
             if len(Partitur.metadata.all()) > 0:
-                print(text_metadata_available_metadata(
+                print(text_metadata_availableMetadata(
                     len(Partitur.metadata.all())))
                 print("")
 
-                Header = text_headers(sys._getframe().f_code.co_name)
+                menu_header = text_headers(sys._getframe().f_code.co_name)
 
                 print("{:<4} {:<30} {:<30}\n".format(
-                    Header[0], Header[1], Header[2]))
+                    menu_header[0], menu_header[1], menu_header[2]))
 
                 Index = 1
 
@@ -3864,7 +3861,7 @@ def Anzeige_Metadaten_Partitur():
                     Index += 1
 
             else:
-                print(text_metadata_available_metadata_no_metadata())
+                print(text_metadata_availableMetadata_noMetadataAvailable())
                 print("")
 
             loopDone = True
@@ -3889,12 +3886,12 @@ def Anzeige_Metadaten_Partitur():
 
 
 def Menuestrukturen_Musikalische_Parameter_ohne_Grafikexport(
-    function_name, Header, Data, notes
+    function_name, menu_header, Data, notes
 ):
     try:
-        clear_Screen()
+        clear_screen()
 
-        Ergebnisliste(Header, Data)
+        show_resultslist(menu_header, Data)
         print("")
 
         if notes != "":
@@ -3902,7 +3899,7 @@ def Menuestrukturen_Musikalische_Parameter_ohne_Grafikexport(
             print("")
 
         while True:
-            Auswahl = Oeffne_Untermenue_Daten_mit_Info(Modul_Navigation())
+            Auswahl = open_submenu_Daten_mit_Info(Modul_Navigation())
 
             if Auswahl == "Repeat":
                 function_name()
@@ -3914,7 +3911,7 @@ def Menuestrukturen_Musikalische_Parameter_ohne_Grafikexport(
 
                 Noten_Speichern_Pfad = us["directoryScratch"]
 
-                Dateiname = input(text_export_filename())
+                Dateiname = input(text_export_fileName())
                 print("")
 
                 Pfad_Dateiname = (
@@ -3922,17 +3919,17 @@ def Menuestrukturen_Musikalische_Parameter_ohne_Grafikexport(
                 )
 
                 export_as_csv(
-                    data=Data, columns=Header, save_at=Pfad_Dateiname, do_print=False
+                    data=Data, columns=menu_header, save_at=Pfad_Dateiname, do_print=False
                 )
 
-                print(text_general_save(Noten_Speichern_Pfad, Dateiname, ".csv"))
+                print(text_general_exportSuccessful(Noten_Speichern_Pfad, Dateiname, ".csv"))
                 print("")
 
                 Input = input(text_general_proceed())
                 print("")
 
             elif Auswahl == "Export_Grafik":
-                print(text_general_diagram_export_unavailable())
+                print(text_general_exportToDiagrammUnavailable())
                 print("")
 
                 Input = input(text_general_proceed())
@@ -3956,13 +3953,13 @@ def Menuestrukturen_Musikalische_Parameter_ohne_Grafikexport(
 # In[45]:
 
 
-def Ambitus_Analyse(Notenauswahl):
+def range_Analyse(selectedScore):
     try:
-        Notenauswahl_stripTies = Notenauswahl.stripTies()
+        selectedScore_stripTies = selectedScore.stripTies()
 
         ambitusAnalyzer = analysis.discrete.Ambitus()
 
-        Ambitus = ambitusAnalyzer.getSolution(Notenauswahl_stripTies).name
+        Ambitus = ambitusAnalyzer.getSolution(selectedScore_stripTies).name
 
         return Ambitus
 
@@ -3979,22 +3976,22 @@ def Ambitus_Analyse(Notenauswahl):
 # In[46]:
 
 
-def Ambitus_Analyse_Textausgabe():
-    clear_Screen()
+def range_analysis_textOutput():
+    clear_screen()
 
     try:
-        Notenauswahl = Auswahl_Noten()
+        selectedScore = select_score_completeOrIndividualVoice()
 
         # --- Unterhalb: Code des Tools ---
 
-        Ambitus = Ambitus_Analyse(Notenauswahl)
+        Ambitus = range_Analyse(selectedScore)
 
-        Notenauswahl_Bezeichnung = str(
+        selectedScore_name = str(
             Erhalte_Key_zu_Value(Noten, Verzeichnis_Partitur_und_Einzelstimmen)
         )
 
-        Kennung = (
-            Notenauswahl_Bezeichnung
+        score_label = (
+            selectedScore_name
             + ", "
             + text_analysis_measures()
             + str(Input_Takte_Anfang)
@@ -4002,12 +3999,12 @@ def Ambitus_Analyse_Textausgabe():
             + str(Input_Takte_Ende)
         )
 
-        Header = text_headers(sys._getframe().f_code.co_name)
+        menu_header = text_headers(sys._getframe().f_code.co_name)
 
-        Data = [[Kennung, Ambitus]]
+        Data = [[score_label, Ambitus]]
 
         Menuestrukturen_Musikalische_Parameter_ohne_Grafikexport(
-            Ambitus_Analyse_Textausgabe, Header, Data, notes=""
+            range_analysis_textOutput, menu_header, Data, notes=""
         )
 
     except Exception as e:
@@ -4025,45 +4022,45 @@ def Ambitus_Analyse_Textausgabe():
 # In[47]:
 
 
-def Ambitus_Vergleich_Textausgabe():
-    clear_Screen()
+def range_comparison_textOutput():
+    clear_screen()
 
     try:
-        print(text_analysis_score_selection()[0])
+        print(text_analysis_scoreSelection()[0])
         print("")
 
         Input = input(text_general_proceed())
         print("")
 
-        Notenauswahl1 = Auswahl_Noten()
+        selectedScore1 = select_score_completeOrIndividualVoice()
 
-        Notenauswahl1_Name = Noten
+        selectedScore1_Name = Noten
 
         Input_Takte_Anfang_Noten1 = Input_Takte_Anfang
 
         Input_Takte_Ende_Noten1 = Input_Takte_Ende
 
-        print(text_analysis_score_selection()[1])
+        print(text_analysis_scoreSelection()[1])
         print("")
 
         Input = input(text_general_proceed())
         print("")
 
-        Notenauswahl2 = Auswahl_Noten()
+        selectedScore2 = select_score_completeOrIndividualVoice()
 
-        Notenauswahl2_Name = Noten
+        selectedScore2_Name = Noten
 
         Input_Takte_Anfang_Noten2 = Input_Takte_Anfang
 
         Input_Takte_Ende_Noten2 = Input_Takte_Ende
 
-        Ambitus_Noten1 = Ambitus_Analyse(Notenauswahl1)
+        range_Noten1 = range_Analyse(selectedScore1)
 
-        Ambitus_Noten2 = Ambitus_Analyse(Notenauswahl2)
+        range_Noten2 = range_Analyse(selectedScore2)
 
         Kennung1 = (
             Erhalte_Key_zu_Value(
-                Notenauswahl1_Name, Verzeichnis_Partitur_und_Einzelstimmen
+                selectedScore1_Name, Verzeichnis_Partitur_und_Einzelstimmen
             )
             + ", "
             + text_analysis_measures()
@@ -4074,7 +4071,7 @@ def Ambitus_Vergleich_Textausgabe():
 
         Kennung2 = (
             Erhalte_Key_zu_Value(
-                Notenauswahl2_Name, Verzeichnis_Partitur_und_Einzelstimmen
+                selectedScore2_Name, Verzeichnis_Partitur_und_Einzelstimmen
             )
             + ", "
             + text_analysis_measures()
@@ -4083,12 +4080,12 @@ def Ambitus_Vergleich_Textausgabe():
             + str(Input_Takte_Ende_Noten2)
         )
 
-        Header = text_headers(sys._getframe().f_code.co_name)
+        menu_header = text_headers(sys._getframe().f_code.co_name)
 
-        Data = [[Kennung1, Ambitus_Noten1], [Kennung2, Ambitus_Noten2]]
+        Data = [[Kennung1, range_Noten1], [Kennung2, range_Noten2]]
 
         Menuestrukturen_Musikalische_Parameter_ohne_Grafikexport(
-            Ambitus_Vergleich_Textausgabe, Header, Data, notes=""
+            range_comparison_textOutput, menu_header, Data, notes=""
         )
 
     except Exception as e:
@@ -4114,24 +4111,24 @@ def Ambitus_Vergleich_Textausgabe():
 # In[48]:
 
 
-def Intervallstruktur_Intervalltypen_Anzahl(Notenauswahl):
+def intervalStructure_intervalTypes_quantity(selectedScore):
     try:
-        Notenauswahl_stripTies = Notenauswahl.stripTies()
+        selectedScore_stripTies = selectedScore.stripTies()
 
         IntervallAnalyzer = analysis.discrete.MelodicIntervalDiversity()
 
-        Intervalltypen_und_Anzahl = IntervallAnalyzer.countMelodicIntervals(
-            Notenauswahl_stripTies,
+        Intervalltypen_und_quantity = IntervallAnalyzer.countMelodicIntervals(
+            selectedScore_stripTies,
             found=None,
             ignoreDirection=False,
             ignoreUnison=False,
         )
 
-        Intervalltypen_Anzahl = len(Intervalltypen_und_Anzahl)
+        Intervalltypen_quantity = len(Intervalltypen_und_quantity)
 
         # gibt die Anzahl der vorhandenen Intervalltypen als Integer zurück
 
-        return Intervalltypen_Anzahl
+        return Intervalltypen_quantity
 
     except Exception as e:
         print(text_exception_general(e, sys._getframe().f_code.co_name))
@@ -4146,20 +4143,20 @@ def Intervallstruktur_Intervalltypen_Anzahl(Notenauswahl):
 # In[49]:
 
 
-def Intervallstruktur_Intervalltypen_UniqueIntervals(Notenauswahl):
+def intervalStructure_intervalTypes_UniqueIntervals(selectedScore):
     try:
-        Notenauswahl_stripTies = Notenauswahl.stripTies()
+        selectedScore_stripTies = selectedScore.stripTies()
 
         IntervallAnalyzer = analysis.discrete.MelodicIntervalDiversity()
 
-        Intervalltypen_und_Anzahl = IntervallAnalyzer.countMelodicIntervals(
-            Notenauswahl_stripTies,
+        Intervalltypen_und_quantity = IntervallAnalyzer.countMelodicIntervals(
+            selectedScore_stripTies,
             found=None,
             ignoreDirection=False,
             ignoreUnison=False,
         )
 
-        Intervalltypen = list(Intervalltypen_und_Anzahl.keys())
+        Intervalltypen = list(Intervalltypen_und_quantity.keys())
 
         # gibt die Anzahl der vorhandenen Intervalltypen als Integer zurück
 
@@ -4178,27 +4175,27 @@ def Intervallstruktur_Intervalltypen_UniqueIntervals(Notenauswahl):
 # In[50]:
 
 
-def Intervallstruktur_Intervalltypen_Textausgabe():
-    clear_Screen()
+def intervalStructure_intervalTypes_textOutput():
+    clear_screen()
 
     try:
-        Notenauswahl = Auswahl_Noten()
+        selectedScore = select_score_completeOrIndividualVoice()
 
         # --- Unterhalb: Code des Tools ---
 
-        Intervalltypen_Anzahl = Intervallstruktur_Intervalltypen_Anzahl(
-            Notenauswahl)
+        Intervalltypen_quantity = intervalStructure_intervalTypes_quantity(
+            selectedScore)
 
         Intervalltypen = str(
-            Intervallstruktur_Intervalltypen_UniqueIntervals(Notenauswahl)
+            intervalStructure_intervalTypes_UniqueIntervals(selectedScore)
         )
 
-        Notenauswahl_Bezeichnung = str(
+        selectedScore_name = str(
             Erhalte_Key_zu_Value(Noten, Verzeichnis_Partitur_und_Einzelstimmen)
         )
 
-        Kennung = (
-            Notenauswahl_Bezeichnung
+        score_label = (
+            selectedScore_name
             + ", "
             + text_analysis_measures()
             + str(Input_Takte_Anfang)
@@ -4206,13 +4203,13 @@ def Intervallstruktur_Intervalltypen_Textausgabe():
             + str(Input_Takte_Ende)
         )
 
-        Header = text_headers(sys._getframe().f_code.co_name)
+        menu_header = text_headers(sys._getframe().f_code.co_name)
 
-        Data = [[Kennung, Intervalltypen_Anzahl, Intervalltypen]]
+        Data = [[score_label, Intervalltypen_quantity, Intervalltypen]]
 
         Menuestrukturen_Musikalische_Parameter_ohne_Grafikexport(
-            Intervallstruktur_Intervalltypen_Textausgabe,
-            Header,
+            intervalStructure_intervalTypes_textOutput,
+            menu_header,
             Data,
             notes=text_analysis_notes_intervals(),
         )
@@ -4232,28 +4229,28 @@ def Intervallstruktur_Intervalltypen_Textausgabe():
 # In[51]:
 
 
-def Intervallstruktur_Intervalltypen_Anzahl_Textausgabe():
-    clear_Screen()
+def intervalStructure_intervalTypes_quantity_textOutput():
+    clear_screen()
 
     try:
-        Notenauswahl = Auswahl_Noten()
+        selectedScore = select_score_completeOrIndividualVoice()
 
-        Notenauswahl_stripTies = Notenauswahl.stripTies()
+        selectedScore_stripTies = selectedScore.stripTies()
 
         # --- Unterhalb: Code des Tools ---
 
         intList = analysis.segmentByRests.Segmenter.getIntervalList(
-            Notenauswahl_stripTies
+            selectedScore_stripTies
         )
 
         Intervalle = count([x.directedName for x in intList])
 
-        Notenauswahl_Bezeichnung = str(
+        selectedScore_name = str(
             Erhalte_Key_zu_Value(Noten, Verzeichnis_Partitur_und_Einzelstimmen)
         )
 
-        Kennung = (
-            Notenauswahl_Bezeichnung
+        score_label = (
+            selectedScore_name
             + ", "
             + text_analysis_measures()
             + str(Input_Takte_Anfang)
@@ -4264,22 +4261,22 @@ def Intervallstruktur_Intervalltypen_Anzahl_Textausgabe():
         Intervalle_Liste = []
 
         for x, y in Intervalle.items():
-            Intervalle_Liste.append([Kennung, x, y])
+            Intervalle_Liste.append([score_label, x, y])
 
-        Header = text_headers(sys._getframe().f_code.co_name)
+        menu_header = text_headers(sys._getframe().f_code.co_name)
 
         Data = Intervalle_Liste
 
-        clear_Screen()
+        clear_screen()
 
-        Ergebnisliste(Header, Data)
+        show_resultslist(menu_header, Data)
         print("")
 
         while True:
-            Auswahl = Oeffne_Untermenue_Daten_mit_Info(Modul_Navigation())
+            Auswahl = open_submenu_Daten_mit_Info(Modul_Navigation())
 
             if Auswahl == "Repeat":
-                Intervallstruktur_Intervalltypen_Anzahl_Textausgabe()
+                intervalStructure_intervalTypes_quantity_textOutput()
 
                 break
 
@@ -4288,7 +4285,7 @@ def Intervallstruktur_Intervalltypen_Anzahl_Textausgabe():
 
                 Noten_Speichern_Pfad = us["directoryScratch"]
 
-                Dateiname = input(text_export_filename())
+                Dateiname = input(text_export_fileName())
                 print("")
 
                 Pfad_Dateiname = (
@@ -4296,10 +4293,10 @@ def Intervallstruktur_Intervalltypen_Anzahl_Textausgabe():
                 )
 
                 export_as_csv(
-                    data=Data, columns=Header, save_at=Pfad_Dateiname, do_print=False
+                    data=Data, columns=menu_header, save_at=Pfad_Dateiname, do_print=False
                 )
 
-                print(text_general_save(Noten_Speichern_Pfad, Dateiname, ".csv"))
+                print(text_general_exportSuccessful(Noten_Speichern_Pfad, Dateiname, ".csv"))
                 print("")
 
                 Input = input(text_general_proceed())
@@ -4310,7 +4307,7 @@ def Intervallstruktur_Intervalltypen_Anzahl_Textausgabe():
 
                 Noten_Speichern_Pfad = us["directoryScratch"]
 
-                print(text_general_save_images(Noten_Speichern_Pfad))
+                print(text_general_exportGraph(Noten_Speichern_Pfad))
                 print()
 
                 names = []
@@ -4348,37 +4345,37 @@ def Intervallstruktur_Intervalltypen_Anzahl_Textausgabe():
 # In[52]:
 
 
-def Intervallstruktur_Intervalltypen_Vergleich_Textausgabe():
-    clear_Screen()
+def intervalStructure_intervalTypes_comparison_textOutput():
+    clear_screen()
 
     try:
-        print(text_analysis_score_selection()[0])
+        print(text_analysis_scoreSelection()[0])
         print("")
 
         Input = input(text_general_proceed())
         print("")
 
-        Notenauswahl1 = Auswahl_Noten()
+        selectedScore1 = select_score_completeOrIndividualVoice()
 
-        Notenauswahl1_stripTies = Notenauswahl1.stripTies()
+        selectedScore1_stripTies = selectedScore1.stripTies()
 
-        Notenauswahl1_Name = Noten
+        selectedScore1_Name = Noten
 
         Input_Takte_Anfang_Noten1 = Input_Takte_Anfang
 
         Input_Takte_Ende_Noten1 = Input_Takte_Ende
 
-        print(text_analysis_score_selection()[1])
+        print(text_analysis_scoreSelection()[1])
         print("")
 
         Input = input(text_general_proceed())
         print("")
 
-        Notenauswahl2 = Auswahl_Noten()
+        selectedScore2 = select_score_completeOrIndividualVoice()
 
-        Notenauswahl2_stripTies = Notenauswahl2.stripTies()
+        selectedScore2_stripTies = selectedScore2.stripTies()
 
-        Notenauswahl2_Name = Noten
+        selectedScore2_Name = Noten
 
         Input_Takte_Anfang_Noten2 = Input_Takte_Anfang
 
@@ -4386,24 +4383,24 @@ def Intervallstruktur_Intervalltypen_Vergleich_Textausgabe():
 
         Liste_alle_Intervalle_Noten1 = (
             analysis.segmentByRests.Segmenter.getIntervalList(
-                Notenauswahl1_stripTies)
+                selectedScore1_stripTies)
         )
 
         a = count([x.directedName for x in Liste_alle_Intervalle_Noten1])
 
         Liste_alle_Intervalle_Noten2 = (
             analysis.segmentByRests.Segmenter.getIntervalList(
-                Notenauswahl2_stripTies)
+                selectedScore2_stripTies)
         )
 
         b = count([x.directedName for x in Liste_alle_Intervalle_Noten2])
 
-        Notenauswahl1_Bezeichnung = Erhalte_Key_zu_Value(
-            Notenauswahl1_Name, Verzeichnis_Partitur_und_Einzelstimmen
+        selectedScore1_Bezeichnung = Erhalte_Key_zu_Value(
+            selectedScore1_Name, Verzeichnis_Partitur_und_Einzelstimmen
         )
 
         Kennung1 = (
-            Notenauswahl1_Bezeichnung
+            selectedScore1_Bezeichnung
             + ", "
             + text_analysis_measures()
             + str(Input_Takte_Anfang_Noten1)
@@ -4411,12 +4408,12 @@ def Intervallstruktur_Intervalltypen_Vergleich_Textausgabe():
             + str(Input_Takte_Ende_Noten1)
         )
 
-        Notenauswahl2_Bezeichnung = Erhalte_Key_zu_Value(
-            Notenauswahl2_Name, Verzeichnis_Partitur_und_Einzelstimmen
+        selectedScore2_Bezeichnung = Erhalte_Key_zu_Value(
+            selectedScore2_Name, Verzeichnis_Partitur_und_Einzelstimmen
         )
 
         Kennung2 = (
-            Notenauswahl2_Bezeichnung
+            selectedScore2_Bezeichnung
             + ", "
             + text_analysis_measures()
             + str(Input_Takte_Anfang_Noten2)
@@ -4424,56 +4421,56 @@ def Intervallstruktur_Intervalltypen_Vergleich_Textausgabe():
             + str(Input_Takte_Ende_Noten2)
         )
 
-        Intervalle_Vergleich_Liste = []
+        Intervalle_comparison_Liste = []
 
         for i in a.keys():
             if i in b.keys():
                 Differenz = a[i] - b[i]
 
                 if Differenz < 0:
-                    Intervalle_Vergleich_Liste.append(
+                    Intervalle_comparison_Liste.append(
                         [Kennung1, i, a[i], str(Differenz)]
                     )
 
                 else:
-                    Intervalle_Vergleich_Liste.append(
+                    Intervalle_comparison_Liste.append(
                         [Kennung1, i, a[i], str(Differenz)]
                     )
 
             else:
-                Intervalle_Vergleich_Liste.append([Kennung1, i, a[i], a[i]])
+                Intervalle_comparison_Liste.append([Kennung1, i, a[i], a[i]])
 
         for i in b.keys():
             if i in a.keys():
                 Differenz = b[i] - a[i]
 
                 if Differenz < 0:
-                    Intervalle_Vergleich_Liste.append(
+                    Intervalle_comparison_Liste.append(
                         [Kennung2, i, b[i], str(Differenz)]
                     )
 
                 else:
-                    Intervalle_Vergleich_Liste.append(
+                    Intervalle_comparison_Liste.append(
                         [Kennung2, i, b[i], str(Differenz)]
                     )
 
             else:
-                Intervalle_Vergleich_Liste.append([Kennung2, i, b[i], b[i]])
+                Intervalle_comparison_Liste.append([Kennung2, i, b[i], b[i]])
 
-        Header = text_headers(sys._getframe().f_code.co_name)
+        menu_header = text_headers(sys._getframe().f_code.co_name)
 
-        Data = Intervalle_Vergleich_Liste
+        Data = Intervalle_comparison_Liste
 
-        clear_Screen()
+        clear_screen()
 
-        Ergebnisliste(Header, Data)
+        show_resultslist(menu_header, Data)
         print("")
 
         while True:
-            Auswahl = Oeffne_Untermenue_Daten_mit_Info(Modul_Navigation())
+            Auswahl = open_submenu_Daten_mit_Info(Modul_Navigation())
 
             if Auswahl == "Repeat":
-                Intervallstruktur_Intervalltypen_Vergleich_Textausgabe()
+                intervalStructure_intervalTypes_comparison_textOutput()
 
                 break
 
@@ -4482,7 +4479,7 @@ def Intervallstruktur_Intervalltypen_Vergleich_Textausgabe():
 
                 Noten_Speichern_Pfad = us["directoryScratch"]
 
-                Dateiname = input(text_export_filename())
+                Dateiname = input(text_export_fileName())
                 print("")
 
                 Pfad_Dateiname = (
@@ -4490,10 +4487,10 @@ def Intervallstruktur_Intervalltypen_Vergleich_Textausgabe():
                 )
 
                 export_as_csv(
-                    data=Data, columns=Header, save_at=Pfad_Dateiname, do_print=False
+                    data=Data, columns=menu_header, save_at=Pfad_Dateiname, do_print=False
                 )
 
-                print(text_general_save(Noten_Speichern_Pfad, Dateiname, ".csv"))
+                print(text_general_exportSuccessful(Noten_Speichern_Pfad, Dateiname, ".csv"))
                 print("")
 
                 Input = input(text_general_proceed())
@@ -4504,7 +4501,7 @@ def Intervallstruktur_Intervalltypen_Vergleich_Textausgabe():
 
                 Noten_Speichern_Pfad = us["directoryScratch"]
 
-                print(text_general_save_images(Noten_Speichern_Pfad))
+                print(text_general_exportGraph(Noten_Speichern_Pfad))
                 print()
 
                 interval_1 = []
@@ -4577,26 +4574,26 @@ def Intervallstruktur_Intervalltypen_Vergleich_Textausgabe():
 # In[53]:
 
 
-def Intervallstruktur_Intervalle_Anzahl_Textausgabe():
-    clear_Screen()
+def intervalStructure_Intervalle_quantity_textOutput():
+    clear_screen()
 
     try:
-        Notenauswahl = Auswahl_Noten()
+        selectedScore = select_score_completeOrIndividualVoice()
 
-        Notenauswahl_stripTies = Notenauswahl.stripTies()
+        selectedScore_stripTies = selectedScore.stripTies()
 
         # --- Unterhalb: Code des Tools ---
 
         intList = analysis.segmentByRests.Segmenter.getIntervalList(
-            Notenauswahl_stripTies
+            selectedScore_stripTies
         )
 
-        Notenauswahl_Bezeichnung = str(
+        selectedScore_name = str(
             Erhalte_Key_zu_Value(Noten, Verzeichnis_Partitur_und_Einzelstimmen)
         )
 
-        Kennung = (
-            Notenauswahl_Bezeichnung
+        score_label = (
+            selectedScore_name
             + ", "
             + text_analysis_measures()
             + str(Input_Takte_Anfang)
@@ -4604,13 +4601,13 @@ def Intervallstruktur_Intervalle_Anzahl_Textausgabe():
             + str(Input_Takte_Ende)
         )
 
-        Header = text_headers(sys._getframe().f_code.co_name)
+        menu_header = text_headers(sys._getframe().f_code.co_name)
 
-        Data = [[Kennung, len(intList)]]
+        Data = [[score_label, len(intList)]]
 
         Menuestrukturen_Musikalische_Parameter_ohne_Grafikexport(
-            Intervallstruktur_Intervalle_Anzahl_Textausgabe,
-            Header,
+            intervalStructure_Intervalle_quantity_textOutput,
+            menu_header,
             Data,
             notes=text_analysis_notes_intervals(),
         )
@@ -4636,12 +4633,12 @@ def Intervallstruktur_Intervalle_Anzahl_Textausgabe():
 # In[54]:
 
 
-def Melodik_Melodieverlauf_Darstellung_Liniendiagramm():
-    clear_Screen()
+def Melodik_Melodieverlauf_visualization_lineGraph():
+    clear_screen()
 
     # --- Nachfolgend: Hinweise zu Bedienung, eingeschränkter Kompatibilität des Tools
 
-    print(text_analysis_notes_Melodik_Melodieverlauf_Darstellung_Liniendiagramm())
+    print(text_analysis_notes_melody_melodicProgression_visualization_lineGraph())
     print("")
 
     Input = input(text_general_proceed())
@@ -4653,7 +4650,7 @@ def Melodik_Melodieverlauf_Darstellung_Liniendiagramm():
         fig = plt.figure()
         subplot = fig.add_subplot(1, 1, 1)
 
-        Auswahl = Menue_Frage_Auswahl_Takte(Partitur)
+        Auswahl = select_bars(Partitur)
 
         for i in range(len(Auswahl.parts)):
             top = Auswahl.parts[i].flat.notes
@@ -4680,7 +4677,7 @@ def Melodik_Melodieverlauf_Darstellung_Liniendiagramm():
     print("")
 
     Menue_Frage_Tool_Wiederholen(
-        Melodik_Melodieverlauf_Darstellung_Liniendiagramm)
+        Melodik_Melodieverlauf_visualization_lineGraph)
 
 
 # ## Metrum
@@ -4690,22 +4687,22 @@ def Melodik_Melodieverlauf_Darstellung_Liniendiagramm():
 # In[55]:
 
 
-def Metrum_Metrisches_Gewicht_Textausgabe():
-    clear_Screen()
+def meter_metricWeight_textOutput():
+    clear_screen()
 
     try:
-        Notenauswahl = Auswahl_Noten()
+        selectedScore = select_score_completeOrIndividualVoice()
 
-        Notenauswahl_stripTies = Notenauswahl.stripTies()
+        selectedScore_stripTies = selectedScore.stripTies()
 
         # --- Unterhalb: Code des Tools ---
 
-        Notenauswahl_Bezeichnung = str(
+        selectedScore_name = str(
             Erhalte_Key_zu_Value(Noten, Verzeichnis_Partitur_und_Einzelstimmen)
         )
 
-        Kennung = (
-            Notenauswahl_Bezeichnung
+        score_label = (
+            selectedScore_name
             + ", "
             + text_analysis_measures()
             + str(Input_Takte_Anfang)
@@ -4717,7 +4714,7 @@ def Metrum_Metrisches_Gewicht_Textausgabe():
 
         l_bs = []
 
-        for n in Notenauswahl_stripTies.flat.notes:
+        for n in selectedScore_stripTies.flat.notes:
             c_n = str(n)
 
             n_list.append(c_n.replace(
@@ -4739,19 +4736,19 @@ def Metrum_Metrisches_Gewicht_Textausgabe():
         for c_bs_uni in bs_uni:
             l = len(pd_bs.loc[(pd_bs["Beat_Strength"] == c_bs_uni)])
 
-            bs_int_indi.append([Kennung, c_bs_uni, l])
+            bs_int_indi.append([score_label, c_bs_uni, l])
 
-        Header = text_headers(sys._getframe().f_code.co_name)
+        menu_header = text_headers(sys._getframe().f_code.co_name)
 
         Data = bs_int_indi
 
-        Ergebnisliste(Header, Data)
+        show_resultslist(menu_header, Data)
 
         while True:
-            Auswahl = Oeffne_Untermenue_Daten_mit_Info(Modul_Navigation())
+            Auswahl = open_submenu_Daten_mit_Info(Modul_Navigation())
 
             if Auswahl == "Repeat":
-                Metrum_Metrisches_Gewicht_Textausgabe()
+                meter_metricWeight_textOutput()
 
                 break
 
@@ -4760,7 +4757,7 @@ def Metrum_Metrisches_Gewicht_Textausgabe():
 
                 Noten_Speichern_Pfad = us["directoryScratch"]
 
-                Dateiname = input(text_export_filename())
+                Dateiname = input(text_export_fileName())
                 print("")
 
                 Pfad_Dateiname = (
@@ -4769,13 +4766,13 @@ def Metrum_Metrisches_Gewicht_Textausgabe():
 
                 export_as_csv(
                     data=Data,
-                    columns=Header,
+                    columns=menu_header,
                     save_at=Pfad_Dateiname,
                     do_print=False,
                     do_return_pd=True,
                 )
 
-                print(text_general_save(Noten_Speichern_Pfad, Dateiname, ".csv"))
+                print(text_general_exportSuccessful(Noten_Speichern_Pfad, Dateiname, ".csv"))
                 print("")
 
                 Input = input(text_general_proceed())
@@ -4786,7 +4783,7 @@ def Metrum_Metrisches_Gewicht_Textausgabe():
 
                 Noten_Speichern_Pfad = us["directoryScratch"]
 
-                print(text_general_save_images(Noten_Speichern_Pfad))
+                print(text_general_exportGraph(Noten_Speichern_Pfad))
                 print()
 
                 Pfad_Dateiname = str(Noten_Speichern_Pfad) + \
@@ -4794,7 +4791,7 @@ def Metrum_Metrisches_Gewicht_Textausgabe():
 
                 pd_bs_indi_data = export_as_csv(
                     data=Data,
-                    columns=Header,
+                    columns=menu_header,
                     save_at=Pfad_Dateiname,
                     do_print=False,
                     do_return_pd=True,
@@ -4834,27 +4831,27 @@ def Metrum_Metrisches_Gewicht_Textausgabe():
 
 # ### Tonklassen auf metrischen Positionen (-- entfernt --)
 
-# def Metrum_Tonklassen_metrischen_Positionen_Textausgabe():
+# def meter_pitchClass_metricPosition_textOutput():
 #
-#     clear_Screen()
+#     clear_screen()
 #
 #     try:
 #
-#         Notenauswahl = Auswahl_Noten()
+#         selectedScore = select_score_completeOrIndividualVoice()
 #
-#         Notenauswahl_stripTies = Notenauswahl.stripTies()
+#         selectedScore_stripTies = selectedScore.stripTies()
 #
 #         # --- Unterhalb: Code des Tools ---
 #
-#         Notenauswahl_Bezeichnung = str(Erhalte_Key_zu_Value(Noten,Verzeichnis_Partitur_und_Einzelstimmen))
+#         selectedScore_name = str(Erhalte_Key_zu_Value(Noten,Verzeichnis_Partitur_und_Einzelstimmen))
 #
-#         Kennung = Notenauswahl_Bezeichnung + ', ' + text_analysis_measures() + str(Input_Takte_Anfang) + '-' + str(Input_Takte_Ende)
+#         score_label = selectedScore_name + ', ' + text_analysis_measures() + str(Input_Takte_Anfang) + '-' + str(Input_Takte_Ende)
 #
 #         n_list, n_beat_strength = [],[]
 #
 #         l_bs = []
 #
-#         for n in Notenauswahl_stripTies.flat.notes:
+#         for n in selectedScore_stripTies.flat.notes:
 #
 #             c_n = str(n)
 #
@@ -4878,21 +4875,21 @@ def Metrum_Metrisches_Gewicht_Textausgabe():
 #
 #                 l = len(pd_bs.loc[(pd_bs['Notes']==c_n_uni) & (pd_bs['Beat_Strength']==c_bs_uni)])
 #
-#                 l_bs.append([Kennung, c_n_uni, c_bs_uni, l])
+#                 l_bs.append([score_label, c_n_uni, c_bs_uni, l])
 #
-#         Header = text_headers(sys._getframe().f_code.co_name)
+#         menu_header = text_headers(sys._getframe().f_code.co_name)
 #
 #         Data = l_bs
 #
-#         Ergebnisliste(Header, Data)
+#         show_resultslist(menu_header, Data)
 #
 #         while True:
 #
-#             Auswahl = Oeffne_Untermenue_Daten_mit_Info(Modul_Navigation())
+#             Auswahl = open_submenu_Daten_mit_Info(Modul_Navigation())
 #
 #             if Auswahl == 'Repeat':
 #
-#                 Metrum_Tonklassen_metrischen_Positionen_Textausgabe()
+#                 meter_pitchClass_metricPosition_textOutput()
 #
 #                 break
 #
@@ -4902,20 +4899,20 @@ def Metrum_Metrisches_Gewicht_Textausgabe():
 #
 #                 Noten_Speichern_Pfad = us['directoryScratch']
 #
-#                 Dateiname = input(text_export_filename())
+#                 Dateiname = input(text_export_fileName())
 #                 print('')
 #
 #                 Pfad_Dateiname = str(Noten_Speichern_Pfad)+'\\'+str(Dateiname)+'.csv'
 #
 #                 export_as_csv(data=Data,
 #
-#                               columns=Header,
+#                               columns=menu_header,
 #
 #                               save_at=Pfad_Dateiname,
 #
 #                               do_print=False)
 #
-#                 print(text_general_save(Noten_Speichern_Pfad, Dateiname, ".csv"))
+#                 print(text_general_exportSuccessful(Noten_Speichern_Pfad, Dateiname, ".csv"))
 #                 print('')
 #
 #                 Input = input(text_general_proceed())
@@ -4927,14 +4924,14 @@ def Metrum_Metrisches_Gewicht_Textausgabe():
 #
 #                 Noten_Speichern_Pfad = us['directoryScratch']
 #
-#                 print(text_general_save_images(Noten_Speichern_Pfad))
+#                 print(text_general_exportGraph(Noten_Speichern_Pfad))
 #                 print()
 #
 #                 Pfad_Dateiname = str(Noten_Speichern_Pfad)+'\\'+'Temp'+'.csv'
 #
 #                 pd_bs_data = export_as_csv(data=Data,
 #
-#                                            columns=Header,
+#                                            columns=menu_header,
 #
 #                                            save_at=Pfad_Dateiname,
 #
@@ -5021,20 +5018,20 @@ def Metrum_Metrisches_Gewicht_Textausgabe():
 # In[56]:
 
 
-def Tonmaterial_Töne_Anzahl_gesamt_Textausgabe():
-    clear_Screen()
+def notes_notesQuantity_total_textOutput():
+    clear_screen()
 
     try:
-        Notenauswahl = Auswahl_Noten()
+        selectedScore = select_score_completeOrIndividualVoice()
 
-        Notenauswahl_stripTies = Notenauswahl.stripTies()
+        selectedScore_stripTies = selectedScore.stripTies()
 
-        Notenauswahl_Bezeichnung = str(
+        selectedScore_name = str(
             Erhalte_Key_zu_Value(Noten, Verzeichnis_Partitur_und_Einzelstimmen)
         )
 
-        Kennung = (
-            Notenauswahl_Bezeichnung
+        score_label = (
+            selectedScore_name
             + ", "
             + text_analysis_measures()
             + str(Input_Takte_Anfang)
@@ -5045,14 +5042,14 @@ def Tonmaterial_Töne_Anzahl_gesamt_Textausgabe():
         # --- Unterhalb: Code des Tools ---
 
         Anzahl_Noten = len(
-            Notenauswahl_stripTies.flat.getElementsByClass("Note"))
+            selectedScore_stripTies.flat.getElementsByClass("Note"))
 
-        Header = text_headers(sys._getframe().f_code.co_name)
+        menu_header = text_headers(sys._getframe().f_code.co_name)
 
-        Data = [[Kennung, Anzahl_Noten]]
+        Data = [[score_label, Anzahl_Noten]]
 
         Menuestrukturen_Musikalische_Parameter_ohne_Grafikexport(
-            Tonmaterial_Töne_Anzahl_gesamt_Textausgabe, Header, Data, notes=""
+            notes_notesQuantity_total_textOutput, menu_header, Data, notes=""
         )
 
     except Exception as e:
@@ -5067,37 +5064,37 @@ def Tonmaterial_Töne_Anzahl_gesamt_Textausgabe():
 
 # #### Textausgabe (-- entfernt --)
 
-# def Tonmaterial_Töne_Anzahl_Tonhöhen_Textausgabe():
+# def notes_notesQuantity_pitches_textOutput():
 #
-#     clear_Screen()
+#     clear_screen()
 #
 #     try:
 #
-#         Notenauswahl = Auswahl_Noten()
+#         selectedScore = select_score_completeOrIndividualVoice()
 #
-#         Notenauswahl_stripTies = Notenauswahl.stripTies()
+#         selectedScore_stripTies = selectedScore.stripTies()
 #
-#         Notenauswahl_Bezeichnung = str(Erhalte_Key_zu_Value(Noten,Verzeichnis_Partitur_und_Einzelstimmen))
+#         selectedScore_name = str(Erhalte_Key_zu_Value(Noten,Verzeichnis_Partitur_und_Einzelstimmen))
 #
-#         Kennung = Notenauswahl_Bezeichnung + ', ' + text_analysis_measures() + str(Input_Takte_Anfang) + '-' + str(Input_Takte_Ende)
+#         score_label = selectedScore_name + ', ' + text_analysis_measures() + str(Input_Takte_Anfang) + '-' + str(Input_Takte_Ende)
 #
-#         nameOctaveCount = analysis.pitchAnalysis.pitchAttributeCount(Notenauswahl_stripTies, 'nameWithOctave')
+#         nameOctaveCount = analysis.pitchAnalysis.pitchAttributeCount(selectedScore_stripTies, 'nameWithOctave')
 #
-#         notes_nameOctaveCount = [[Kennung, i, nameOctaveCount[i]]for i in sorted(nameOctaveCount)]
+#         notes_nameOctaveCount = [[score_label, i, nameOctaveCount[i]]for i in sorted(nameOctaveCount)]
 #
-#         Header = text_headers(sys._getframe().f_code.co_name)
+#         menu_header = text_headers(sys._getframe().f_code.co_name)
 #
 #         Data = notes_nameOctaveCount
 #
-#         Ergebnisliste(Header, Data)
+#         show_resultslist(menu_header, Data)
 #
 #         while True:
 #
-#             Auswahl = Oeffne_Untermenue_Daten_mit_Info(Modul_Navigation())
+#             Auswahl = open_submenu_Daten_mit_Info(Modul_Navigation())
 #
 #             if Auswahl == 'Repeat':
 #
-#                 Tonmaterial_Töne_Anzahl_Tonhöhen_Textausgabe()
+#                 notes_notesQuantity_pitches_textOutput()
 #
 #                 break
 #
@@ -5107,20 +5104,20 @@ def Tonmaterial_Töne_Anzahl_gesamt_Textausgabe():
 #
 #                 Noten_Speichern_Pfad = us['directoryScratch']
 #
-#                 Dateiname = input(text_export_filename())
+#                 Dateiname = input(text_export_fileName())
 #                 print('')
 #
 #                 Pfad_Dateiname = str(Noten_Speichern_Pfad)+'\\'+str(Dateiname)+'.csv'
 #
 #                 export_as_csv(data=Data,
 #
-#                               columns=Header,
+#                               columns=menu_header,
 #
 #                               save_at=Pfad_Dateiname,
 #
 #                               do_print=False)
 #
-#                 print(text_general_save(Noten_Speichern_Pfad, Dateiname, ".csv"))
+#                 print(text_general_exportSuccessful(Noten_Speichern_Pfad, Dateiname, ".csv"))
 #                 print('')
 #
 #                 Input = input(text_general_proceed())
@@ -5128,7 +5125,7 @@ def Tonmaterial_Töne_Anzahl_gesamt_Textausgabe():
 #
 #             elif Auswahl == 'Export_Grafik':
 #
-#                 print(text_general_diagram_export_unavailable())
+#                 print(text_general_exportToDiagrammUnavailable())
 #
 #                 Input = input(text_general_proceed())
 #                 print('')
@@ -5154,13 +5151,13 @@ def Tonmaterial_Töne_Anzahl_gesamt_Textausgabe():
 # In[ ]:
 
 
-def Menuestrukturen_vordefinierte_Darstellungen(
-    function_name, Header, Data, Graph, notes
+def Menuestrukturen_vordefinierte_visualizations(
+    function_name, menu_header, Data, Graph, notes
 ):
     try:
-        clear_Screen()
+        clear_screen()
 
-        Ergebnisliste(Header, Data)
+        show_resultslist(menu_header, Data)
         print("")
 
         if notes != "":
@@ -5168,7 +5165,7 @@ def Menuestrukturen_vordefinierte_Darstellungen(
             print("")
 
         while True:
-            Auswahl = Oeffne_Untermenue_Daten_mit_Info(Modul_Navigation())
+            Auswahl = open_submenu_Daten_mit_Info(Modul_Navigation())
 
             if Auswahl == "Repeat":
                 function_name()
@@ -5180,7 +5177,7 @@ def Menuestrukturen_vordefinierte_Darstellungen(
 
                 Noten_Speichern_Pfad = us["directoryScratch"]
 
-                Dateiname = input(text_export_filename())
+                Dateiname = input(text_export_fileName())
                 print("")
 
                 Pfad_Dateiname = (
@@ -5188,10 +5185,10 @@ def Menuestrukturen_vordefinierte_Darstellungen(
                 )
 
                 export_as_csv(
-                    data=Data, columns=Header, save_at=Pfad_Dateiname, do_print=False
+                    data=Data, columns=menu_header, save_at=Pfad_Dateiname, do_print=False
                 )
 
-                print(text_general_save(Noten_Speichern_Pfad, Dateiname, ".csv"))
+                print(text_general_exportSuccessful(Noten_Speichern_Pfad, Dateiname, ".csv"))
                 print("")
 
                 Input = input(text_general_proceed())
@@ -5202,7 +5199,7 @@ def Menuestrukturen_vordefinierte_Darstellungen(
 
                 Noten_Speichern_Pfad = us["directoryScratch"]
 
-                print(text_general_save_images(Noten_Speichern_Pfad))
+                print(text_general_exportGraph(Noten_Speichern_Pfad))
                 print()
 
                 Graph.doneAction = None
@@ -5231,18 +5228,18 @@ def Menuestrukturen_vordefinierte_Darstellungen(
 # In[57]:
 
 
-def Vordefinierte_Darstellungen_HistogramPitchSpace():
+def predefinedVisualizations_HistogramPitchSpace():
     try:
-        Notenauswahl = Auswahl_Noten()
+        selectedScore = select_score_completeOrIndividualVoice()
 
-        Notenauswahl_stripTies = Notenauswahl.stripTies()
+        selectedScore_stripTies = selectedScore.stripTies()
 
-        Notenauswahl_Bezeichnung = str(
+        selectedScore_name = str(
             Erhalte_Key_zu_Value(Noten, Verzeichnis_Partitur_und_Einzelstimmen)
         )
 
-        Kennung = (
-            Notenauswahl_Bezeichnung
+        score_label = (
+            selectedScore_name
             + ", "
             + text_analysis_measures()
             + str(Input_Takte_Anfang)
@@ -5252,7 +5249,7 @@ def Vordefinierte_Darstellungen_HistogramPitchSpace():
 
         Auswahl_Graph = graph.plot.HistogramPitchSpace
 
-        Graph = Auswahl_Graph(Notenauswahl_stripTies)
+        Graph = Auswahl_Graph(selectedScore_stripTies)
 
         Graph.extractData()
 
@@ -5260,17 +5257,17 @@ def Vordefinierte_Darstellungen_HistogramPitchSpace():
 
         for item in Graph.data:
             Werte_Liste.append(
-                [Kennung, item[0], pitch.Pitch(
+                [score_label, item[0], pitch.Pitch(
                     item[0]).nameWithOctave, item[1]]
             )
 
-        Header = text_headers(sys._getframe().f_code.co_name)
+        menu_header = text_headers(sys._getframe().f_code.co_name)
 
         Data = Werte_Liste
 
-        Menuestrukturen_vordefinierte_Darstellungen(
-            Vordefinierte_Darstellungen_HistogramPitchSpace,
-            Header,
+        Menuestrukturen_vordefinierte_visualizations(
+            predefinedVisualizations_HistogramPitchSpace,
+            menu_header,
             Data,
             Graph,
             notes="",
@@ -5289,18 +5286,18 @@ def Vordefinierte_Darstellungen_HistogramPitchSpace():
 # In[58]:
 
 
-def Vordefinierte_Darstellungen_HistogramPitchClass():
+def predefinedVisualizations_HistogramPitchClass():
     try:
-        Notenauswahl = Auswahl_Noten()
+        selectedScore = select_score_completeOrIndividualVoice()
 
-        Notenauswahl_stripTies = Notenauswahl.stripTies()
+        selectedScore_stripTies = selectedScore.stripTies()
 
-        Notenauswahl_Bezeichnung = str(
+        selectedScore_name = str(
             Erhalte_Key_zu_Value(Noten, Verzeichnis_Partitur_und_Einzelstimmen)
         )
 
-        Kennung = (
-            Notenauswahl_Bezeichnung
+        score_label = (
+            selectedScore_name
             + ", "
             + text_analysis_measures()
             + str(Input_Takte_Anfang)
@@ -5310,7 +5307,7 @@ def Vordefinierte_Darstellungen_HistogramPitchClass():
 
         Auswahl_Graph = graph.plot.HistogramPitchClass
 
-        Graph = Auswahl_Graph(Notenauswahl_stripTies)
+        Graph = Auswahl_Graph(selectedScore_stripTies)
 
         Graph.extractData()
 
@@ -5318,17 +5315,17 @@ def Vordefinierte_Darstellungen_HistogramPitchClass():
 
         for item in Graph.data:
             Werte_Liste.append(
-                [Kennung, item[0], pitch.Pitch(
+                [score_label, item[0], pitch.Pitch(
                     item[0]).nameWithOctave, item[1]]
             )
 
-        Header = text_headers(sys._getframe().f_code.co_name)
+        menu_header = text_headers(sys._getframe().f_code.co_name)
 
         Data = Werte_Liste
 
-        Menuestrukturen_vordefinierte_Darstellungen(
-            Vordefinierte_Darstellungen_HistogramPitchClass,
-            Header,
+        Menuestrukturen_vordefinierte_visualizations(
+            predefinedVisualizations_HistogramPitchClass,
+            menu_header,
             Data,
             Graph,
             notes="",
@@ -5347,18 +5344,18 @@ def Vordefinierte_Darstellungen_HistogramPitchClass():
 # In[1]:
 
 
-def Vordefinierte_Darstellungen_HistogramQuarterLength():
+def predefinedVisualizations_HistogramQuarterLength():
     try:
-        Notenauswahl = Auswahl_Noten()
+        selectedScore = select_score_completeOrIndividualVoice()
 
-        Notenauswahl_stripTies = Notenauswahl.stripTies()
+        selectedScore_stripTies = selectedScore.stripTies()
 
-        Notenauswahl_Bezeichnung = str(
+        selectedScore_name = str(
             Erhalte_Key_zu_Value(Noten, Verzeichnis_Partitur_und_Einzelstimmen)
         )
 
-        Kennung = (
-            Notenauswahl_Bezeichnung
+        score_label = (
+            selectedScore_name
             + ", "
             + text_analysis_measures()
             + str(Input_Takte_Anfang)
@@ -5368,7 +5365,7 @@ def Vordefinierte_Darstellungen_HistogramQuarterLength():
 
         Auswahl_Graph = graph.plot.HistogramQuarterLength
 
-        Graph = Auswahl_Graph(Notenauswahl_stripTies)
+        Graph = Auswahl_Graph(selectedScore_stripTies)
 
         Graph.extractData()
 
@@ -5377,20 +5374,20 @@ def Vordefinierte_Darstellungen_HistogramQuarterLength():
         for item in Graph.data:
             Werte_Liste.append(
                 [
-                    Kennung,
+                    score_label,
                     item[0],
                     duration.Duration(quarterLength=float(item[0])).fullName,
                     item[1],
                 ]
             )
 
-        Header = text_headers(sys._getframe().f_code.co_name)
+        menu_header = text_headers(sys._getframe().f_code.co_name)
 
         Data = Werte_Liste
 
-        Menuestrukturen_vordefinierte_Darstellungen(
-            Vordefinierte_Darstellungen_HistogramQuarterLength,
-            Header,
+        Menuestrukturen_vordefinierte_visualizations(
+            predefinedVisualizations_HistogramQuarterLength,
+            menu_header,
             Data,
             Graph,
             notes="",
@@ -5409,18 +5406,18 @@ def Vordefinierte_Darstellungen_HistogramQuarterLength():
 # In[60]:
 
 
-def Vordefinierte_Darstellungen_HorizontalBarPitchSpaceOffset():
+def predefinedVisualizations_HorizontalBarPitchSpaceOffset():
     try:
-        Notenauswahl = Auswahl_Noten()
+        selectedScore = select_score_completeOrIndividualVoice()
 
-        Notenauswahl_stripTies = Notenauswahl.stripTies()
+        selectedScore_stripTies = selectedScore.stripTies()
 
-        Notenauswahl_Bezeichnung = str(
+        selectedScore_name = str(
             Erhalte_Key_zu_Value(Noten, Verzeichnis_Partitur_und_Einzelstimmen)
         )
 
-        Kennung = (
-            Notenauswahl_Bezeichnung
+        score_label = (
+            selectedScore_name
             + ", "
             + text_analysis_measures()
             + str(Input_Takte_Anfang)
@@ -5430,7 +5427,7 @@ def Vordefinierte_Darstellungen_HorizontalBarPitchSpaceOffset():
 
         Auswahl_Graph = graph.plot.HorizontalBarPitchSpaceOffset
 
-        Graph = Auswahl_Graph(Notenauswahl_stripTies)
+        Graph = Auswahl_Graph(selectedScore_stripTies)
 
         Graph.extractData()
 
@@ -5467,7 +5464,7 @@ def Vordefinierte_Darstellungen_HorizontalBarPitchSpaceOffset():
 
                                     Liste_Einsaetze.append(
                                         [
-                                            Kennung,
+                                            score_label,
                                             pitch.Pitch(
                                                 str(x[0][n + 1:])).midi,
                                             x[0],
@@ -5489,7 +5486,7 @@ def Vordefinierte_Darstellungen_HorizontalBarPitchSpaceOffset():
 
                                     Liste_Einsaetze.append(
                                         [
-                                            Kennung,
+                                            score_label,
                                             pitch.Pitch(
                                                 str(x[0][n + 1:])).midi,
                                             x[0],
@@ -5507,7 +5504,7 @@ def Vordefinierte_Darstellungen_HorizontalBarPitchSpaceOffset():
 
                                     Liste_Einsaetze.append(
                                         [
-                                            Kennung,
+                                            score_label,
                                             pitch.Pitch(
                                                 str(x[0][n + 1:])).midi,
                                             x[0],
@@ -5530,7 +5527,7 @@ def Vordefinierte_Darstellungen_HorizontalBarPitchSpaceOffset():
 
                                     Liste_Einsaetze.append(
                                         [
-                                            Kennung,
+                                            score_label,
                                             pitch.Pitch(
                                                 str(x[0][n + 1:])).midi,
                                             x[0],
@@ -5546,7 +5543,7 @@ def Vordefinierte_Darstellungen_HorizontalBarPitchSpaceOffset():
 
                                             Liste_Einsaetze.append(
                                                 [
-                                                    Kennung,
+                                                    score_label,
                                                     pitch.Pitch(
                                                         str(x[0][n + 1:])
                                                     ).midi,
@@ -5559,7 +5556,7 @@ def Vordefinierte_Darstellungen_HorizontalBarPitchSpaceOffset():
                                         else:
                                             Liste_Einsaetze.append(
                                                 [
-                                                    Kennung,
+                                                    score_label,
                                                     pitch.Pitch(
                                                         str(x[0])).midi,
                                                     x[0],
@@ -5579,7 +5576,7 @@ def Vordefinierte_Darstellungen_HorizontalBarPitchSpaceOffset():
 
                                             Liste_Einsaetze.append(
                                                 [
-                                                    Kennung,
+                                                    score_label,
                                                     pitch.Pitch(
                                                         str(x[0][n + 1:])
                                                     ).midi,
@@ -5594,7 +5591,7 @@ def Vordefinierte_Darstellungen_HorizontalBarPitchSpaceOffset():
 
                                             Liste_Einsaetze.append(
                                                 [
-                                                    Kennung,
+                                                    score_label,
                                                     pitch.Pitch(
                                                         str(x[0])).midi,
                                                     x[0],
@@ -5603,15 +5600,15 @@ def Vordefinierte_Darstellungen_HorizontalBarPitchSpaceOffset():
                                                 ]
                                             )
 
-        Header = text_headers(sys._getframe().f_code.co_name)
+        menu_header = text_headers(sys._getframe().f_code.co_name)
 
         Data = Liste_Einsaetze
 
         while True:
-            Auswahl = Oeffne_Untermenue_Daten_mit_Info(Modul_Navigation())
+            Auswahl = open_submenu_Daten_mit_Info(Modul_Navigation())
 
             if Auswahl == "Repeat":
-                Vordefinierte_Darstellungen_HorizontalBarPitchSpaceOffset()
+                predefinedVisualizations_HorizontalBarPitchSpaceOffset()
 
                 break
 
@@ -5620,7 +5617,7 @@ def Vordefinierte_Darstellungen_HorizontalBarPitchSpaceOffset():
 
                 Noten_Speichern_Pfad = us["directoryScratch"]
 
-                Dateiname = input(text_export_filename())
+                Dateiname = input(text_export_fileName())
                 print("")
 
                 Pfad_Dateiname = (
@@ -5628,10 +5625,10 @@ def Vordefinierte_Darstellungen_HorizontalBarPitchSpaceOffset():
                 )
 
                 export_as_csv(
-                    data=Data, columns=Header, save_at=Pfad_Dateiname, do_print=False
+                    data=Data, columns=menu_header, save_at=Pfad_Dateiname, do_print=False
                 )
 
-                print(text_general_save(Noten_Speichern_Pfad, Dateiname, ".csv"))
+                print(text_general_exportSuccessful(Noten_Speichern_Pfad, Dateiname, ".csv"))
                 print("")
 
                 Input = input(text_general_proceed())
@@ -5642,7 +5639,7 @@ def Vordefinierte_Darstellungen_HorizontalBarPitchSpaceOffset():
 
                 Noten_Speichern_Pfad = us["directoryScratch"]
 
-                print(text_general_save_images(Noten_Speichern_Pfad))
+                print(text_general_exportGraph(Noten_Speichern_Pfad))
                 print()
 
                 Graph.doneAction = None
@@ -5669,18 +5666,18 @@ def Vordefinierte_Darstellungen_HorizontalBarPitchSpaceOffset():
 # In[61]:
 
 
-def Vordefinierte_Darstellungen_ScatterWeightedPitchSpaceQuarterLength():
+def predefinedVisualizations_ScatterWeightedPitchSpaceQuarterLength():
     try:
-        Notenauswahl = Auswahl_Noten()
+        selectedScore = select_score_completeOrIndividualVoice()
 
-        Notenauswahl_stripTies = Notenauswahl.stripTies()
+        selectedScore_stripTies = selectedScore.stripTies()
 
-        Notenauswahl_Bezeichnung = str(
+        selectedScore_name = str(
             Erhalte_Key_zu_Value(Noten, Verzeichnis_Partitur_und_Einzelstimmen)
         )
 
-        Kennung = (
-            Notenauswahl_Bezeichnung
+        score_label = (
+            selectedScore_name
             + ", "
             + text_analysis_measures()
             + str(Input_Takte_Anfang)
@@ -5690,7 +5687,7 @@ def Vordefinierte_Darstellungen_ScatterWeightedPitchSpaceQuarterLength():
 
         Auswahl_Graph = graph.plot.ScatterWeightedPitchSpaceQuarterLength
 
-        Graph = Auswahl_Graph(Notenauswahl_stripTies)
+        Graph = Auswahl_Graph(selectedScore_stripTies)
 
         Graph.extractData()
 
@@ -5706,7 +5703,7 @@ def Vordefinierte_Darstellungen_ScatterWeightedPitchSpaceQuarterLength():
         for item in Graph.data:
             Werte_Liste.append(
                 [
-                    Kennung,
+                    score_label,
                     Verzeichnis_Tondauern[item[0]],
                     duration.Duration(
                         quarterLength=float(Verzeichnis_Tondauern[item[0]])
@@ -5717,13 +5714,13 @@ def Vordefinierte_Darstellungen_ScatterWeightedPitchSpaceQuarterLength():
                 ]
             )
 
-        Header = text_headers(sys._getframe().f_code.co_name)
+        menu_header = text_headers(sys._getframe().f_code.co_name)
 
         Data = Werte_Liste
 
-        Menuestrukturen_vordefinierte_Darstellungen(
-            Vordefinierte_Darstellungen_ScatterWeightedPitchSpaceQuarterLength,
-            Header,
+        Menuestrukturen_vordefinierte_visualizations(
+            predefinedVisualizations_ScatterWeightedPitchSpaceQuarterLength,
+            menu_header,
             Data,
             Graph,
             notes="",
@@ -5742,18 +5739,18 @@ def Vordefinierte_Darstellungen_ScatterWeightedPitchSpaceQuarterLength():
 # In[62]:
 
 
-def Vordefinierte_Darstellungen_Plot3DBarsPitchSpaceQuarterLength():
+def predefinedVisualizations_Plot3DBarsPitchSpaceQuarterLength():
     try:
-        Notenauswahl = Auswahl_Noten()
+        selectedScore = select_score_completeOrIndividualVoice()
 
-        Notenauswahl_stripTies = Notenauswahl.stripTies()
+        selectedScore_stripTies = selectedScore.stripTies()
 
-        Notenauswahl_Bezeichnung = str(
+        selectedScore_name = str(
             Erhalte_Key_zu_Value(Noten, Verzeichnis_Partitur_und_Einzelstimmen)
         )
 
-        Kennung = (
-            Notenauswahl_Bezeichnung
+        score_label = (
+            selectedScore_name
             + ", "
             + text_analysis_measures()
             + str(Input_Takte_Anfang)
@@ -5763,7 +5760,7 @@ def Vordefinierte_Darstellungen_Plot3DBarsPitchSpaceQuarterLength():
 
         Auswahl_Graph = graph.plot.Plot3DBarsPitchSpaceQuarterLength
 
-        Graph = Auswahl_Graph(Notenauswahl_stripTies)
+        Graph = Auswahl_Graph(selectedScore_stripTies)
 
         Graph.extractData()
 
@@ -5779,7 +5776,7 @@ def Vordefinierte_Darstellungen_Plot3DBarsPitchSpaceQuarterLength():
         for item in Graph.data:
             Werte_Liste.append(
                 [
-                    Kennung,
+                    score_label,
                     Verzeichnis_Tondauern[item[0]],
                     duration.Duration(
                         quarterLength=float(Verzeichnis_Tondauern[item[0]])
@@ -5790,13 +5787,13 @@ def Vordefinierte_Darstellungen_Plot3DBarsPitchSpaceQuarterLength():
                 ]
             )
 
-        Header = text_headers(sys._getframe().f_code.co_name)
+        menu_header = text_headers(sys._getframe().f_code.co_name)
 
         Data = Werte_Liste
 
-        Menuestrukturen_vordefinierte_Darstellungen(
-            Vordefinierte_Darstellungen_Plot3DBarsPitchSpaceQuarterLength,
-            Header,
+        Menuestrukturen_vordefinierte_visualizations(
+            predefinedVisualizations_Plot3DBarsPitchSpaceQuarterLength,
+            menu_header,
             Data,
             Graph,
             notes="",
@@ -5815,18 +5812,18 @@ def Vordefinierte_Darstellungen_Plot3DBarsPitchSpaceQuarterLength():
 # In[63]:
 
 
-def Vordefinierte_Darstellungen_ScatterWeightedPitchClassQuarterLength():
+def predefinedVisualizations_ScatterWeightedPitchClassQuarterLength():
     try:
-        Notenauswahl = Auswahl_Noten()
+        selectedScore = select_score_completeOrIndividualVoice()
 
-        Notenauswahl_stripTies = Notenauswahl.stripTies()
+        selectedScore_stripTies = selectedScore.stripTies()
 
-        Notenauswahl_Bezeichnung = str(
+        selectedScore_name = str(
             Erhalte_Key_zu_Value(Noten, Verzeichnis_Partitur_und_Einzelstimmen)
         )
 
-        Kennung = (
-            Notenauswahl_Bezeichnung
+        score_label = (
+            selectedScore_name
             + ", "
             + text_analysis_measures()
             + str(Input_Takte_Anfang)
@@ -5836,7 +5833,7 @@ def Vordefinierte_Darstellungen_ScatterWeightedPitchClassQuarterLength():
 
         Auswahl_Graph = graph.plot.ScatterWeightedPitchClassQuarterLength
 
-        Graph = Auswahl_Graph(Notenauswahl_stripTies)
+        Graph = Auswahl_Graph(selectedScore_stripTies)
 
         Graph.extractData()
 
@@ -5852,7 +5849,7 @@ def Vordefinierte_Darstellungen_ScatterWeightedPitchClassQuarterLength():
         for item in Graph.data:
             Werte_Liste.append(
                 [
-                    Kennung,
+                    score_label,
                     Verzeichnis_Tondauern[item[0]],
                     duration.Duration(
                         quarterLength=float(Verzeichnis_Tondauern[item[0]])
@@ -5863,13 +5860,13 @@ def Vordefinierte_Darstellungen_ScatterWeightedPitchClassQuarterLength():
                 ]
             )
 
-        Header = text_headers(sys._getframe().f_code.co_name)
+        menu_header = text_headers(sys._getframe().f_code.co_name)
 
         Data = Werte_Liste
 
-        Menuestrukturen_vordefinierte_Darstellungen(
-            Vordefinierte_Darstellungen_ScatterWeightedPitchClassQuarterLength,
-            Header,
+        Menuestrukturen_vordefinierte_visualizations(
+            predefinedVisualizations_ScatterWeightedPitchClassQuarterLength,
+            menu_header,
             Data,
             Graph,
             notes="",
@@ -5888,18 +5885,18 @@ def Vordefinierte_Darstellungen_ScatterWeightedPitchClassQuarterLength():
 # In[64]:
 
 
-def Vordefinierte_Darstellungen_ScatterPitchClassOffset():
+def predefinedVisualizations_ScatterPitchClassOffset():
     try:
-        Notenauswahl = Auswahl_Noten()
+        selectedScore = select_score_completeOrIndividualVoice()
 
-        Notenauswahl_stripTies = Notenauswahl.stripTies()
+        selectedScore_stripTies = selectedScore.stripTies()
 
-        Notenauswahl_Bezeichnung = str(
+        selectedScore_name = str(
             Erhalte_Key_zu_Value(Noten, Verzeichnis_Partitur_und_Einzelstimmen)
         )
 
-        Kennung = (
-            Notenauswahl_Bezeichnung
+        score_label = (
+            selectedScore_name
             + ", "
             + text_analysis_measures()
             + str(Input_Takte_Anfang)
@@ -5909,7 +5906,7 @@ def Vordefinierte_Darstellungen_ScatterPitchClassOffset():
 
         Auswahl_Graph = graph.plot.ScatterPitchClassOffset
 
-        Graph = Auswahl_Graph(Notenauswahl_stripTies)
+        Graph = Auswahl_Graph(selectedScore_stripTies)
 
         Graph.extractData()
 
@@ -5917,17 +5914,17 @@ def Vordefinierte_Darstellungen_ScatterPitchClassOffset():
 
         for item in Graph.data:
             Werte_Liste.append(
-                [Kennung, item[1], pitch.Pitch(
+                [score_label, item[1], pitch.Pitch(
                     item[1]).nameWithOctave, item[0]]
             )
 
-        Header = text_headers(sys._getframe().f_code.co_name)
+        menu_header = text_headers(sys._getframe().f_code.co_name)
 
         Data = Werte_Liste
 
-        Menuestrukturen_vordefinierte_Darstellungen(
-            Vordefinierte_Darstellungen_ScatterPitchClassOffset,
-            Header,
+        Menuestrukturen_vordefinierte_visualizations(
+            predefinedVisualizations_ScatterPitchClassOffset,
+            menu_header,
             Data,
             Graph,
             notes="",
@@ -5946,18 +5943,18 @@ def Vordefinierte_Darstellungen_ScatterPitchClassOffset():
 # In[65]:
 
 
-def Vordefinierte_Darstellungen_ScatterWeightedPitchSpaceDynamicSymbol():
+def predefinedVisualizations_ScatterWeightedPitchSpaceDynamicSymbol():
     try:
-        Notenauswahl = Auswahl_Noten()
+        selectedScore = select_score_completeOrIndividualVoice()
 
-        Notenauswahl_stripTies = Notenauswahl.stripTies()
+        selectedScore_stripTies = selectedScore.stripTies()
 
-        Notenauswahl_Bezeichnung = str(
+        selectedScore_name = str(
             Erhalte_Key_zu_Value(Noten, Verzeichnis_Partitur_und_Einzelstimmen)
         )
 
-        Kennung = (
-            Notenauswahl_Bezeichnung
+        score_label = (
+            selectedScore_name
             + ", "
             + text_analysis_measures()
             + str(Input_Takte_Anfang)
@@ -5967,7 +5964,7 @@ def Vordefinierte_Darstellungen_ScatterWeightedPitchSpaceDynamicSymbol():
 
         Auswahl_Graph = graph.plot.ScatterWeightedPitchSpaceDynamicSymbol
 
-        Graph = Auswahl_Graph(Notenauswahl_stripTies)
+        Graph = Auswahl_Graph(selectedScore_stripTies)
 
         Graph.extractData()
 
@@ -5983,7 +5980,7 @@ def Vordefinierte_Darstellungen_ScatterWeightedPitchSpaceDynamicSymbol():
         for item in Graph.data:
             Werte_Liste.append(
                 [
-                    Kennung,
+                    score_label,
                     item[0],
                     pitch.Pitch(item[0]).nameWithOctave,
                     Verzeichnis_Dynamiken[item[1]],
@@ -5991,13 +5988,13 @@ def Vordefinierte_Darstellungen_ScatterWeightedPitchSpaceDynamicSymbol():
                 ]
             )
 
-        Header = text_headers(sys._getframe().f_code.co_name)
+        menu_header = text_headers(sys._getframe().f_code.co_name)
 
         Data = Werte_Liste
 
-        Menuestrukturen_vordefinierte_Darstellungen(
-            Vordefinierte_Darstellungen_ScatterWeightedPitchSpaceDynamicSymbol,
-            Header,
+        Menuestrukturen_vordefinierte_visualizations(
+            predefinedVisualizations_ScatterWeightedPitchSpaceDynamicSymbol,
+            menu_header,
             Data,
             Graph,
             notes="",
@@ -6016,18 +6013,18 @@ def Vordefinierte_Darstellungen_ScatterWeightedPitchSpaceDynamicSymbol():
 # In[66]:
 
 
-def Vordefinierte_Darstellungen_HorizontalBarPitchClassOffset():
+def predefinedVisualizations_HorizontalBarPitchClassOffset():
     try:
-        Notenauswahl = Auswahl_Noten()
+        selectedScore = select_score_completeOrIndividualVoice()
 
-        Notenauswahl_stripTies = Notenauswahl.stripTies()
+        selectedScore_stripTies = selectedScore.stripTies()
 
-        Notenauswahl_Bezeichnung = str(
+        selectedScore_name = str(
             Erhalte_Key_zu_Value(Noten, Verzeichnis_Partitur_und_Einzelstimmen)
         )
 
-        Kennung = (
-            Notenauswahl_Bezeichnung
+        score_label = (
+            selectedScore_name
             + ", "
             + text_analysis_measures()
             + str(Input_Takte_Anfang)
@@ -6037,7 +6034,7 @@ def Vordefinierte_Darstellungen_HorizontalBarPitchClassOffset():
 
         Auswahl_Graph = graph.plot.HorizontalBarPitchClassOffset
 
-        Graph = Auswahl_Graph(Notenauswahl_stripTies)
+        Graph = Auswahl_Graph(selectedScore_stripTies)
 
         Graph.extractData()
 
@@ -6056,7 +6053,7 @@ def Vordefinierte_Darstellungen_HorizontalBarPitchClassOffset():
 
                                     Liste_Einsaetze.append(
                                         [
-                                            Kennung,
+                                            score_label,
                                             pitch.Pitch(
                                                 str(x[0][n + 1:])).pitchClass,
                                             str(x[0]),
@@ -6068,7 +6065,7 @@ def Vordefinierte_Darstellungen_HorizontalBarPitchClassOffset():
                                 else:
                                     Liste_Einsaetze.append(
                                         [
-                                            Kennung,
+                                            score_label,
                                             pitch.Pitch(str(x[0])).pitchClass,
                                             str(x[0]),
                                             z[0],
@@ -6076,15 +6073,15 @@ def Vordefinierte_Darstellungen_HorizontalBarPitchClassOffset():
                                         ]
                                     )
 
-        Header = text_headers(sys._getframe().f_code.co_name)
+        menu_header = text_headers(sys._getframe().f_code.co_name)
 
         Data = Liste_Einsaetze
 
         while True:
-            Auswahl = Oeffne_Untermenue_Daten_mit_Info(Modul_Navigation())
+            Auswahl = open_submenu_Daten_mit_Info(Modul_Navigation())
 
             if Auswahl == "Repeat":
-                Vordefinierte_Darstellungen_HorizontalBarPitchClassOffset()
+                predefinedVisualizations_HorizontalBarPitchClassOffset()
 
                 break
 
@@ -6093,7 +6090,7 @@ def Vordefinierte_Darstellungen_HorizontalBarPitchClassOffset():
 
                 Noten_Speichern_Pfad = us["directoryScratch"]
 
-                Dateiname = input(text_export_filename())
+                Dateiname = input(text_export_fileName())
                 print("")
 
                 Pfad_Dateiname = (
@@ -6101,10 +6098,10 @@ def Vordefinierte_Darstellungen_HorizontalBarPitchClassOffset():
                 )
 
                 export_as_csv(
-                    data=Data, columns=Header, save_at=Pfad_Dateiname, do_print=False
+                    data=Data, columns=menu_header, save_at=Pfad_Dateiname, do_print=False
                 )
 
-                print(text_general_save(Noten_Speichern_Pfad, Dateiname, ".csv"))
+                print(text_general_exportSuccessful(Noten_Speichern_Pfad, Dateiname, ".csv"))
                 print("")
 
                 Input = input(text_general_proceed())
@@ -6115,7 +6112,7 @@ def Vordefinierte_Darstellungen_HorizontalBarPitchClassOffset():
 
                 Noten_Speichern_Pfad = us["directoryScratch"]
 
-                print(text_general_save_images(Noten_Speichern_Pfad))
+                print(text_general_exportGraph(Noten_Speichern_Pfad))
                 print()
 
                 Graph.doneAction = None
@@ -6142,22 +6139,22 @@ def Vordefinierte_Darstellungen_HorizontalBarPitchClassOffset():
 # In[67]:
 
 
-def Vordefinierte_Darstellungen_Dolan():
-    clear_Screen()
+def predefinedVisualizations_Dolan():
+    clear_screen()
 
     # --- Unterhalb: Code des Tools ---
 
-    Notenauswahl = Auswahl_Noten()
+    selectedScore = select_score_completeOrIndividualVoice()
 
-    Notenauswahl_stripTies = Notenauswahl.stripTies()
+    selectedScore_stripTies = selectedScore.stripTies()
 
-    print(text_analysis_notes_Vordefinierte_Darstellungen_Dolan())
+    print(text_analysis_notes_predefinedVisualizations_Dolan())
     print("")
 
     try:
         Auswahl_Graph = graph.plot.Dolan
 
-        Graph = Auswahl_Graph(Notenauswahl_stripTies)
+        Graph = Auswahl_Graph(selectedScore_stripTies)
 
         Graph.doneAction = None
         Graph.run()
@@ -6175,7 +6172,7 @@ def Vordefinierte_Darstellungen_Dolan():
 
     # --- Oberhalb: Code des Tools ---
 
-    Menue_Frage_Tool_Wiederholen(Vordefinierte_Darstellungen_Dolan)
+    Menue_Frage_Tool_Wiederholen(predefinedVisualizations_Dolan)
 
 
 # # Mustersuche
@@ -6185,24 +6182,24 @@ def Vordefinierte_Darstellungen_Dolan():
 # In[68]:
 
 
-def Oeffne_Untermenue_Mustersuche(Liste):
+def open_submenu_patternSearch(Liste):
     while True:
-        clear_Screen()
+        clear_screen()
 
-        Header = text_menu_headers(sys._getframe().f_code.co_name)
+        menu_header = text_menu_headers(sys._getframe().f_code.co_name)
 
-        print(Header)
+        print(menu_header)
         print("")
 
-        print(text_pattern_search_show_pattern_selection(Suchpattern))
+        print(text_patternSearch_showPatternSelection(Suchpattern))
         print("")
 
         print(text_menu_selection_header())
         print("")
 
-        Header = text_menu_headers_without_explenation()
+        menu_header = text_menu_headers_withoutExplenation()
 
-        print("{:<4} {:<65}\n".format(Header[0], Header[1]))
+        print("{:<4} {:<65}\n".format(menu_header[0], menu_header[1]))
 
         for index, item in enumerate(Liste, 1):
             print("{:<4} {:<65}".format(index, item[0]))
@@ -6216,19 +6213,19 @@ def Oeffne_Untermenue_Mustersuche(Liste):
             Input_Menueauswahl_Int = int(Input_Menueauswahl) - 1
 
             if 0 <= Input_Menueauswahl_Int < len(Liste):
-                clear_Screen()
+                clear_screen()
 
                 return Liste[Input_Menueauswahl_Int][1]
 
             else:
-                print(text_menu_selection_exception_out_of_range(len(Liste)))
+                print(text_menu_exception_selectionOutOfRange(len(Liste)))
                 print("")
 
                 Input = input(text_general_proceed())
                 print("")
 
         else:
-            print(text_menu_selection_exception_out_of_range(len(Liste)))
+            print(text_menu_exception_selectionOutOfRange(len(Liste)))
             print("")
 
             Input = input(text_general_proceed())
@@ -6242,16 +6239,16 @@ def Oeffne_Untermenue_Mustersuche(Liste):
 # In[69]:
 
 
-def Mustersuche_Menuestruktur_Tonfolge_ohne_Transposition_ohne_Rhythmus():
+def patternSearch_menuStructure_toneSequence_withoutTransposition_withoutRhythm():
     try:
         music = deepcopy(Partitur.stripTies(inPlace=True))
 
-        StreamMot = Mustersuche_enter_search_pattern_without_rhythm()
+        StreamMot = patternSearch_enter_search_pattern_without_rhythm()
 
         while True:
-            clear_Screen()
+            clear_screen()
 
-            Input = input(text_pattern_search_include_rests())
+            Input = input(text_patternSearch_includeRests())
             print("")
 
             if Rueckgabe_Wahrheitswert_ja_1(Input):
@@ -6265,7 +6262,7 @@ def Mustersuche_Menuestruktur_Tonfolge_ohne_Transposition_ohne_Rhythmus():
                 break
 
             else:
-                print(text_general_restricted_yes_no())
+                print(text_general_input_RestrictedToYesAndNo())
                 print("")
 
                 Input = input(text_general_proceed())
@@ -6273,7 +6270,7 @@ def Mustersuche_Menuestruktur_Tonfolge_ohne_Transposition_ohne_Rhythmus():
 
         p_full_piece = search.noteNameSearch(full_piece_stream, StreamMot)
 
-        print(text_pattern_search_patterns_found(len(p_full_piece)))
+        print(text_patternSearch_patternsFound(len(p_full_piece)))
         print("")
 
         Input = input(text_general_proceed())
@@ -6302,11 +6299,11 @@ def Mustersuche_Menuestruktur_Tonfolge_ohne_Transposition_ohne_Rhythmus():
 
             Zaehler += 1
 
-        Header = text_headers(sys._getframe().f_code.co_name)
+        menu_header = text_headers(sys._getframe().f_code.co_name)
 
         Data = Muster_Liste
 
-        Ergebnisliste(Header, Data)
+        show_resultslist(menu_header, Data)
 
     except Exception as e:
         print(text_exception_general(e, sys._getframe().f_code.co_name))
@@ -6317,11 +6314,11 @@ def Mustersuche_Menuestruktur_Tonfolge_ohne_Transposition_ohne_Rhythmus():
 
     while True:
         try:
-            Auswahl = Oeffne_Untermenue_Daten_mit_Info(
-                Modul_Navigation_Mustersuche())
+            Auswahl = open_submenu_Daten_mit_Info(
+                modul_navigation_patternSearch())
 
             if Auswahl == "Repeat":
-                Mustersuche_Menuestruktur_Tonfolge_ohne_Transposition_ohne_Rhythmus()
+                patternSearch_menuStructure_toneSequence_withoutTransposition_withoutRhythm()
 
                 break
 
@@ -6330,7 +6327,7 @@ def Mustersuche_Menuestruktur_Tonfolge_ohne_Transposition_ohne_Rhythmus():
 
                 Noten_Speichern_Pfad = us["directoryScratch"]
 
-                Dateiname = input(text_export_filename())
+                Dateiname = input(text_export_fileName())
                 print("")
 
                 Pfad_Dateiname = (
@@ -6338,10 +6335,10 @@ def Mustersuche_Menuestruktur_Tonfolge_ohne_Transposition_ohne_Rhythmus():
                 )
 
                 export_as_csv(
-                    data=Data, columns=Header, save_at=Pfad_Dateiname, do_print=False
+                    data=Data, columns=menu_header, save_at=Pfad_Dateiname, do_print=False
                 )
 
-                print(text_general_save(Noten_Speichern_Pfad, Dateiname, ".csv"))
+                print(text_general_exportSuccessful(Noten_Speichern_Pfad, Dateiname, ".csv"))
                 print()
 
                 Input = input(text_general_proceed())
@@ -6357,7 +6354,7 @@ def Mustersuche_Menuestruktur_Tonfolge_ohne_Transposition_ohne_Rhythmus():
 
                 Noten_Speichern_Pfad = us["directoryScratch"]
 
-                Dateiname = input(text_export_filename())
+                Dateiname = input(text_export_fileName())
                 print("")
 
                 Pfad_Dateiname = (
@@ -6366,7 +6363,7 @@ def Mustersuche_Menuestruktur_Tonfolge_ohne_Transposition_ohne_Rhythmus():
 
                 mf = music.write("xml", fp=Pfad_Dateiname)
 
-                print(text_general_save(Noten_Speichern_Pfad, Dateiname, ".xml"))
+                print(text_general_exportSuccessful(Noten_Speichern_Pfad, Dateiname, ".xml"))
                 print("")
 
                 Input = input(text_general_proceed())
@@ -6388,16 +6385,16 @@ def Mustersuche_Menuestruktur_Tonfolge_ohne_Transposition_ohne_Rhythmus():
 # In[70]:
 
 
-def Mustersuche_Menuestruktur_Tonfolge_mit_Transposition_ohne_Rhythmus():
+def patternSearch_menuStructure_toneSequence_withTransposition_withoutRhythm():
     try:
         music = deepcopy(Partitur.stripTies(inPlace=True))
 
-        StreamMot = Mustersuche_enter_search_pattern_without_rhythm()
+        StreamMot = patternSearch_enter_search_pattern_without_rhythm()
 
         while True:
-            clear_Screen()
+            clear_screen()
 
-            Input = input(text_pattern_search_include_rests())
+            Input = input(text_patternSearch_includeRests())
             print("")
 
             if Rueckgabe_Wahrheitswert_ja_1(Input):
@@ -6411,7 +6408,7 @@ def Mustersuche_Menuestruktur_Tonfolge_mit_Transposition_ohne_Rhythmus():
                 break
 
             else:
-                print(text_general_restricted_yes_no())
+                print(text_general_input_RestrictedToYesAndNo())
                 print("")
 
                 Input = input(text_general_proceed())
@@ -6465,17 +6462,17 @@ def Mustersuche_Menuestruktur_Tonfolge_mit_Transposition_ohne_Rhythmus():
 
             Durchlauf += 1
 
-        print(text_pattern_search_patterns_found(len(results)))
+        print(text_patternSearch_patternsFound(len(results)))
         print("")
 
         Input = input(text_general_proceed())
         print("")
 
-        Header = text_headers(sys._getframe().f_code.co_name)
+        menu_header = text_headers(sys._getframe().f_code.co_name)
 
         Data = Muster_Liste
 
-        Ergebnisliste(Header, Data)
+        show_resultslist(menu_header, Data)
 
     except Exception as e:
         print(text_exception_general(e, sys._getframe().f_code.co_name))
@@ -6486,11 +6483,11 @@ def Mustersuche_Menuestruktur_Tonfolge_mit_Transposition_ohne_Rhythmus():
 
     while True:
         try:
-            Auswahl = Oeffne_Untermenue_Daten_mit_Info(
-                Modul_Navigation_Mustersuche())
+            Auswahl = open_submenu_Daten_mit_Info(
+                modul_navigation_patternSearch())
 
             if Auswahl == "Repeat":
-                Mustersuche_Menuestruktur_Tonfolge_mit_Transposition_ohne_Rhythmus()
+                patternSearch_menuStructure_toneSequence_withTransposition_withoutRhythm()
 
                 break
 
@@ -6499,7 +6496,7 @@ def Mustersuche_Menuestruktur_Tonfolge_mit_Transposition_ohne_Rhythmus():
 
                 Noten_Speichern_Pfad = us["directoryScratch"]
 
-                Dateiname = input(text_export_filename())
+                Dateiname = input(text_export_fileName())
                 print("")
 
                 Pfad_Dateiname = (
@@ -6507,10 +6504,10 @@ def Mustersuche_Menuestruktur_Tonfolge_mit_Transposition_ohne_Rhythmus():
                 )
 
                 export_as_csv(
-                    data=Data, columns=Header, save_at=Pfad_Dateiname, do_print=False
+                    data=Data, columns=menu_header, save_at=Pfad_Dateiname, do_print=False
                 )
 
-                print(text_general_save(Noten_Speichern_Pfad, Dateiname, ".csv"))
+                print(text_general_exportSuccessful(Noten_Speichern_Pfad, Dateiname, ".csv"))
                 print()
 
                 Input = input(text_general_proceed())
@@ -6526,7 +6523,7 @@ def Mustersuche_Menuestruktur_Tonfolge_mit_Transposition_ohne_Rhythmus():
 
                 Noten_Speichern_Pfad = us["directoryScratch"]
 
-                Dateiname = input(text_export_filename())
+                Dateiname = input(text_export_fileName())
                 print("")
 
                 Pfad_Dateiname = (
@@ -6535,7 +6532,7 @@ def Mustersuche_Menuestruktur_Tonfolge_mit_Transposition_ohne_Rhythmus():
 
                 mf = music.write("xml", fp=Pfad_Dateiname)
 
-                print(text_general_save(Noten_Speichern_Pfad, Dateiname, ".xml"))
+                print(text_general_exportSuccessful(Noten_Speichern_Pfad, Dateiname, ".xml"))
                 print("")
 
                 Input = input(text_general_proceed())
@@ -6557,16 +6554,16 @@ def Mustersuche_Menuestruktur_Tonfolge_mit_Transposition_ohne_Rhythmus():
 # In[71]:
 
 
-def Mustersuche_Menuestruktur_Tonfolge_ohne_Transposition_mit_Rhythmus():
+def patternSearch_menuStructure_toneSequence_withoutTransposition_withRhythm():
     try:
         music = deepcopy(Partitur.stripTies(inPlace=True))
 
-        StreamMot = Mustersuche_enter_search_pattern_with_rhythm()
+        StreamMot = patternSearch_enter_search_pattern_with_rhythm()
 
         while True:
-            clear_Screen()
+            clear_screen()
 
-            Input = input(text_pattern_search_include_rests())
+            Input = input(text_patternSearch_includeRests())
             print("")
 
             if Rueckgabe_Wahrheitswert_ja_1(Input):
@@ -6580,7 +6577,7 @@ def Mustersuche_Menuestruktur_Tonfolge_ohne_Transposition_mit_Rhythmus():
                 break
 
             else:
-                print(text_general_restricted_yes_no())
+                print(text_general_input_RestrictedToYesAndNo())
                 print("")
 
                 Input = input(text_general_proceed())
@@ -6590,7 +6587,7 @@ def Mustersuche_Menuestruktur_Tonfolge_ohne_Transposition_mit_Rhythmus():
 
         p = search.noteNameRhythmicSearch(s, StreamMot)
 
-        print(text_pattern_search_patterns_found(len(p)))
+        print(text_patternSearch_patternsFound(len(p)))
         print("")
 
         Input = input(text_general_proceed())
@@ -6619,11 +6616,11 @@ def Mustersuche_Menuestruktur_Tonfolge_ohne_Transposition_mit_Rhythmus():
 
             zähler += 1
 
-        Header = text_headers(sys._getframe().f_code.co_name)
+        menu_header = text_headers(sys._getframe().f_code.co_name)
 
         Data = Muster_Liste
 
-        Ergebnisliste(Header, Data)
+        show_resultslist(menu_header, Data)
 
     except Exception as e:
         print(text_exception_general(e, sys._getframe().f_code.co_name))
@@ -6634,11 +6631,11 @@ def Mustersuche_Menuestruktur_Tonfolge_ohne_Transposition_mit_Rhythmus():
 
     while True:
         try:
-            Auswahl = Oeffne_Untermenue_Daten_mit_Info(
-                Modul_Navigation_Mustersuche())
+            Auswahl = open_submenu_Daten_mit_Info(
+                modul_navigation_patternSearch())
 
             if Auswahl == "Repeat":
-                Mustersuche_Menuestruktur_Tonfolge_ohne_Transposition_mit_Rhythmus()
+                patternSearch_menuStructure_toneSequence_withoutTransposition_withRhythm()
 
                 break
 
@@ -6647,7 +6644,7 @@ def Mustersuche_Menuestruktur_Tonfolge_ohne_Transposition_mit_Rhythmus():
 
                 Noten_Speichern_Pfad = us["directoryScratch"]
 
-                Dateiname = input(text_export_filename())
+                Dateiname = input(text_export_fileName())
                 print("")
 
                 Pfad_Dateiname = (
@@ -6655,10 +6652,10 @@ def Mustersuche_Menuestruktur_Tonfolge_ohne_Transposition_mit_Rhythmus():
                 )
 
                 export_as_csv(
-                    data=Data, columns=Header, save_at=Pfad_Dateiname, do_print=False
+                    data=Data, columns=menu_header, save_at=Pfad_Dateiname, do_print=False
                 )
 
-                print(text_general_save(Noten_Speichern_Pfad, Dateiname, ".csv"))
+                print(text_general_exportSuccessful(Noten_Speichern_Pfad, Dateiname, ".csv"))
                 print()
 
                 Input = input(text_general_proceed())
@@ -6674,7 +6671,7 @@ def Mustersuche_Menuestruktur_Tonfolge_ohne_Transposition_mit_Rhythmus():
 
                 Noten_Speichern_Pfad = us["directoryScratch"]
 
-                Dateiname = input(text_export_filename())
+                Dateiname = input(text_export_fileName())
                 print("")
 
                 Pfad_Dateiname = (
@@ -6683,7 +6680,7 @@ def Mustersuche_Menuestruktur_Tonfolge_ohne_Transposition_mit_Rhythmus():
 
                 mf = music.write("xml", fp=Pfad_Dateiname)
 
-                print(text_general_save(Noten_Speichern_Pfad, Dateiname, ".xml"))
+                print(text_general_exportSuccessful(Noten_Speichern_Pfad, Dateiname, ".xml"))
                 print("")
 
                 Input = input(text_general_proceed())
@@ -6705,16 +6702,16 @@ def Mustersuche_Menuestruktur_Tonfolge_ohne_Transposition_mit_Rhythmus():
 # In[72]:
 
 
-def Mustersuche_Menuestruktur_Tonfolge_mit_Transposition_mit_Rhythmus():
+def patternSearch_menuStructure_toneSequence_withTransposition_withRhythm():
     try:
         music = deepcopy(Partitur.stripTies(inPlace=True))
 
-        StreamMot = Mustersuche_enter_search_pattern_with_rhythm()
+        StreamMot = patternSearch_enter_search_pattern_with_rhythm()
 
         while True:
-            clear_Screen()
+            clear_screen()
 
-            Input = input(text_pattern_search_include_rests())
+            Input = input(text_patternSearch_includeRests())
             print("")
 
             if Rueckgabe_Wahrheitswert_ja_1(Input):
@@ -6728,7 +6725,7 @@ def Mustersuche_Menuestruktur_Tonfolge_mit_Transposition_mit_Rhythmus():
                 break
 
             else:
-                print(text_general_restricted_yes_no())
+                print(text_general_input_RestrictedToYesAndNo())
                 print("")
 
                 Input = input(text_general_proceed())
@@ -6771,17 +6768,17 @@ def Mustersuche_Menuestruktur_Tonfolge_mit_Transposition_mit_Rhythmus():
 
             Durchlauf += 1
 
-        print(text_pattern_search_patterns_found(len(results)))
+        print(text_patternSearch_patternsFound(len(results)))
         print("")
 
         Input = input(text_general_proceed())
         print("")
 
-        Header = text_headers(sys._getframe().f_code.co_name)
+        menu_header = text_headers(sys._getframe().f_code.co_name)
 
         Data = Muster_Liste
 
-        Ergebnisliste(Header, Data)
+        show_resultslist(menu_header, Data)
 
     except Exception as e:
         print(text_exception_general(e, sys._getframe().f_code.co_name))
@@ -6792,11 +6789,11 @@ def Mustersuche_Menuestruktur_Tonfolge_mit_Transposition_mit_Rhythmus():
 
     while True:
         try:
-            Auswahl = Oeffne_Untermenue_Daten_mit_Info(
-                Modul_Navigation_Mustersuche())
+            Auswahl = open_submenu_Daten_mit_Info(
+                modul_navigation_patternSearch())
 
             if Auswahl == "Repeat":
-                Mustersuche_Menuestruktur_Tonfolge_mit_Transposition_mit_Rhythmus()
+                patternSearch_menuStructure_toneSequence_withTransposition_withRhythm()
 
                 break
 
@@ -6805,7 +6802,7 @@ def Mustersuche_Menuestruktur_Tonfolge_mit_Transposition_mit_Rhythmus():
 
                 Noten_Speichern_Pfad = us["directoryScratch"]
 
-                Dateiname = input(text_export_filename())
+                Dateiname = input(text_export_fileName())
                 print("")
 
                 Pfad_Dateiname = (
@@ -6813,10 +6810,10 @@ def Mustersuche_Menuestruktur_Tonfolge_mit_Transposition_mit_Rhythmus():
                 )
 
                 export_as_csv(
-                    data=Data, columns=Header, save_at=Pfad_Dateiname, do_print=False
+                    data=Data, columns=menu_header, save_at=Pfad_Dateiname, do_print=False
                 )
 
-                print(text_general_save(Noten_Speichern_Pfad, Dateiname, ".csv"))
+                print(text_general_exportSuccessful(Noten_Speichern_Pfad, Dateiname, ".csv"))
                 print()
 
                 Input = input(text_general_proceed())
@@ -6832,7 +6829,7 @@ def Mustersuche_Menuestruktur_Tonfolge_mit_Transposition_mit_Rhythmus():
 
                 Noten_Speichern_Pfad = us["directoryScratch"]
 
-                Dateiname = input(text_export_filename())
+                Dateiname = input(text_export_fileName())
                 print("")
 
                 Pfad_Dateiname = (
@@ -6841,7 +6838,7 @@ def Mustersuche_Menuestruktur_Tonfolge_mit_Transposition_mit_Rhythmus():
 
                 mf = music.write("xml", fp=Pfad_Dateiname)
 
-                print(text_general_save(Noten_Speichern_Pfad, Dateiname, ".xml"))
+                print(text_general_exportSuccessful(Noten_Speichern_Pfad, Dateiname, ".xml"))
                 print("")
 
                 Input = input(text_general_proceed())
@@ -6863,16 +6860,16 @@ def Mustersuche_Menuestruktur_Tonfolge_mit_Transposition_mit_Rhythmus():
 # In[ ]:
 
 
-def Mustersuche_Menuestruktur_Rhythmus_ohne_Tonhöhen():
+def patternSearch_menuStructure_rhythm_withoutPitch():
     try:
         music = deepcopy(Partitur.stripTies(inPlace=True))
 
-        StreamMot = Mustersuche_enter_search_pattern_only_rhythm()
+        StreamMot = patternSearch_enter_search_pattern_only_rhythm()
 
         while True:
-            clear_Screen()
+            clear_screen()
 
-            Input = input(text_pattern_search_include_rests())
+            Input = input(text_patternSearch_includeRests())
             print("")
 
             if Rueckgabe_Wahrheitswert_ja_1(Input):
@@ -6886,7 +6883,7 @@ def Mustersuche_Menuestruktur_Rhythmus_ohne_Tonhöhen():
                 break
 
             else:
-                print(text_general_restricted_yes_no())
+                print(text_general_input_RestrictedToYesAndNo())
                 print("")
 
                 Input = input(text_general_proceed())
@@ -6896,7 +6893,7 @@ def Mustersuche_Menuestruktur_Rhythmus_ohne_Tonhöhen():
 
         p = search.rhythmicSearch(s, StreamMot)
 
-        print(text_pattern_search_patterns_found(len(p)))
+        print(text_patternSearch_patternsFound(len(p)))
         print("")
 
         Input = input(text_general_proceed())
@@ -6925,11 +6922,11 @@ def Mustersuche_Menuestruktur_Rhythmus_ohne_Tonhöhen():
 
             zähler += 1
 
-        Header = text_headers(sys._getframe().f_code.co_name)
+        menu_header = text_headers(sys._getframe().f_code.co_name)
 
         Data = Muster_Liste
 
-        Ergebnisliste(Header, Data)
+        show_resultslist(menu_header, Data)
 
     except Exception as e:
         print(text_exception_general(e, sys._getframe().f_code.co_name))
@@ -6940,11 +6937,11 @@ def Mustersuche_Menuestruktur_Rhythmus_ohne_Tonhöhen():
 
     while True:
         try:
-            Auswahl = Oeffne_Untermenue_Daten_mit_Info(
-                Modul_Navigation_Mustersuche())
+            Auswahl = open_submenu_Daten_mit_Info(
+                modul_navigation_patternSearch())
 
             if Auswahl == "Repeat":
-                Mustersuche_Menuestruktur_Rhythmus_ohne_Tonhöhen()
+                patternSearch_menuStructure_rhythm_withoutPitch()
 
                 break
 
@@ -6953,7 +6950,7 @@ def Mustersuche_Menuestruktur_Rhythmus_ohne_Tonhöhen():
 
                 Noten_Speichern_Pfad = us["directoryScratch"]
 
-                Dateiname = input(text_export_filename())
+                Dateiname = input(text_export_fileName())
                 print("")
 
                 Pfad_Dateiname = (
@@ -6961,10 +6958,10 @@ def Mustersuche_Menuestruktur_Rhythmus_ohne_Tonhöhen():
                 )
 
                 export_as_csv(
-                    data=Data, columns=Header, save_at=Pfad_Dateiname, do_print=False
+                    data=Data, columns=menu_header, save_at=Pfad_Dateiname, do_print=False
                 )
 
-                print(text_general_save(Noten_Speichern_Pfad, Dateiname, ".csv"))
+                print(text_general_exportSuccessful(Noten_Speichern_Pfad, Dateiname, ".csv"))
                 print()
 
                 Input = input(text_general_proceed())
@@ -6980,7 +6977,7 @@ def Mustersuche_Menuestruktur_Rhythmus_ohne_Tonhöhen():
 
                 Noten_Speichern_Pfad = us["directoryScratch"]
 
-                Dateiname = input(text_export_filename())
+                Dateiname = input(text_export_fileName())
                 print("")
 
                 Pfad_Dateiname = (
@@ -6989,7 +6986,7 @@ def Mustersuche_Menuestruktur_Rhythmus_ohne_Tonhöhen():
 
                 mf = music.write("xml", fp=Pfad_Dateiname)
 
-                print(text_general_save(Noten_Speichern_Pfad, Dateiname, ".xml"))
+                print(text_general_exportSuccessful(Noten_Speichern_Pfad, Dateiname, ".xml"))
                 print("")
 
                 Input = input(text_general_proceed())
@@ -7200,7 +7197,7 @@ def rhythm_selection_menu_entries_only_rhythm():
 # In[ ]:
 
 
-def Mustersuche_enter_search_pattern_with_rhythm():
+def patternSearch_enter_search_pattern_with_rhythm():
     try:
         global Suchpattern
 
@@ -7214,10 +7211,10 @@ def Mustersuche_enter_search_pattern_with_rhythm():
             loopDone2 = False
 
             while not loopDone2:
-                Tonauswahl = Oeffne_Untermenue_Mustersuche(
+                Tonauswahl = open_submenu_patternSearch(
                     key_selection_menu_entries())
 
-                clear_Screen()
+                clear_screen()
 
                 if Tonauswahl == "remove":
                     if len(Suchpattern) > 0:
@@ -7242,13 +7239,13 @@ def Mustersuche_enter_search_pattern_with_rhythm():
                     loopDone3 = False
 
                     while not loopDone3:
-                        clear_Screen()
+                        clear_screen()
 
-                        Input = input(text_display_show_score_selection())
+                        Input = input(text_display_showScoreSelection())
                         print("")
 
                         if Rueckgabe_Wahrheitswert_ja_1(Input):
-                            print(text_general_close_MuseScore3())
+                            print(text_general_close_museScore3())
                             print()
 
                             StreamMot.show()
@@ -7259,7 +7256,7 @@ def Mustersuche_enter_search_pattern_with_rhythm():
                             loopDone3 = True
 
                         else:
-                            print(text_general_restricted_yes_no())
+                            print(text_general_input_RestrictedToYesAndNo())
                             print("")
 
                             loopDone3 = False
@@ -7269,12 +7266,12 @@ def Mustersuche_enter_search_pattern_with_rhythm():
                     loopDone3 = False
 
                     while not loopDone3:
-                        clear_Screen()
+                        clear_screen()
 
-                        print(text_pattern_search_show_pattern_selection(Suchpattern))
+                        print(text_patternSearch_showPatternSelection(Suchpattern))
                         print("")
 
-                        Input = input(text_general_check_entry())
+                        Input = input(text_general_checkEntry())
                         print("")
 
                         if Rueckgabe_Wahrheitswert_ja_1(Input):
@@ -7282,23 +7279,23 @@ def Mustersuche_enter_search_pattern_with_rhythm():
                             loopDone2 = True
                             loopDone3 = True
 
-                            clear_Screen()
+                            clear_screen()
 
                         elif Rueckgabe_Wahrheitswert_nein_0(Input):
                             loopDone1 = False
                             loopDone2 = True
                             loopDone3 = True
 
-                            print(text_pattern_search_delete_selection())
+                            print(text_patternSearch_deleteSelection())
                             print("")
 
                             Input = input(text_general_proceed())
                             print("")
 
-                            clear_Screen()
+                            clear_screen()
 
                         else:
-                            print(text_general_restricted_yes_no())
+                            print(text_general_input_RestrictedToYesAndNo())
                             print("")
 
                             loopDone3 = False
@@ -7307,7 +7304,7 @@ def Mustersuche_enter_search_pattern_with_rhythm():
                             print("")
 
                 else:
-                    Rhythmusauswahl = Oeffne_Untermenue_Mustersuche(
+                    Rhythmusauswahl = open_submenu_patternSearch(
                         rhythm_selection_menu_entries()
                     )
 
@@ -7319,10 +7316,10 @@ def Mustersuche_enter_search_pattern_with_rhythm():
                         loopDone4 = True
 
                         while loopDone4:
-                            clear_Screen()
+                            clear_screen()
 
                             Rhythmuseingabe = input(
-                                text_pattern_search_enter_custom_rhythm()
+                                text_patternSearch_enter_customRhythm()
                             )
                             print("")
 
@@ -7333,7 +7330,7 @@ def Mustersuche_enter_search_pattern_with_rhythm():
                                 loopDone4 = False
 
                             else:
-                                print(text_general_restricted_numbers(
+                                print(text_general_input_restrictedToNumbers(
                                     Rhythmuseingabe))
                                 print("")
 
@@ -7343,7 +7340,7 @@ def Mustersuche_enter_search_pattern_with_rhythm():
                     else:
                         Suchpattern.append([Tonauswahl, str(Rhythmusauswahl)])
 
-        clear_Screen()
+        clear_screen()
 
         return StreamMot
 
@@ -7362,7 +7359,7 @@ def Mustersuche_enter_search_pattern_with_rhythm():
 # In[ ]:
 
 
-def Mustersuche_enter_search_pattern_without_rhythm():
+def patternSearch_enter_search_pattern_without_rhythm():
     try:
         global Suchpattern
 
@@ -7376,10 +7373,10 @@ def Mustersuche_enter_search_pattern_without_rhythm():
             loopDone2 = False
 
             while not loopDone2:
-                Tonauswahl = Oeffne_Untermenue_Mustersuche(
+                Tonauswahl = open_submenu_patternSearch(
                     key_selection_menu_entries())
 
-                clear_Screen()
+                clear_screen()
 
                 if Tonauswahl == "remove":
                     if len(Suchpattern) > 0:
@@ -7392,13 +7389,13 @@ def Mustersuche_enter_search_pattern_without_rhythm():
                     loopDone3 = False
 
                     while not loopDone3:
-                        clear_Screen()
+                        clear_screen()
 
-                        Input = input(text_display_show_score_selection())
+                        Input = input(text_display_showScoreSelection())
                         print("")
 
                         if Rueckgabe_Wahrheitswert_ja_1(Input):
-                            print(text_general_close_MuseScore3())
+                            print(text_general_close_museScore3())
                             print()
 
                             StreamMot.show()
@@ -7409,7 +7406,7 @@ def Mustersuche_enter_search_pattern_without_rhythm():
                             loopDone3 = True
 
                         else:
-                            print(text_general_restricted_yes_no())
+                            print(text_general_input_RestrictedToYesAndNo())
                             print("")
 
                             loopDone3 = False
@@ -7420,12 +7417,12 @@ def Mustersuche_enter_search_pattern_without_rhythm():
                     loopDone3 = False
 
                     while not loopDone3:
-                        clear_Screen()
+                        clear_screen()
 
-                        print(text_pattern_search_show_pattern_selection(Suchpattern))
+                        print(text_patternSearch_showPatternSelection(Suchpattern))
                         print("")
 
-                        Input = input(text_general_check_entry())
+                        Input = input(text_general_checkEntry())
                         print("")
 
                         if Rueckgabe_Wahrheitswert_ja_1(Input):
@@ -7433,23 +7430,23 @@ def Mustersuche_enter_search_pattern_without_rhythm():
                             loopDone2 = True
                             loopDone3 = True
 
-                            clear_Screen()
+                            clear_screen()
 
                         elif Rueckgabe_Wahrheitswert_nein_0(Input):
                             loopDone1 = False
                             loopDone2 = True
                             loopDone3 = True
 
-                            print(text_pattern_search_delete_selection())
+                            print(text_patternSearch_deleteSelection())
                             print("")
 
                             Input = input(text_general_proceed())
                             print("")
 
-                            clear_Screen()
+                            clear_screen()
 
                         else:
-                            print(text_general_restricted_yes_no())
+                            print(text_general_input_RestrictedToYesAndNo())
                             print("")
 
                             loopDone3 = False
@@ -7460,7 +7457,7 @@ def Mustersuche_enter_search_pattern_without_rhythm():
                 else:
                     Suchpattern.append(Tonauswahl)
 
-        clear_Screen()
+        clear_screen()
 
         return StreamMot
 
@@ -7477,7 +7474,7 @@ def Mustersuche_enter_search_pattern_without_rhythm():
 # In[ ]:
 
 
-def Mustersuche_enter_search_pattern_only_rhythm():
+def patternSearch_enter_search_pattern_only_rhythm():
     try:
         global Suchpattern
 
@@ -7491,11 +7488,11 @@ def Mustersuche_enter_search_pattern_only_rhythm():
             loopDone2 = False
 
             while not loopDone2:
-                Rhythmusauswahl = Oeffne_Untermenue_Mustersuche(
+                Rhythmusauswahl = open_submenu_patternSearch(
                     rhythm_selection_menu_entries_only_rhythm()
                 )
 
-                clear_Screen()
+                clear_screen()
 
                 if Rhythmusauswahl == "remove":
                     if len(Suchpattern) > 0:
@@ -7505,10 +7502,10 @@ def Mustersuche_enter_search_pattern_only_rhythm():
                     loopDone4 = True
 
                     while loopDone4:
-                        clear_Screen()
+                        clear_screen()
 
                         Rhythmuseingabe = input(
-                            text_pattern_search_enter_custom_rhythm()
+                            text_patternSearch_enter_customRhythm()
                         )
                         print("")
 
@@ -7518,7 +7515,7 @@ def Mustersuche_enter_search_pattern_only_rhythm():
                             loopDone4 = False
 
                         else:
-                            print(text_general_restricted_numbers(
+                            print(text_general_input_restrictedToNumbers(
                                 Rhythmuseingabe))
                             print("")
 
@@ -7542,13 +7539,13 @@ def Mustersuche_enter_search_pattern_only_rhythm():
                     loopDone3 = False
 
                     while not loopDone3:
-                        clear_Screen()
+                        clear_screen()
 
-                        Input = input(text_display_show_score_selection())
+                        Input = input(text_display_showScoreSelection())
                         print("")
 
                         if Rueckgabe_Wahrheitswert_ja_1(Input):
-                            print(text_general_close_MuseScore3())
+                            print(text_general_close_museScore3())
                             print()
 
                             StreamMot.show()
@@ -7559,7 +7556,7 @@ def Mustersuche_enter_search_pattern_only_rhythm():
                             loopDone3 = True
 
                         else:
-                            print(text_general_restricted_yes_no())
+                            print(text_general_input_RestrictedToYesAndNo())
                             print("")
 
                             loopDone3 = False
@@ -7570,12 +7567,12 @@ def Mustersuche_enter_search_pattern_only_rhythm():
                     loopDone3 = False
 
                     while not loopDone3:
-                        clear_Screen()
+                        clear_screen()
 
-                        print(text_pattern_search_show_pattern_selection(Suchpattern))
+                        print(text_patternSearch_showPatternSelection(Suchpattern))
                         print("")
 
-                        Input = input(text_general_check_entry())
+                        Input = input(text_general_checkEntry())
                         print("")
 
                         if Rueckgabe_Wahrheitswert_ja_1(Input):
@@ -7583,23 +7580,23 @@ def Mustersuche_enter_search_pattern_only_rhythm():
                             loopDone2 = True
                             loopDone3 = True
 
-                            clear_Screen()
+                            clear_screen()
 
                         elif Rueckgabe_Wahrheitswert_nein_0(Input):
                             loopDone1 = False
                             loopDone2 = True
                             loopDone3 = True
 
-                            print(text_pattern_search_delete_selection())
+                            print(text_patternSearch_deleteSelection())
                             print("")
 
                             Input = input(text_general_proceed())
                             print("")
 
-                            clear_Screen()
+                            clear_screen()
 
                         else:
-                            print(text_general_restricted_yes_no())
+                            print(text_general_input_RestrictedToYesAndNo())
                             print("")
 
                             loopDone3 = False
@@ -7610,7 +7607,7 @@ def Mustersuche_enter_search_pattern_only_rhythm():
                 else:
                     Suchpattern.append(str(Rhythmusauswahl))
 
-        clear_Screen()
+        clear_screen()
 
         return StreamMot
 
@@ -7633,23 +7630,23 @@ def Mustersuche_enter_search_pattern_only_rhythm():
 # In[75]:
 
 
-def Oeffne_Hauptmenue_Einzelwerk():
-    Auswahl_Notendatei_Pfad()
+def open_mainmenu_individualPiece():
+    select_score_filePath()
 
     while True:
-        clear_Screen()
+        clear_screen()
 
-        Header = text_menu_headers(sys._getframe().f_code.co_name)
+        menu_header = text_menu_headers(sys._getframe().f_code.co_name)
 
-        print(Header)
+        print(menu_header)
         print("")
 
         print(text_menu_selection_header())
         print("")
 
-        Header = text_menu_headers_with_explenation()
+        menu_header = text_menu_headers_withExplenation()
 
-        print("{:<4} {:<65} {}\n".format(Header[0], Header[1], Header[2]))
+        print("{:<4} {:<65} {}\n".format(menu_header[0], menu_header[1], menu_header[2]))
 
         for index, item in enumerate(Eintraege_Hauptmenue_Einzelwerk(), 1):
             print("{:<4} {:<65} {}".format(index, item[0], item[2]))
@@ -7663,15 +7660,15 @@ def Oeffne_Hauptmenue_Einzelwerk():
             Input_Menueauswahl_Int = int(Input_Menueauswahl) - 1
 
             if 0 <= Input_Menueauswahl_Int < len(Eintraege_Hauptmenue_Einzelwerk()):
-                clear_Screen()
+                clear_screen()
 
                 Eintraege_Hauptmenue_Einzelwerk()[Input_Menueauswahl_Int][1]()
 
-                clear_Screen()
+                clear_screen()
 
             else:
                 print(
-                    text_menu_selection_exception_out_of_range(
+                    text_menu_exception_selectionOutOfRange(
                         len(Eintraege_Hauptmenue_Einzelwerk())
                     )
                 )
@@ -7681,7 +7678,7 @@ def Oeffne_Hauptmenue_Einzelwerk():
                 print("")
         else:
             print(
-                text_menu_selection_exception_out_of_range(
+                text_menu_exception_selectionOutOfRange(
                     len(Eintraege_Hauptmenue_Einzelwerk())
                 )
             )
@@ -7696,23 +7693,23 @@ def Oeffne_Hauptmenue_Einzelwerk():
 # In[76]:
 
 
-def Oeffne_Untermenue_Einzelwerk_Files():
+def open_submenu_individualPiece_files():
     while True:
-        clear_Screen()
+        clear_screen()
 
-        Header = text_menu_headers(sys._getframe().f_code.co_name)
+        menu_header = text_menu_headers(sys._getframe().f_code.co_name)
 
-        print(Header)
+        print(menu_header)
         print("")
 
         print(text_menu_selection_header())
         print("")
 
-        Header = text_menu_headers_with_explenation()
+        menu_header = text_menu_headers_withExplenation()
 
-        print("{:<4} {:<65} {}\n".format(Header[0], Header[1], Header[2]))
+        print("{:<4} {:<65} {}\n".format(menu_header[0], menu_header[1], menu_header[2]))
 
-        for index, item in enumerate(Eintraege_Untermenue_Einzelwerk_Files(), 1):
+        for index, item in enumerate(Eintraege_Untermenue_Einzelwerk_files(), 1):
             print("{:<4} {:<65} {}".format(index, item[0], item[2]))
 
         print("")
@@ -7726,26 +7723,26 @@ def Oeffne_Untermenue_Einzelwerk_Files():
             if (
                 0
                 <= Input_Menueauswahl_Int
-                < len(Eintraege_Untermenue_Einzelwerk_Files())
+                < len(Eintraege_Untermenue_Einzelwerk_files())
             ):
-                clear_Screen()
+                clear_screen()
 
                 if (
-                    Eintraege_Untermenue_Einzelwerk_Files()[
+                    Eintraege_Untermenue_Einzelwerk_files()[
                         Input_Menueauswahl_Int][1]
                     != "nothing"
                 ):
-                    Eintraege_Untermenue_Einzelwerk_Files()[
+                    Eintraege_Untermenue_Einzelwerk_files()[
                         Input_Menueauswahl_Int][1]()
 
-                clear_Screen()
+                clear_screen()
 
                 break
 
             else:
                 print(
-                    text_menu_selection_exception_out_of_range(
-                        len(Eintraege_Untermenue_Einzelwerk_Files())
+                    text_menu_exception_selectionOutOfRange(
+                        len(Eintraege_Untermenue_Einzelwerk_files())
                     )
                 )
                 print("")
@@ -7754,8 +7751,8 @@ def Oeffne_Untermenue_Einzelwerk_Files():
                 print("")
         else:
             print(
-                text_menu_selection_exception_out_of_range(
-                    len(Eintraege_Untermenue_Einzelwerk_Files())
+                text_menu_exception_selectionOutOfRange(
+                    len(Eintraege_Untermenue_Einzelwerk_files())
                 )
             )
             print("")
@@ -7769,24 +7766,24 @@ def Oeffne_Untermenue_Einzelwerk_Files():
 # In[77]:
 
 
-def Oeffne_Untermenue_Einzelwerk_statistische_Analysen():
+def open_submenu_individualPiece_statisticalAnalyses():
     while True:
-        clear_Screen()
+        clear_screen()
 
-        Header = text_menu_headers(sys._getframe().f_code.co_name)
+        menu_header = text_menu_headers(sys._getframe().f_code.co_name)
 
-        print(Header)
+        print(menu_header)
         print("")
 
         print(text_menu_selection_header())
         print("")
 
-        Header = text_menu_headers_with_explenation()
+        menu_header = text_menu_headers_withExplenation()
 
-        print("{:<4} {:<65} {}\n".format(Header[0], Header[1], Header[2]))
+        print("{:<4} {:<65} {}\n".format(menu_header[0], menu_header[1], menu_header[2]))
 
         for index, item in enumerate(
-            Eintraege_Untermenue_Einzelwerk_statistische_Analysen(), 1
+            Eintraege_Untermenue_Einzelwerk_statisticalAnalyses(), 1
         ):
             print("{:<4} {:<65} {}".format(index, item[0], item[2]))
 
@@ -7801,28 +7798,28 @@ def Oeffne_Untermenue_Einzelwerk_statistische_Analysen():
             if (
                 0
                 <= Input_Menueauswahl_Int
-                < len(Eintraege_Untermenue_Einzelwerk_statistische_Analysen())
+                < len(Eintraege_Untermenue_Einzelwerk_statisticalAnalyses())
             ):
-                clear_Screen()
+                clear_screen()
 
                 if (
-                    Eintraege_Untermenue_Einzelwerk_statistische_Analysen()[
+                    Eintraege_Untermenue_Einzelwerk_statisticalAnalyses()[
                         Input_Menueauswahl_Int
                     ][1]
                     != "nothing"
                 ):
-                    Eintraege_Untermenue_Einzelwerk_statistische_Analysen()[
+                    Eintraege_Untermenue_Einzelwerk_statisticalAnalyses()[
                         Input_Menueauswahl_Int
                     ][1]()
 
-                clear_Screen()
+                clear_screen()
 
                 break
 
             else:
                 print(
-                    text_menu_selection_exception_out_of_range(
-                        len(Eintraege_Untermenue_Einzelwerk_statistische_Analysen())
+                    text_menu_exception_selectionOutOfRange(
+                        len(Eintraege_Untermenue_Einzelwerk_statisticalAnalyses())
                     )
                 )
                 print("")
@@ -7832,8 +7829,8 @@ def Oeffne_Untermenue_Einzelwerk_statistische_Analysen():
 
         else:
             print(
-                text_menu_selection_exception_out_of_range(
-                    len(Eintraege_Untermenue_Einzelwerk_statistische_Analysen())
+                text_menu_exception_selectionOutOfRange(
+                    len(Eintraege_Untermenue_Einzelwerk_statisticalAnalyses())
                 )
             )
             print("")
@@ -7847,24 +7844,24 @@ def Oeffne_Untermenue_Einzelwerk_statistische_Analysen():
 # In[78]:
 
 
-def Oeffne_Untermenue_Einzelwerk_statistische_Analysen_Darstellungen():
+def open_submenu_individualPiece_statisticalAnalyses_visualizations():
     while True:
-        clear_Screen()
+        clear_screen()
 
-        Header = text_menu_headers(sys._getframe().f_code.co_name)
+        menu_header = text_menu_headers(sys._getframe().f_code.co_name)
 
-        print(Header)
+        print(menu_header)
         print("")
 
         print(text_menu_selection_header())
         print("")
 
-        Header = text_menu_headers_with_explenation()
+        menu_header = text_menu_headers_withExplenation()
 
-        print("{:<4} {:<65} {}\n".format(Header[0], Header[1], Header[2]))
+        print("{:<4} {:<65} {}\n".format(menu_header[0], menu_header[1], menu_header[2]))
 
         for index, item in enumerate(
-            Eintraege_Untermenue_Einzelwerk_statistische_Analysen_Darstellungen(), 1
+            Eintraege_Untermenue_Einzelwerk_statisticalAnalyses_visualizations(), 1
         ):
             print("{:<4} {:<65} {}".format(index, item[0], item[2]))
 
@@ -7880,34 +7877,34 @@ def Oeffne_Untermenue_Einzelwerk_statistische_Analysen_Darstellungen():
                 0
                 <= Input_Menueauswahl_Int
                 < len(
-                    Eintraege_Untermenue_Einzelwerk_statistische_Analysen_Darstellungen()
+                    Eintraege_Untermenue_Einzelwerk_statisticalAnalyses_visualizations()
                 )
             ):
-                clear_Screen()
+                clear_screen()
 
                 if (
-                    Eintraege_Untermenue_Einzelwerk_statistische_Analysen_Darstellungen()[
+                    Eintraege_Untermenue_Einzelwerk_statisticalAnalyses_visualizations()[
                         Input_Menueauswahl_Int
                     ][
                         1
                     ]
                     != "nothing"
                 ):
-                    Eintraege_Untermenue_Einzelwerk_statistische_Analysen_Darstellungen()[
+                    Eintraege_Untermenue_Einzelwerk_statisticalAnalyses_visualizations()[
                         Input_Menueauswahl_Int
                     ][
                         1
                     ]()
 
-                clear_Screen()
+                clear_screen()
 
                 break
 
             else:
                 print(
-                    text_menu_selection_exception_out_of_range(
+                    text_menu_exception_selectionOutOfRange(
                         len(
-                            Eintraege_Untermenue_Einzelwerk_statistische_Analysen_Darstellungen()
+                            Eintraege_Untermenue_Einzelwerk_statisticalAnalyses_visualizations()
                         )
                     )
                 )
@@ -7918,9 +7915,9 @@ def Oeffne_Untermenue_Einzelwerk_statistische_Analysen_Darstellungen():
 
         else:
             print(
-                text_menu_selection_exception_out_of_range(
+                text_menu_exception_selectionOutOfRange(
                     len(
-                        Eintraege_Untermenue_Einzelwerk_statistische_Analysen_Darstellungen()
+                        Eintraege_Untermenue_Einzelwerk_statisticalAnalyses_visualizations()
                     )
                 )
             )
@@ -7935,24 +7932,24 @@ def Oeffne_Untermenue_Einzelwerk_statistische_Analysen_Darstellungen():
 # In[79]:
 
 
-def Oeffne_Untermenue_Einzelwerk_Darstellungen():
+def open_submenu_individualPiece_visualizations():
     while True:
-        clear_Screen()
+        clear_screen()
 
-        Header = text_menu_headers(sys._getframe().f_code.co_name)
+        menu_header = text_menu_headers(sys._getframe().f_code.co_name)
 
-        print(Header)
+        print(menu_header)
         print("")
 
         print(text_menu_selection_header())
         print("")
 
-        Header = text_menu_headers_with_explenation()
+        menu_header = text_menu_headers_withExplenation()
 
-        print("{:<4} {:<65} {}\n".format(Header[0], Header[1], Header[2]))
+        print("{:<4} {:<65} {}\n".format(menu_header[0], menu_header[1], menu_header[2]))
 
         for index, item in enumerate(
-            Eintraege_Untermenue_Einzelwerk_Darstellungen(), 1
+            Eintraege_Untermenue_Einzelwerk_visualizations(), 1
         ):
             print("{:<4} {:<65} {}".format(index, item[0], item[2]))
 
@@ -7961,7 +7958,7 @@ def Oeffne_Untermenue_Einzelwerk_Darstellungen():
         Input_Menueauswahl = input(text_menu_selection_input())
         print("")
 
-        clear_Screen()
+        clear_screen()
 
         if str.isdigit(Input_Menueauswahl):
             Input_Menueauswahl_Int = int(Input_Menueauswahl) - 1
@@ -7969,28 +7966,28 @@ def Oeffne_Untermenue_Einzelwerk_Darstellungen():
             if (
                 0
                 <= Input_Menueauswahl_Int
-                < len(Eintraege_Untermenue_Einzelwerk_Darstellungen())
+                < len(Eintraege_Untermenue_Einzelwerk_visualizations())
             ):
-                clear_Screen()
+                clear_screen()
 
                 if (
-                    Eintraege_Untermenue_Einzelwerk_Darstellungen()[
+                    Eintraege_Untermenue_Einzelwerk_visualizations()[
                         Input_Menueauswahl_Int
                     ][1]
                     != "nothing"
                 ):
-                    Eintraege_Untermenue_Einzelwerk_Darstellungen()[
+                    Eintraege_Untermenue_Einzelwerk_visualizations()[
                         Input_Menueauswahl_Int
                     ][1]()
 
-                clear_Screen()
+                clear_screen()
 
                 break
 
             else:
                 print(
-                    text_menu_selection_exception_out_of_range(
-                        len(Eintraege_Untermenue_Einzelwerk_Darstellungen())
+                    text_menu_exception_selectionOutOfRange(
+                        len(Eintraege_Untermenue_Einzelwerk_visualizations())
                     )
                 )
                 print("")
@@ -7999,8 +7996,8 @@ def Oeffne_Untermenue_Einzelwerk_Darstellungen():
                 print("")
         else:
             print(
-                text_menu_selection_exception_out_of_range(
-                    len(Eintraege_Untermenue_Einzelwerk_Darstellungen())
+                text_menu_exception_selectionOutOfRange(
+                    len(Eintraege_Untermenue_Einzelwerk_visualizations())
                 )
             )
             print("")
@@ -8014,23 +8011,23 @@ def Oeffne_Untermenue_Einzelwerk_Darstellungen():
 # In[80]:
 
 
-def Oeffne_Untermenue_Einzelwerk_Mustersuche():
+def open_submenu_individualPiece_patternSearch():
     while True:
-        clear_Screen()
+        clear_screen()
 
-        Header = text_menu_headers(sys._getframe().f_code.co_name)
+        menu_header = text_menu_headers(sys._getframe().f_code.co_name)
 
-        print(Header)
+        print(menu_header)
         print("")
 
         print(text_menu_selection_header())
         print("")
 
-        Header = text_menu_headers_with_explenation()
+        menu_header = text_menu_headers_withExplenation()
 
-        print("{:<4} {:<65} {}\n".format(Header[0], Header[1], Header[2]))
+        print("{:<4} {:<65} {}\n".format(menu_header[0], menu_header[1], menu_header[2]))
 
-        for index, item in enumerate(Eintraege_Untermenue_Einzelwerk_Mustersuche(), 1):
+        for index, item in enumerate(Eintraege_Untermenue_Einzelwerk_patternSearch(), 1):
             print("{:<4} {:<65} {}".format(index, item[0], item[2]))
 
         print("")
@@ -8038,7 +8035,7 @@ def Oeffne_Untermenue_Einzelwerk_Mustersuche():
         Input_Menueauswahl = input(text_menu_selection_input())
         print("")
 
-        clear_Screen()
+        clear_screen()
 
         if str.isdigit(Input_Menueauswahl):
             Input_Menueauswahl_Int = int(Input_Menueauswahl) - 1
@@ -8046,28 +8043,28 @@ def Oeffne_Untermenue_Einzelwerk_Mustersuche():
             if (
                 0
                 <= Input_Menueauswahl_Int
-                < len(Eintraege_Untermenue_Einzelwerk_Mustersuche())
+                < len(Eintraege_Untermenue_Einzelwerk_patternSearch())
             ):
-                clear_Screen()
+                clear_screen()
 
                 if (
-                    Eintraege_Untermenue_Einzelwerk_Mustersuche()[
+                    Eintraege_Untermenue_Einzelwerk_patternSearch()[
                         Input_Menueauswahl_Int
                     ][1]
                     != "nothing"
                 ):
-                    Eintraege_Untermenue_Einzelwerk_Mustersuche()[
+                    Eintraege_Untermenue_Einzelwerk_patternSearch()[
                         Input_Menueauswahl_Int
                     ][1]()
 
-                clear_Screen()
+                clear_screen()
 
                 break
 
             else:
                 print(
-                    text_menu_selection_exception_out_of_range(
-                        len(Eintraege_Untermenue_Einzelwerk_Mustersuche())
+                    text_menu_exception_selectionOutOfRange(
+                        len(Eintraege_Untermenue_Einzelwerk_patternSearch())
                     )
                 )
                 print("")
@@ -8076,8 +8073,8 @@ def Oeffne_Untermenue_Einzelwerk_Mustersuche():
                 print("")
         else:
             print(
-                text_menu_selection_exception_out_of_range(
-                    len(Eintraege_Untermenue_Einzelwerk_Mustersuche())
+                text_menu_exception_selectionOutOfRange(
+                    len(Eintraege_Untermenue_Einzelwerk_patternSearch())
                 )
             )
             print("")
@@ -8091,24 +8088,24 @@ def Oeffne_Untermenue_Einzelwerk_Mustersuche():
 # In[81]:
 
 
-def Oeffne_Untermenue_Einzelwerk_Einstellungen():
+def open_submenu_individualPiece_settings():
     while True:
-        clear_Screen()
+        clear_screen()
 
-        Header = text_menu_headers(sys._getframe().f_code.co_name)
+        menu_header = text_menu_headers(sys._getframe().f_code.co_name)
 
-        print(Header)
+        print(menu_header)
         print("")
 
         print(text_menu_selection_header())
         print("")
 
-        Header = text_menu_headers_with_explenation()
+        menu_header = text_menu_headers_withExplenation()
 
-        print("{:<4} {:<65} {}\n".format(Header[0], Header[1], Header[2]))
+        print("{:<4} {:<65} {}\n".format(menu_header[0], menu_header[1], menu_header[2]))
 
         for index, item in enumerate(
-            Eintraege_Untermenue_Einzelwerk_Einstellungen(), 1
+            Eintraege_Untermenue_Einzelwerk_settings(), 1
         ):
             print("{:<4} {:<65} {}".format(index, item[0], item[2]))
 
@@ -8117,7 +8114,7 @@ def Oeffne_Untermenue_Einzelwerk_Einstellungen():
         Input_Menueauswahl = input(text_menu_selection_input())
         print("")
 
-        clear_Screen()
+        clear_screen()
 
         if str.isdigit(Input_Menueauswahl):
             Input_Menueauswahl_Int = int(Input_Menueauswahl) - 1
@@ -8125,28 +8122,28 @@ def Oeffne_Untermenue_Einzelwerk_Einstellungen():
             if (
                 0
                 <= Input_Menueauswahl_Int
-                < len(Eintraege_Untermenue_Einzelwerk_Einstellungen())
+                < len(Eintraege_Untermenue_Einzelwerk_settings())
             ):
-                clear_Screen()
+                clear_screen()
 
                 if (
-                    Eintraege_Untermenue_Einzelwerk_Einstellungen()[
+                    Eintraege_Untermenue_Einzelwerk_settings()[
                         Input_Menueauswahl_Int
                     ][1]
                     != "nothing"
                 ):
-                    Eintraege_Untermenue_Einzelwerk_Einstellungen()[
+                    Eintraege_Untermenue_Einzelwerk_settings()[
                         Input_Menueauswahl_Int
                     ][1]()
 
-                clear_Screen()
+                clear_screen()
 
                 break
 
             else:
                 print(
-                    text_menu_selection_exception_out_of_range(
-                        len(Eintraege_Untermenue_Einzelwerk_Einstellungen())
+                    text_menu_exception_selectionOutOfRange(
+                        len(Eintraege_Untermenue_Einzelwerk_settings())
                     )
                 )
                 print("")
@@ -8155,8 +8152,8 @@ def Oeffne_Untermenue_Einzelwerk_Einstellungen():
                 print("")
         else:
             print(
-                text_menu_selection_exception_out_of_range(
-                    len(Eintraege_Untermenue_Einzelwerk_Einstellungen())
+                text_menu_exception_selectionOutOfRange(
+                    len(Eintraege_Untermenue_Einzelwerk_settings())
                 )
             )
             print("")
@@ -8176,69 +8173,69 @@ def Eintraege_Hauptmenue_Einzelwerk():
     list_de = [
         [
             "FILE: Menüauswahl",
-            Oeffne_Untermenue_Einzelwerk_Files,
+            open_submenu_individualPiece_files,
             "<Grundlegende Funktionen>",
         ],
         [
             "TOOL: Menüauswahl (statistische Analysen)",
-            Oeffne_Untermenue_Einzelwerk_statistische_Analysen,
+            open_submenu_individualPiece_statisticalAnalyses,
             "<Auswahl verschiedener statistischer Analyse-Tools>",
         ],
         [
             "TOOL: Menüauswahl (Darstellung)",
-            Oeffne_Untermenue_Einzelwerk_Darstellungen,
+            open_submenu_individualPiece_visualizations,
             "<Auswahl verschiedener Darstellungs-Tools>",
         ],
         [
             "TOOL: Menüauswahl (Mustersuche)",
-            Oeffne_Untermenue_Einzelwerk_Mustersuche,
+            open_submenu_individualPiece_patternSearch,
             "<Auswahl verschiedener Tools zur Mustersuche>",
         ],
         [
             "SETT: Einstellungen",
-            Oeffne_Untermenue_Einzelwerk_Einstellungen,
+            open_submenu_individualPiece_settings,
             "<Einstellungen in der music21 environment-Datei/Spracheinstellungen>",
         ],
         [
             "HELP: Projektübersicht",
-            text_general_informations,
+            text_general_projectDescription,
             '<Informationen über das Projekt "Computergestützte Musikanalyse">',
         ],
-        ["EXIT: Programm beenden", Programm_beenden, "<Beendet das Python-Skript>"],
+        ["EXIT: Programm beenden", terminateProgram, "<Beendet das Python-Skript>"],
     ]
 
     list_en = [
         [
             "FILE: Menu selection",
-            Oeffne_Untermenue_Einzelwerk_Files,
+            open_submenu_individualPiece_files,
             "<Basic functions>",
         ],
         [
             "TOOL: Menu selection (statistical analysis)",
-            Oeffne_Untermenue_Einzelwerk_statistische_Analysen,
+            open_submenu_individualPiece_statisticalAnalyses,
             "<Selection of various statistical analysis tools>",
         ],
         [
             "TOOL: Menu selection (visualisation)",
-            Oeffne_Untermenue_Einzelwerk_Darstellungen,
+            open_submenu_individualPiece_visualizations,
             "<Selection of different visualisation tools>",
         ],
         [
             "TOOL: Menu selection (pattern search)",
-            Oeffne_Untermenue_Einzelwerk_Mustersuche,
+            open_submenu_individualPiece_patternSearch,
             "<Selection of different tools for pattern search>",
         ],
         [
             "SETT: Settings",
-            Oeffne_Untermenue_Einzelwerk_Einstellungen,
+            open_submenu_individualPiece_settings,
             "<Settings in the music21 environment file/language settings>",
         ],
         [
             "HELP: Project overview",
-            text_general_informations,
+            text_general_projectDescription,
             '<Information about the project "Computer-Aided Music Analysis">',
         ],
-        ["EXIT: Exit program", Programm_beenden, "<Exits the Python script>"],
+        ["EXIT: Exit program", terminateProgram, "<Exits the Python script>"],
     ]
 
     if LANGUAGE == "DE":
@@ -8253,31 +8250,31 @@ def Eintraege_Hauptmenue_Einzelwerk():
 # In[83]:
 
 
-def Eintraege_Untermenue_Einzelwerk_Files():
+def Eintraege_Untermenue_Einzelwerk_files():
     list_de = [
         [
             "FILE: Neue Notendatei auswählen",
-            Auswahl_Notendatei_Pfad,
+            select_score_filePath,
             "<Ermöglicht die Auswahl einer neuen Notendatei>",
         ],
         [
             "SHOW: Meta-Daten anzeigen (Partitur)",
-            Anzeige_Metadaten_Partitur,
+            show_score_metadata,
             "<Zeigt die Meta-Daten der ausgewählten Notendatei an>",
         ],
         [
             "PLAY: Notendatei wiedergeben (Midi)",
-            Wiedergabe_MIDI,
+            helper_playback_MIDI,
             "<Gibt Notendatei als Midi wieder>",
         ],
         [
             "NAME: Namen der Einzelstimmen ändern",
-            Benennen_der_Einzelstimmen,
+            helpers_name_individualVoices,
             "<Ermöglicht das erneute Umbenennen der Einzelstimmen>",
         ],
         [
             "NAME: Namen der Einzelstimmen anzeigen",
-            Einzelstimmen_Namen_Anzeigen,
+            show_names_individualVoices,
             "<Zeigt die selbst vergebenen Namen der Einzelstimmen an>",
         ],
         [
@@ -8291,25 +8288,25 @@ def Eintraege_Untermenue_Einzelwerk_Files():
     list_en = [
         [
             "FILE: Select new score",
-            Auswahl_Notendatei_Pfad,
+            select_score_filePath,
             "<Allows you to select a new score>",
         ],
         [
             "SHOW: Show metadata (score)",
-            Anzeige_Metadaten_Partitur,
+            show_score_metadata,
             "<Displays the metadata of the selected score>",
         ],
         ["PLAY: Play selected score (midi)",
-         Wiedergabe_MIDI, "<Plays score as midi>"],
+         helper_playback_MIDI, "<Plays score as midi>"],
         [
-            "NAME: Change the names of the individual voices",
-            Benennen_der_Einzelstimmen,
-            "<Allows you to rename the individual voices>",
+            "NAME: Change the names of the individual parts/voices",
+            helpers_name_individualVoices,
+            "<Allows you to rename the individual parts/voices>",
         ],
         [
-            "NAME: Show names of individual voices",
-            Einzelstimmen_Namen_Anzeigen,
-            "<Displays the names of the individual voices>",
+            "NAME: Show names of individual parts/voices",
+            show_names_individualVoices,
+            "<Displays the names of the individual parts/voices>",
         ],
         [
             "EXPO: Export file",
@@ -8331,134 +8328,134 @@ def Eintraege_Untermenue_Einzelwerk_Files():
 # In[84]:
 
 
-def Eintraege_Untermenue_Einzelwerk_statistische_Analysen():
+def Eintraege_Untermenue_Einzelwerk_statisticalAnalyses():
     list_de = [
-        ["STAT: Ambitus", Ambitus_Analyse_Textausgabe, ""],
-        ["STAT: Ambitus (Vergleich)", Ambitus_Vergleich_Textausgabe, ""],
+        ["STAT: Ambitus", range_analysis_textOutput, ""],
+        ["STAT: Ambitus (Vergleich)", range_comparison_textOutput, ""],
         [
             "STAT: Intervalltypen",
-            Intervallstruktur_Intervalltypen_Textausgabe,
+            intervalStructure_intervalTypes_textOutput,
             "<Achtung: derzeit werden nur konsequent einstimmige Melodielinien korrekt analysiert>.",
         ],
         [
             "STAT: Intervalltypen und -anzahl",
-            Intervallstruktur_Intervalltypen_Anzahl_Textausgabe,
+            intervalStructure_intervalTypes_quantity_textOutput,
             "<Achtung: derzeit werden nur konsequent einstimmige Melodielinien korrekt analysiert>",
         ],
         [
             "STAT: Intervalltypen und -anzahl (Vergleich)",
-            Intervallstruktur_Intervalltypen_Vergleich_Textausgabe,
+            intervalStructure_intervalTypes_comparison_textOutput,
             "<Achtung: derzeit werden nur konsequent einstimmige Melodielinien korrekt analysiert>",
         ],
         [
             "STAT: Anzahl Intervalle",
-            Intervallstruktur_Intervalle_Anzahl_Textausgabe,
+            intervalStructure_Intervalle_quantity_textOutput,
             "<Achtung: derzeit werden nur konsequent einstimmige Melodielinien korrekt analysiert>",
         ],
         [
             "STAT: Anzahl Töne",
-            Tonmaterial_Töne_Anzahl_gesamt_Textausgabe,
+            notes_notesQuantity_total_textOutput,
             "<Achtung: derzeit werden nur konsequent einstimmige Melodielinien korrekt analysiert>",
         ],
         [
             "HIST: Klangereignisse über Tonhöhen",
-            Vordefinierte_Darstellungen_HistogramPitchSpace,
+            predefinedVisualizations_HistogramPitchSpace,
             "<Ein Histogramm des Tonhöhenraums>",
         ],
         [
             "HIST: Klangereignisse über Tonhöhenklassen",
-            Vordefinierte_Darstellungen_HistogramPitchClass,
+            predefinedVisualizations_HistogramPitchClass,
             "<Ein Histogramm der Tonhöhenklasse>",
         ],
         [
             "HIST: Klangereignisse über Tonlängen",
-            Vordefinierte_Darstellungen_HistogramQuarterLength,
+            predefinedVisualizations_HistogramQuarterLength,
             "<Ein Histogramm der Tonlängen>",
         ],
         [
             "BARS: Tonhöhen über Zeit (Tonlängen)",
-            Vordefinierte_Darstellungen_HorizontalBarPitchSpaceOffset,
+            predefinedVisualizations_HorizontalBarPitchSpaceOffset,
             "<Ein Diagramm der Ereignisse, sortiert nach Tonhöhenraum über die Zeit>",
         ],
         [
             "BARS: Tonhöhenklassen über Zeit (Tonlängen)",
-            Vordefinierte_Darstellungen_HorizontalBarPitchClassOffset,
+            predefinedVisualizations_HorizontalBarPitchClassOffset,
             "<Ein Diagramm der Ereignisse, sortiert nach Tonhöhenraum über die Zeit>",
         ],
         [
             "HIST: Tonanfangshäufigkeit auf metrischen Akzentstufen",
-            Metrum_Metrisches_Gewicht_Textausgabe,
+            meter_metricWeight_textOutput,
             "<Metrisches Gewicht; Hinweise unter: https://analyse.hfm-weimar.de/doku.php?id=basics1>",
         ],
         [
             "MORE: Weitere Darstellungen",
-            Oeffne_Untermenue_Einzelwerk_statistische_Analysen_Darstellungen,
+            open_submenu_individualPiece_statisticalAnalyses_visualizations,
             "<Zweidimensionale Häufigkeitsverteilungen/Streudiagramme>",
         ],
         ["BACK: Zurück ins Hauptmenü", "nothing", "<Rückkehr ins Hauptmenü>"],
     ]
 
     list_en = [
-        ["STAT: Ambitus", Ambitus_Analyse_Textausgabe, ""],
-        ["STAT: Ambitus (comparison)", Ambitus_Vergleich_Textausgabe, ""],
+        ["STAT: Ambitus", range_analysis_textOutput, ""],
+        ["STAT: Ambitus (comparison)", range_comparison_textOutput, ""],
         [
             "STAT: Interval types",
-            Intervallstruktur_Intervalltypen_Textausgabe,
+            intervalStructure_intervalTypes_textOutput,
             "<Attention: currently only consistently monodic melody lines are correctly analyzed>.",
         ],
         [
             "STAT: Interval types and frequency",
-            Intervallstruktur_Intervalltypen_Anzahl_Textausgabe,
+            intervalStructure_intervalTypes_quantity_textOutput,
             "<Attention: currently only consistently monodic melody lines are correctly analyzed>",
         ],
         [
             "STAT: Interval types and frequency (comparison)",
-            Intervallstruktur_Intervalltypen_Vergleich_Textausgabe,
+            intervalStructure_intervalTypes_comparison_textOutput,
             "<Attention: currently only consistently monodic melody lines are correctly analyzed>",
         ],
         [
             "STAT: Number of intervals",
-            Intervallstruktur_Intervalle_Anzahl_Textausgabe,
+            intervalStructure_Intervalle_quantity_textOutput,
             "<Attention: currently only consistently monodic melody lines are correctly analyzed>",
         ],
         [
             "STAT: Number of tones",
-            Tonmaterial_Töne_Anzahl_gesamt_Textausgabe,
+            notes_notesQuantity_total_textOutput,
             "<Attention: currently only consistently monodic melody lines are correctly analyzed>",
         ],
         [
             "HIST: Sound events per pitch",
-            Vordefinierte_Darstellungen_HistogramPitchSpace,
+            predefinedVisualizations_HistogramPitchSpace,
             "<A histogram of the pitch space>",
         ],
         [
             "HIST: Sound events per pitch class",
-            Vordefinierte_Darstellungen_HistogramPitchClass,
+            predefinedVisualizations_HistogramPitchClass,
             "<A pitch class histogram>",
         ],
         [
             "HIST: Sound events per tone durations",
-            Vordefinierte_Darstellungen_HistogramQuarterLength,
+            predefinedVisualizations_HistogramQuarterLength,
             "<A histogram of the pitch lengths>",
         ],
         [
             "BARS: Pitches over time (pitch lengths)",
-            Vordefinierte_Darstellungen_HorizontalBarPitchSpaceOffset,
+            predefinedVisualizations_HorizontalBarPitchSpaceOffset,
             "<A graph of events sorted by pitch space over time>",
         ],
         [
             "BARS: Pitch classes over time (pitch durations)",
-            Vordefinierte_Darstellungen_HorizontalBarPitchClassOffset,
+            predefinedVisualizations_HorizontalBarPitchClassOffset,
             "<A graph of events sorted by pitch space over time>",
         ],
         [
             "HIST: Tone starting frequency on types of metrical positions",
-            Metrum_Metrisches_Gewicht_Textausgabe,
+            meter_metricWeight_textOutput,
             "<Metric weight; Explanations: https://analyse.hfm-weimar.de/doku.php?id=basics1>",
         ],
         [
             "MORE: Further graphs",
-            Oeffne_Untermenue_Einzelwerk_statistische_Analysen_Darstellungen,
+            open_submenu_individualPiece_statisticalAnalyses_visualizations,
             "<Two-dimensional frequency distributions/scatter diagrams>",
         ],
         ["BACK: Back to the main menu", "nothing", "<Return to the main menu>"],
@@ -8476,31 +8473,31 @@ def Eintraege_Untermenue_Einzelwerk_statistische_Analysen():
 # In[85]:
 
 
-def Eintraege_Untermenue_Einzelwerk_statistische_Analysen_Darstellungen():
+def Eintraege_Untermenue_Einzelwerk_statisticalAnalyses_visualizations():
     list_de = [
         [
             "SCTR: Tonhöhen über Tonlängen",
-            Vordefinierte_Darstellungen_ScatterWeightedPitchSpaceQuarterLength,
+            predefinedVisualizations_ScatterWeightedPitchSpaceQuarterLength,
             "<Ein Streudiagramm der Klangereignisse, sortiert nach Tonhöhe, über die Tonlängen>",
         ],
         [
             "BARS: Anzahl Tonhöhen über Tonlängen (3D)",
-            Vordefinierte_Darstellungen_Plot3DBarsPitchSpaceQuarterLength,
+            predefinedVisualizations_Plot3DBarsPitchSpaceQuarterLength,
             "<Ein 3D-Histogramm von Tonhöhe und Tonlängen>",
         ],
         [
             "SCTR: Tonhöhenklassen über Tonlängen",
-            Vordefinierte_Darstellungen_ScatterWeightedPitchClassQuarterLength,
+            predefinedVisualizations_ScatterWeightedPitchClassQuarterLength,
             "<Ein Streudiagramm der Klangereignisse, sortiert nach Tonhöhenklasse, über die Tonlängen>",
         ],
         [
             "SCTR: Tonhöhenklassen über Zeit (Einsätze)",
-            Vordefinierte_Darstellungen_ScatterPitchClassOffset,
+            predefinedVisualizations_ScatterPitchClassOffset,
             "<Ein Streudiagramm von Tonhöhenklasse und Offset>",
         ],
         [
             "SCTR: Dynamiken über Tonhöhen",
-            Vordefinierte_Darstellungen_ScatterWeightedPitchSpaceDynamicSymbol,
+            predefinedVisualizations_ScatterWeightedPitchSpaceDynamicSymbol,
             "<Ein Streudiagramm der Dynamik, die vom Tonhöhenraum verwendet wird>",
         ],
         ["BACK: Zurück ins Hauptmenü", "nothing", "<Rückkehr ins Hauptmenü>"],
@@ -8509,27 +8506,27 @@ def Eintraege_Untermenue_Einzelwerk_statistische_Analysen_Darstellungen():
     list_en = [
         [
             "SCTR: Pitch over durations ",
-            Vordefinierte_Darstellungen_ScatterWeightedPitchSpaceQuarterLength,
+            predefinedVisualizations_ScatterWeightedPitchSpaceQuarterLength,
             "<A scatter diagram of the sound events, sorted by pitch over durations >",
         ],
         [
             "BARS: Number of pitches over durations (3D)",
-            Vordefinierte_Darstellungen_Plot3DBarsPitchSpaceQuarterLength,
+            predefinedVisualizations_Plot3DBarsPitchSpaceQuarterLength,
             "<A 3D histogram of pitch and duration>",
         ],
         [
             "SCTR: Pitch classes over durations",
-            Vordefinierte_Darstellungen_ScatterWeightedPitchClassQuarterLength,
+            predefinedVisualizations_ScatterWeightedPitchClassQuarterLength,
             "<A scatter diagram of the sound events, sorted by pitch class, over the durations>",
         ],
         [
             "SCTR: Pitch classes over time (cues)",
-            Vordefinierte_Darstellungen_ScatterPitchClassOffset,
+            predefinedVisualizations_ScatterPitchClassOffset,
             "<A scatter plot of pitch class and offset>",
         ],
         [
             "SCTR: Dynamics over pitches",
-            Vordefinierte_Darstellungen_ScatterWeightedPitchSpaceDynamicSymbol,
+            predefinedVisualizations_ScatterWeightedPitchSpaceDynamicSymbol,
             "<A scatter plot of the dynamics used by each pitch class>",
         ],
         ["BACK: Back to the main menu", "nothing", "<Return to the main menu>"],
@@ -8547,7 +8544,7 @@ def Eintraege_Untermenue_Einzelwerk_statistische_Analysen_Darstellungen():
 # In[86]:
 
 
-def Eintraege_Untermenue_Einzelwerk_Darstellungen():
+def Eintraege_Untermenue_Einzelwerk_visualizations():
     list_de = [
         [
             "SHOW: Notenauswahl anzeigen (MuseScore)",
@@ -8571,17 +8568,17 @@ def Eintraege_Untermenue_Einzelwerk_Darstellungen():
         ],
         [
             "SHOW: Pianorollendarstellung",
-            Vordefinierte_Darstellungen_HorizontalBarPitchSpaceOffset,
+            predefinedVisualizations_HorizontalBarPitchSpaceOffset,
             "<Ein Diagramm der Ereignisse, sortiert nach Tonhöhenraum über die Zeit>",
         ],
         [
             "SHOW: Linien: Stimmenverlauf",
-            Melodik_Melodieverlauf_Darstellung_Liniendiagramm,
+            Melodik_Melodieverlauf_visualization_lineGraph,
             "<Fehleranfällig: Funktioniert nur bei durchgehend einstimmigen Einzelstimmen>",
         ],
         [
             "SHOW: Dolan",
-            Vordefinierte_Darstellungen_Dolan,
+            predefinedVisualizations_Dolan,
             "<Lautstärkeänderung über die Zeit>",
         ],
         ["BACK: Zurück ins Hauptmenü", "nothing", "<Rückkehr ins Hauptmenü>"],
@@ -8610,17 +8607,17 @@ def Eintraege_Untermenue_Einzelwerk_Darstellungen():
         ],
         [
             "SHOW: Pianorolls",
-            Vordefinierte_Darstellungen_HorizontalBarPitchSpaceOffset,
+            predefinedVisualizations_HorizontalBarPitchSpaceOffset,
             "<A graph of events sorted by pitch space over time>",
         ],
         [
             "SHOW: Voice progression (line plot)",
-            Melodik_Melodieverlauf_Darstellung_Liniendiagramm,
+            Melodik_Melodieverlauf_visualization_lineGraph,
             "<Prone to error: Only works with consistently monodic parts>",
         ],
         [
             "SHOW: Dolan",
-            Vordefinierte_Darstellungen_Dolan,
+            predefinedVisualizations_Dolan,
             "<Change in volume over time>",
         ],
         ["BACK: Back to the main menu", "nothing", "<Return to the main menu>"],
@@ -8638,31 +8635,31 @@ def Eintraege_Untermenue_Einzelwerk_Darstellungen():
 # In[87]:
 
 
-def Eintraege_Untermenue_Einzelwerk_Mustersuche():
+def Eintraege_Untermenue_Einzelwerk_patternSearch():
     list_de = [
         [
             "SEAR: Mustersuche (ohne Rhythmus)",
-            Mustersuche_Menuestruktur_Tonfolge_ohne_Transposition_ohne_Rhythmus,
+            patternSearch_menuStructure_toneSequence_withoutTransposition_withoutRhythm,
             "<Suche einer unrhythmisierten Tonfolge>",
         ],
         [
             "SEAR: Mustersuche (ohne Rhythmus/transponiert)",
-            Mustersuche_Menuestruktur_Tonfolge_mit_Transposition_ohne_Rhythmus,
+            patternSearch_menuStructure_toneSequence_withTransposition_withoutRhythm,
             "<Suche einer unrhythmisierten Tonfolge und sämtlicher Transpositionen>",
         ],
         [
             "SEAR: Mustersuche (mit Rhythmus)",
-            Mustersuche_Menuestruktur_Tonfolge_ohne_Transposition_mit_Rhythmus,
+            patternSearch_menuStructure_toneSequence_withoutTransposition_withRhythm,
             "<Suche einer rhythmisierten Tonfolge>",
         ],
         [
             "SEAR: Mustersuche (mit Rhythmus/transponiert)",
-            Mustersuche_Menuestruktur_Tonfolge_mit_Transposition_mit_Rhythmus,
+            patternSearch_menuStructure_toneSequence_withTransposition_withRhythm,
             "<Suche einer rhythmisierten Tonfolge und sämtlicher Transpositionen>",
         ],
         [
             "SEAR: Mustersuche (nur Rhythms)",
-            Mustersuche_Menuestruktur_Rhythmus_ohne_Tonhöhen,
+            patternSearch_menuStructure_rhythm_withoutPitch,
             "<Suche einer Rhythmusfolge ohne Tonhöhen>",
         ],
         ["BACK: Zurück ins Hauptmenü", "nothing", "<Rückkehr ins Hauptmenü>"],
@@ -8671,27 +8668,27 @@ def Eintraege_Untermenue_Einzelwerk_Mustersuche():
     list_en = [
         [
             "SEAR: Pattern search (without rhythmic values)",
-            Mustersuche_Menuestruktur_Tonfolge_ohne_Transposition_ohne_Rhythmus,
+            patternSearch_menuStructure_toneSequence_withoutTransposition_withoutRhythm,
             "<Search for a sequence of notes (without rhythmic values)>",
         ],
         [
             "SEAR: Pattern search (without rhythmic values/transposed)",
-            Mustersuche_Menuestruktur_Tonfolge_mit_Transposition_ohne_Rhythmus,
+            patternSearch_menuStructure_toneSequence_withTransposition_withoutRhythm,
             "<Search for a sequence of notes and all of its transpositions (without rhythmic values)>",
         ],
         [
             "SEAR: Pattern search (with rhythmic values)",
-            Mustersuche_Menuestruktur_Tonfolge_ohne_Transposition_mit_Rhythmus,
+            patternSearch_menuStructure_toneSequence_withoutTransposition_withRhythm,
             "<Search for a sequence of notes (with rhythmic values)>",
         ],
         [
             "SEAR: Pattern search (with rhythmic values/transposed)",
-            Mustersuche_Menuestruktur_Tonfolge_mit_Transposition_mit_Rhythmus,
+            patternSearch_menuStructure_toneSequence_withTransposition_withRhythm,
             "<Search for a sequence of notes and all of its transpositions (with rhythmic values)>",
         ],
         [
             "SEAR: Pattern search (only rhythm)",
-            Mustersuche_Menuestruktur_Rhythmus_ohne_Tonhöhen,
+            patternSearch_menuStructure_rhythm_withoutPitch,
             "<Search for a specific rhythm>",
         ],
         ["BACK: Back to the main menu", "nothing", "<Return to the main menu>"],
@@ -8709,21 +8706,21 @@ def Eintraege_Untermenue_Einzelwerk_Mustersuche():
 # In[88]:
 
 
-def Eintraege_Untermenue_Einzelwerk_Einstellungen():
+def Eintraege_Untermenue_Einzelwerk_settings():
     list_de = [
         [
             "ENVT: Environment-Datei (Pfad)",
-            Environment_Pfad,
+            environmentFile_path,
             "<Gibt den Pfad der environment-Datei aus (falls vorhanden)>",
         ],
         [
             "ENVT: Einstellungen anzeigen",
-            Environment_Einstellungen_Anzeigen,
+            show_environmentFile_settings,
             "<Anzeigen der Einstellungen in der Environment-Datei>",
         ],
         [
             "ENVT: Einstellungen neu konfigurieren",
-            Environment_Einstellungen_Neukonfiguration,
+            EnvironmentFile_settings_reconfigure,
             "<Neukonfiguaration der Environment-Datei>",
         ],
         [
@@ -8737,17 +8734,17 @@ def Eintraege_Untermenue_Einzelwerk_Einstellungen():
     list_en = [
         [
             "ENVT: Environment file (path)",
-            Environment_Pfad,
+            environmentFile_path,
             "<Outputs the path of the environment file (if available)>",
         ],
         [
             "ENVT: Show settings",
-            Environment_Einstellungen_Anzeigen,
+            show_environmentFile_settings,
             "<Display the settings in the environment file>",
         ],
         [
             "ENVT: Reconfigure settings",
-            Environment_Einstellungen_Neukonfiguration,
+            EnvironmentFile_settings_reconfigure,
             "<Reconfiguration of the environment file>",
         ],
         [
@@ -8772,21 +8769,21 @@ def Eintraege_Untermenue_Einzelwerk_Einstellungen():
 # In[89]:
 
 
-def Oeffne_Startmenue():
+def open_startmenu():
     while True:
-        clear_Screen()
+        clear_screen()
 
-        Header = text_menu_headers(sys._getframe().f_code.co_name)
+        menu_header = text_menu_headers(sys._getframe().f_code.co_name)
 
-        print(Header)
+        print(menu_header)
         print("")
 
         print(text_menu_selection_header())
         print("")
 
-        Header = text_menu_headers_with_explenation()
+        menu_header = text_menu_headers_withExplenation()
 
-        print("{:<4} {:<65} {}\n".format(Header[0], Header[1], Header[2]))
+        print("{:<4} {:<65} {}\n".format(menu_header[0], menu_header[1], menu_header[2]))
 
         for index, item in enumerate(Eintraege_Startmenue(), 1):
             print("{:<4} {:<65} {}".format(index, item[0], item[2]))
@@ -8796,21 +8793,21 @@ def Oeffne_Startmenue():
         Input_Menueauswahl = input(text_menu_selection_input())
         print("")
 
-        clear_Screen()
+        clear_screen()
 
         if str.isdigit(Input_Menueauswahl):
             Input_Menueauswahl_Int = int(Input_Menueauswahl) - 1
 
             if 0 <= Input_Menueauswahl_Int < len(Eintraege_Startmenue()):
-                clear_Screen()
+                clear_screen()
 
                 Eintraege_Startmenue()[Input_Menueauswahl_Int][1]()
 
-                clear_Screen()
+                clear_screen()
 
             else:
                 print(
-                    text_menu_selection_exception_out_of_range(
+                    text_menu_exception_selectionOutOfRange(
                         len(Eintraege_Startmenue())
                     )
                 )
@@ -8821,7 +8818,7 @@ def Oeffne_Startmenue():
 
         else:
             print(
-                text_menu_selection_exception_out_of_range(
+                text_menu_exception_selectionOutOfRange(
                     len(Eintraege_Startmenue()))
             )
             print("")
@@ -8839,17 +8836,17 @@ def Eintraege_Startmenue():
     list_de = [
         [
             "PROG: Analyse eines einzelnen Werkes",
-            Oeffne_Hauptmenue_Einzelwerk,
+            open_mainmenu_individualPiece,
             "<Analyse eines einzelnen Werkes>",
         ],
         [
             "SETT: Einstellungen",
-            Oeffne_Untermenue_Einzelwerk_Einstellungen,
+            open_submenu_individualPiece_settings,
             "<Einstellungen in der music21 environment-Datei>",
         ],
         [
             "HELP: Projektübersicht",
-            text_general_informations,
+            text_general_projectDescription,
             '<Informationen über das Projekt "Computergestützte Musikanalyse">',
         ],
         [
@@ -8857,23 +8854,23 @@ def Eintraege_Startmenue():
             change_language,
             "<Change the output language of the program to German>",
         ],
-        ["EXIT: Programm beenden", Programm_beenden, "<Beendet das Python-Skript>"],
+        ["EXIT: Programm beenden", terminateProgram, "<Beendet das Python-Skript>"],
     ]
 
     list_en = [
         [
             "PROG: Analysis of a single piece of music",
-            Oeffne_Hauptmenue_Einzelwerk,
+            open_mainmenu_individualPiece,
             "<Analysis of a single piece of music>",
         ],
         [
             "SETT: Settings",
-            Oeffne_Untermenue_Einzelwerk_Einstellungen,
+            open_submenu_individualPiece_settings,
             "<View the settings in the music21 environment file>",
         ],
         [
             "HELP: Project overview",
-            text_general_informations,
+            text_general_projectDescription,
             '<Information about the project "Computer-Aided Music Analysis">',
         ],
         [
@@ -8881,7 +8878,7 @@ def Eintraege_Startmenue():
             change_language,
             "<Ändert die Ausgabesprache des Programms auf Deutsch>",
         ],
-        ["EXIT: Exit programm", Programm_beenden, "<Exits the Python script>"],
+        ["EXIT: Exit programm", terminateProgram, "<Exits the Python script>"],
     ]
 
     if LANGUAGE == "DE":
@@ -8902,16 +8899,16 @@ def Eintraege_Startmenue():
 # In[91]:
 
 
-def Oeffne_Untermenue_Rueckgabe_IndexausListe(Liste):
+def open_submenu_Rueckgabe_IndexausListe(Liste):
     while True:
-        clear_Screen()
+        clear_screen()
 
         print(text_menu_selection_header())
         print("")
 
-        Header = text_menu_headers_without_explenation()
+        menu_header = text_menu_headers_withoutExplenation()
 
-        print("{:<4} {:<65}\n".format(Header[0], Header[1]))
+        print("{:<4} {:<65}\n".format(menu_header[0], menu_header[1]))
 
         for index, item in enumerate(Liste, 1):
             print("{:<4} {:<65}".format(index, item))
@@ -8925,21 +8922,21 @@ def Oeffne_Untermenue_Rueckgabe_IndexausListe(Liste):
             Input_Menueauswahl_Int = int(Input_Menueauswahl) - 1
 
             if 0 <= Input_Menueauswahl_Int < len(Liste):
-                clear_Screen()
+                clear_screen()
 
                 # Rückgabe der ausgewählten Nummer
 
                 return Input_Menueauswahl_Int
 
             else:
-                print(text_menu_selection_exception_out_of_range(len(Liste)))
+                print(text_menu_exception_selectionOutOfRange(len(Liste)))
                 print("")
 
                 Input = input(text_general_proceed())
                 print("")
 
         else:
-            print(text_menu_selection_exception_out_of_range(len(Liste)))
+            print(text_menu_exception_selectionOutOfRange(len(Liste)))
             print("")
 
             Input = input(text_general_proceed())
@@ -8951,16 +8948,16 @@ def Oeffne_Untermenue_Rueckgabe_IndexausListe(Liste):
 # In[92]:
 
 
-def Oeffne_Untermenue_Daten(Liste):
+def open_submenu_Daten(Liste):
     while True:
-        clear_Screen()
+        clear_screen()
 
         print(text_menu_selection_header())
         print("")
 
-        Header = text_menu_headers_without_explenation()
+        menu_header = text_menu_headers_withoutExplenation()
 
-        print("{:<4} {:<65}\n".format(Header[0], Header[1]))
+        print("{:<4} {:<65}\n".format(menu_header[0], menu_header[1]))
 
         for index, item in enumerate(Liste, 1):
             print("{:<4} {:<65}".format(index, item[0]))
@@ -8974,19 +8971,19 @@ def Oeffne_Untermenue_Daten(Liste):
             Input_Menueauswahl_Int = int(Input_Menueauswahl) - 1
 
             if 0 <= Input_Menueauswahl_Int < len(Liste):
-                clear_Screen()
+                clear_screen()
 
                 return Liste[Input_Menueauswahl_Int][1]
 
             else:
-                print(text_menu_selection_exception_out_of_range(len(Liste)))
+                print(text_menu_exception_selectionOutOfRange(len(Liste)))
                 print("")
 
                 Input = input(text_general_proceed())
                 print("")
 
         else:
-            print(text_menu_selection_exception_out_of_range(len(Liste)))
+            print(text_menu_exception_selectionOutOfRange(len(Liste)))
             print("")
 
             Input = input(text_general_proceed())
@@ -8998,16 +8995,16 @@ def Oeffne_Untermenue_Daten(Liste):
 # In[93]:
 
 
-def Oeffne_Untermenue_Daten_mit_Info(Liste):
+def open_submenu_Daten_mit_Info(Liste):
     while True:
-        clear_Screen()
+        clear_screen()
 
         print(text_menu_selection_header())
         print("")
 
-        Header = text_menu_headers_with_explenation()
+        menu_header = text_menu_headers_withExplenation()
 
-        print("{:<4} {:<65} {}\n".format(Header[0], Header[1], Header[2]))
+        print("{:<4} {:<65} {}\n".format(menu_header[0], menu_header[1], menu_header[2]))
 
         for index, item in enumerate(Liste, 1):
             print("{:<4} {:<65} {}".format(index, item[0], item[2]))
@@ -9021,47 +9018,47 @@ def Oeffne_Untermenue_Daten_mit_Info(Liste):
             Input_Menueauswahl_Int = int(Input_Menueauswahl) - 1
 
             if 0 <= Input_Menueauswahl_Int < len(Liste):
-                clear_Screen()
+                clear_screen()
 
                 return Liste[Input_Menueauswahl_Int][1]
 
             else:
-                print(text_menu_selection_exception_out_of_range(len(Liste)))
+                print(text_menu_exception_selectionOutOfRange(len(Liste)))
                 print("")
 
                 Input = input(text_general_proceed())
                 print("")
 
         else:
-            print(text_menu_selection_exception_out_of_range(len(Liste)))
+            print(text_menu_exception_selectionOutOfRange(len(Liste)))
             print("")
 
             Input = input(text_general_proceed())
             print("")
 
 
-# #### Ergebnisliste
+# #### show_resultslist
 
 # In[94]:
 
 
-def Ergebnisliste(Beschreibung, Daten):
+def show_resultslist(Beschreibung, Daten):
     try:
         # Beschreibung = ['Beschreibung1', 'Beschreibung2', ...]
 
-        clear_Screen()
+        clear_screen()
 
-        Header = text_menu_headers(sys._getframe().f_code.co_name)
+        menu_header = text_menu_headers(sys._getframe().f_code.co_name)
 
-        print(Header)
+        print(menu_header)
         print("\n")
 
         if len(Daten) == 0:
-            print(text_general_no_results())
+            print(text_general_noResults())
             print("")
 
         else:
-            Header = ""
+            menu_header = ""
 
             # converts every item in List to a string
 
@@ -9094,12 +9091,12 @@ def Ergebnisliste(Beschreibung, Daten):
                         max_lengths_dict[item.index(Inhalt)] = len(Inhalt)
 
             for item in Beschreibung:
-                Header = (
-                    Header
+                menu_header = (
+                    menu_header
                     + f"{item:<{max_lengths_dict[Beschreibung.index(item)] + 7}s}"
                 )
 
-            print(Header)
+            print(menu_header)
             print("\n")
 
             for item in Daten:
@@ -9236,7 +9233,7 @@ def keys_list():
 
 us = environment.UserSettings()
 
-Environment_Einstellungen = [
+EnvironmentFile_settings = [
     ["autoDownload", "autoDownload", str(us["autoDownload"])],
     ["braillePath", "braillePath", str(us["braillePath"])],
     ["debug", "debug", str(us["debug"])],
@@ -9318,7 +9315,7 @@ def Modul_Navigation():
 # In[98]:
 
 
-def Modul_Navigation_Mustersuche():
+def modul_navigation_patternSearch():
     list_de = [
         [
             "REPT: Neue Suchmusterauswahl",
@@ -9362,12 +9359,12 @@ def Modul_Navigation_Mustersuche():
         return list_en
 
 
-# #### Modul-Navigation (Notenauswahl)
+# #### Modul-Navigation (selectedScore)
 
 # In[99]:
 
 
-def Modul_Navigation_Notenauswahl():
+def modul_navigation_selectedScore():
     list_de = [
         [
             "Notenauswahl: vollständige Partitur",
@@ -9416,7 +9413,7 @@ def Modul_Navigation_Notenauswahl():
 # In[100]:
 
 
-def Modul_Navigation_Benennung_Einzelstimmen():
+def modul_navigation_Benennung_Einzelstimmen():
     list_de = [
         [
             "SHOW: Notenauswahl anzeigen (MuseScore)",
@@ -9442,14 +9439,14 @@ def Modul_Navigation_Benennung_Einzelstimmen():
             "<Opens MuseScore and displays the selected score>",
         ],
         [
-            "NAME: generic voice designations",
+            "NAME: generic voice/part designations",
             "generisch",
-            "<Assignment of generic voice designations (Part 1, Part 2 etc.)>",
+            "<Assignment of generic voice/part designations (Part 1, Part 2 etc.)>",
         ],
         [
-            "NAME: self-selected voice designations",
+            "NAME: self-selected voice/part designations",
             "benutzerdefiniert",
-            "<assignment of self-selected voice designations>",
+            "<assignment of self-selected voice/part designations>",
         ],
     ]
 
@@ -9465,7 +9462,7 @@ def Modul_Navigation_Benennung_Einzelstimmen():
 # In[101]:
 
 
-def Modul_Navigation_transformierter_Notentext():
+def modul_navigation_transformierter_Notentext():
     list_de = [
         [
             "REPT: Neue Notenauswahl",
@@ -9516,7 +9513,7 @@ def Modul_Navigation_transformierter_Notentext():
 # In[102]:
 
 
-def Modul_Navigation_Konvertierung():
+def modul_navigation_Konvertierung():
     list_de = [
         [
             "XML : Konvertierung nach .xml",
@@ -9641,7 +9638,7 @@ def Modul_Navigation_Konvertierung():
 
 
 def Start_Ausgabe_Text():
-    clear_Screen()
+    clear_screen()
 
     text = (
         "Funding period: one year; Start: January 1, 2021\n\n"
@@ -9684,7 +9681,7 @@ def Start_Ausgabe_Text():
     print("".join(text))
     Input = input(text_general_proceed())
 
-    clear_Screen()
+    clear_screen()
 
 
 # ## Start der zeichenorientierten Benutzerschnittstelle (CLI)
@@ -9694,7 +9691,7 @@ def Start_Ausgabe_Text():
 # In[8]:
 
 
-Pruefe_EnvironmentDatei()
+check_environmentFile()
 
 
 # ### Ausgabe der Projektbeschreibung
@@ -9710,4 +9707,4 @@ Start_Ausgabe_Text()
 # In[ ]:
 
 
-Oeffne_Startmenue()
+open_startmenu()
