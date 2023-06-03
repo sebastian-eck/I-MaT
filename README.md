@@ -121,9 +121,9 @@ Follow these steps to start the I-MaT program:
 
 Example command with the program file saved on the desktop (Windows):
 
-'''
+```
 (hfm_1.x.x) C:\Users\Username>python "C:\Users\Username\Desktop\I-MaT - Interaktives Musikanalyse-Tool.py
-'''
+```
 
 The I-MaT program will start running after a few seconds.
 
