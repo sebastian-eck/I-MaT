@@ -9247,19 +9247,12 @@ Environment_Einstellungen = [
     ["lilypondFormat", "lilypondFormat", str(us["lilypondFormat"])],
     ["lilypondPath", "lilypondPath", str(us["lilypondPath"])],
     ["lilypondVersion", "lilypondVersion", str(us["lilypondVersion"])],
-    ["localCorporaSettings", "localCorporaSettings",
-        str(us["localCorporaSettings"])],
+    ["localCorporaSettings", "localCorporaSettings", str(us["localCorporaSettings"])],
     ["localCorpusPath", "localCorpusPath", str(us["localCorpusPath"])],
-    ["localCorpusSettings", "localCorpusSettings",
-        str(us["localCorpusSettings"])],
-    ["manualCoreCorpusPath", "manualCoreCorpusPath",
-        str(us["manualCoreCorpusPath"])],
+    ["localCorpusSettings", "localCorpusSettings", str(us["localCorpusSettings"])],
+    ["manualCoreCorpusPath", "manualCoreCorpusPath", str(us["manualCoreCorpusPath"])],
     ["midiPath", "midiPath", str(us["midiPath"])],
-    [
-        "musescoreDirectPNGPath",
-        "musescoreDirectPNGPath",
-        str(us["musescoreDirectPNGPath"]),
-    ],
+    ["musescoreDirectPNGPath", "musescoreDirectPNGPath", str(us["musescoreDirectPNGPath"])],
     ["musicxmlPath", "musicxmlPath", str(us["musicxmlPath"])],
     ["pdfPath", "pdfPath", str(us["pdfPath"])],
     ["showFormat", "showFormat", str(us["showFormat"])],
@@ -9347,9 +9340,7 @@ def Modul_Navigation_Mustersuche():
 
     list_en = [
         [
-            "REPT: New search pattern selection",
-            "Repeat",
-            "<Repeat the tool with new score selection>",
+            "REPT: New search pattern selection", "Repeat", "<Repeat the tool with new score selection>",
         ],
         [
             "EXPT: Export results as CSV file",
@@ -9649,103 +9640,41 @@ def Modul_Navigation_Konvertierung():
 # In[4]:
 
 
-def Start_Ausgabe_Text():
+def Start_Ausgabe_Text():2
     clear_Screen()
 
     text = (
-        "Funding period: one year; Start: January 1, 2021 \n\n"
+        "Funding period: one year; Start: January 1, 2021\n\n"
         "Funded by the Stifterverband together with the Thuringian Ministry of Economics,\n"
         "Science and Digital Society as part of the fellowship program for innovations in digital university teaching.\n\n"
-    )
-
-    print(text)
-
-    text = "-- Project team --\n\n\n" "-- Project management  --\n"
-
-    print(text)
-
-    print(
-        "{:<50} {}".format(
+        "-- Project team --\n\n\n"
+        "-- Project management  --\n\n"
+        "{:<50} {}\n\n".format(
             "Prof. Dr. Martin Pfleiderer", "<martin.pfleiderer@hfm-weimar.de>"
-        )
+        ),
+        "Institute for Musicology Weimar-Jena - University of Music FRANZ LISZT Weimar\n\n",
+        "-- Scientific Assistants --\n\n",
+        "{:<50} {}\n".format("Egor Polyakov", "<egor.polyakov@hfm-weimar.de>"),
+        "{:<50} {}\n\n".format("Christon-Ragavan Nadar", ""),
+        "-- Student staff --\n\n",
+        "{:<50} {}\n".format("Sebastian Oliver Eck", "<sebastian.eck@hfm.uni-weimar.de>"),
+        "{:<50} {}\n".format("Juan Sebastián Paez Medina", "<juan.sebastian.paez.medina@hfm.uni-weimar.de>"),
+        "{:<50} {}\n".format("Andres Romero Varon", "<andres.romero.varon@hfm.uni-weimar.de>"),
+        "{:<50} {}\n".format("Esther Johanna Barta", ""),
+        "{:<50} {}\n\n".format("Clarissa Henriette Mühlhausen", ""),
+        "-- Program code --\n\n",
+        "{:<50} {}\n\n".format("Sebastian Oliver Eck", "<sebastian.eck@hfm.uni-weimar.de>"),
+        "-- Search routines --\n\n",
+        "{:<50} {}\n".format("Sebastian Oliver Eck", "<sebastian.eck@hfm.uni-weimar.de>"),
+        "{:<50} {}\n".format("Juan Sebastián Paez Medina", "<juan.sebastian.paez.medina@hfm.uni-weimar.de>"),
+        "{:<50} {}\n".format("Andres Romero Varon", "<andres.romero.varon@hfm.uni-weimar.de>"),
+        "{:<50} {}\n".format("Egor Polyakov", "<egor.polyakov@hfm-weimar.de>"),
+        "{:<50} {}\n\n".format("Christon-Ragavan Nadar", ""),
+        "Using Music21 (MIT, Massachusetts, Cambridge, USA): [https://web.mit.edu/music21/]\n\n",
+        "<Please use the program in full screen mode if possible>\n\n"
     )
 
-    text = (
-        "Institute for Musicology Weimar-Jena\n"
-        "University of Music FRANZ LISZT Weimar\n\n"
-    )
-
-    print(text)
-
-    text = "-- Scientific Assistants --\n"
-
-    print(text)
-
-    print("{:<50} {}".format("Egor Polyakov", "<egor.polyakov@hfm-weimar.de>"))
-    print("{:<50} {}".format("Christon-Ragavan Nadar", ""))
-    print("\n")
-
-    text = "-- Student staff --\n"
-
-    print(text)
-
-    print(
-        "{:<50} {}".format("Sebastian Oliver Eck",
-                           "<sebastian.eck@hfm.uni-weimar.de>")
-    )
-    print(
-        "{:<50} {}".format(
-            "Juan Sebastián Paez Medina",
-            "<juan.sebastian.paez.medina@hfm.uni-weimar.de>",
-        )
-    )
-    print(
-        "{:<50} {}".format(
-            "Andres Romero Varon", "<andres.romero.varon@hfm.uni-weimar.de>"
-        )
-    )
-    print("{:<50} {}".format("Esther Johanna Barta", ""))
-    print("{:<50} {}".format("Clarissa Henriette Mühlhausen", ""))
-    print("\n")
-
-    print("-- Program code --\n")
-
-    print(
-        "{:<50} {}".format("Sebastian Oliver Eck",
-                           "<sebastian.eck@hfm.uni-weimar.de>")
-    )
-    print("\n")
-
-    text = "-- Search routines --\n"
-
-    print(text)
-
-    print(
-        "{:<50} {}".format("Sebastian Oliver Eck",
-                           "<sebastian.eck@hfm.uni-weimar.de>")
-    )
-    print(
-        "{:<50} {}".format(
-            "Juan Sebastián Paez Medina",
-            "<juan.sebastian.paez.medina@hfm.uni-weimar.de>",
-        )
-    )
-    print(
-        "{:<50} {}".format(
-            "Andres Romero Varon", "<andres.romero.varon@hfm.uni-weimar.de>"
-        )
-    )
-    print("{:<50} {}".format("Egor Polyakov", "<egor.polyakov@hfm-weimar.de>"))
-    print("{:<50} {}".format("Christon-Ragavan Nadar", ""))
-    print("")
-
-    text = "Using Music21 (MIT, Massachusetts, Cambridge, USA): <https://web.mit.edu/music21/>\n\n"
-
-    print(text)
-
-    print("<Please use the program in full screen mode if possible>")
-    print("\n")
-
+    print("".join(text))
     Input = input(text_general_proceed())
 
     clear_Screen()
