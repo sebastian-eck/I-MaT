@@ -328,18 +328,18 @@ def text_headers(identifier):
 # In[ ]:
 
 
-def text_environmentFile_createNewFile(environmentFile_path):
+def text_environmentFile_createNewFile(received_environmentFile_path):
     text_de = (
         "KEINE ENVIRONMENT-DATEI VORHANDEN\n\n"
         "Erwartete Datei: "
-        + str(environmentFile_path)
+        + str(received_environmentFile_path)
         + "\n\nEs wurde keine Environment-Datei gefunden. Das Erstellen dieser Datei ist zur korrekten Ausführung des Programs notwendig.\n\nMöchten Sie jetzt eine neue Environment-Datei erstellen? (ja/nein): "
     )
 
     text_en = (
         "NO ENVIRONMENT-DATEI FOUND\n\n"
         "Expected File: "
-        + str(environmentFile_path)
+        + str(received_environmentFile_path)
         + "\n\nNo environment file was found. The creation of this file is necessary for the correct execution of the program.\n\nDo you want to create a new environment file now? (yes/no): "
     )
 
@@ -355,16 +355,16 @@ def text_environmentFile_createNewFile(environmentFile_path):
 # In[ ]:
 
 
-def text_environmentFile_createNewFile_created(environmentFile_path):
+def text_environmentFile_createNewFile_created(received_environmentFile_path):
     text_de = (
         "Es wurde eine neue Environment-Datei in folgendem Verzeichnis erstellt:\n\n"
-        + str(environmentFile_path)
+        + str(received_environmentFile_path)
         + '\n\nFalls Sie die Datei im Explorer/Finder nicht sehen können, müssen Sie die Option "ausgeblendete Dateien anzeigen" aktivieren:\n\nWINDOWS: Explorer > Ansicht > Ein-/ausblenden > Ausgeblendete Elemente\n\nMAC: Im Finder Tastenkombination "Befehlstaste (cmd/command) + Umschalttaste + Punkt"'
     )
 
     text_en = (
         "A new environment file has been created in the following directory:\n\n"
-        + str(environmentFile_path)
+        + str(received_environmentFile_path)
         + '\n\nIf you cannot see the file in Explorer / Finder, you have to activate the option "View hidden files":\n\nWINDOWS: View > Show/hide > Hidden items\n\nMAC: In the Finder key combination "Command key (cmd / command) + Shift key + period"'
     )
 
@@ -458,16 +458,16 @@ def text_environmentFile_reconfigure_notDeleted():
 # In[ ]:
 
 
-def text_environmentFile_showPath(environmentFile_path):
+def text_environmentFile_showPath(received_environmentFile_path):
     text_de = (
-        "Der Pfad der Environmentdatei lautet: " + str(environmentFile_path) + "\n\n"
+        "Der Pfad der Environmentdatei lautet: " + str(received_environmentFile_path) + "\n\n"
         'Falls Sie die Datei nicht sehen können, müssen Sie die Option "ausgeblendete Dateien anzeigen" aktivieren:\n\n'
         "WINDOWS: Explorer > Ansicht > Ein-/ausblenden > Ausgeblendete Elemente\n\n"
         'MAC: Im Finder Tastenkombination "Befehlstaste (cmd/command) + Umschalttaste + Punkt"'
     )
 
     text_en = (
-        "The path of the environment file is: " + str(environmentFile_path) + "\n\n"
+        "The path of the environment file is: " + str(received_environmentFile_path) + "\n\n"
         'If you cannot see the file, you have to activate the option "Show hidden files":\n\n'
         "WINDOWS: Explorer > View > Show / hide > Hidden items\n\n"
         'MAC: In the Finder key combination "Command key (cmd / command) + Shift key + period"'
@@ -604,7 +604,7 @@ def text_exception_general(exception_text, function_name):
     tb = sys.exc_info()[2]
 
     text_de = (
-        "Bei der Ausführung des Programms wurde ein Fehler festgestellt:\n\n\Fehler in Zeile: "
+        "Bei der Ausführung des Programms wurde ein Fehler festgestellt:\n\nFehler in Zeile: "
         + str(tb.tb_lineno)
         + "\n\nFehlercode: "
         + str(exception_text)
@@ -614,7 +614,7 @@ def text_exception_general(exception_text, function_name):
     )
 
     text_en = (
-        "An error was encountered while executing the program:\n\n\Error in line: "
+        "An error was encountered while executing the program:\n\nError in line: "
         + str(tb.tb_lineno)
         + "\n\nError code: "
         + str(exception_text)
@@ -1029,17 +1029,17 @@ def text_general_terminateProgram():
 # In[10]:
 
 
-def text_general_exportSuccessful(path, name, extension):
+def text_general_exportSuccessful(path, filename, extension):
     text_de = (
         "Die Datei wurde erfolgreich gespeichert.\n\n"
         "Speicherort: " + str(path) + "\n\n"
-        "filename: " + str(name) + str(extension)
+        "filename: " + str(filename) + str(extension)
     )
 
     text_en = (
         "The file was saved successfully.\n\n"
         "Location: " + str(path) + "\n\n"
-        "Filename: " + str(name) + str(extension)
+        "Filename: " + str(filename) + str(extension)
     )
 
     if LANGUAGE == "DE":
@@ -3116,8 +3116,14 @@ def select_bars(Noten):
                     print(text_menu_exception_selectionOutOfRange(number_of_measures))
                     print("")
 
+                    input(text_general_proceed())
+                    print("")
+
             else:
                 print(text_score_bars_exception_notNumber())
+                print("")
+
+                input(text_general_proceed())
                 print("")
 
         loopDone = False
@@ -3157,8 +3163,14 @@ def select_bars(Noten):
                     )
                     print("")
 
+                    input(text_general_proceed())
+                    print("")
+
             else:
                 print(text_score_bars_exception_notNumber())
+                print("")
+
+                input(text_general_proceed())
                 print("")
 
         return Noten.measures(selected_firstMeasure, selected_last_measure)
@@ -9591,7 +9603,7 @@ def module_navigation_conversion():
 # In[4]:
 
 
-def start_printText():
+def Start_Ausgabe_Text():
     utility_clear_screen()
 
     text = (
@@ -9653,7 +9665,7 @@ check_environmentFile()
 # In[9]:
 
 
-start_printText()
+Start_Ausgabe_Text()
 
 
 # ### Öffnen des Startmenüs
