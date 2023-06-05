@@ -7818,7 +7818,7 @@ def open_submenu_individualPiece_settings():
         print("{:<4} {:<65} {}\n".format(menu_header[0], menu_header[1], menu_header[2]))
 
         for index, item in enumerate(
-            submenu_individualPiece_settings(), 1
+            submenu_individualPiece_settings_entries(), 1
         ):
             print("{:<4} {:<65} {}".format(index, item[0], item[2]))
 
@@ -7835,17 +7835,17 @@ def open_submenu_individualPiece_settings():
             if (
                 0
                 <= userInput_menuSelection_int
-                < len(submenu_individualPiece_settings())
+                < len(submenu_individualPiece_settings_entries())
             ):
                 utility_clear_screen()
 
                 if (
-                    submenu_individualPiece_settings()[
+                    submenu_individualPiece_settings_entries()[
                         userInput_menuSelection_int
                     ][1]
                     != "nothing"
                 ):
-                    submenu_individualPiece_settings()[
+                    submenu_individualPiece_settings_entries()[
                         userInput_menuSelection_int
                     ][1]()
 
@@ -7856,7 +7856,7 @@ def open_submenu_individualPiece_settings():
             else:
                 print(
                     text_menu_exception_selectionOutOfRange(
-                        len(submenu_individualPiece_settings())
+                        len(submenu_individualPiece_settings_entries())
                     )
                 )
                 print("")
@@ -7866,7 +7866,7 @@ def open_submenu_individualPiece_settings():
         else:
             print(
                 text_menu_exception_selectionOutOfRange(
-                    len(submenu_individualPiece_settings())
+                    len(submenu_individualPiece_settings_entries())
                 )
             )
             print("")
@@ -8419,7 +8419,7 @@ def submenu_individualPiece_patternSearch_entries():
 # In[88]:
 
 
-def submenu_individualPiece_settings():
+def submenu_individualPiece_settings_entries():
     list_de = [
         [
             "ENVT: Environment-Datei (Pfad)",
