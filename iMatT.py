@@ -1796,7 +1796,7 @@ def text_analysis_notes_intervals():
         return text_en
 
 
-# #### Function: Melodik_Melodieverlauf_visualization_lineGraph
+# #### Function: melody_melodicDevelopment_visualization_lineGraph
 
 # In[6]:
 
@@ -3920,7 +3920,7 @@ def menuStructure_musicalParameters_withoutGraphicsExport(
 # In[45]:
 
 
-def analyze_range(temporary_selectedScore):
+def range_analysis(temporary_selectedScore):
     try:
         selectedScore_stripTies = temporary_selectedScore.stripTies()
 
@@ -3951,7 +3951,7 @@ def range_analysis_textOutput():
 
         # --- Unterhalb: Code des Tools ---
 
-        range = analyze_range(temporary_selectedScore)
+        range = range_analysis(temporary_selectedScore)
 
         selectedScore_name = str(
             utility_getKeyToValue(global_selectedScore, global_catalogue_completeScoreWithIndividualParts)
@@ -4021,9 +4021,9 @@ def range_comparison_textOutput():
 
         input_bars_end_selectedScore2 = global_input_lastMeasure
 
-        range_Noten1 = analyze_range(selectedScore1)
+        range_Noten1 = range_analysis(selectedScore1)
 
-        range_Noten2 = analyze_range(selectedScore2)
+        range_Noten2 = range_analysis(selectedScore2)
 
         score_label1 = (
             utility_getKeyToValue(
@@ -4600,7 +4600,7 @@ def intervalStructure_Intervalle_quantity_textOutput():
 # In[54]:
 
 
-def Melodik_Melodieverlauf_visualization_lineGraph():
+def melody_melodicDevelopment_visualization_lineGraph():
     utility_clear_screen()
 
     # --- Nachfolgend: Hinweise zu Bedienung, eingeschränkter Kompatibilität des Tools
@@ -4644,7 +4644,7 @@ def Melodik_Melodieverlauf_visualization_lineGraph():
     print("")
 
     menu_askUser_repeatPreviousTool(
-        Melodik_Melodieverlauf_visualization_lineGraph)
+        melody_melodicDevelopment_visualization_lineGraph)
 
 
 # ## Metrum
@@ -8286,7 +8286,7 @@ def submenu_individualPiece_visualizations_entries():
         ],
         [
             "SHOW: Linien: Stimmenverlauf",
-            Melodik_Melodieverlauf_visualization_lineGraph,
+            melody_melodicDevelopment_visualization_lineGraph,
             "<Fehleranfällig: Funktioniert nur bei durchgehend einstimmigen Einzelstimmen>",
         ],
         [
@@ -8325,7 +8325,7 @@ def submenu_individualPiece_visualizations_entries():
         ],
         [
             "SHOW: Voice progression (line plot)",
-            Melodik_Melodieverlauf_visualization_lineGraph,
+            melody_melodicDevelopment_visualization_lineGraph,
             "<Prone to error: Only works with consistently monodic parts>",
         ],
         [
@@ -9350,7 +9350,7 @@ def module_navigation_conversion():
 # In[4]:
 
 
-def Start_Ausgabe_Text():
+def start_printText():
     utility_clear_screen()
 
     text = (
@@ -9404,7 +9404,7 @@ def Start_Ausgabe_Text():
 # In[8]:
 
 
-check_environmentFile()
+# check_environmentFile()
 
 
 # ### Ausgabe der Projektbeschreibung
@@ -9412,7 +9412,7 @@ check_environmentFile()
 # In[9]:
 
 
-Start_Ausgabe_Text()
+# start_printText()
 
 
 # ### Öffnen des Startmenüs
@@ -9420,4 +9420,4 @@ Start_Ausgabe_Text()
 # In[ ]:
 
 
-open_startmenu()
+# open_startmenu()
