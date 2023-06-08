@@ -1,25 +1,52 @@
 # --------------------------------------
 
-# ## Menüeinträge
+# # Menüeinträge
 
-# ### Startmenü (erste Ebene)
+# ## Startmenü (erste Ebene)
 
 def startmenu_entries():
     return {
         "menu_displayed_text": [
             "Start Menu Header",
             "Please make a selection from the options below by entering the entry index number:",
-            ["No.", "Menu item", "<Explanation>"],
+            ["Menu item", "<Explanation>"],
             "Which menu item should be executed? (<No. of menu item>): "
         ],
         "menu_entries": [
             ["PROG: Analysis of a single piece of music", mainmenu_individualPiece_entries, "<Analysis of a single piece of music>"],
+            ["TOKE: Tokenisation of one sheet music file", tokenisation_menu, "<Tokenisation of sheet music files>"],
             ["SETT: Settings", some_function, "<View the settings in the music21 environment file>"],
             ["HELP: Project overview", some_function, '<Information about the project "Computer-Aided Music Analysis">'],
             ["LANG: Change config.LANGUAGE", some_function, "<Change the output language of the program>"],
             ["EXIT: Exit program", some_function, "<Exits the Python script>"],
         ]
     }
+
+# ### Tokenisation of a sheet music file
+
+def tokenisation_menu():
+    return {
+        "menu_displayed_text": [
+            "Tokenisation Menu Header",
+            "Please make a selection from the options below by entering the entry index number:",
+            ["Menu item", "<Explanation>"],
+            "Which menu item should be executed? (<No. of menu item>): ",
+        ],
+        "menu_entries": [
+            ["Option 1", some_function, "<Function description>"],
+            ["Option 2", some_function, "<Function description>"],
+            ["Option 3", some_function, "<Function description>"],
+            ["Option 4", some_function, "<Function description>"],
+            ["Option 5", some_function, "<Function description>"],
+            ["Option 6", some_function, "<Function description>"],
+            ["Option 7", some_function, "<Function description>"],
+            ["Option 8", some_function, "<Function description>"],
+            ["BACK: Return to the last menu", 'back', "<Returns to the parent menu>"],
+            ["MAIN: Return to the main menu", 'main-menu', "<Returns to main menu>"],
+        ],
+    }
+
+# ### Analysis of a single piece of music
 
 
 # #### Hauptmenü Einzelwerk (zweite Ebene)
@@ -29,7 +56,7 @@ def mainmenu_individualPiece_entries():
         "menu_displayed_text": [
             "Mainmenu Individual Piece Header",
             "Please make a selection from the options below by entering the entry index number:",
-            ["No.", "Menu item", "<Explanation>"],
+            ["Menu item", "<Explanation>"],
             "Which menu item should be executed? (<No. of menu item>): "
         ],
         "menu_entries": [
@@ -52,7 +79,7 @@ def submenu_individualPiece_files_entries():
         "menu_displayed_text": [
             "Submenu Individual Piece Files Header",
             "Please make a selection from the options below by entering the entry index number:",
-            ["No.", "Menu item", "<Explanation>"],
+            ["Menu item", "<Explanation>"],
             "Which menu item should be executed? (<No. of menu item>): "
         ],
         "menu_entries": [
@@ -74,7 +101,7 @@ def submenu_individualPiece_statisticalAnalyses_entries():
         "menu_displayed_text": [
             "Submenu Individual Piece Statistical Analyses Header",
             "Please make a selection from the options below by entering the entry index number:",
-            ["No.", "Menu item", "<Explanation>"],
+            ["Menu item", "<Explanation>"],
             "Which menu item should be executed? (<No. of menu item>): "
         ],
         "menu_entries": [
@@ -104,7 +131,7 @@ def submenu_individualPiece_statisticalAnalyses_visualizations_entries():
         "menu_displayed_text": [
             "Submenu Individual Piece Statistical Analyses Visualizations Header",
             "Please make a selection from the options below by entering the entry index number:",
-            ["No.", "Menu item", "<Explanation>"],
+            ["Menu item", "<Explanation>"],
             "Which menu item should be executed? (<No. of menu item>): "
         ],
         "menu_entries": [
@@ -125,7 +152,7 @@ def submenu_individualPiece_visualizations_entries():
         "menu_displayed_text": [
             "Submenu Individual Piece Visualizations Header",
             "Please make a selection from the options below by entering the entry index number:",
-            ["No.", "Menu item", "<Explanation>"],
+            ["Menu item", "<Explanation>"],
             "Which menu item should be executed? (<No. of menu item>): "
         ],
         "menu_entries": [
@@ -148,7 +175,7 @@ def submenu_individualPiece_patternSearch_entries():
         "menu_displayed_text": [
             "Submenu Individual Piece Pattern Search Header",
             "Please make a selection from the options below by entering the entry index number:",
-            ["No.", "Menu item", "<Explanation>"],
+            ["Menu item", "<Explanation>"],
             "Which menu item should be executed? (<No. of menu item>): "
         ],
         "menu_entries": [
@@ -169,7 +196,7 @@ def submenu_individualPiece_settings_entries():
         "menu_displayed_text": [
             "Submenu Individual Piece Settings Header",
             "Please make a selection from the options below by entering the entry index number:",
-            ["No.", "Menu item", "<Explanation>"],
+            ["Menu item", "<Explanation>"],
             "Which menu item should be executed? (<No. of menu item>): "
         ],
         "menu_entries": [
@@ -251,7 +278,7 @@ def submenu_individualPiece_settings_entries():
 #         "menu_displayed_text": [
 #             "Mainmenu Individual Piece Header",
 #             "Please make a selection from the options below by entering the entry index number:",
-#             ["No.", "Menu item", "<Explanation>"],
+#             ["Menu item", "<Explanation>"],
 #             "Which menu item should be executed? (<No. of menu item>): "
 #         ],
 #         "menu_entries": [
@@ -274,7 +301,7 @@ def submenu_individualPiece_settings_entries():
 #         "menu_displayed_text": [
 #             "Submenu Individual Piece Files Header",
 #             "Please make a selection from the options below by entering the entry index number:",
-#             ["No.", "Menu item", "<Explanation>"],
+#             ["Menu item", "<Explanation>"],
 #             "Which menu item should be executed? (<No. of menu item>): "
 #         ],
 #         "menu_entries": [
@@ -296,7 +323,7 @@ def submenu_individualPiece_settings_entries():
 #         "menu_displayed_text": [
 #             "Submenu Individual Piece Statistical Analyses Header",
 #             "Please make a selection from the options below by entering the entry index number:",
-#             ["No.", "Menu item", "<Explanation>"],
+#             ["Menu item", "<Explanation>"],
 #             "Which menu item should be executed? (<No. of menu item>): "
 #         ],
 #         "menu_entries": [
@@ -326,7 +353,7 @@ def submenu_individualPiece_settings_entries():
 #         "menu_displayed_text": [
 #             "Submenu Individual Piece Statistical Analyses Visualizations Header",
 #             "Please make a selection from the options below by entering the entry index number:",
-#             ["No.", "Menu item", "<Explanation>"],
+#             ["Menu item", "<Explanation>"],
 #             "Which menu item should be executed? (<No. of menu item>): "
 #         ],
 #         "menu_entries": [
@@ -347,7 +374,7 @@ def submenu_individualPiece_settings_entries():
 #         "menu_displayed_text": [
 #             "Submenu Individual Piece Visualizations Header",
 #             "Please make a selection from the options below by entering the entry index number:",
-#             ["No.", "Menu item", "<Explanation>"],
+#             ["Menu item", "<Explanation>"],
 #             "Which menu item should be executed? (<No. of menu item>): "
 #         ],
 #         "menu_entries": [
@@ -370,7 +397,7 @@ def submenu_individualPiece_settings_entries():
 #         "menu_displayed_text": [
 #             "Submenu Individual Piece Pattern Search Header",
 #             "Please make a selection from the options below by entering the entry index number:",
-#             ["No.", "Menu item", "<Explanation>"],
+#             ["Menu item", "<Explanation>"],
 #             "Which menu item should be executed? (<No. of menu item>): "
 #         ],
 #         "menu_entries": [
@@ -391,7 +418,7 @@ def submenu_individualPiece_settings_entries():
 #         "menu_displayed_text": [
 #             "Submenu Individual Piece Settings Header",
 #             "Please make a selection from the options below by entering the entry index number:",
-#             ["No.", "Menu item", "<Explanation>"],
+#             ["Menu item", "<Explanation>"],
 #             "Which menu item should be executed? (<No. of menu item>): "
 #         ],
 #         "menu_entries": [
