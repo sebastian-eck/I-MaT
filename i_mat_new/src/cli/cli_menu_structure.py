@@ -671,8 +671,6 @@ def example_sub_submenu_entries_dict():
 
 
 def example_analysis_results_dict():
-    # todo: rewrite the docstring and include information about what happens when each menu line
-    #  (in display_menu_print_results()) is being executed by the function display_menu_print_results()
     """
     Generate a representative dictionary for analysis results.
 
