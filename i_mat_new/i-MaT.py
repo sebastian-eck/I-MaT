@@ -9404,7 +9404,7 @@ def start_printText():
 # In[8]:
 
 
-# check_environmentFile()
+check_environmentFile()
 
 
 # ### Ausgabe der Projektbeschreibung
@@ -9412,7 +9412,7 @@ def start_printText():
 # In[9]:
 
 
-# start_printText()
+start_printText()
 
 
 # ### Öffnen des Startmenüs
@@ -9420,4 +9420,4 @@ def start_printText():
 # In[ ]:
 
 
-# open_startmenu()
+open_startmenu()
