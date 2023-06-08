@@ -6723,7 +6723,7 @@ def patternSearch_menuStructure_withRhythm_withoutPitch():
 # In[7]:
 
 
-def keySelection_menuEntries():
+def keySelection_menu_entries():
     list_de = [
         ["‾‾‾‾  -   Ces", "C-"],
         ["C         C", "C"],
@@ -6925,7 +6925,7 @@ def patternSearch_enterSearchPattern_withRhythm():
 
             while not loopDone2:
                 searchPattern_toneSelection = open_submenu_patternSearch(
-                    keySelection_menuEntries())
+                    keySelection_menu_entries())
 
                 utility_clear_screen()
 
@@ -7087,7 +7087,7 @@ def patternSearch_enterSearchPattern_withoutRhythm():
 
             while not loopDone2:
                 searchPattern_toneSelection = open_submenu_patternSearch(
-                    keySelection_menuEntries())
+                    keySelection_menu_entries())
 
                 utility_clear_screen()
 
@@ -9404,7 +9404,7 @@ def start_printText():
 # In[8]:
 
 
-# check_environmentFile()
+check_environmentFile()
 
 
 # ### Ausgabe der Projektbeschreibung
@@ -9412,7 +9412,7 @@ def start_printText():
 # In[9]:
 
 
-# start_printText()
+start_printText()
 
 
 # ### Öffnen des Startmenüs
@@ -9420,4 +9420,4 @@ def start_printText():
 # In[ ]:
 
 
-# open_startmenu()
+open_startmenu()

@@ -1,7 +1,10 @@
-python==3.10.*
-numpy==1.20.*
-matplotlib==3.4.*
-pandas==1.2.*
-ipython==7.24.*
-scipy==1.6.*
-music21==6.7.*
+numpy~=1.23.5
+matplotlib~=3.7.1
+pandas~=2.0.2
+ipython~=8.14.0
+scipy~=1.10.1
+music21==6.7
+miditok~=2.0.6
+miditoolkit~=0.1.16
+tokenizers
+lorem-text

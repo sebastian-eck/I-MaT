@@ -1,6 +1,6 @@
 # Interactive Music Analysis Tool (I-MaT)
 
-The **Interactive Music Analysis Tool (I-MaT)**[^1] is a modular program designed for producing visualizations and statistical analyses of sheet music files. It is based on the **music21** python library ([GitHub repository](https://github.com/cuthbertLab/music21.git)), developed by the Massachusetts Institute of Technology (MIT),[^2] and was originally created as a sub-project of the fellowship project Computer-assisted Music Analysis in Digital University Teaching ([Computergestützte Musikanalyse in der digitalen Hochschullehre, 2021, project report (PDF)](https://stifterverband.org/file/10986/download?token=tl9S2EL_)).[^3]
+The **Interactive Music Analysis Tool (I-MaT)**[^1] is a modular program designed for producing visualizations and statistical analyses of sheet music files. It is based on the **music21** python library ([GitHub repository](https://github.com/cuthbertLab/music21.git)), developed by the Massachusetts Institute of Technology (MIT),[^2] and was originally created as a subproject of the fellowship project Computer-assisted Music Analysis in Digital University Teaching ([Computergestützte Musikanalyse in der digitalen Hochschullehre, 2021, project report (PDF)](https://stifterverband.org/file/10986/download?token=tl9S2EL_)).[^3]
 
 The project was located at the Department of Musicology Weimar-Jena at the Franz Liszt University of Music Weimar[^4] and was funded by the Thuringian Ministry for Economy, Science and Digital Change and the Deutscher Stifterverband.[^5]
 
@@ -15,7 +15,7 @@ The aim of the aforementioned project was to design, test, teach with and evalua
 
 Within the project "Computer-assisted Music Analysis [...]", three computerized approaches to music score analysis were utilized, namely music21,[^7] CAMAT,[^8] and I-MaT itself. Music21 is a Python library developed at MIT for symbolic music representation and processing. CAMAT ([GitHub repository](https://github.com/Christon-Ragavan/CAMAT)), on the other hand, is a Computer-Assisted Music Analysis Toolkit developed by Egor Poliakov[^9] and Christon R. Nadar[^10] within the fellowship project. CAMAT uses its own unique data structure, developed within the project to overcome certain design problems found within the music21 framework.[^11] Tutorials for musicological courses were prepared using music examples and code that can be executed as Jupyter Notebooks.[^12]
 
-Both music21 and CAMAT require rudimentary knowledge of Python command syntax. In contrast, the Interactive Music Analysis Tool (I-MaT) is designed for users who have none to only limited knowledge of computer commands or programming languages as it utilizes a new and innovative approach to access and work with the music21 toolkit.
+Both music21 and CAMAT require rudimentary knowledge of Python command syntax. In contrast, the Interactive Music Analysis Tool (I-MaT) is designed for users who have none to only limited knowledge of computer commands or programming config.LANGUAGEs as it utilizes a new and innovative approach to access and work with the music21 toolkit.
 
 ### I-MaT: Features and Accessibility
 
@@ -66,14 +66,14 @@ Author: Sebastian Oliver Eck (Student Project Assistant - Institute for Musicolo
 
 The fellowship project contains two larger databases:[^13]
 
-- The main database[^14] comprises of several thousand individual sheet music files (MusicXML).
+- The main database[^14] comprises several thousand individual sheet music files (MusicXML).
 - The subcorpus[^15] contains all scores used in the two teaching modules for score analysis[^16] and was carefully curated by student members of the project team.
 
 ### List of incorporated databases (last accessed on: 2023-04-25)
 
 The fellowship project uses several, under the Common Licence freely available online databases as sources for its own sheet music corpora. These include:
 
-- The Classical Music Score Digitization Project (weblink not longer available).
+- The Classical Music Score Digitization Project (weblink no longer available).
 - [Josquin Research Project, Standford University](http://jrp.stanford.edu).
 - [Kern Scores](http://kern.ccarh.org/).
 - [Tobi's Notenarchiv](http://www.tobis-notenarchiv.de/noten/index.htm).
@@ -99,14 +99,17 @@ To use the Interactive Music Analysis Tool (I-MaT), follow these steps:
 Follow these steps to start the I-MaT program:
 
 1. **Open the Anaconda Prompt**:
+
    - On Windows:
      - Go to the Start menu.
      - Navigate to "Anaconda 3 (64-bit)".
      - Choose either "Anaconda Powershell Prompt (anaconda3)" or "Anaconda Prompt (anaconda3)".
+     
    - On Mac:
      - Locate the Anaconda Powershell Prompt or Anaconda Prompt in the Finder.
 
 2. **Activate the project-specific Python environment**:
+
    - In the Anaconda Prompt, you will see a line starting with `(base) C:\Users\Username>`.
    - Enter the following command and press Enter:
      ```
@@ -115,6 +118,7 @@ Follow these steps to start the I-MaT program:
      Note: Replace `1.x.x` with the actual version number.
 
 3. **Start the program**:
+
    - In the Anaconda Prompt, type `python`.
    - Drag and drop the 'I-MaT - Interaktives Musikanalyse-Tool.py' file into the prompt window.
    - Press Enter to start the program.
@@ -137,9 +141,9 @@ If you encounter any issues, follow these steps:
 - Make sure the desired version (`hfm_1.x.x`) is listed in the output.
 
 2. If the version is missing, install the project-specific Python environment by referring to the installation instructions:
-- [Windows](en:installation_windows)
-- [Mac](en:installation_mac)
-- [Linux](en:installation_linux)
+- [Windows](https://analyse.hfm-weimar.de/doku.php?id=en:installation_windows)
+- [Mac](https://analyse.hfm-weimar.de/doku.php?id=en:installation_mac)
+- [Linux](https://analyse.hfm-weimar.de/doku.php?id=en:installation_linux)
 - Follow the instructions provided under "2. Project-specific Python environment".
 
 ## Appendix: Figures
@@ -166,7 +170,7 @@ No.  Menu item                                                         <Explanat
 2    TOOL: Menu selection (statistical analysis)                       <Selection of various statistical analysis tools>      
 3    TOOL: Menu selection (visualisation)                              <Selection of different visualisation tools>
 4    TOOL: Menu selection (pattern search)                             <Selection of different tools for pattern search>      
-5    SETT: Settings                                                    <Settings in the music21 environment file/language settings>
+5    SETT: Settings                                                    <Settings in the music21 environment file/config.LANGUAGE settings>
 6    HELP: Project overview                                            <Information about the project "Computer-Aided Music Analysis">
 7    EXIT: Exit program                                                <Exits the Python script>
 
