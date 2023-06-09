@@ -18,9 +18,9 @@ Functions:
 - display_menu_print_results(results_dict: Dict) -> None
 - display_menu_print_textblock(text_dict: Dict) -> None
 - print_textblock(menu_columns_description: list, menu_entries: [list, list, ...]) -> None
-- save_data_in_pd_dataset(menu_entries: List[Tuple], menu_header: List[str]) -> pd.DataFrame
+- save_data_in_pd_dataset(menu_entries: List[Tuple], menu_columns_description: List[str]) -> pd.DataFrame
 - print_pd_dataset_entries(dataset: pd.DataFrame) -> None
-- print_menu_entries(menu_entries: List[Tuple], menu_header: List[str]) -> None
+- print_menu_entries(menu_entries: List[Tuple], menu_columns_description: List[str]) -> None
 - example_menu_entries_dict() -> Dict
 - example_analysis_results_dict() -> Dict
 - example_text_dict() -> Dict
@@ -79,8 +79,8 @@ def display_menu_undirected(menu_content_dict, parent_menu_func=None):
     ...     "menu_displayed_text": [
     ...         "Menu Titel",
     ...         "Please select one of the following menu options by entering the corresponding index number:",
+    ...         "Which menu item should be executed? (<No. of menu item>): ",
     ...         ["Menu item titel", "<Short Explanation>"],
-    ...         "Which menu item should be executed? (<No. of menu item>): "
     ...     ],
     ...     "menu_entries": [
     ...         ["ABBR: Option 1 titel", example_submenu_entries_dict, "<Goes to submenu>"],
@@ -105,19 +105,19 @@ def display_menu_undirected(menu_content_dict, parent_menu_func=None):
         system("cls")
 
         menu_titel = menu_content_dict()["menu_displayed_text"][0]
-        menu_request = menu_content_dict()["menu_displayed_text"][1]
-        menu_columns_description = menu_content_dict()["menu_displayed_text"][2]
-        menu_input_text = menu_content_dict()["menu_displayed_text"][3]
+        menu_guideline = menu_content_dict()["menu_displayed_text"][1]
+        menu_requested_input = menu_content_dict()["menu_displayed_text"][2]
+        menu_columns_description = menu_content_dict()["menu_displayed_text"][3]
 
         print(menu_titel)
         print("")
 
-        print(menu_request)
+        print(menu_guideline)
         print("")
 
         print_menu_entries(menu_entries, menu_columns_description)
 
-        userInput_menuSelection = input(menu_input_text)
+        userInput_menuSelection = input(menu_requested_input)
         print("")
 
         system("cls")
@@ -210,8 +210,8 @@ def display_menu_directed(menu_content_dict):
     ...    "menu_displayed_text": [
     ...        "Submenu Header",
     ...        "Please select:",
+    ...        "Which menu item should be executed? (<No. of menu item>): ",
     ...        ["Menu item", "<Explanation>"],
-    ...        "Which menu item should be executed? (<No. of menu item>): "
     ...    ],
     ...    "menu_entries": [
     ...        ["Option 1", example_linear_submenu_entries_dict, "<Goes to submenu (one-directional)>"],
@@ -232,21 +232,21 @@ def display_menu_directed(menu_content_dict):
         system("cls")
 
         menu_titel = menu_content_dict()["menu_displayed_text"][0]
-        menu_request = menu_content_dict()["menu_displayed_text"][1]
-        menu_columns_description = menu_content_dict()["menu_displayed_text"][2]
-        menu_input_text = menu_content_dict()["menu_displayed_text"][3]
+        menu_guideline = menu_content_dict()["menu_displayed_text"][1]
+        menu_requested_input = menu_content_dict()["menu_displayed_text"][2]
+        menu_columns_description = menu_content_dict()["menu_displayed_text"][3]
 
         print(menu_titel)
         print("")
 
-        print(menu_request)
+        print(menu_guideline)
         print("")
 
         print("directed menu:")
 
         print_menu_entries(menu_entries, menu_columns_description)
 
-        userInput_menuSelection = input(menu_input_text)
+        userInput_menuSelection = input(menu_requested_input)
         print("")
 
         system("cls")
@@ -305,8 +305,7 @@ def display_menu_print_results(results_dict):
     This function receives a function that returns a dictionary, which includes a description of the results and
     a list of results entries. The function uses this information to print the content in a formatted manner.
 
-    If the menu entries are already in a pandas DataFrame, it will print them directly.
-    Otherwise, it will convert the list of entries into a DataFrame before printing.
+
 
     After displaying the results, it requests a user input to continue. The input is not validated.
     The user input does not trigger any further actions within this function itself. However, in the broader context,
@@ -317,6 +316,11 @@ def display_menu_print_results(results_dict):
     ----------
     results_dict : function
         A function that returns a dictionary containing analysis results.
+
+    Returns
+    -------
+    str
+        Retruns thw
 
     Examples
     --------
@@ -329,8 +333,8 @@ def display_menu_print_results(results_dict):
     ...     "menu_displayed_text": [
     ...         "Analysis Results",
     ...         "Please see the following analysis results:",
+    ...         "<To continue, please press Enter>",
     ...         ["<Identifier>", "<Description>", "<Description>"],
-    ...         "<To continue, please press Enter>"
     ...     ],
     ...     "menu_entries_results": [
     ...         ["Result 1", "<Displays the 1st Column>", "<Displays the 2nd Column >"],
@@ -340,7 +344,33 @@ def display_menu_print_results(results_dict):
     ... }
     ...
     >>> display_menu_print_results(example_analysis_results_dict)
+
+    The command above will display the following output in the console:
+
+    I-MaT - Interactive Music Analysis Tool, Version 2.2, January 2022
+
+    Project Title: "Computer-Assisted Music Analysis"
+
+    Fellowship for Innovations in Digital University Teaching (University of Music Franz Liszt Weimar)
+
+    ----------------------------------------------------------------------
+
+    Analysis Results
+
+    Please see the following analysis results:
+
+    No.        <Identifier> <Description>             <Description>
+    1          Result 1     <Displays the 1st Column> <Displays the 2nd Column >
+    2          Result 2     <Displays the 1st Column> <Displays the 2nd Column >
+    3          Result 3     <Displays the 1st Column> <Displays the 2nd Column >
+
+    <To continue, please press Enter>
     """
+
+    if isinstance(results_dict, pd.DataFrame):
+
+        results_dict = util_convert_pd_dataframe_to_imat_datacont(results_dict)
+
     print(text_general_title())
 
     # below: displays the menu
@@ -349,27 +379,22 @@ def display_menu_print_results(results_dict):
     system("cls")
 
     menu_titel = results_dict()["menu_displayed_text"][0]
-    menu_request = results_dict()["menu_displayed_text"][1]
-    menu_columns_description = results_dict()["menu_displayed_text"][2]
-    menu_input_text = results_dict()["menu_displayed_text"][3]
+    menu_guideline = results_dict()["menu_displayed_text"][1]
+    menu_requested_input = results_dict()["menu_displayed_text"][2]
+    menu_columns_description = results_dict()["menu_displayed_text"][3]
 
     print(menu_titel)
     print("")
 
-    print(menu_request)
+    print(menu_guideline)
     print("")
 
-    if isinstance(menu_entries, pd.DataFrame):
-        print_pd_dataset_entries(menu_entries)
+    print_menu_entries(menu_entries, menu_columns_description, 10)
 
-    else:
-        pd_dataset = save_data_in_pd_dataset(menu_entries, menu_columns_description)
-        print_pd_dataset_entries(pd_dataset)
-
-    input(menu_input_text)
+    return input(menu_requested_input)
 
 
-def display_menu_print_textblock(text_dict):
+def display_menu_print_textblock(text_dict, textblock_sep_line=True):
     """
     This function prints a formatted text block based on a provided dictionary.
 
@@ -382,8 +407,10 @@ def display_menu_print_textblock(text_dict):
 
     Parameters
     ----------
-    text_dict : dict
-        A dictionary containing menu-related texts.
+    text_dict : function
+        A function that returns a dictionary containing custom text for display.
+    textblock_sep_line : bool
+        If True, a separator line is printed after each text block.
 
     Examples
     --------
@@ -433,22 +460,22 @@ def display_menu_print_textblock(text_dict):
     system("cls")
 
     menu_titel = text_dict()["menu_displayed_text"][0]
-    menu_request = text_dict()["menu_displayed_text"][1]
-    menu_columns_description = text_dict()["menu_displayed_text"][2]
-    menu_input_text = text_dict()["menu_displayed_text"][3]
+    menu_guideline = text_dict()["menu_displayed_text"][1]
+    menu_requested_input = text_dict()["menu_displayed_text"][2]
+    menu_columns_description = text_dict()["menu_displayed_text"][3]
 
     print(menu_titel)
     print("")
 
-    print(menu_request)
+    print(menu_guideline)
     print("")
 
-    print_textblock(menu_columns_description, menu_entries)
+    print_textblock(menu_columns_description, menu_entries, True)
 
-    input(menu_input_text)
+    input(menu_requested_input)
 
 
-def print_textblock(menu_columns_description: list, menu_entries: [list, list, ...]):
+def print_textblock(menu_columns_description: list, menu_entries: [list, list, ...], textblock_sep_line=True):
     first_col_width = max(
         len(entry[0]) for entry in menu_entries) + 5  # Or however wide you want the title column to be
     message_col_width = 80  # Or however wide you want the message column to be
@@ -464,54 +491,66 @@ def print_textblock(menu_columns_description: list, menu_entries: [list, list, .
                 print(f"{title:{first_col_width}} {second_col_line}")
             else:
                 print(f"{'':{first_col_width}} {second_col_line}")
-        print("")  # Empty line after each message
+
+        if textblock_sep_line:
+            print("")  # Empty line after each message
 
 
-def print_pd_dataset_entries(dataset):
-    # Set the index of the DataFrame to start from 1
-    dataset.index = range(1, len(dataset) + 1)
+def print_menu_entries(menu_entries, menu_columns_description, min_col_width=45):
+    # Convert menu_entries to a list of columns (from a list of rows)
+    menu_entries_columns = list(map(list, zip(*menu_entries)))
+    # Keep only columns where all elements are strings
+    menu_entries_columns = [col for col in menu_entries_columns if all(isinstance(elem, str) for elem in col)]
+    # Convert menu_entries back to a list of rows (from a list of columns)
+    menu_entries = list(map(list, zip(*menu_entries_columns)))
 
-    # Rename the index column as "No."
-    dataset.index.name = "No."
+    # Create list of column widths
+    col_widths = [max(min_col_width, max(len(str(item)) for item in col), len(header))
+                  for col, header in zip(menu_entries_columns, menu_columns_description)]
 
-    # Reset the DataFrame's index to become a regular column
-    dataset.reset_index(inplace=True)
-
-    # Set the display options for the DataFrame
-    pd.set_option('display.max_colwidth', None)  # Set the maximum cell width to None for text wrapping
-    pd.set_option('display.unicode.ambiguous_as_wide', True)  # Enable full-width characters
-    pd.set_option('display.colheader_justify', 'left')  # Left-align column headers
-
-    # Get the width of the command window dynamically
-    terminal_width, _ = shutil.get_terminal_size()
-    pd.set_option('display.width', terminal_width)
-
-    # Print the DataFrame with left-aligned "No." index
-    print(dataset.to_string(justify='left', col_space=10, index=False, formatters={'No.': lambda x: f'{x:<4}'}))
-    print("")
-
-
-def save_data_in_pd_dataset(menu_entries, menu_header):
-    return pd.DataFrame(menu_entries, columns=menu_header)
-
-
-def print_menu_entries(menu_entries, menu_header):
-    # Print menu_header in one line
-    # the number of columns is adjusted automatically based on the amount elements in menu_header
-    print("{:<4}".format("No."), end='')
-    for header in menu_header:
-        print("{:<65}".format(header), end='')
+    # Print menu_columns_description in one line
+    print("{:<8}".format("No."), end='')
+    for header, width in zip(menu_columns_description, col_widths):
+        print("{:<{}}".format(header, width), end='   ')
     print("\n")
 
     # Print menu_entries in multiple lines
-    # the number of columns is adjusted automatically based on the number of elements in menu_entries[n]
     for index, item in enumerate(menu_entries, 1):
-        print("{:<4}".format(index), end='')
-        for i, entry in enumerate(item[:-1]):
-            if i != 1:  # Skip printing menu_entries[1]
-                print("{:<65}".format(entry), end='')
-        print(item[-1])
+        print("{:<8}".format(index), end='')
+        for entry, width in zip(item, col_widths):
+            print("{:<{}}".format(entry, width), end='   ')
+        print()
     print("")
+
+def util_convert_pd_dataframe_to_imat_datacont(pd_dataframe,
+                                               menu_titel = "Analysis Results",
+                                               menu_guideline = "Please see the following analysis results:",
+                                               menu_requested_input = "<To continue, please press Enter>",
+                                               menu_columns_description = None):
+
+    imat_datacont = {
+        "menu_displayed_text": [
+            menu_titel,
+            menu_guideline,
+            menu_requested_input,
+            list(pd_dataframe.columns),
+        ],
+        "menu_entries_results": []
+    }
+
+    for _, row in pd_dataframe.iterrows():
+        imat_datacont["menu_entries_results"].append(list(row))
+
+    return imat_datacont
+
+def util_convert_imat_datacont_to_pd_dataframe(imat_cont):
+
+    column_names = imat_cont['menu_displayed_text'][2]
+    data = imat_cont['menu_entries_results']
+
+    pd_dataframe = pd.DataFrame(data, columns=column_names)
+
+    return pd_dataframe
 
 
 def example_mainmenu_entries_dict():
@@ -552,8 +591,8 @@ def example_mainmenu_entries_dict():
     ...    "menu_displayed_text": [
     ...        "Menu Titel",
     ...        "Please select one of the following menu options by entering the corresponding index number:",
-    ...        ["Menu item titel", "<Short Explanation>"],
-    ...         "Which menu item should be executed? (<No. of menu item>): "
+    ...         "Which menu item should be executed? (<No. of menu item>): ",
+    ...        ["Menu item: Titel", "<Short Explanation>"],
     ...    ],
     ...     "menu_entries": [
     ...         ["ABBR: Option 1 titel", example_submenu_entries_dict, "<Goes to submenu>"],
@@ -568,8 +607,8 @@ def example_mainmenu_entries_dict():
         "menu_displayed_text": [
             "Menu Titel",
             "Please select one of the following menu options by entering the corresponding index number:",
+            "Which menu item should be executed? (<No. of menu item>): ",
             ["Menu item titel", "<Short Explanation>"],
-            "Which menu item should be executed? (<No. of menu item>): "
         ],
         "menu_entries": [
             ["ABBR: Option 1 titel", example_submenu_entries_dict, "<Goes to submenu>"],
@@ -618,8 +657,8 @@ def example_submenu_entries_dict():
     ...    "menu_displayed_text": [
     ...        "Submenu Title",
     ...        "Please select one of the following submenu options by entering the corresponding index number:",
+    ...        "Which submenu item should be executed? (<No. of menu item>): ",
     ...        ["Submenu item title", "<Short Explanation>"],
-    ...        "Which submenu item should be executed? (<No. of menu item>): "
     ...    ],
     ...    "menu_entries": [
     ...        ["ABBR: Sub-Option 1 title", example_sub_submenu_entries_dict, "<Goes to sub-submenu>"],
@@ -634,8 +673,8 @@ def example_submenu_entries_dict():
         "menu_displayed_text": [
             "Menu Titel",
             "Please select one of the following menu options by entering the corresponding index number:",
+            "Which menu item should be executed? (<No. of menu item>): ",
             ["Menu item titel", "<Short Explanation>"],
-            "Which menu item should be executed? (<No. of menu item>): "
         ],
         "menu_entries": [
             ["ABBR: Sub-Option 1 titel", example_sub_submenu_entries_dict, "<Goes to submenu>"],
@@ -703,37 +742,22 @@ def example_analysis_results_dict():
     ...    "menu_displayed_text": [
     ...        "Analysis Results",
     ...        "Please see the following analysis results:",
+    ...        "<To continue, please press Enter>",
     ...        ["<Identifier>", "<Description>", "<Description>"],
-    ...        "<To continue, please press Enter>"
     ...    ],
     ...    "menu_entries_results": [
-    ...        ["Result 1", "<Displays the 1st Column>", "<Displays the 2nd Column >"],
-    ...        ["Result 2", "<Displays the 1st Column>", "<Displays the 2nd Column >"],
-    ...        ["Result 3", "<Displays the 1st Column>", "<Displays the 2nd Column >"],
+    ...        ["Result 1", "<Displays the 1st Column>", "<Displays the 2nd Column>"],
+    ...        ["Result 2", "<Displays the 1st Column>", "<Displays the 2nd Column>"],
+    ...        ["Result 3", "<Displays the 1st Column>", "<Displays the 2nd Column>"],
     ...    ]
     ...}
-
-    The command above will display the following output in the console:
-
-    Analysis Results
-
-    Please see the following analysis results:
-
-    | <Identifier> | <Description>             | <Description>              |
-    |--------------|---------------------------|----------------------------|
-    | Result 1     | <Displays the 1st Column> | <Displays the 2nd Column > |
-    | Result 2     | <Displays the 1st Column> | <Displays the 2nd Column > |
-    | Result 3     | <Displays the 1st Column> | <Displays the 2nd Column > |
-
-    <To continue, please press Enter>
-
     """
     return {
         "menu_displayed_text": [
             "Analysis Results",
             "Please see the following analysis results:",
+            "<To continue, please press Enter>",
             ["<Identifier>", "<Description>", "<Description>"],
-            "<To continue, please press Enter>"
         ],
         "menu_entries_results": [
             ["Result 1", "<Displays the 1st Column>", "<Displays the 2nd Column >"],
@@ -782,8 +806,8 @@ def example_text_dict():
         "menu_displayed_text": [
             "                  -- message to the user --",
             "Please read the following message:",
-            ["", "Message"],
-            "<To continue, please press Enter>"
+            "<To continue, please press Enter>",
+            ["", "Message"]
         ],
         "menu_entries_text": [
             ["Message 1", text_1],
@@ -853,8 +877,8 @@ def demo_menu_structure_dict():
         "menu_displayed_text": [
             "Menu Titel",
             "Please select one of the following menu options by entering the corresponding index number:",
+            "Which menu item should be executed? (<No. of menu item>): ",
             ["Menu item titel", "<Short Explanation>"],
-            "Which menu item should be executed? (<No. of menu item>): "
         ],
         "menu_entries": [
             ["DEMO: Enter Submenu", example_submenu_entries_dict, "<Goes to submenu>"],
@@ -865,6 +889,48 @@ def demo_menu_structure_dict():
             ["MAIN: Return to the main menu", 'main-menu', "<Returns to main menu>"],
         ]
     }
+
+
+# def print_pd_dataset_entries(dataset):
+#     # Set the index of the DataFrame to start from 1
+#     dataset.index = range(1, len(dataset) + 1)
+#
+#     # Rename the index column as "No."
+#     dataset.index.name = "No."
+#
+#     # Reset the DataFrame's index to become a regular column
+#     dataset.reset_index(inplace=True)
+#
+#     # Set the display options for the DataFrame
+#     pd.set_option('display.max_colwidth', None)  # Set the maximum cell width to None for text wrapping
+#     pd.set_option('display.unicode.ambiguous_as_wide', True)  # Enable full-width characters
+#     pd.set_option('display.colheader_justify', 'left')  # Left-align column headers
+#
+#     # Get the width of the command window dynamically
+#     terminal_width, _ = shutil.get_terminal_size()
+#     pd.set_option('display.width', terminal_width)
+#
+#     # Print the DataFrame with left-aligned "No." index
+#     print(dataset.to_string(justify='left', col_space=10, index=False, formatters={'No.': lambda x: f'{x:<4}'}))
+#     print("")
+
+
+# def print_menu_entries_data(menu_entries, menu_columns_description):
+#     # Get the maximum length of string in each column of menu_header
+#     col_widths_header = [max(len(str(v)) for v in col) for col in zip(*menu_columns_description)]
+#     # Get the maximum length of string in each column of menu_entries
+#     col_widths_entries = [max(len(str(v)) for v in col) for col in zip(*menu_entries)]
+#
+#     # Choose the maximum value for each column from col_widths_header and col_widths_entries
+#     col_widths = [max(w1, w2) for w1, w2 in zip(col_widths_header, col_widths_entries)]
+#
+#     # Print menu_entries in multiple lines
+#     for index, item in enumerate(menu_entries, 1):
+#         print("{:<4}".format(index), end='')
+#         for entry, col_width in zip(item, col_widths):
+#             print("{:<{}}".format(entry, col_width), end='')
+#         print("\n")
+#     print("")
 
 
 display_menu_undirected(demo_menu_structure_dict)
