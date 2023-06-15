@@ -1,13 +1,15 @@
 """
-This module provides a user interface to facilitate the selection of musical parts and measures from a given musical score
-using music21, a toolkit for computer-aided musicology.
+
+This module provides a user interface to facilitate the selection of musical parts and measures from a given musical
+score using music21, a toolkit for computer-aided musicology.
 
 The main functionalities include:
 - Selecting the full score or individual parts.
 - Selecting all measures or a specific range of measures.
 - Repeating the previous selection.
 
-A global dictionary `selected_score_part_names` is used to map part names to music21.stream.Score or music21.stream.Part objects.
+A global dictionary `selected_score_part_names` is used to map part names to music21.stream.Score or
+music21.stream.Part objects.
 
 Functions
 ---------
@@ -34,7 +36,8 @@ Here is how to use the functions in this module:
 Notes
 -----
 This module uses the music21 library, which must be installed and imported for the functions to work correctly.
-This module also depends on other modules like `routines_name_parts` and `src.cli.cli_menu_structure` for some of its operations.
+This module also depends on other modules like `routines_name_parts` and `src.cli.cli_menu_structure`
+for some of its operations.
 """
 import music21
 from music21 import stream
@@ -49,9 +52,10 @@ def select_parts_and_measures() -> music21.stream.Score or music21.stream.Part:
     """
     Facilitates the user's selection of musical parts and measures from a global score.
 
-    This function displays a selection menu to the user with several options related to the selection of musical parts and measures.
-    The user is allowed to choose from the full score or individual parts, and either all measures or a specific range of measures.
-    The function also provides an option to repeat the previous selection if one exists.
+    This function displays a selection menu to the user with several options related to the selection of musical
+    parts and measures. The user is allowed to choose from the full score or individual parts, and either all
+    measures or a specific range of measures. The function also provides an option to repeat the previous selection
+    if one exists.
 
     Selection options:
     - "SCOR: Full Score - All Measures": Select the full score and all measures.
@@ -63,9 +67,9 @@ def select_parts_and_measures() -> music21.stream.Score or music21.stream.Part:
     If an individual part is selected, the user is prompted to enter the name of the part.
     If a range of measures is selected, the user is guided through the process of entering a valid measure range.
 
-    The function works with a dictionary named `selected_score_part_names` that should be initialized before calling this function.
-    The dictionary maps part names to `music21.stream.Score` or `music21.stream.Part` objects.
-    Here is an example of how the dictionary might look for the score 'bwv66.6':
+    The function works with a dictionary named `selected_score_part_names` that should be initialized before calling
+    this function. The dictionary maps part names to `music21.stream.Score` or `music21.stream.Part` objects. Here is
+    an example of how the dictionary might look for the score 'bwv66.6':
 
     selected_score_part_names = {
         'full': <music21.stream.Score 0x230ce950730>,
@@ -74,10 +78,6 @@ def select_parts_and_measures() -> music21.stream.Score or music21.stream.Part:
         'Part 3': <music21.stream.Part Tenor>,
         'Part 4': <music21.stream.Part Bass>
     }
-
-    Parameters
-    ----------
-    None
 
     Returns
     -------
@@ -161,9 +161,10 @@ def select_measure_range(score: music21.stream.Part or music21.stream.Score):
     """
     Prompts the user to input a valid measure range in a given musical score.
 
-    This function displays a menu to guide the user through the process of selecting a range of measures in the given musical score.
-    The range is inclusive and the measures are 1-indexed. The user first enters a start measure and then an end measure.
-    Both measures should lie within the total number of measures in the score. The end measure should be equal to or larger than the start measure.
+    This function displays a menu to guide the user through the process of selecting a range of measures in the given
+    musical score. The range is inclusive and the measures are 1-indexed. The user first enters a start measure and
+    then an end measure. Both measures should lie within the total number of measures in the score. The end measure
+    should be equal to or larger than the start measure.
 
     The user input is validated according to the following rules:
     - The input must be a positive integer.
@@ -212,7 +213,8 @@ def select_measure_range(score: music21.stream.Part or music21.stream.Score):
             ["End Measure: ", "After the starting measure is entered, enter the ending measure."],
             ["Rules for Measure Selection: ", f"Enter a starting measure and an ending measure, both inclusive. The "
                                               f"first measure "
-                                              f"is '1'. The ending measure should be equal to or larger than the starting measure, "
+                                              f"is '1'. The ending measure should be equal to or larger than the "
+                                              f"starting measure,"
                                               f"but should not exceed {total_measures}."],
             ["Invalid Input: ", "If your input is invalid, you will be asked to enter the measure range again."]
         ]
