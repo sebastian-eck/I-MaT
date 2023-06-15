@@ -339,6 +339,3 @@ def load_own_score(filepath):
             score_selection()
     except Exception as e:
         handle_error(e)
-
-
-score_selection()
