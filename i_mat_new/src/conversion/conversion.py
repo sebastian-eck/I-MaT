@@ -8,23 +8,38 @@ from src.cli.cli_menu_structure import display_menu_print_results, display_menu_
     display_menu_request_selection
 
 
+from tqdm import tqdm
+
 def corpus_conversion():
+    """
+    Main function for the conversion of music files found in a pre-defined folder.
+    The function lists parsable music files, allows the user to select a conversion format,
+    and attempts conversion. Successfully converted files are saved in a newly created directory.
+    Failures during parsing and conversion are logged to respective .xlsx files.
+
+    Returns
+    -------
+    None
+    """
     while True:
-        #folder_path = select_folder()
-        folder_path = r"C:\Users\sebas\Desktop\example folder"
+        folder_path = select_folder()
         if folder_path is not None:
             break
 
     while True:
         parsable_files = list_parsable_files(folder_path)
+        parsable_files_display = parsable_files[:30]  # Only take the first 30 files for display
+        if len(parsable_files) > 30:  # If there are more than 30 files, add an indicator at the end
+            parsable_files_display.append("... (more files not shown)")
+
         music_files_dict = {
             "menu_displayed_text":
-                ["Found music files",
+                ["File Conversion: Found music files",
                  f"In Folder: '{folder_path}'  ({len(parsable_files)} files found)",
                  "<To continue, please press Enter (enter 'r' to refresh)> ",
                  ["File Path"]],
             "menu_entries_results":
-                [[file] for file in parsable_files]
+                [[file] for file in parsable_files_display]
         }
         refresh_choice = display_menu_print_results(music_files_dict)
         if refresh_choice.lower() != 'r':
@@ -45,7 +60,8 @@ def corpus_conversion():
     num_converted = 0
     files_status = []
 
-    for file in parsable_files:
+    print("\nConverting files...")
+    for file in tqdm(parsable_files, ncols=70):  # Wrap parsable_files with tqdm for progress bar
         try:
             file_path = os.path.join(folder_path, file)
             score = converter.parse(file_path)
@@ -66,7 +82,7 @@ def corpus_conversion():
     # Create text_dict with both conversion success rate and failed files
     text_dict = {
         "menu_displayed_text": [
-            "Conversion Summary - Failed Conversions",
+            "File Conversion: Conversion Summary",
             f"Conversion Success Rate {num_converted}/{num_files} ({(num_converted/num_files)*100:.2f}%)",
             "<To continue, please press Enter>",
             ["Title", "Details"]
@@ -78,16 +94,38 @@ def corpus_conversion():
     display_menu_print_results(text_dict)
 
 def list_parsable_files(folder_path):
+    """
+    Lists all parsable music files in a given folder.
+
+    Parameters
+    ----------
+    folder_path : str
+        Path to the folder to be searched.
+
+    Returns
+    -------
+    list
+        List of parsable music file names.
+    """
     parsable_extensions = ['.abc', '.capx', '.gex', '.humdrum', '.krn', '.mei', '.midi', '.mid', '.musedata', '.musicxml', '.mxl', '.noteworthy', '.nwc', '.romanText', '.rntxt', '.scala', '.tinynotation', '.volpiano']
     parsable_files = [f for f in os.listdir(folder_path) if os.path.splitext(f)[1].lower() in parsable_extensions]
     return parsable_files
 
 
 def select_folder():
+    """
+    User interface for folder selection. The user can input the path to the desired folder.
+    If the path does not exist or does not lead to a directory, an error message is displayed.
+
+    Returns
+    -------
+    str
+        Path to the selected folder.
+    """
     while True:
         folder_path_dict = {
             "menu_displayed_text": [
-                "Folder Selection",
+                "File Conversion: Folder Selection",
                 "Please enter the path to the folder of music files. You can also drag and drop the folder into this terminal: ",
                 "Enter folder path here or drag and drop folder: ",
                 ["Menu item", "<Explanation>"]
@@ -104,7 +142,7 @@ def select_folder():
         else:
             error_message_dict = {
                 "menu_displayed_text": [
-                    "Error",
+                    "File Conversion: Folder Selection - Error",
                     "Invalid path. Please check the following possible reasons:",
                     "<To continue, please press Enter>",
                     ["", "Troubleshooting assistance:"]
@@ -120,6 +158,15 @@ def select_folder():
 
 
 def select_conversion_format():
+    """
+    User interface for conversion format selection. The user can choose a conversion format from a list.
+    The function loops until a valid choice is made.
+
+    Returns
+    -------
+    str
+        Chosen conversion format.
+    """
     # Get all available formats.
     formats = [['.midi', '.mid', '.midi/.mid ok'],
                 ['.mxl', '.mxl', 'ok'],
@@ -144,7 +191,7 @@ def select_conversion_format():
         # Construct data container for displaying the menu.
         imat_data_container = {
             "menu_displayed_text": [
-                "Conversion formats",
+                "File Conversion: Conversion formats",
                 "Please select one of the following conversion formats by entering the corresponding index number:",
                 "Which format do you want to select? (<No. of menu item>): ",
                 ["Format"]
@@ -157,9 +204,23 @@ def select_conversion_format():
 
 
 def create_log_entry(list, list_path):
+    """
+    Appends a new entry to an existing .xlsx file. If the file does not exist, it is created.
+
+    Parameters
+    ----------
+    list : list
+        List of strings to be appended as a new row.
+    list_path : str
+        Path to the .xlsx file.
+
+    Returns
+    -------
+    None
+    """
     wb = load_workbook(list_path)
     ws = wb.active
     ws.append(list)
     wb.save(list_path)
 
-corpus_conversion()
+#corpus_conversion()
