@@ -39,9 +39,9 @@ selected_score_part_names: dict
 
 import music21
 
-from src.cli.cli_menu_structure import display_menu_print_results, display_menu_print_textblock, \
+from src.cli.cli_menu_structures import display_menu_print_results, display_menu_print_textblock, \
     display_menu_request_selection
-from src.utils.utils_errorhandling import handle_error
+from src.utils.utils_error_handling import handle_error
 
 selected_score_part_names = {}
 

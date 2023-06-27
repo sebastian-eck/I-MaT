@@ -1,55 +1,7 @@
 from music21 import note
 
-from src.cli.cli_menu_structure import display_menu_request_selection
-
-notes_list = [
-    ["‾‾‾‾  -   C-flat", "C-"],
-    ["C         C", "C"],
-    ["____  ♯   C-sharp", "C#"],
-    ["‾‾‾‾  -   D-flat", "D-"],
-    ["D         D", "D"],
-    ["____  ♯   D-sharp", "D#"],
-    ["‾‾‾‾  -   E-flat", "E-"],
-    ["E         E", "E"],
-    ["____  ♯   E-sharp", "E#"],
-    ["‾‾‾‾  -   F-flat", "F-"],
-    ["F         F", "F"],
-    ["____  ♯   F-sharp", "F#"],
-    ["‾‾‾‾  -   G-flat", "G-"],
-    ["G         G", "G"],
-    ["____  ♯   G-sharp", "G#"],
-    ["‾‾‾‾  -   A-flat", "A-"],
-    ["A         A", "A"],
-    ["____  ♯   A-sharp", "A#"],
-    ["‾‾‾‾  -   B-flat", "B-"],
-    ["B         B", "B"],
-    ["____  ♯   B-sharp", "B#"],
-    ["BACK: Remove the last note entered", "remove"],
-    ["DONE: Finish input", "complete"],
-]
-
-rhythmic_values_list = [
-    ["[0.125]   Thirty-second note", 0.125],
-    ["[0.25]    Sixteenth note", 0.25],
-    ["[0.375]   Sixteenth note (dotted)", 0.375],
-    ["[1/3]     Eighth note triplet", "1/3"],
-    ["[0.5]     Eighth note", 0.5],
-    ["[0.75]    Eighth note (dotted)", 0.75],
-    ["[2/3]     Quarter note triplet", "2/3"],
-    ["[1.0]     Quarter note", 1.0],
-    ["[1.5]     Quarter note (dotted)", 1.5],
-    ["[4/3]     Half note triplet", "4/3"],
-    ["[2.0]     Half note", 2.0],
-    ["[3.0]     Half note (dotted)", 3.0],
-    ["[8/3]     Whole note triplet", "8/3"],
-    ["[4.0]     Whole note", 4.0],
-    ["[6.0]     Whole note (dotted)", 6.0],
-    ["[16/3]    Double whole triplet", "16/3"],
-    ["[8.0]     Double whole note", 8.0],
-    ["[12.0]    Double whole note (dotted)", 12.0],
-    ["BACK:     Remove the last note entered", "remove"],
-    ["DONE:     Finish input", "complete"]
-]
+from src.cli.cli_menu_structures import display_menu_request_selection
+from src.constants import notes_list, rhythmic_values_list
 
 
 def pattern_selection_notes_only():

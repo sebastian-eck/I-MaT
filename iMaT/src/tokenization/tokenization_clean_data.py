@@ -6,9 +6,8 @@ from datetime import datetime
 import pandas as pd
 from tqdm import tqdm
 
-from src.cli.cli_menu_structure import display_menu_print_results, display_menu_print_textblock, \
-    display_menu_request_selection, \
-    util_convert_pd_dataframe_to_imat_datacont
+from src.cli.cli_menu_structures import display_menu_print_results, display_menu_print_textblock, \
+    display_menu_request_selection, util_convert_pd_dataframe_to_imat_datacont
 from src.tokenization.tokenization_helpers import select_csv_file_2d_token_representation
 
 

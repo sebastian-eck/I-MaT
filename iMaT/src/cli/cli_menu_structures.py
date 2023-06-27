@@ -18,8 +18,8 @@ import textwrap
 
 import pandas as pd
 
-# from iMaT.src.cli.cli_menu_entries import startmenu_entries
-from iMaT.src.cli.cli_menu_static_text import text_general_title
+from src.constants import text_general_title
+from src.utils.utils_error_handling import handle_error
 
 menu_stack = []  # Stack to keep track of the previous menus
 
@@ -86,78 +86,81 @@ def display_menu_undirected(menu_content_dict: callable, parent_menu_func: calla
     ...
     >>> display_menu_undirected(example_menu_entries_dict)
     """
-    while True:
+    try:
+        while True:
 
-        os.system("cls" if os.name == "nt" else "clear")
-        # below: displays the menu
+            os.system("cls" if os.name == "nt" else "clear")
+            # below: displays the menu
 
-        print(text_general_title())
+            print(text_general_title)
 
-        #first_level_menu_entries = startmenu_entries
+            #first_level_menu_entries = start_menu_entries
 
-        menu_entries = menu_content_dict()["menu_entries"]
+            menu_entries = menu_content_dict()["menu_entries"]
 
-        menu_titel = menu_content_dict()["menu_displayed_text"][0]
-        menu_guideline = menu_content_dict()["menu_displayed_text"][1]
-        menu_requested_input = menu_content_dict()["menu_displayed_text"][2]
-        menu_columns_description = menu_content_dict()["menu_displayed_text"][3]
+            menu_titel = menu_content_dict()["menu_displayed_text"][0]
+            menu_guideline = menu_content_dict()["menu_displayed_text"][1]
+            menu_requested_input = menu_content_dict()["menu_displayed_text"][2]
+            menu_columns_description = menu_content_dict()["menu_displayed_text"][3]
 
-        print(menu_titel)
-        print("")
+            print(menu_titel)
+            print("")
 
-        print(menu_guideline)
-        print("")
+            print(menu_guideline)
+            print("")
 
-        print_menu_entries(menu_columns_description, menu_entries)
+            print_menu_entries(menu_columns_description, menu_entries)
 
-        userInput_menuSelection = input(menu_requested_input)
-        print("")
+            userInput_menuSelection = input(menu_requested_input)
+            print("")
 
-        # below: handles the user input
+            # below: handles the user input
 
-        if str(userInput_menuSelection) != "" and str.isdigit(userInput_menuSelection):
-            userInput_menuSelection_int = int(userInput_menuSelection) - 1
+            if str(userInput_menuSelection) != "" and str.isdigit(userInput_menuSelection):
+                userInput_menuSelection_int = int(userInput_menuSelection) - 1
 
-            if 0 <= userInput_menuSelection_int < len(menu_entries):
+                if 0 <= userInput_menuSelection_int < len(menu_entries):
 
-                result = menu_entries[userInput_menuSelection_int][1]
+                    result = menu_entries[userInput_menuSelection_int][1]
 
-                if isinstance(result, tuple):
-                    # If the result is a tuple, we consider it as (function, arguments)
+                    if isinstance(result, tuple):
+                        # If the result is a tuple, we consider it as (function, arguments)
 
-                    function, args = result
-                    function(args)
+                        function, args = result
+                        function(args)
 
-                elif not callable(result):
-                    if result == 'back' and menu_stack:
-                        # Pop the previous menu from the stack and navigate to it
-                        previous_menu = menu_stack.pop()
-                        # Recursive call with the parent menu entries function and the parent of the parent menu
-                        display_menu_undirected(previous_menu["menu_entries_func"], previous_menu["parent_menu_func"])
+                    elif not callable(result):
+                        if result == 'back' and menu_stack:
+                            # Pop the previous menu from the stack and navigate to it
+                            previous_menu = menu_stack.pop()
+                            # Recursive call with the parent menu entries function and the parent of the parent menu
+                            display_menu_undirected(previous_menu["menu_entries_func"], previous_menu["parent_menu_func"])
+                            break
+
+                    elif isinstance(result, tuple):
+                        # If the result is a tuple, we consider it as (function, arguments)
+
+                        function, args = result
+                        function(args)
+                    elif isinstance(result(), dict):
+                        # if the result is a dict, call the function with the display_menu_undirected function with the
+                        # result Push the current menu to the stack and navigate to the new menu
+                        menu_stack.append({
+                            "menu_entries_func": menu_content_dict,
+                            "parent_menu_func": parent_menu_func
+                        })
+                        # if the result is not a dict, the function is called by executing isinstance(result(), dict)
+                        display_menu_undirected(result, menu_content_dict)
                         break
-                    # elif result == 'main-menu':
-                    #     # Clear the menu stack and navigate to the main menu
-                    #     menu_stack.clear()
-                    #     # Recursive call with the main menu entries function
-                    #     display_menu_undirected(first_level_menu_entries)
-                    #     break
-                elif isinstance(result, tuple):
-                    # If the result is a tuple, we consider it as (function, arguments)
+                    else:
+                        dummy = None
 
-                    function, args = result
-                    function(args)
-                elif isinstance(result(), dict):
-                    # if the result is a dict, call the function with the display_menu_undirected function with the
-                    # result Push the current menu to the stack and navigate to the new menu
-                    menu_stack.append({
-                        "menu_entries_func": menu_content_dict,
-                        "parent_menu_func": parent_menu_func
-                    })
-                    # if the result is not a dict, the function is called by executing isinstance(result(), dict)
-                    display_menu_undirected(result, menu_content_dict)
-                    break
                 else:
-                    dummy = None
+                    print("Please choose a value from the list")
+                    print("")
+
+                    input("<To continue, please press Enter>")
+                    print("")
 
             else:
                 print("Please choose a value from the list")
@@ -166,142 +169,8 @@ def display_menu_undirected(menu_content_dict: callable, parent_menu_func: calla
                 input("<To continue, please press Enter>")
                 print("")
 
-        else:
-            print("Please choose a value from the list")
-            print("")
-
-            input("<To continue, please press Enter>")
-            print("")
-
-
-def display_menu_directed(menu_content_dict: callable) -> None:
-    """
-    Display a menu that allows the user to navigate forward through different levels.
-
-    This function prints an interactive, forward-navigation-only menu from a dictionary.
-    The dictionary represents the current menu, including its title, guidelines, requested input, and menu entries.
-    Each menu entry consists of a title, function or menu control keyword, and description.
-
-    Unlike `display_menu_undirected`, this function does not allow the user to navigate back to previous menus.
-    This is suitable for linear routines, such as analyzes that require user input in a specific sequence.
-
-    Parameters
-    ----------
-    menu_content_dict : function
-        A function returning a dictionary that contains information about the menu entries and displayed texts.
-
-    Returns
-    -------
-    None
-
-    See Also
-    --------
-    display_menu_undirected : For displaying menus with both backward and forward navigation.
-    example_unidirectional_menu_entries_dict : function that generates a dictionaryrepresenting
-    unidirectional menu entries
-
-    Examples
-    --------
-    Here is an example of using `display_menu_directed`. It's similar to `display_menu_undirected`
-    but without options for moving back to a parent menu or main menu.
-
-    >>>def example_unidirectional_menu_entries_dict():
-    ...    return {
-    ...        "menu_displayed_text": [
-    ...            "Menu Title",
-    ...            "Please select one of the following menu options by entering the corresponding index number:",
-    ...            "Which menu item should be executed? (<No. of menu item>): ",
-    ...            ["Menu item title", "<Short Explanation>"],
-    ...        ],
-    ...
-    ...        "menu_entries": [
-    ...            ["ABBR: Option 1 title", example_submenu_entries_dict, "<Goes to submenu>"],
-    ...            ["ABBR: Option 2 title", example_some_function, "<Executes some function>"],
-    ...            ["ABBR: Option 3 title", example_another_function, "<Executes another function>"],
-    ...        ]
-    ...    }
-    >>> display_menu_directed(example_unidirectional_menu_entries_dict)
-
-    If a user tries to navigate back (e.g., if they input 'back' or 'main-menu'),
-    the function will notify that this action is not allowed in a directed menu.
-    """
-    while True:
-
-        os.system("cls" if os.name == "nt" else "clear")
-
-        print(text_general_title())
-
-        # below: displays the menu
-
-        menu_entries = menu_content_dict()["menu_entries"]
-
-        menu_titel = menu_content_dict()["menu_displayed_text"][0]
-        menu_guideline = menu_content_dict()["menu_displayed_text"][1]
-        menu_requested_input = menu_content_dict()["menu_displayed_text"][2]
-        menu_columns_description = menu_content_dict()["menu_displayed_text"][3]
-
-        print(menu_titel)
-        print("")
-
-        print(menu_guideline)
-        print("")
-
-        print("directed menu:")
-        print("")
-
-        print_menu_entries(menu_columns_description, menu_entries)
-
-        userInput_menuSelection = input(menu_requested_input)
-        print("")
-
-        # below: handles the user input
-
-        if str(userInput_menuSelection) != "" and str.isdigit(userInput_menuSelection):
-            userInput_menuSelection_int = int(userInput_menuSelection) - 1
-
-            if 0 <= userInput_menuSelection_int < len(menu_entries):
-
-                result = menu_entries[userInput_menuSelection_int][1]
-
-                if isinstance(result, tuple):
-                    # If the result is a tuple, we consider it as (function, arguments)
-
-                    print("was tuple directed")
-
-                    function, args = result
-                    function(args)
-
-                elif not callable(result):
-
-                    print("The selected menu item is not valid for your current position.\n"
-                          "One reason for this could be that the wrong menu structure was "
-                          "implemented for this menu.\n\n"
-                          "Information for Developers:\n\n"
-                          "Choose a nonlinear menu, i.e. display_menu_undirected(), "
-                          "instead for constructing this menu.")
-                    input("\n<To continue, please press Enter>\n")
-                elif isinstance(result(), dict):
-                    # if the result is a dict, call the function with the display_menu_undirected function with the
-                    # result
-                    display_menu_directed(result)
-                    break
-                else:
-                    # if the result is not a dict, the function is called by executing isinstance(result(), dict)
-                    break
-
-            else:
-                print("Please choose a value from the list")
-                print("")
-
-                input("<To continue, please press Enter>")
-                print("")
-
-        else:
-            print("Please choose a value from the list")
-            print("")
-
-            input("<To continue, please press Enter>")
-            print("")
+    except Exception as e:
+        handle_error(e)
 
 
 def display_menu_request_selection(imat_data_container: dict, min_column_width = 20) -> str:
@@ -348,36 +217,40 @@ def display_menu_request_selection(imat_data_container: dict, min_column_width =
 
     Note: the actual output of `display_menu_print_results` depends on the dictionary `imat_data_container`.
     """
-    while True:
-        os.system("cls" if os.name == "nt" else "clear")
+    try:
+        while True:
+            os.system("cls" if os.name == "nt" else "clear")
 
-        print(text_general_title())
+            print(text_general_title)
 
-        # below: displays the menu
+            # below: displays the menu
 
-        menu_entries = imat_data_container["menu_entries"]
+            menu_entries = imat_data_container["menu_entries"]
 
-        menu_title = imat_data_container["menu_displayed_text"][0]
-        menu_guideline = imat_data_container["menu_displayed_text"][1]
-        menu_requested_input = imat_data_container["menu_displayed_text"][2]
-        menu_columns_description = imat_data_container["menu_displayed_text"][3]
+            menu_title = imat_data_container["menu_displayed_text"][0]
+            menu_guideline = imat_data_container["menu_displayed_text"][1]
+            menu_requested_input = imat_data_container["menu_displayed_text"][2]
+            menu_columns_description = imat_data_container["menu_displayed_text"][3]
 
-        print(menu_title)
-        print("")
+            print(menu_title)
+            print("")
 
-        print(menu_guideline)
-        print("")
+            print(menu_guideline)
+            print("")
 
-        print_menu_entries(menu_columns_description, menu_entries, min_col_width=20)
+            print_menu_entries(menu_columns_description, menu_entries, min_col_width=20)
 
-        user_choice = input(menu_requested_input)
+            user_choice = input(menu_requested_input)
 
-        # Validate the user's input
-        if user_choice.isdigit() and 0 <= int(user_choice) - 1 < len(menu_entries):
-            return menu_entries[int(user_choice) - 1][1]
+            # Validate the user's input
+            if user_choice.isdigit() and 0 <= int(user_choice) - 1 < len(menu_entries):
+                return menu_entries[int(user_choice) - 1][1]
 
-        print("\nInvalid choice. Please choose a valid menu item.\n")
-        input("<To continue, please press Enter>")
+            print("\nInvalid choice. Please choose a valid menu item.\n")
+            input("<To continue, please press Enter>")
+
+    except Exception as e:
+        handle_error(e)
 
 
 def display_menu_print_results(results_dict: dict) -> str:
@@ -449,32 +322,35 @@ def display_menu_print_results(results_dict: dict) -> str:
     Note: the actual output of `display_menu_print_results` depends on the dictionary created by
     `util_convert_pd_dataframe_to_imat_datacont()` and would show three result lines in this case.
     """
+    try:
+        os.system("cls" if os.name == "nt" else "clear")
 
-    os.system("cls" if os.name == "nt" else "clear")
+        if isinstance(results_dict, pd.DataFrame):
+            results_dict = util_convert_pd_dataframe_to_imat_datacont(results_dict)
 
-    if isinstance(results_dict, pd.DataFrame):
-        results_dict = util_convert_pd_dataframe_to_imat_datacont(results_dict)
+        print(text_general_title)
 
-    print(text_general_title())
+        # below: displays the menu
 
-    # below: displays the menu
+        menu_entries = results_dict["menu_entries_results"]
 
-    menu_entries = results_dict["menu_entries_results"]
+        menu_titel = results_dict["menu_displayed_text"][0]
+        menu_guideline = results_dict["menu_displayed_text"][1]
+        menu_requested_input = results_dict["menu_displayed_text"][2]
+        menu_columns_description = results_dict["menu_displayed_text"][3]
 
-    menu_titel = results_dict["menu_displayed_text"][0]
-    menu_guideline = results_dict["menu_displayed_text"][1]
-    menu_requested_input = results_dict["menu_displayed_text"][2]
-    menu_columns_description = results_dict["menu_displayed_text"][3]
+        print(menu_titel)
+        print("")
 
-    print(menu_titel)
-    print("")
+        print(menu_guideline)
+        print("")
 
-    print(menu_guideline)
-    print("")
+        print_menu_entries(menu_columns_description, menu_entries, 15, print_all_columns=True)
 
-    print_menu_entries(menu_columns_description, menu_entries, 15, print_all_columns=True)
+        return input(menu_requested_input)
 
-    return input(menu_requested_input)
+    except Exception as e:
+        handle_error(e)
 
 
 def display_menu_print_textblock(text_dict: dict, textblock_sep_line=True) -> str:
@@ -531,26 +407,30 @@ def display_menu_print_textblock(text_dict: dict, textblock_sep_line=True) -> st
     ...     }
     >>> display_menu_print_textblock(example_text_dict)
     """
-    os.system("cls" if os.name == "nt" else "clear")
+    try:
+        os.system("cls" if os.name == "nt" else "clear")
 
-    print(text_general_title())
+        print(text_general_title)
 
-    # below: displays the menu
+        # below: displays the menu
 
-    menu_title = text_dict["menu_displayed_text"][0]
-    menu_guideline = text_dict["menu_displayed_text"][1]
-    menu_requested_input = text_dict["menu_displayed_text"][2]
-    menu_columns_description = text_dict["menu_displayed_text"][3]
+        menu_title = text_dict["menu_displayed_text"][0]
+        menu_guideline = text_dict["menu_displayed_text"][1]
+        menu_requested_input = text_dict["menu_displayed_text"][2]
+        menu_columns_description = text_dict["menu_displayed_text"][3]
 
-    print(menu_title)
-    print("")
+        print(menu_title)
+        print("")
 
-    print(menu_guideline)
-    print("")
+        print(menu_guideline)
+        print("")
 
-    print_textblock(menu_columns_description, text_dict["menu_entries_text"], textblock_sep_line)
+        print_textblock(menu_columns_description, text_dict["menu_entries_text"], textblock_sep_line)
 
-    return input(menu_requested_input)
+        return input(menu_requested_input)
+
+    except Exception as e:
+        handle_error(e)
 
 
 def print_textblock(menu_columns_description: list, menu_entries: list[list], textblock_sep_line=True) -> None:
@@ -594,27 +474,31 @@ def print_textblock(menu_columns_description: list, menu_entries: list[list], te
     ... ]
     >>> print_textblock(menu_columns_description, menu_entries)
     """
-    first_col_width = max(
-        len(entry[0]) for entry in menu_entries) + 5  # Or however wide you want the title column to be
-    message_col_width = 80  # Or however wide you want the message column to be
-    # Print each column name
-    print(f"{'':{first_col_width}} {menu_columns_description[1]}")
-    print("")
-    # Now print each menu item, wrapped if it exceeds 80 characters.
-    for row in menu_entries:
-        title, message = row
-        wrapped_message = textwrap.fill(message, message_col_width)
-        for i, second_col_line in enumerate(wrapped_message.split('\n')):
-            if i == 0:
-                print(f"{title:{first_col_width}} {second_col_line}")
-            else:
-                print(f"{'':{first_col_width}} {second_col_line}")
-
-        if textblock_sep_line:
-            print("")  # Empty line after each message
-
-    if not textblock_sep_line:
+    try:
+        first_col_width = max(
+            len(entry[0]) for entry in menu_entries) + 5  # Or however wide you want the title column to be
+        message_col_width = 80  # Or however wide you want the message column to be
+        # Print each column name
+        print(f"{'':{first_col_width}} {menu_columns_description[1]}")
         print("")
+        # Now print each menu item, wrapped if it exceeds 80 characters.
+        for row in menu_entries:
+            title, message = row
+            wrapped_message = textwrap.fill(message, message_col_width)
+            for i, second_col_line in enumerate(wrapped_message.split('\n')):
+                if i == 0:
+                    print(f"{title:{first_col_width}} {second_col_line}")
+                else:
+                    print(f"{'':{first_col_width}} {second_col_line}")
+
+            if textblock_sep_line:
+                print("")  # Empty line after each message
+
+        if not textblock_sep_line:
+            print("")
+
+    except Exception as e:
+        handle_error(e)
 
 
 def print_menu_entries(menu_columns_description: list, menu_entries: list[list], min_col_width=45, print_all_columns=False) -> None:
@@ -662,37 +546,38 @@ def print_menu_entries(menu_columns_description: list, menu_entries: list[list],
     ...    ]
     >>> print_menu_entries(menu_columns_description, menu_entries, print_all_columns=True)
     """
-    additional_col_width = 5
+    try:
+        additional_col_width = 5
 
-    if not print_all_columns:
-        menu_entries = [entry[:1] + entry[2:] for entry in menu_entries]
+        if not print_all_columns:
+            menu_entries = [entry[:1] + entry[2:] for entry in menu_entries]
 
-    # Transpose menu_entries
-    menu_entries_transposed = list(map(list, zip(*menu_entries)))
+        # Transpose menu_entries
+        menu_entries_transposed = list(map(list, zip(*menu_entries)))
 
-    # Create list of column widths
-    col_widths = [max(min_col_width, max(len(str(item)) for item in col)) + additional_col_width
-                  for col in menu_entries_transposed]
+        # Create list of column widths
+        col_widths = [max(min_col_width, max(len(str(item)) for item in col)) + additional_col_width
+                      for col in menu_entries_transposed]
 
-    # Add headers to col_widths calculation
-    col_widths = [max(w, len(header)) for w, header in zip(col_widths, menu_columns_description)]
+        # Add headers to col_widths calculation
+        col_widths = [max(w, len(header)) for w, header in zip(col_widths, menu_columns_description)]
 
-    # Print menu_columns_description in one line
-    print("{:<8}".format("No."), end='  ')
-    for header, width in zip(menu_columns_description, col_widths):
-        print("{:<{}}".format(header, width), end='  ')
-    print("\n")
+        # Print menu_columns_description in one line
+        print("{:<8}".format("No."), end='  ')
+        for header, width in zip(menu_columns_description, col_widths):
+            print("{:<{}}".format(header, width), end='  ')
+        print("\n")
 
-    # Print menu_entries in multiple lines
-    for index, item in enumerate(menu_entries, 1):
-        print("{:<8}".format(index), end='  ')
-        for i, (entry, width) in enumerate(zip(item, col_widths)):
-            print("{:<{}}".format(entry, width), end='  ')
-        print()
-    print("")
+        # Print menu_entries in multiple lines
+        for index, item in enumerate(menu_entries, 1):
+            print("{:<8}".format(index), end='  ')
+            for i, (entry, width) in enumerate(zip(item, col_widths)):
+                print("{:<{}}".format(entry, width), end='  ')
+            print()
+        print("")
 
-
-
+    except Exception as e:
+        handle_error(e)
 
 
 def util_convert_pd_dataframe_to_imat_datacont(pd_dataframe: pd.DataFrame,
@@ -762,25 +647,28 @@ def util_convert_pd_dataframe_to_imat_datacont(pd_dataframe: pd.DataFrame,
     ...         ]
     ...     }
     """
+    try:
+        if menu_columns_description is None:
+            # if no menu_columns_description is provided, use the DataFrame's column names'
+            menu_columns_description = list(pd_dataframe.columns)
 
-    if menu_columns_description is None:
-        # if no menu_columns_description is provided, use the DataFrame's column names'
-        menu_columns_description = list(pd_dataframe.columns)
+        imat_datacont = {
+            "menu_displayed_text": [
+                menu_titel,
+                menu_guideline,
+                menu_requested_input,
+                menu_columns_description,
+            ],
+            "menu_entries_results": []
+        }
 
-    imat_datacont = {
-        "menu_displayed_text": [
-            menu_titel,
-            menu_guideline,
-            menu_requested_input,
-            menu_columns_description,
-        ],
-        "menu_entries_results": []
-    }
+        for _, row in pd_dataframe.iterrows():
+            imat_datacont["menu_entries_results"].append(list(row))
 
-    for _, row in pd_dataframe.iterrows():
-        imat_datacont["menu_entries_results"].append(list(row))
+        return imat_datacont
 
-    return imat_datacont
+    except Exception as e:
+        handle_error(e)
 
 
 def util_convert_imat_datacont_to_pd_dataframe(imat_cont: dict) -> pd.DataFrame:
@@ -836,12 +724,13 @@ def util_convert_imat_datacont_to_pd_dataframe(imat_cont: dict) -> pd.DataFrame:
     This will convert the I-MaT data container to a DataFrame with 3 rows. The DataFrame can then be used for further
     data processing or analysis.
     """
-    column_names = imat_cont['menu_displayed_text'][2]
-    data = imat_cont['menu_entries_results']
+    try:
+        column_names = imat_cont['menu_displayed_text'][2]
+        data = imat_cont['menu_entries_results']
 
-    pd_dataframe = pd.DataFrame(data, columns=column_names)
+        pd_dataframe = pd.DataFrame(data, columns=column_names)
 
-    return pd_dataframe
+        return pd_dataframe
 
-
-
+    except Exception as e:
+        handle_error(e)

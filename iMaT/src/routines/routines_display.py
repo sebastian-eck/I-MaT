@@ -1,7 +1,7 @@
-from src.cli.cli_menu_structure import display_menu_request_selection
-from src.routines.routines_name_parts import selected_score_part_names
-from src.routines.routines_score_selection import score_selection
-from src.routines.routines_select_parts_and_measures import select_parts_and_measures
+from src.cli.cli_menu_structures import display_menu_request_selection
+from src.score_selection.score_selection_name_parts import selected_score_part_names
+from src.score_selection.score_selection_main import score_selection
+from src.score_selection.score_selection_select_parts_and_measures import select_parts_and_measures
 
 
 def generic_display_workflow(display_func: callable):

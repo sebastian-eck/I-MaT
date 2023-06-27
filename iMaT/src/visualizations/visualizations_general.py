@@ -1,8 +1,8 @@
 import music21
 from music21 import environment, roman
 
-from src.cli.cli_menu_structure import display_menu_request_selection
-from src.config import keys_list
+from src.cli.cli_menu_structures import display_menu_request_selection
+from src.constants import keys_list
 
 
 def play_midi_score(selected_score):

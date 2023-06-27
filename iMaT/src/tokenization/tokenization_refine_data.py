@@ -7,9 +7,8 @@ from src.tokenization.tokenization_helpers import save_data_to_new_csv_file, sel
 
 tqdm.pandas()
 
-from src.cli.cli_menu_structure import display_menu_print_results, display_menu_print_textblock, \
-    display_menu_request_selection, \
-    util_convert_pd_dataframe_to_imat_datacont
+from src.cli.cli_menu_structures import display_menu_print_results, display_menu_print_textblock, \
+    display_menu_request_selection, util_convert_pd_dataframe_to_imat_datacont
 
 tokenizers_available_for_refining = ['CPWord', 'Octuple', 'OctupleMono', 'MuMIDI']
 
@@ -30,7 +29,7 @@ def corpus_tokenization_refine_data_absolute_duration():
     while True:
         file_name = select_csv_file_2d_token_representation()
 
-        if file_name == None:
+        if file_name is None:
             break
 
         df = pd.read_csv(file_name)

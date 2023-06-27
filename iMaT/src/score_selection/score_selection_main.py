@@ -23,10 +23,10 @@ from urllib.parse import urlparse
 import requests
 from music21 import converter
 
-from src.cli.cli_menu_structure import display_menu_print_textblock, display_menu_request_selection
-from src.config import example_scores_dict
-from src.routines.routines_name_parts import select_and_name_parts
-from src.utils.utils_errorhandling import handle_error
+from src.cli.cli_menu_structures import display_menu_print_textblock, display_menu_request_selection
+from src.constants import example_scores_dict
+from src.score_selection.score_selection_name_parts import select_and_name_parts
+from src.utils.utils_error_handling import handle_error
 
 
 def score_selection():
@@ -191,6 +191,7 @@ def load_example_score(score_url):
         score_selection()
 
 
+# noinspection HttpUrlsUsage
 def select_own_score():
     """
     Helper function to allow the user to select their own music score.

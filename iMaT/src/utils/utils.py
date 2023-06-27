@@ -1,6 +1,6 @@
-from src.cli.cli_menu_structure import display_menu_print_results
-from src.routines.routines_name_parts import select_and_name_parts, selected_score_part_names
-from src.routines.routines_score_selection import score_selection
+from src.cli.cli_menu_structures import display_menu_print_results
+from src.score_selection.score_selection_name_parts import select_and_name_parts, selected_score_part_names
+from src.score_selection.score_selection_main import score_selection
 
 
 def select_new_score(selected_score, identifier):

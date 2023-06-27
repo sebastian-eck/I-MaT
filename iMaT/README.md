@@ -15,7 +15,7 @@ The aim of the aforementioned project was to design, test, teach with and evalua
 
 Within the project "Computer-assisted Music Analysis [...]", three computerized approaches to music score analysis were utilized, namely music21,[^7] CAMAT,[^8] and I-MaT itself. Music21 is a Python library developed at MIT for symbolic music representation and processing. CAMAT ([GitHub repository](https://github.com/Christon-Ragavan/CAMAT)), on the other hand, is a Computer-Assisted Music Analysis Toolkit developed by Egor Poliakov[^9] and Christon R. Nadar[^10] within the fellowship project. CAMAT uses its own unique data structure, developed within the project to overcome certain design problems found within the music21 framework.[^11] Tutorials for musicological courses were prepared using music examples and code that can be executed as Jupyter Notebooks.[^12]
 
-Both music21 and CAMAT require rudimentary knowledge of Python command syntax. In contrast, the Interactive Music Analysis Tool (I-MaT) is designed for users who have none to only limited knowledge of computer commands or programming config.LANGUAGEs as it utilizes a new and innovative approach to access and work with the music21 toolkit.
+Both music21 and CAMAT require rudimentary knowledge of Python command syntax. In contrast, the Interactive Music Analysis Tool (I-MaT) is designed for users who have none to only limited knowledge of computer commands or programming languages as it utilizes a new and innovative approach to access and work with the music21 toolkit.
 
 ### I-MaT: Features and Accessibility
 
@@ -170,7 +170,7 @@ No.  Menu item                                                         <Explanat
 2    TOOL: Menu selection (statistical analysis)                       <Selection of various statistical analysis tools>      
 3    TOOL: Menu selection (visualisation)                              <Selection of different visualisation tools>
 4    TOOL: Menu selection (pattern search)                             <Selection of different tools for pattern search>      
-5    SETT: Settings                                                    <Settings in the music21 environment file/config.LANGUAGE settings>
+5    SETT: Settings                                                    <Settings in the music21 environment file/language settings>
 6    HELP: Project overview                                            <Information about the project "Computer-Aided Music Analysis">
 7    EXIT: Exit program                                                <Exits the Python script>
 

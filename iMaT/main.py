@@ -1,7 +1,0 @@
-from src.cli.cli_menu_entries import startmenu_entries
-from src.cli.cli_menu_structure import display_menu_undirected
-from src.routines.routines_configure_m21_environment import check_environmentFile
-
-check_environmentFile()
-
-display_menu_undirected(startmenu_entries)

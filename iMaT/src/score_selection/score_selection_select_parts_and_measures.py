@@ -35,14 +35,14 @@ Here is how to use the functions in this module:
 Notes
 -----
 This module uses the music21 library, which must be installed and imported for the functions to work correctly.
-This module also depends on other modules like `routines_name_parts` and `src.cli.cli_menu_structure`
+This module also depends on other modules like `routines_name_parts` and `cli.cli_menu_structure`
 for some of its operations.
 """
 import music21
 from music21 import stream
 
-from src.cli.cli_menu_structure import display_menu_print_textblock, display_menu_request_selection
-from src.routines.routines_name_parts import selected_score_part_names
+from src.cli.cli_menu_structures import display_menu_print_textblock, display_menu_request_selection
+from src.score_selection.score_selection_name_parts import selected_score_part_names
 
 previous_score_selection = ()
 
@@ -105,7 +105,7 @@ def select_parts_and_measures() -> (music21.stream.Score or music21.stream.Part,
     choice = display_menu_request_selection(imat_data_container)
 
     if choice == "prev_selection":  # Repeat previous selection
-        if previous_score_selection is not ():
+        if previous_score_selection != ():
             return previous_score_selection
         else:
             print("\nThere is no previous selection. Please make a new selection.\n")

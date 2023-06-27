@@ -1,4 +1,4 @@
-from src.cli.cli_menu_structure import display_menu_print_textblock
+from src.cli.cli_menu_structures import display_menu_print_textblock
 
 
 def map_analysis_function_to_display_function(analysis_func: callable):

@@ -12,7 +12,7 @@ Dependencies:
 - openpyxl
 - tqdm
 - miditok: Tokenizers for MIDI files
-- CLI interface: src.cli.cli_menu_structure
+- CLI interface: cli.cli_menu_structure
 
 Main function: corpus_tokenization
 """
@@ -23,7 +23,6 @@ import glob
 import os
 import re
 import tkinter as tk
-from datetime import datetime
 from tkinter import filedialog
 
 import pandas as pd
@@ -32,7 +31,7 @@ from openpyxl.reader.excel import load_workbook
 from openpyxl.workbook import Workbook
 from tqdm import tqdm
 
-from src.cli.cli_menu_structure import display_menu_print_results, display_menu_print_textblock, \
+from src.cli.cli_menu_structures import display_menu_print_results, display_menu_print_textblock, \
     display_menu_request_selection
 
 tokenizers_list = [
@@ -190,8 +189,8 @@ def corpus_tokenization():
 
             except Exception as e:
                 files_status.append([tokenizer_name, file, str(e)])
-                list = [tokenizer_name, os.path.join(tokenized_file_folder, file), str(e)]
-                create_log_entry(list, tokenization_dir + r'\tokenization_log.xlsx')
+                exception_list = [tokenizer_name, os.path.join(tokenized_file_folder, file), str(e)]
+                create_log_entry(exception_list, tokenization_dir + r'\tokenization_log.xlsx')
 
         combine_csv_files_in_directory(tokenized_file_folder, f"00_combined_tokenizer_{tokenizer_name}_tokens.csv")
 
@@ -366,7 +365,7 @@ def select_folder():
 
         root.destroy()  # Destroy the root window
 
-        if folder_path is "":  # If the user canceled the dialog
+        if folder_path == "":  # If the user canceled the dialog
             return None
 
         if len(list_tokenizable_files(folder_path)) == 0:
@@ -448,7 +447,7 @@ def extract_tokens_nested_list(tokens_string):
     search_pattern = r'\[([^\[\]]*?)\]'
     matched_lists = re.findall(search_pattern, trimmed_string)
 
-    token_lists = [ast.literal_eval(list) for list in matched_lists]
+    token_lists = [ast.literal_eval(selected_list) for selected_list in matched_lists]
 
     return token_lists
 
@@ -495,7 +494,7 @@ def tokenize_midi_file(midi_file_path, tokenizer_class, tokenized_file_folder):
     # print(f"Tokens saved to {file_path}")
 
 
-def create_log_entry(list, list_path):
+def create_log_entry(log_list, log_list_path):
     """
     Appends a new entry to an existing .xlsx file.
 
@@ -503,16 +502,16 @@ def create_log_entry(list, list_path):
 
     Parameters
     ----------
-    list : list
+    log_list : list
         List of strings to be appended as a new row.
-    list_path : str
+    log_list_path : str
         Path to the .xlsx file.
 
     Returns
     -------
     None
     """
-    wb = load_workbook(list_path)
+    wb = load_workbook(log_list_path)
     ws = wb.active
-    ws.append(list)
-    wb.save(list_path)
+    ws.append(log_list)
+    wb.save(log_list_path)

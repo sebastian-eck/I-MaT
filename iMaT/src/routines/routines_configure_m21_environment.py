@@ -4,7 +4,7 @@ from tkinter.filedialog import askdirectory, askopenfilename
 
 from music21 import environment
 
-from src.cli.cli_menu_structure import display_menu_print_textblock, display_menu_request_selection
+from src.cli.cli_menu_structures import display_menu_print_textblock, display_menu_request_selection
 
 
 def set_user_preferences():

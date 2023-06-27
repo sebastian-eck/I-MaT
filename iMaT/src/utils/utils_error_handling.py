@@ -1,15 +1,15 @@
+import logging
 import sys
 import traceback
 
-from src.cli.cli_menu_static_text import text_general_title
-
+from src.constants import text_general_title
 
 # Set up logging
-# logging.basicConfig(filename='error_log.txt', level=logging.ERROR)
+logging.basicConfig(filename='error_logs/error_log.txt', level=logging.ERROR, format='%(asctime)s - '
+                                                                                     '%(levelname)s - %(message)s')
 
 
 def text_exception_general(e: Exception) -> str:
-
     # Get the current traceback
     current_traceback = traceback.extract_tb(sys.exc_info()[2])
 
@@ -24,20 +24,19 @@ def text_exception_general(e: Exception) -> str:
     # Generate the error message
     message = (
             "An error was encountered while executing the program:\n\n"
-            "In file: " + file_name +
+            "\nIn file: " + file_name +
             "\nIn function: " + function_name +
             "\nError in line: " + str(line_number) +
             "\nError code: " + str(e) +
-            "\n\nIf the problem persists, please contact the person responsible for the project via GitHub.\n\n"
-            "Support: https://github.com/sebastian-eck"
+            "\nIf the problem persists, please contact the person responsible for the project via GitHub.\n"
+            "\nFor support contact: https://github.com/sebastian-eck\n"
     )
 
     return message
 
 
 def handle_error(e: Exception) -> None:
-
-    print(text_general_title())
+    print(text_general_title)
 
     # Generate the error message
     message = text_exception_general(e)
@@ -45,7 +44,7 @@ def handle_error(e: Exception) -> None:
     # Print user-friendly error message
     print(message)
 
-    input("<To continue, please press Enter>")
+    input("\n<To continue, please press Enter>")
 
-    # # Log the error details for debugging
-    # logging.error(message, exc_info=True)
+    # Log the error details for debugging
+    logging.exception(message)

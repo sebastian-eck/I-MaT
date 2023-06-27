@@ -3,7 +3,7 @@ import tkinter as tk
 from datetime import datetime
 from tkinter import filedialog
 
-from src.cli.cli_menu_structure import display_menu_print_textblock
+from src.cli.cli_menu_structures import display_menu_print_textblock
 
 
 def save_data_to_new_csv_file(df, file_name):
@@ -91,7 +91,7 @@ def select_csv_file_2d_token_representation():
             ]
         }
 
-        if file_path is "":  # If the user canceled the dialog
+        if file_path == "":  # If the user canceled the dialog
             return None
 
         tokenizers_available_for_refining = ['CPWord', 'Octuple', 'OctupleMono', 'MuMIDI']

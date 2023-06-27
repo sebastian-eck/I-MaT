@@ -8,13 +8,13 @@ from matplotlib import pyplot as plt
 from matplotlib.lines import Line2D
 from music21 import environment, note
 
-from src.cli.cli_menu_structure import display_menu_print_results, display_menu_request_selection, \
+from src.cli.cli_menu_structures import display_menu_print_results, display_menu_request_selection, \
     util_convert_pd_dataframe_to_imat_datacont
-from src.pattern_search.pattern_search_selection import pattern_selection_notes_and_rhythm, \
+from src.pattern_search.pattern_search_utils import pattern_selection_notes_and_rhythm, \
     pattern_selection_notes_only, pattern_selection_rhythm_only
-from src.routines.routines_name_parts import selected_score_part_names
-from src.routines.routines_score_selection import score_selection
-from src.routines.routines_select_parts_and_measures import select_parts_and_measures
+from src.score_selection.score_selection_name_parts import selected_score_part_names
+from src.score_selection.score_selection_main import score_selection
+from src.score_selection.score_selection_select_parts_and_measures import select_parts_and_measures
 
 
 def map_analysis_function_to_display_function(pattern_search_func: callable):

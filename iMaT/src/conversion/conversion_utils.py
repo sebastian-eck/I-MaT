@@ -1,101 +1,14 @@
 import os
-import os.path
 import tkinter as tk
-from datetime import datetime
 from tkinter import filedialog
 
-from music21 import converter
-from openpyxl import Workbook, load_workbook
-from tqdm import tqdm
+from openpyxl import load_workbook
 
-from src.cli.cli_menu_structure import display_menu_print_results, display_menu_print_textblock, \
+from src.cli.cli_menu_structures import display_menu_print_results, display_menu_print_textblock, \
     display_menu_request_selection
 
 
-def convert_multiple_files_filetype():
-    """
-    Main function for the conversion of music files found in a pre-defined folder.
-    The function lists parsable music files, allows the user to select a conversion format,
-    and attempts conversion. Successfully converted files are saved in a newly created directory.
-    Failures during parsing and conversion are logged to respective .xlsx files.
-
-    Returns
-    -------
-    None
-    """
-    while True:
-        folder_path = select_folder()
-        if folder_path is None:
-            return
-        parsable_files = list_parsable_files(folder_path)
-        parsable_files_display = parsable_files[:30]  # Only take the first 30 files for display
-        if len(parsable_files) > 30:  # If there are more than 30 files, add an indicator at the end
-            parsable_files_display.append("... (more files not shown)")
-
-        music_files_dict = {
-            "menu_displayed_text":
-                ["File Conversion: Found music files",
-                 f"In Folder: '{folder_path}'  ({len(parsable_files)} files found)",
-                 "<To continue, please press Enter (enter 'r' to refresh)> ",
-                 ["File Path"]],
-            "menu_entries_results":
-                [[file] for file in parsable_files_display]
-        }
-        refresh_choice = display_menu_print_results(music_files_dict)
-        if refresh_choice.lower() != 'r':
-            break
-
-    conversion_format = select_conversion_format()
-
-    conversion_dir = os.path.join(folder_path, "converted_" + datetime.now().strftime("%Y%m%d_%H%M%S"))
-    os.mkdir(conversion_dir)
-
-    workbook1 = Workbook()
-    workbook1.save(conversion_dir + r'\parsing_log.xlsx')
-
-    workbook2 = Workbook()
-    workbook2.save(conversion_dir + r'\conversion_log.xlsx')
-
-    num_files = len(parsable_files)
-    num_converted = 0
-    files_status = []
-
-    print("\nConverting files...")
-    for file in tqdm(parsable_files, ncols=70):  # Wrap parsable_files with tqdm for progress bar
-        try:
-            file_path = os.path.join(folder_path, file)
-            score = converter.parse(file_path)
-            try:
-                converted_file_path = os.path.join(conversion_dir,
-                                                   os.path.splitext(os.path.basename(file))[0] + conversion_format)
-                fp = score.write(conversion_format, fp=converted_file_path)
-                num_converted += 1
-                files_status.append([file, "<successfully converted>"])
-            except Exception as e:
-                files_status.append([file, str(e)])
-                list = [file_path, str(e)]
-                create_log_entry(list, conversion_dir + '\conversion_log.xlsx')
-        except Exception as e:
-            files_status.append([file, str(e)])
-            list = [file_path, str(e)]
-            create_log_entry(list, conversion_dir + '\parsing_log.xlsx')
-
-    # Create text_dict with both conversion success rate and failed files
-    text_dict = {
-        "menu_displayed_text": [
-            "File Conversion: Conversion Summary",
-            f"Conversion Success Rate {num_converted}/{num_files} ({(num_converted / num_files) * 100:.2f}%)",
-            "<To continue, please press Enter>",
-            ["File name", "Details"]
-        ],
-        "menu_entries_results": [
-            [str(file), f"'{str(status)}'"] for file, status in files_status]
-    }
-
-    display_menu_print_results(text_dict)
-
-
-def list_parsable_files(folder_path):
+def get_parsable_files_in_folder(folder_path):
     """
     Lists all parsable music files in a given folder.
 
@@ -114,6 +27,45 @@ def list_parsable_files(folder_path):
                            '.tinynotation', '.volpiano']
     parsable_files = [f for f in os.listdir(folder_path) if os.path.splitext(f)[1].lower() in parsable_extensions]
     return parsable_files
+
+
+def display_parseable_files_in_folder(folder_path):
+    while True:
+
+        parsable_files = get_parsable_files_in_folder(folder_path)
+        parsable_files_display = parsable_files[:30]  # Only take the first 30 files for display
+        if len(parsable_files) > 30:  # If there are more than 30 files, add an indicator at the end
+            parsable_files_display.append("... (more files not shown)")
+
+        music_files_dict = {
+            "menu_displayed_text":
+                ["File Conversion: Found music files",
+                 f"In Folder: '{folder_path}'  ({len(parsable_files)} files found)",
+                 "<To continue, please press Enter (enter 'r' to refresh)> ",
+                 ["File Path"]],
+            "menu_entries_results":
+                [[file] for file in parsable_files_display]
+        }
+
+        refresh_choice = display_menu_print_results(music_files_dict)
+        if refresh_choice.lower() != 'r':
+            break
+    return parsable_files
+
+
+def display_success_rate(files_status, num_converted, num_files):
+    # Create text_dict with both conversion success rate and failed files
+    text_dict = {
+        "menu_displayed_text": [
+            "File Conversion: Conversion Summary",
+            f"Conversion Success Rate {num_converted}/{num_files} ({(num_converted / num_files) * 100:.2f}%)",
+            "<To continue, please press Enter>",
+            ["File name", "Details"]
+        ],
+        "menu_entries_results": [
+            [str(file), f"'{str(status)}'"] for file, status in files_status]
+    }
+    display_menu_print_results(text_dict)
 
 
 def select_folder():
@@ -159,10 +111,10 @@ def select_folder():
 
         root.destroy()  # Destroy the root window
 
-        if folder_path is "":  # If the user canceled the dialog
+        if folder_path == "":  # If the user canceled the dialog
             return None
 
-        parsable_files = list_parsable_files(folder_path)
+        parsable_files = get_parsable_files_in_folder(folder_path)
         if len(parsable_files) == 0:
             error_message_dict = {
                 "menu_displayed_text": [
@@ -177,9 +129,9 @@ def select_folder():
                     ["Reason 1:", "There are no parsable music files in the selected directory."],
                     ["Reason 2:", "Ensure the directory you select contains the music files you want to convert."],
                     ["Return to Main Menu",
-                    "If you do not have a suitable folder with valid files at the moment, press enter and close the "
-                    "selection display that will be displayed right after.\n"
-                    "You will then be returned to the Main Menu."]
+                     "If you do not have a suitable folder with valid files at the moment, press enter and close the "
+                     "selection display that will be displayed right after.\n"
+                     "You will then be returned to the Main Menu."]
                 ]
             }
             display_menu_print_textblock(error_message_dict)
@@ -253,5 +205,3 @@ def create_log_entry(list, list_path):
     ws = wb.active
     ws.append(list)
     wb.save(list_path)
-
-# convert_multiple_files_filetype()
