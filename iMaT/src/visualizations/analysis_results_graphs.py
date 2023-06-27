@@ -1,7 +1,6 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-from src.cli.menu_constructors import display_menu_print_textblock
 from src.utils.error_handling import handle_error
 
 

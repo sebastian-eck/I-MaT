@@ -4,7 +4,6 @@ import os
 from music21 import environment
 
 from src.cli.menu_constructors import display_menu_print_results
-from src.score_selection.main import score_selection
 from src.score_selection.name_parts import select_and_name_parts, selected_score_part_names
 from src.utils.error_handling import handle_error
 

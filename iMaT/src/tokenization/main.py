@@ -36,7 +36,7 @@ from src.tokenization.utils import combine_csv_files_in_directory, create_log_en
     get_tokenizable_files_in_folder
 from src.utils.error_handling import handle_error
 
-miditok_tokenizers_list = [
+MIDITOK_TOKENIZERS_LIST = [
     ['REMI', REMI, '<One-Dimensional: Event-based, includes timing, bar info>'],
     ['REMIPlus', REMIPlus, '<One-Dimensional: Extended REMI, multi-track, multi-signature>'],
     ['MIDILike', MIDILike, '<One-Dimensional: Converts MIDI messages to tokens>'],
@@ -48,7 +48,7 @@ miditok_tokenizers_list = [
     ['MuMIDI', MuMIDI, '<Two-Dimensional: Multitrack tasks, uses embedding pooling>']
 ]
 
-tokenizer_headers = {
+MIDITOK_TOKENIZERS_HEADERS = {
     'REMI': ['Tokens'],
     'REMIPlus': ['Tokens'],
     'MIDILike': ['Tokens'],
@@ -60,12 +60,12 @@ tokenizer_headers = {
     'MuMIDI': ['Type*', 'BarPosEnc', 'PositionPosEnc', 'Velocity', 'Duration']
 }
 
-tokenizer_additional_tokens = {
+MIDITOK_TOKENIZERS_ADDITIONAL_TOKENS = {
     'Chord': False,
     'Program': False,
     'Rest': True,
     'Tempo': False,
-    'TimeSignature': True,
+    'TimeSignature': False,
     'chord_maps': {
         '7aug': (0, 4, 8, 11),
         '7dim': (0, 3, 6, 9),
@@ -125,13 +125,13 @@ def corpus_tokenization():
 
     for tokenizer_class in selected_tokenizers:
         # Look up the name of the tokenizer
-        tokenizer_name = next((x[0] for x in miditok_tokenizers_list if x[1] == tokenizer_class), None)
+        tokenizer_name = next((x[0] for x in MIDITOK_TOKENIZERS_LIST if x[1] == tokenizer_class), None)
         if not tokenizer_name:
             print(f"Error: Could not find tokenizer '{tokenizer_name}'")
             continue  # Skip if the tokenizer name is not found
 
         if tokenizer_name not in ['Structured', 'REMIPlus']:
-            tokenizer = tokenizer_class(additional_tokens=tokenizer_additional_tokens, beat_res={(0, 16): 16})
+            tokenizer = tokenizer_class(additional_tokens=MIDITOK_TOKENIZERS_ADDITIONAL_TOKENS, beat_res={(0, 16): 16})
         else:
             tokenizer = tokenizer_class()
 
@@ -153,7 +153,7 @@ def corpus_tokenization():
                 df = pd.DataFrame(tokens_list)
 
                 # Get the column names for the current tokenizer
-                headers = tokenizer_headers.get(tokenizer_name, [])
+                headers = MIDITOK_TOKENIZERS_HEADERS.get(tokenizer_name, [])
 
                 # Check if the DataFrame has the right number of columns
                 if len(df.columns) == len(headers):
@@ -202,13 +202,13 @@ def select_miditok_tokenizer():
                 "Which tokenizer do you want to select? (<No. of menu item>): ",
                 ["Tokenizer", "Description"]
             ],
-            "menu_entries": [[tokenizer[0], tokenizer[1], tokenizer[2]] for tokenizer in miditok_tokenizers_list] + [
+            "menu_entries": [[tokenizer[0], tokenizer[1], tokenizer[2]] for tokenizer in MIDITOK_TOKENIZERS_LIST] + [
                 ["All", "return_all", "Apply all tokenizers"]]
         }
         choice = display_menu_request_selection(tokenizer_dict)
 
         if choice == "return_all":
-            return [tokenizer[1] for tokenizer in miditok_tokenizers_list]
+            return [tokenizer[1] for tokenizer in MIDITOK_TOKENIZERS_LIST]
         else:
             return [choice]
 

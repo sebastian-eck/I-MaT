@@ -33,7 +33,7 @@ from src.visualizations.m21_integrated import play_midi_score, show_chord_connec
 def start_menu_entries():
     return {
         "menu_displayed_text": [
-            "Start Menu Header",
+            "Start Menu",
             "Please make a selection from the options below by entering the entry index number:",
             "Which menu item should be executed? (<No. of menu item>): ",
             ["Menu item", "<Explanation>"]
@@ -50,7 +50,7 @@ def start_menu_entries():
 def tokenization_mainmenu_entries():
     return {
         "menu_displayed_text": [
-            "Tokenization Menu Header",
+            "Tokenization Menu",
             "Please make a selection from the options below by entering the entry index number:",
             "Which menu item should be executed? (<No. of menu item>): ",
             ["Menu item", "<Explanation>"],
@@ -117,7 +117,7 @@ def mainmenu_individualPiece_entries():
 def submenu_individualPiece_files_entries():
     return {
         "menu_displayed_text": [
-            "Submenu Individual Piece Files Header",
+            "Submenu Individual Piece Files",
             "Please make a selection from the options below by entering the entry index number:",
             "Which menu item should be executed? (<No. of menu item>): ",
             ["Menu item", "<Explanation>"],
@@ -135,7 +135,7 @@ def submenu_individualPiece_files_entries():
 def submenu_individualPiece_statisticalAnalyses_entries():
     return {
         "menu_displayed_text": [
-            "Submenu Individual Piece Statistical Analyses Header",
+            "Submenu Individual Piece Statistical Analyses",
             "Please make a selection from the options below by entering the entry index number:",
             "Which menu item should be executed? (<No. of menu item>): ",
             ["Menu item", "<Explanation>"],
@@ -182,7 +182,7 @@ def submenu_individualPiece_statistical_analysis_advanced_entries():
 def submenu_individualPiece_visualizations_entries():
     return {
         "menu_displayed_text": [
-            "Submenu Individual Piece Visualizations Header",
+            "Submenu Individual Piece Visualizations",
             "Please make a selection from the options below by entering the entry index number:",
             "Which menu item should be executed? (<No. of menu item>): ",
             ["Menu item", "<Explanation>"],

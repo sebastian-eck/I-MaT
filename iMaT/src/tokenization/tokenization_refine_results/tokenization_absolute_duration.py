@@ -4,6 +4,7 @@ import pandas as pd
 from tqdm import tqdm
 
 from src.tokenization.utils import save_data_to_new_csv_file, select_csv_file_2d_token_representation
+from src.utils.error_handling import handle_error
 
 tqdm.pandas()
 
@@ -26,53 +27,57 @@ def corpus_tokenization_refine_data_absolute_duration():
 
     Returns: None
     """
-    while True:
-        file_name = select_csv_file_2d_token_representation()
+    try:
+        while True:
+            file_name = select_csv_file_2d_token_representation()
 
-        if file_name is None:
-            break
+            if file_name is None:
+                break
 
-        df = pd.read_csv(file_name)
+            df = pd.read_csv(file_name)
 
-        df = refine_data_function_absolute_duration(df)
+            df = refine_data_function_absolute_duration(df)
 
-        # Step 4: show the user the first 30 rows after executing step 2 and 3
-        results_dict = util_convert_pd_dataframe_to_imat_datacont(df.head(30))
-        display_menu_print_results(results_dict)
+            # Step 4: show the user the first 30 rows after executing step 2 and 3
+            results_dict = util_convert_pd_dataframe_to_imat_datacont(df.head(30))
+            display_menu_print_results(results_dict)
 
-        # Step 5: ask the user whether he wants to save the new file
-        yes_no_menu = {
-            "menu_displayed_text": [
-                "Save Refined Data",
-                "Do you want to save the refined data to a new CSV file?",
-                "Please select your choice (1-2): ",
-                ["Choice", "Description"],
-            ],
-            "menu_entries": [
-                ["CONT: Save the new file", "Yes", "Yes, save the refined data to a new CSV file"],
-                ["DONT: Do not save the new file", "No", "No, do not save the refined data"],
-            ]
-        }
-
-        save_input = display_menu_request_selection(yes_no_menu)
-
-        if save_input.lower() == 'yes':
-            new_file_path = save_data_to_new_csv_file(df, file_name, "abs_duration_")
-
-            textblock_dict_newfile = {
+            # Step 5: ask the user whether he wants to save the new file
+            yes_no_menu = {
                 "menu_displayed_text": [
-                    "-- New File Path --",
-                    "Please read the following message:",
-                    "<To continue, please press Enter>",
-                    ["", "Message"],
+                    "Save Refined Data",
+                    "Do you want to save the refined data to a new CSV file?",
+                    "Please select your choice (1-2): ",
+                    ["Choice", "Description"],
                 ],
-                "menu_entries_text": [
-                    ["New File Path", f"The refined data has been saved to a new CSV file: {new_file_path}"]
+                "menu_entries": [
+                    ["CONT: Save the new file", "Yes", "Yes, save the refined data to a new CSV file"],
+                    ["DONT: Do not save the new file", "No", "No, do not save the refined data"],
                 ]
             }
 
-            display_menu_print_textblock(textblock_dict_newfile)
-        break
+            save_input = display_menu_request_selection(yes_no_menu)
+
+            if save_input.lower() == 'yes':
+                new_file_path = save_data_to_new_csv_file(df, file_name, "abs_duration_")
+
+                textblock_dict_newfile = {
+                    "menu_displayed_text": [
+                        "-- New File Path --",
+                        "Please read the following message:",
+                        "<To continue, please press Enter>",
+                        ["", "Message"],
+                    ],
+                    "menu_entries_text": [
+                        ["New File Path", f"The refined data has been saved to a new CSV file: {new_file_path}"]
+                    ]
+                }
+
+                display_menu_print_textblock(textblock_dict_newfile)
+            break
+
+    except Exception as e:
+        handle_error(e)
 
 
 def convert_duration_to_numerical(duration):
@@ -87,23 +92,27 @@ def convert_duration_to_numerical(duration):
     float: The converted duration as a numerical value, if the format matches.
     str: The original duration, if the format doesn't match.
     """
-    prefix = ""
-    entry_string = str(duration)
+    try:
+        prefix = ""
+        entry_string = str(duration)
 
-    # check if the input string starts with "Duration_"
-    if entry_string.startswith("Duration_"):
-        prefix = "Duration_"
-        entry_string = entry_string[len(prefix):]  # strip off the prefix
+        # check if the input string starts with "Duration_"
+        if entry_string.startswith("Duration_"):
+            prefix = "Duration_"
+            entry_string = entry_string[len(prefix):]  # strip off the prefix
 
-    if re.match(r"\d+\.\d+\.\d+", entry_string):
-        parts = list(map(float, entry_string.split('.')))
-        if len(parts) == 3:
-            a, b, c = parts
-            return prefix + str(a + b / c)
+        if re.match(r"\d+\.\d+\.\d+", entry_string):
+            parts = list(map(float, entry_string.split('.')))
+            if len(parts) == 3:
+                a, b, c = parts
+                return prefix + str(a + b / c)
+            else:
+                return duration
         else:
             return duration
-    else:
-        return duration
+
+    except Exception as e:
+        handle_error(e)
 
 
 def refine_data_function_absolute_duration(df):
@@ -116,10 +125,14 @@ def refine_data_function_absolute_duration(df):
     Returns:
     DataFrame: The pandas DataFrame with converted 'Duration' column.
     """
-    print("Converting 'duration' column to numerical format...")
-    if 'Duration' in df.columns:
-        df['Duration'] = df['Duration'].progress_apply(convert_duration_to_numerical)
+    try:
+        print("Converting 'duration' column to numerical format...")
+        if 'Duration' in df.columns:
+            df['Duration'] = df['Duration'].progress_apply(convert_duration_to_numerical)
 
-    return df
+        return df
+
+    except Exception as e:
+        handle_error(e)
 
 

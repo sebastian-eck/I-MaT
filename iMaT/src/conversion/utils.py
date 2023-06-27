@@ -168,23 +168,14 @@ def select_conversion_format():
         Chosen conversion format.
     """
     # Get all available formats.
-    formats = [['.midi', '.mid', '.midi/.mid ok'],
-               ['.mxl', '.mxl', 'ok'],
-               ['.musicxml', '.musicxml', 'ok'],
-               ['.noteworthy', '.noteworthy', 'Attention: a bytes-like object is required'],
-               ['.nwc', '.nwc', 'Attention: a bytes-like object is required'],
-               ['.scala', '.scala', 'ok'],
-               ['.tinynotation', '.tinynotation', 'ok'],
-               ['.abc', '.abc', 'ok'],
-               ['.capx', '.capx', 'ok'],
-               ['.gex', '.gex', 'conversion not supported'],
-               ['.humdrum', '.humdrum', 'ok'],
-               ['.krn', '.krn', 'ok'],
-               ['.mei', '.mei', 'MEI export is not yet implemented.'],
-               ['.musedata', '.musedata', 'ok'],
-               ['.romanText', '.romanText', 'ok'],
-               ['.rntxt', '.rntxt', 'ok'],
-               ['.volpiano', '.volpiano', 'ok']]
+    formats = [
+        ["MIDI: MIDI (.midi, .mid)", '.mid', "<Both .midi and .mid formats are supported without issues>"],
+        ["MXML: MusicXML Compressed (.mxl)", '.mxl', "<The compressed MusicXML (.mxl) format is supported without issues>"],
+        ["MXML: MusicXML (.musicxml)", '.musicxml', "<The .musicxml format is supported without issues>"],
+        ["VOLP: Volpiano (.volpiano)", '.volpiano', "<The .volpiano format is supported without issues>"],
+        ["NOTE: Noteworthy (.noteworthy)", '.noteworthy', "<Attention: a bytes-like object is required>"],
+        ["NOTE: Noteworthy Compressed (.nwc)", '.nwc', "<Attention: a bytes-like object is required>"]
+]
 
     try:
         # Loop to allow re-selection in case of invalid choice.
@@ -195,7 +186,7 @@ def select_conversion_format():
                     "File Conversion: Conversion formats",
                     "Please select one of the following conversion formats by entering the corresponding index number:",
                     "Which format do you want to select? (<No. of menu item>): ",
-                    ["Format"]
+                    ["Format", "<Explanation>"]
                 ],
                 "menu_entries": formats
             }
