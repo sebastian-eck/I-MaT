@@ -18,8 +18,8 @@ import textwrap
 
 import pandas as pd
 
-from src.constants import text_general_title
-from src.utils.utils_error_handling import handle_error
+from src.constants import TITLE_TEXT
+from src.utils.error_handling import handle_error
 
 menu_stack = []  # Stack to keep track of the previous menus
 
@@ -92,7 +92,7 @@ def display_menu_undirected(menu_content_dict: callable, parent_menu_func: calla
             os.system("cls" if os.name == "nt" else "clear")
             # below: displays the menu
 
-            print(text_general_title)
+            print(TITLE_TEXT)
 
             #first_level_menu_entries = start_menu_entries
 
@@ -221,7 +221,7 @@ def display_menu_request_selection(imat_data_container: dict, min_column_width =
         while True:
             os.system("cls" if os.name == "nt" else "clear")
 
-            print(text_general_title)
+            print(TITLE_TEXT)
 
             # below: displays the menu
 
@@ -328,7 +328,7 @@ def display_menu_print_results(results_dict: dict) -> str:
         if isinstance(results_dict, pd.DataFrame):
             results_dict = util_convert_pd_dataframe_to_imat_datacont(results_dict)
 
-        print(text_general_title)
+        print(TITLE_TEXT)
 
         # below: displays the menu
 
@@ -410,7 +410,7 @@ def display_menu_print_textblock(text_dict: dict, textblock_sep_line=True) -> st
     try:
         os.system("cls" if os.name == "nt" else "clear")
 
-        print(text_general_title)
+        print(TITLE_TEXT)
 
         # below: displays the menu
 

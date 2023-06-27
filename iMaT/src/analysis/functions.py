@@ -2,8 +2,8 @@ import music21.stream
 import pandas as pd
 from music21 import interval, note
 
-from src.constants import pitch_class_names
-from src.utils.utils_error_handling import handle_error
+from src.constants import PITCH_CLASS_NAMES
+from src.utils.error_handling import handle_error
 
 
 def analysis_ambitus(music_obj, identifier):
@@ -410,7 +410,7 @@ def analysis_number_of_sound_events_per_pitch_class(music_obj, identifier):
         for note_obj in music_obj.recurse().notes:
             pitch_class = note_obj.pitch.pitchClass
             if pitch_class not in sound_events_per_pitch_class:
-                sound_events_per_pitch_class[pitch_class] = {"Pitch Class Name": pitch_class_names[pitch_class],
+                sound_events_per_pitch_class[pitch_class] = {"Pitch Class Name": PITCH_CLASS_NAMES[pitch_class],
                                                              "Count": 1}
             else:
                 sound_events_per_pitch_class[pitch_class]["Count"] += 1
@@ -733,7 +733,7 @@ def analysis_number_of_pitch_classes_per_tone_duration(music_obj, identifier):
 
         results = []
         for (pitch_class, duration, duration_names), count in pitch_classes_over_durations.items():
-            pitch_class_symbol = pitch_class_names[pitch_class]
+            pitch_class_symbol = PITCH_CLASS_NAMES[pitch_class]
             results.append((identifier, pitch_class, pitch_class_symbol, duration, duration_names, count))
 
         df = pd.DataFrame(results, columns=['Identifier', 'Pitch Class', 'Pitch Class Symbol', 'Duration', 'Duration Names',
@@ -779,7 +779,7 @@ def analysis_number_of_pitch_classes_per_metrical_position(music_obj, identifier
         for note_obj in music_obj.recurse().notes:
             metrical_position = note_obj.beat
             pitch_class = note_obj.pitch.pitchClass
-            pitch_class_name = pitch_class_symbols[pitch_class]
+            pitch_class_name = PITCH_CLASS_NAMES[pitch_class]
             key = (pitch_class, pitch_class_name, metrical_position)
             if key in pitch_classes_per_metrical_position:
                 pitch_classes_per_metrical_position[key] += 1
@@ -838,7 +838,7 @@ def analysis_number_of_pitch_classes_per_offset(music_obj, identifier):
         for element in music_obj.recurse():
             if isinstance(element, note.Note):
                 pitch_class = element.pitch.pitchClass
-                pitch_class_name = pitch_class_symbols[pitch_class]
+                pitch_class_name = PITCH_CLASS_NAMES[pitch_class]
                 offset = element.offset
                 key = (offset, pitch_class, pitch_class_name)
                 if key in pitch_classes_over_offsets:

@@ -39,9 +39,9 @@ selected_score_part_names: dict
 
 import music21
 
-from src.cli.cli_menu_structures import display_menu_print_results, display_menu_print_textblock, \
+from src.cli.menu_constructors import display_menu_print_results, display_menu_print_textblock, \
     display_menu_request_selection
-from src.utils.utils_error_handling import handle_error
+from src.utils.error_handling import handle_error
 
 selected_score_part_names = {}
 
@@ -275,5 +275,6 @@ def view_score(selected_score: music21.stream.Score) -> None:
         }
         display_menu_print_textblock(message)
         selected_score.show()
+
     except Exception as e:
         handle_error(e)

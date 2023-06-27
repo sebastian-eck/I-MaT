@@ -1,4 +1,4 @@
-from src.analysis.analysis_functions import analysis_advanced_calculate_activity_rate, \
+from src.analysis.functions import analysis_advanced_calculate_activity_rate, \
     analysis_advanced_compare_pitches_and_pitch_classes_per_duration, analysis_ambitus, \
     analysis_number_of_intervals_per_type, analysis_number_of_intervals_per_type_with_direction, \
     analysis_number_of_notes, analysis_number_of_pitch_classes_per_metrical_position, \
@@ -7,22 +7,26 @@ from src.analysis.analysis_functions import analysis_advanced_calculate_activity
     analysis_number_of_pitches_per_tone_duration, analysis_number_of_rests, analysis_number_of_rests_per_rest_duration, \
     analysis_number_of_sound_events_per_metrical_position, analysis_number_of_sound_events_per_pitch, \
     analysis_number_of_sound_events_per_pitch_class, analysis_number_of_sound_events_per_tone_duration
-from src.analysis.analysis_main import analysis_workflow_single_piece
-from src.conversion.conversion_main import convert_multiple_files_filetype
-from src.pattern_search.pattern_search_functions import pattern_search_only_rhythm, pattern_search_with_transposition_with_rhythm, \
+from src.analysis.main import analysis_workflow_single_piece
+from src.conversion.main import convert_multiple_files_filetype
+from src.m21_environment.main import display_environment_file, set_user_preferences
+from src.pattern_search.functions import pattern_search_only_rhythm, \
+    pattern_search_with_transposition_with_rhythm, \
     pattern_search_with_transposition_without_rhythm, \
     pattern_search_without_transposition_with_rhythm, pattern_search_without_transposition_without_rhythm
-from src.routines.routines_configure_m21_environment import display_environment_file, set_user_preferences
+from src.pattern_search.main import pattern_search_workflow_single_piece
 from src.routines.routines_display import generic_display_workflow
-from src.pattern_search.pattern_search_main import generic_analysis_pattern_search
-from src.score_selection.score_selection_main import score_selection
-from src.tokenization.tokenization import corpus_tokenization
-from src.tokenization.tokenization_calculate import corpus_tokenization_calculate_pitch_intervals
-from src.tokenization.tokenization_clean_data import corpus_tokenization_refine_data_remove_prefixes
-from src.tokenization.tokenization_extract_data import corpus_tokenization_feature_extraction_columns_to_txt
-from src.tokenization.tokenization_refine_data import corpus_tokenization_refine_data_absolute_duration
-from src.utils.utils import change_part_names, show_metadata, show_part_names
-from src.visualizations.visualizations_general import play_midi_score, show_chord_connections, show_chord_scale_system, \
+from src.score_selection.main import score_selection
+from src.tokenization.main import corpus_tokenization
+from src.tokenization.tokenization_refine_results.tokenization_absolute_duration import \
+    corpus_tokenization_refine_data_absolute_duration
+from src.tokenization.tokenization_refine_results.tokenization_calculate_pitch_intervals import \
+    tokenization_calculate_pitch_intervals
+from src.tokenization.tokenization_refine_results.tokenization_remove_prefixes import \
+    corpus_tokenization_remove_prefixes
+from src.tokenization.tokenization_refine_results.tokenization_tokens_to_txt import export_csv_columns_to_txt_file
+from src.utils.various import change_part_names, show_metadata, show_part_names
+from src.visualizations.m21_integrated import play_midi_score, show_chord_connections, show_chord_scale_system, \
     show_figured_bass, show_key_analysis, show_musescore, show_pianoroll, show_voice_progression, show_volume_change
 
 
@@ -55,7 +59,7 @@ def tokenization_mainmenu_entries():
             ["TOKN: Tokenize a folder of midi files", corpus_tokenization, "<Tokenize sheet music using the midiTok library>"],
             ["RFNE: Refine tokenization results", tokenization_submenu_entries_refine_data, "<Prepare tokenization data (CSV) for further processing>"],
             ["CALC: Add columns by performing calculations", tokenization_submenu_entries_calculations, "<Perform calculations on existing data and safe those in new columns>"],
-            ["EXTR: Extract Columns to TXT", corpus_tokenization_feature_extraction_columns_to_txt, "<Extract specified columns from the dataset and save to a TXT file>"],
+            ["EXTR: Extract Columns to TXT", export_csv_columns_to_txt_file, "<Extract specified columns from the dataset and save to a TXT file>"],
             ["BACK: Return to the last menu", 'back', "<Returns to the parent menu>"],
         ],
     }
@@ -70,7 +74,7 @@ def tokenization_submenu_entries_refine_data():
             ["Menu item", "Explanation"],
         ],
         "menu_entries": [
-            ["REFN: Refine data (remove string prefixes)", corpus_tokenization_refine_data_remove_prefixes, "<Remove redundant string prefices from entries>"],
+            ["REFN: Refine data (remove string prefixes)", corpus_tokenization_remove_prefixes, "<Remove redundant string prefices from entries>"],
             ["REFN: Refine data (Duration: a.b.c -> float)", corpus_tokenization_refine_data_absolute_duration, "<Convert the Duration value (a.b.c) to another equal representation (-> a + b/c [= float])>"],
             ["BACK: Return to the last menu", 'back', "<Return to the parent menu>"],
         ]
@@ -86,7 +90,7 @@ def tokenization_submenu_entries_calculations():
             ["Menu item", "Explanation"],
         ],
         "menu_entries": [
-            ["CALC: Calculate intervals between pitch values", corpus_tokenization_calculate_pitch_intervals, "<Add new column 'Pitch PitchDifferenceToNextPitch'>"],
+            ["CALC: Calculate intervals between pitch values", tokenization_calculate_pitch_intervals, "<Add new column 'Pitch PitchDifferenceToNextPitch'>"],
             ["BACK: Return to the last menu", 'back', "<Return to the parent menu>"],
         ]
     }
@@ -207,11 +211,11 @@ def submenu_individualPiece_patternSearch_entries():
             ["Menu item", "<Explanation>"],
         ],
         "menu_entries": [
-            ["SEARCH: Pitch sequence", (generic_analysis_pattern_search, pattern_search_without_transposition_without_rhythm), "<Search for a sequence of pitches, ignoring rhythm>"],
-            ["SEARCH: Pitch + transp.", (generic_analysis_pattern_search, pattern_search_with_transposition_without_rhythm), "<Search for a pitch sequence and its transpositions, ignoring rhythm>"],
-            ["SEARCH: Pitch + rhythm", (generic_analysis_pattern_search, pattern_search_without_transposition_with_rhythm), "<Search for a sequence of pitches with rhythm>"],
-            ["SEARCH: Pitch + rhythm + transp.", (generic_analysis_pattern_search, pattern_search_with_transposition_with_rhythm), "<Search for a pitch sequence with rhythm and its transpositions>"],
-            ["SEARCH: Rhythm only", (generic_analysis_pattern_search, pattern_search_only_rhythm), "<Search for a rhythm pattern only>"],
+            ["SEARCH: Pitch sequence", (pattern_search_workflow_single_piece, pattern_search_without_transposition_without_rhythm), "<Search for a sequence of pitches, ignoring rhythm>"],
+            ["SEARCH: Pitch + transp.", (pattern_search_workflow_single_piece, pattern_search_with_transposition_without_rhythm), "<Search for a pitch sequence and its transpositions, ignoring rhythm>"],
+            ["SEARCH: Pitch + rhythm", (pattern_search_workflow_single_piece, pattern_search_without_transposition_with_rhythm), "<Search for a sequence of pitches with rhythm>"],
+            ["SEARCH: Pitch + rhythm + transp.", (pattern_search_workflow_single_piece, pattern_search_with_transposition_with_rhythm), "<Search for a pitch sequence with rhythm and its transpositions>"],
+            ["SEARCH: Rhythm only", (pattern_search_workflow_single_piece, pattern_search_only_rhythm), "<Search for a rhythm pattern only>"],
             ["BACK: Return", 'back', "<Returns to the previous menu>"]
         ]
     }

@@ -2,12 +2,12 @@ import numpy as np
 import pandas as pd
 from tqdm import tqdm
 
-from src.cli.cli_menu_structures import display_menu_print_results, display_menu_print_textblock, \
+from src.cli.menu_constructors import display_menu_print_results, display_menu_print_textblock, \
     display_menu_request_selection, util_convert_pd_dataframe_to_imat_datacont
-from src.tokenization.tokenization_helpers import save_data_to_new_csv_file, select_csv_file_2d_token_representation
+from src.tokenization.utils import save_data_to_new_csv_file, select_csv_file_2d_token_representation
 
 
-def corpus_tokenization_calculate_pitch_intervals():
+def tokenization_calculate_pitch_intervals():
     """
     This function lets the user choose a CSV file, then refines the data by calculating intervals, and finally,
     asks the user if they want to save the refined data into a new CSV file.
@@ -24,7 +24,7 @@ def corpus_tokenization_calculate_pitch_intervals():
 
         df = pd.read_csv(file_name)
 
-        df = refine_data_function_calculate_intervals(df)
+        df = calculate_pitch_intervals_function(df)
 
         # Step 4: show the user the first 30 rows after executing step 2 and 3
         results_dict = util_convert_pd_dataframe_to_imat_datacont(df.head(30))
@@ -47,7 +47,7 @@ def corpus_tokenization_calculate_pitch_intervals():
         save_input = display_menu_request_selection(yes_no_menu)
 
         if save_input.lower() == 'yes':
-            new_file_path = save_data_to_new_csv_file(df, file_name)
+            new_file_path = save_data_to_new_csv_file(df, file_name, "add_pitch_interval_")
 
             textblock_dict_newfile = {
                 "menu_displayed_text": [
@@ -65,7 +65,7 @@ def corpus_tokenization_calculate_pitch_intervals():
         break
 
 
-def refine_data_function_calculate_intervals(df):
+def calculate_pitch_intervals_function(df):
     """
     This function refines a pandas DataFrame by calculating pitch differences between the current row and the next
     row, grouping by file name if available.

@@ -1,10 +1,11 @@
-from src.analysis.analysis_utils import display_user_options_post_analysis, export_results_to_csv_auto
-from src.cli.cli_menu_structures import display_menu_print_results, util_convert_pd_dataframe_to_imat_datacont
-from src.score_selection.score_selection_name_parts import selected_score_part_names
-from src.score_selection.score_selection_main import score_selection
-from src.score_selection.score_selection_select_parts_and_measures import select_parts_and_measures
-from src.utils.utils_error_handling import handle_error
-from src.visualizations.visualizations_analysis_results import map_analysis_function_to_display_function
+from src.analysis.utils import display_user_options_post_analysis
+from src.cli.menu_constructors import display_menu_print_results, util_convert_pd_dataframe_to_imat_datacont
+from src.score_selection.main import score_selection
+from src.score_selection.name_parts import selected_score_part_names
+from src.score_selection.select_parts_and_measures import select_parts_and_measures
+from src.utils.error_handling import handle_error
+from src.utils.various import export_results_to_csv_auto
+from src.visualizations.analysis_results_graphs import map_analysis_functions_to_display_functions
 
 
 def analysis_workflow_single_piece(analysis_func: callable):
@@ -39,7 +40,7 @@ def analysis_workflow_single_piece(analysis_func: callable):
                 export_results_to_csv_auto(analysis_results, identifier, analysis_func.__name__)
             elif option == "display_results":
                 # Get the function to display the results from the mapping:
-                display_results_func = map_analysis_function_to_display_function(analysis_func)
+                display_results_func = map_analysis_functions_to_display_functions(analysis_func)
 
                 if display_results_func is not None:
                     display_results_func(analysis_results, identifier)

@@ -3,11 +3,11 @@ import re
 import pandas as pd
 from tqdm import tqdm
 
-from src.tokenization.tokenization_helpers import save_data_to_new_csv_file, select_csv_file_2d_token_representation
+from src.tokenization.utils import save_data_to_new_csv_file, select_csv_file_2d_token_representation
 
 tqdm.pandas()
 
-from src.cli.cli_menu_structures import display_menu_print_results, display_menu_print_textblock, \
+from src.cli.menu_constructors import display_menu_print_results, display_menu_print_textblock, \
     display_menu_request_selection, util_convert_pd_dataframe_to_imat_datacont
 
 tokenizers_available_for_refining = ['CPWord', 'Octuple', 'OctupleMono', 'MuMIDI']
@@ -19,7 +19,7 @@ def corpus_tokenization_refine_data_absolute_duration():
     column entries.
 
     This function first lets the user choose a csv file with a predefined file naming pattern, it then performs data
-    enhancing operations, and then displays a table with the results. The user then has an option to save the refined
+    refining operations, and then displays a table with the results. The user then has an option to save the refined
     data into a new CSV file.
 
     Parameters: None
@@ -57,7 +57,7 @@ def corpus_tokenization_refine_data_absolute_duration():
         save_input = display_menu_request_selection(yes_no_menu)
 
         if save_input.lower() == 'yes':
-            new_file_path = save_data_to_new_csv_file(df, file_name)
+            new_file_path = save_data_to_new_csv_file(df, file_name, "abs_duration_")
 
             textblock_dict_newfile = {
                 "menu_displayed_text": [

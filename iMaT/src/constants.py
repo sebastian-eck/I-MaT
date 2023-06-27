@@ -1,4 +1,4 @@
-keys_list = [
+KEYS_LIST = [
     ["C-Major", "C"],
     ["G-Major", "G"],
     ["D-Major", "D"],
@@ -43,7 +43,7 @@ keys_list = [
     ["F-flat-Minor", "f-"],
 ]
 
-notes_list = [
+NOTES_LIST = [
     ["‾‾‾‾  -   C-flat", "C-"],
     ["C         C", "C"],
     ["____  ♯   C-sharp", "C#"],
@@ -69,7 +69,7 @@ notes_list = [
     ["DONE: Finish input", "complete"],
 ]
 
-rhythmic_values_list = [
+RHYTHMIC_VALUES_LIST = [
     ["[0.125]   Thirty-second note", 0.125],
     ["[0.25]    Sixteenth note", 0.25],
     ["[0.375]   Sixteenth note (dotted)", 0.375],
@@ -92,7 +92,7 @@ rhythmic_values_list = [
     ["DONE:     Finish input", "complete"]
 ]
 
-pitch_class_names = {
+PITCH_CLASS_NAMES = {
     0: "C",
     1: "C#/Db",
     2: "D",
@@ -107,7 +107,7 @@ pitch_class_names = {
     11: "B"
 }
 
-example_scores_dict = \
+EXAMPLE_SCORES_DICT = \
     {
         "example_score_1": [
             "Example score 1: Dufay, Guillaume (1397-1474): Missa L'homme arme - Kyrie",
@@ -131,7 +131,7 @@ example_scores_dict = \
             "<Subcorpus (Projekt: Computergestützte Musikanalyse)>"]
     }
 
-text_general_title = (
+TITLE_TEXT = (
     '\nI-MaT - Interactive Music Analysis Tool, v3.0, (2023). Project: "Computer-Assisted Music Analysis"\n\n'
     'Department of Musicology Weimar-Jena, University of Music Franz Liszt Weimar, Germany\n\n'
     'MIT License, Copyright (c) 2023 S.O. Eck.\n\n'

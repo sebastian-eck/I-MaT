@@ -23,10 +23,10 @@ from urllib.parse import urlparse
 import requests
 from music21 import converter
 
-from src.cli.cli_menu_structures import display_menu_print_textblock, display_menu_request_selection
-from src.constants import example_scores_dict
-from src.score_selection.score_selection_name_parts import select_and_name_parts
-from src.utils.utils_error_handling import handle_error
+from src.cli.menu_constructors import display_menu_print_textblock, display_menu_request_selection
+from src.constants import EXAMPLE_SCORES_DICT
+from src.score_selection.name_parts import select_and_name_parts
+from src.utils.error_handling import handle_error
 
 
 def score_selection():
@@ -99,12 +99,12 @@ def select_example_score():
             "menu_displayed_text": [
                 "Select Example Score",
                 "Please select an example score:",
-                "Enter your choice (1-" + str(len(example_scores_dict)) + "): ",
+                "Enter your choice (1-" + str(len(EXAMPLE_SCORES_DICT)) + "): ",
                 ["Score Name", "Source/Database"],
             ],
             "menu_entries": [
                 [value[0], value[1], value[2]]
-                for key, value in example_scores_dict.items()
+                for key, value in EXAMPLE_SCORES_DICT.items()
             ],
         }
         return display_menu_request_selection(score_menu)
@@ -226,6 +226,7 @@ def select_own_score():
         }
         path = display_menu_print_textblock(text_dict)
         return path
+
     except Exception as e:
         handle_error(e)
 
@@ -338,5 +339,6 @@ def load_own_score(filepath):
             }
             display_menu_print_textblock(text_dict)
             score_selection()
+
     except Exception as e:
         handle_error(e)
