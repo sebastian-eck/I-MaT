@@ -1,3 +1,22 @@
+"""
+visualizations.main.py
+======================
+
+This module, part of the `visualizations` package, provides workflow management for the display and playback of musical
+scores. It includes functions that manage score selection and handle user interaction post-analysis.
+
+Functions
+---------
+- `generic_display_workflow(display_func)`: Manages the workflow for displaying or playing back a musical score.
+- `get_user_option_post_display()`: Presents post-analysis options to the user and retrieves their selection.
+
+This module interacts with several other packages including `src.cli.menu_constructors`, `src.score_selection.main`,
+`src.score_selection.name_parts`, and `src.score_selection.select_parts_and_measures`.
+
+Examples
+--------
+Please see the docstrings of individual functions for specific examples of their use.
+"""
 from src.cli.menu_constructors import display_menu_request_selection
 from src.score_selection.main import score_selection
 from src.score_selection.name_parts import selected_score_part_names
@@ -5,7 +24,17 @@ from src.score_selection.select_parts_and_measures import select_parts_and_measu
 
 
 def generic_display_workflow(display_func: callable):
+    """
+    Handles the display/playback function workflow for a musical score.
 
+    The workflow includes score selection, application of the display function,
+    and the post-display options.
+
+    Parameters
+    ----------
+    display_func : callable
+        Function to display or playback the musical score.
+    """
     # a. Call the select_parts_and_measures() function, if no score has yet been selected, start the score selection
     # workflow by calling the score_selection() function.
 
@@ -31,8 +60,14 @@ def generic_display_workflow(display_func: callable):
 
 def get_user_option_post_display():
     """
-    Presents the user with post-analysis options ("repeat", "export", "display_results", or "back") and gets their selection.
-    Returns the user's selection as a string. Use the display_menu_request_selection() to display the possible options.
+    Presents the user with post-analysis options and retrieves their selection.
+
+    The post-analysis options include "repeat", "export", "display_results", or "back".
+
+    Returns
+    -------
+    str
+        User's selected option as a string.
     """
     imat_data_container = {
         "menu_displayed_text": [

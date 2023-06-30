@@ -1,3 +1,30 @@
+"""
+pattern_search.main.py
+======================
+
+This module contains functions to perform pattern search in musical scores.
+It is a part of the `pattern_search` package and provides the main workflow
+for single musical piece pattern search along with related utilities and display functions.
+
+Functions
+---------
+- 'map_pattern_search_function_to_pattern_selection_function': Returns the corresponding pattern selection function for a provided pattern search function.
+- 'pattern_search_workflow_single_musical_piece': Executes the workflow for pattern search in a single musical piece.
+- 'display_results_func': Displays the results of the pattern search in a graphical format using a scatter plot.
+- 'helper_ignore_rests': Provides an option to the user to decide whether to search patterns across rests or not.
+- 'get_user_option_post_analysis': Presents the user with post-analysis options ("repeat", "export", "display_results", or "back") and gets their selection.
+
+Notes
+-----
+This module uses various functions and objects from other modules of this package and dependencies such as music21,
+pandas, matplotlib, etc. to perform and represent the results of the musical pattern search.
+
+The main function of this module is `pattern_search_workflow_single_musical_piece` which performs a pattern search in
+a selected musical piece and displays the results. The function `map_pattern_search_function_to_pattern_selection_function`
+maps pattern search functions to pattern selection functions. The function `display_results_func` generates a graphical
+representation of the results. The function `helper_ignore_rests` lets users decide if they want to search patterns
+across rests. The function `get_user_option_post_analysis` provides options to the user after the pattern search is complete.
+"""
 from copy import deepcopy
 
 import matplotlib.cm as cm
@@ -15,7 +42,7 @@ from src.score_selection.main import score_selection
 from src.score_selection.name_parts import selected_score_part_names
 from src.score_selection.select_parts_and_measures import select_parts_and_measures
 from src.utils.error_handling import handle_error
-from src.utils.various import export_results_to_csv_auto
+from src.utils.misc import export_results_to_csv_auto
 
 
 def map_pattern_search_function_to_pattern_selection_function(pattern_search_func: callable):
@@ -53,7 +80,7 @@ def map_pattern_search_function_to_pattern_selection_function(pattern_search_fun
         handle_error(e)
 
 
-def pattern_search_workflow_single_piece(pattern_search_func: callable):
+def pattern_search_workflow_single_musical_piece(pattern_search_func: callable):
     try:
         # a. Call the select_parts_and_measures() function, if no score has yet been selected, start the score selection
         # workflow by calling the select_score() function.
@@ -86,7 +113,7 @@ def pattern_search_workflow_single_piece(pattern_search_func: callable):
 
             # e. Depending on the user's choice ("repeat", "export", "display_results", or "back")
             if option == "repeat":
-                pattern_search_workflow_single_piece(pattern_search_func)
+                pattern_search_workflow_single_musical_piece(pattern_search_func)
                 break
             elif option == "export":
                 export_results_to_csv_auto(pattern_search_results, identifier, pattern_search_func.__name__)

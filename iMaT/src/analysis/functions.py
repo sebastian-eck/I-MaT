@@ -1,3 +1,42 @@
+"""
+analysis.functions.py
+=====================
+
+This module includes various functions for musical analysis in the Interactive Music Analysis Tool (I-MaT). These functions take a music21 stream object and return the result as a pandas DataFrame.
+
+This module contains various musical analysis functions to be used within the Interactive Music Analysis Tool (I-MaT).
+Each function in this module performs a specific type of music analysis on a music21 stream object and returns the
+result as a pandas DataFrame. The type of analysis performed includes, but is not limited to, ambitus calculation,
+note and rest counting, pitch and interval analysis, and more complex tasks such as calculating activity rates or
+comparing pitches and pitch classes per duration.
+
+The functions in this module are designed to be easily callable from other parts of the application, and their results
+are designed to be easily readable, making them flexible tools for musical analysis. They also use a standard interface,
+accepting a music21 stream object and an identifier string as input and returning a pandas DataFrame as output.
+
+Functions
+---------
+- analysis_advanced_calculate_activity_rate
+- analysis_advanced_compare_pitches_and_pitch_classes_per_duration
+- analysis_ambitus
+- analysis_number_of_intervals_per_type
+- analysis_number_of_intervals_per_type_with_direction
+- analysis_number_of_notes
+- analysis_number_of_pitch_classes_per_metrical_position
+- analysis_number_of_pitch_classes_per_offset
+- analysis_number_of_pitch_classes_per_tone_duration
+- analysis_number_of_pitches_per_metrical_position
+- analysis_number_of_pitches_per_offset
+- analysis_number_of_pitches_per_tone_duration
+- analysis_number_of_rests
+- analysis_number_of_rests_per_rest_duration
+- analysis_number_of_sound_events_per_metrical_position
+- analysis_number_of_sound_events_per_pitch
+- analysis_number_of_sound_events_per_pitch_class
+- analysis_number_of_sound_events_per_tone_duration
+
+Each function performs a specific type of music analysis such as ambitus calculation, note and rest counting, pitch and interval analysis, and more complex tasks like calculating activity rates or comparing pitches and pitch classes per duration.
+"""
 import music21.stream
 import pandas as pd
 from music21 import interval, note
@@ -8,19 +47,30 @@ from src.utils.error_handling import handle_error
 
 def analysis_ambitus(music_obj, identifier):
     """
-    Calculate the ambitus (range) of a music21 stream object.
+    Analyze and calculate the ambitus (range) of pitches in a music21 stream object and associate it with an identifier.
+
+    The function first prepares the music object by removing tied notes, which might alter the true ambitus range.
+    Then, it goes through all the note elements in the music object to determine the lowest and highest pitches.
+    If there are no pitches in the music (for example, if the music only contains rests), then the DataFrame will
+    indicate this with dashes ("-") in all the pitch-related columns.
+
+    The ambitus analysis can be a useful metric in music analysis tasks, as it provides a simple numerical
+    representation of the piece's melodic complexity.
 
     Parameters
     ----------
     music_obj : music21.stream.Stream
-        The music21 stream object to analyze.
+        The music21 stream object representing a musical piece, on which the ambitus analysis will be performed.
     identifier : str
-        The identifier string to be added to the analysis.
+        The identifier string which is used to label the analysis result, which could be useful in distinguishing
+        different results or referring to them in later processes.
 
     Returns
     -------
     pd.DataFrame
-        A DataFrame with the identifier and the ambitus range.
+        A pandas DataFrame with a row representing the ambitus analysis result, including the identifier, MIDI
+        pitch values and names of the lowest and highest notes, and the ambitus (range) in MIDI pitches and
+        musical interval.
 
     Notes
     -----
@@ -73,19 +123,28 @@ def analysis_ambitus(music_obj, identifier):
 
 def analysis_number_of_notes(music_obj, identifier):
     """
-    Analyze the number of notes (individual pitches) in a music21 stream object.
+    Analyze and count the number of notes (individual pitches) in a music21 stream object and associate it with an identifier.
+
+    The function first prepares the music object by removing tied notes to ensure that each pitch is counted separately.
+    Then, it goes through all the note elements in the music object to count the number of notes. Note that only
+    actual pitches are counted, and rests or other non-pitched elements are not included.
+
+    The note count can serve as a simple metric of the piece's complexity and could be useful in various music
+    analysis tasks.
 
     Parameters
     ----------
     music_obj : music21.stream.Stream
-        The music21 stream object to analyze.
+        The music21 stream object representing a musical piece, on which the note count analysis will be performed.
     identifier : str
-        The identifier string to be added to the analysis.
+        The identifier string which is used to label the analysis result, which could be useful in distinguishing
+        different results or referring to them in later processes.
 
     Returns
     -------
     pd.DataFrame
-        A DataFrame with the identifier and the count of notes.
+        A pandas DataFrame with a row representing the note count analysis result, including the identifier and
+        the count of notes.
 
     Notes
     -----
@@ -113,19 +172,27 @@ def analysis_number_of_notes(music_obj, identifier):
 
 def analysis_number_of_rests(music_obj, identifier):
     """
-    Count the number of rests in a music21 stream object.
+    Analyze and count the number of rests in a music21 stream object and associate it with an identifier.
+
+    The function first prepares the music object by removing tied notes to ensure that each rest is counted separately.
+    Then, it goes through all the rest elements in the music object to count the number of rests.
+
+    The rest count can provide insights about the piece's rhythmic complexity and structure, and could be useful
+    in various music analysis tasks.
 
     Parameters
     ----------
     music_obj : music21.stream.Stream
-        The music21 stream object to analyze.
+        The music21 stream object representing a musical piece, on which the rest count analysis will be performed.
     identifier : str
-        The identifier string to be added to the analysis.
+        The identifier string which is used to label the analysis result, which could be useful in distinguishing
+        different results or referring to them in later processes.
 
     Returns
     -------
     pd.DataFrame
-        A DataFrame with the identifier and the count of rests.
+        A pandas DataFrame with a row representing the rest count analysis result, including the identifier and
+        the count of rests.
 
     Notes
     -----
@@ -154,19 +221,27 @@ def analysis_number_of_rests(music_obj, identifier):
 
 def analysis_number_of_rests_per_rest_duration(music_obj, identifier):
     """
-    Count the number of rests per duration in a music21 stream object.
+    Analyze and count the number of rests per duration in a music21 stream object and associate it with an identifier.
+
+    The function first prepares the music object by removing tied notes to ensure that each rest is counted separately.
+    Then, it goes through all the rest elements in the music object to count the number of rests per duration.
+
+    The rest duration count can provide insights about the piece's rhythmic complexity and structure, specifically
+    regarding the variety and distribution of rest lengths used. This could be useful in various music analysis tasks.
 
     Parameters
     ----------
     music_obj : music21.stream.Stream
-        The music21 stream object to analyze.
+        The music21 stream object representing a musical piece, on which the rest duration count analysis will be performed.
     identifier : str
-        The identifier string to be added to the analysis.
+        The identifier string which is used to label the analysis result, which could be useful in distinguishing
+        different results or referring to them in later processes.
 
     Returns
     -------
     pd.DataFrame
-        A DataFrame with the identifier, rest durations, rest names, and their counts.
+        A pandas DataFrame with rows representing the rest duration count analysis result, including the identifier,
+        rest durations, rest names, and their counts.
 
     Notes
     -----
@@ -204,19 +279,28 @@ def analysis_number_of_rests_per_rest_duration(music_obj, identifier):
 
 def analysis_number_of_intervals_per_type(music_obj, identifier):
     """
-    Analyze the number of interval types in a music21 stream object.
+    Analyze and count the number of different interval types in a music21 stream object and associate it with an identifier.
+
+    The function first prepares the music object by removing tied notes to ensure that each interval is counted separately.
+    Then, it goes through all the pairs of consecutive notes in the music object to determine the type of interval between
+    them and count the number of occurrences of each interval type.
+
+    The interval type count can provide insights about the piece's melodic complexity and structure, specifically
+    regarding the variety and distribution of interval types used. This could be useful in various music analysis tasks.
 
     Parameters
     ----------
     music_obj : music21.stream.Stream
-        The music21 stream object to analyze.
+        The music21 stream object representing a musical piece, on which the interval type count analysis will be performed.
     identifier : str
-        The identifier string to be added to the analysis.
+        The identifier string which is used to label the analysis result, which could be useful in distinguishing
+        different results or referring to them in later processes.
 
     Returns
     -------
     pd.DataFrame
-        A DataFrame with the identifier, interval types, their nice names, and positive MIDI pitch value intervals.
+        A pandas DataFrame with rows representing the interval type count analysis result, including the identifier,
+        interval types, their nice names, positive MIDI pitch value intervals, and their counts.
 
     Notes
     -----
@@ -262,19 +346,30 @@ def analysis_number_of_intervals_per_type(music_obj, identifier):
 
 def analysis_number_of_intervals_per_type_with_direction(music_obj, identifier):
     """
-    Analyze the number of ascending and descending interval types in a music21 stream object.
+    Analyze and count the number of different interval types in a music21 stream object and associate it with an identifier,
+    considering the direction of the interval.
+
+    The function first prepares the music object by removing tied notes to ensure that each interval is counted separately.
+    Then, it goes through all the pairs of consecutive notes in the music object to determine the type and direction of the
+    interval between them and count the number of occurrences of each interval type.
+
+    The interval type count can provide insights about the piece's melodic complexity and structure, specifically
+    regarding the variety and distribution of interval types used, taking into account their direction.
+    This could be useful in various music analysis tasks.
 
     Parameters
     ----------
     music_obj : music21.stream.Stream
-        The music21 stream object to analyze.
+        The music21 stream object representing a musical piece, on which the interval type count analysis will be performed.
     identifier : str
-        The identifier string to be added to the analysis.
+        The identifier string which is used to label the analysis result, which could be useful in distinguishing
+        different results or referring to them in later processes.
 
     Returns
     -------
     pd.DataFrame
-        A DataFrame with the identifier, interval types, their nice names, MIDI pitch value intervals, and their frequencies.
+        A pandas DataFrame with rows representing the interval type count analysis result, including the identifier,
+        interval types, their nice names, MIDI pitch value intervals (including direction), and their counts.
 
     Notes
     -----
@@ -323,19 +418,27 @@ def analysis_number_of_intervals_per_type_with_direction(music_obj, identifier):
 
 def analysis_number_of_sound_events_per_pitch(music_obj, identifier):
     """
-    Analyze the number of sound events per pitch in a music21 stream object.
+    Analyze and count the number of sound events per pitch in a music21 stream object and associate it with an identifier.
+
+    The function first prepares the music object by removing tied notes to ensure that each sound event is counted separately.
+    Then, it goes through all the notes in the music object to count the number of occurrences of each pitch.
+
+    The sound event count per pitch can provide insights about the piece's tonality, mode, key, and structure,
+    specifically regarding the usage frequency of different pitches. This could be useful in various music analysis tasks.
 
     Parameters
     ----------
     music_obj : music21.stream.Stream
-        The music21 stream object to analyze.
+        The music21 stream object representing a musical piece, on which the sound event per pitch count analysis will be performed.
     identifier : str
-        The identifier string to be added to the analysis.
+        The identifier string which is used to label the analysis result, which could be useful in distinguishing
+        different results or referring to them in later processes.
 
     Returns
     -------
     pd.DataFrame
-        A DataFrame with the identifier, MIDI Pitch, pitch name, and the count of sound events per pitch.
+        A pandas DataFrame with rows representing the sound events per pitch count analysis result, including the identifier,
+        MIDI Pitch, pitch names, and their counts.
 
     Notes
     -----
@@ -376,19 +479,28 @@ def analysis_number_of_sound_events_per_pitch(music_obj, identifier):
 
 def analysis_number_of_sound_events_per_pitch_class(music_obj, identifier):
     """
-    Analyze the number of sound events per pitch class in a music21 stream object.
+    Analyze and count the number of sound events per pitch class in a music21 stream object and associate it with an identifier.
+
+    The function first prepares the music object by removing tied notes to ensure that each sound event is counted separately.
+    Then, it goes through all the notes in the music object to count the number of occurrences of each pitch class.
+
+    The sound event count per pitch class can provide insights about the piece's tonality, mode, key, and structure,
+    specifically regarding the usage frequency of different pitch classes, irrespective of the octave they belong to.
+    This could be useful in various music analysis tasks, especially those concerning tonal or modal attributes of the music.
 
     Parameters
     ----------
     music_obj : music21.stream.Stream
-        The music21 stream object to analyze.
+        The music21 stream object representing a musical piece, on which the sound event per pitch class count analysis will be performed.
     identifier : str
-        The identifier string to be added to the analysis.
+        The identifier string which is used to label the analysis result, which could be useful in distinguishing
+        different results or referring to them in later processes.
 
     Returns
     -------
     pd.DataFrame
-        A DataFrame with the identifier, MIDI Pitch Class, pitch class symbol, and the count of sound events per pitch class.
+        A pandas DataFrame with rows representing the sound events per pitch class count analysis result, including the identifier,
+        MIDI Pitch Class, pitch class names, and their counts.
 
     Notes
     -----
@@ -430,19 +542,27 @@ def analysis_number_of_sound_events_per_pitch_class(music_obj, identifier):
 
 def analysis_number_of_sound_events_per_tone_duration(music_obj, identifier):
     """
-    Analyze the number of sound events per tone duration (quarter length) in a music21 stream object.
+    Analyze and count the number of sound events per tone duration (quarter length) in a music21 stream object,
+    and associate it with an identifier.
+
+    The function first prepares the music object by removing tied notes to ensure that each sound event is counted separately.
+    Then, it goes through all the notes in the music object to count the number of occurrences of each tone duration.
+
+    The sound event count per tone duration can provide insights about the rhythmic complexity and structure of the piece,
+    specifically regarding the usage frequency of different tone durations. This could be useful in various music analysis tasks.
 
     Parameters
     ----------
     music_obj : music21.stream.Stream
-        The music21 stream object to analyze.
+        The music21 stream object representing a musical piece, on which the sound event per tone duration count analysis will be performed.
     identifier : str
-        The identifier string to be added to the analysis.
+        The identifier string which is used to label the analysis result, which could be useful in distinguishing different results or referring to them in later processes.
 
     Returns
     -------
     pd.DataFrame
-        A DataFrame with the identifier, tone duration, tone duration name, and the count of sound events per tone duration.
+        A pandas DataFrame with rows representing the sound event per tone duration count analysis result, including the identifier, tone duration,
+        their nice names (duration name), and their counts.
 
     Notes
     -----
@@ -484,19 +604,26 @@ def analysis_number_of_sound_events_per_tone_duration(music_obj, identifier):
 
 def analysis_number_of_sound_events_per_metrical_position(music_obj, identifier):
     """
-    Analyze the number of sound events that start on the same metrical positions in a music21 stream object.
+    Analyze and count the number of sound events per metrical position in a music21 stream object and associate it with an identifier.
+
+    The function first prepares the music object by removing tied notes to ensure that each sound event is counted separately.
+    Then, it goes through all the notes in the music object to count the number of occurrences of each metrical position.
+
+    The sound event count per metrical position can provide insights about the rhythmic complexity and structure of the piece,
+    specifically regarding the distribution and emphasis of metrical positions. This could be useful in various music analysis tasks, especially those concerning rhythmic patterns and accentuation.
 
     Parameters
     ----------
     music_obj : music21.stream.Stream
-        The music21 stream object to analyze.
+        The music21 stream object representing a musical piece, on which the sound event per metrical position count analysis will be performed.
     identifier : str
-        The identifier string to be added to the analysis.
+        The identifier string which is used to label the analysis result, which could be useful in distinguishing different results or referring to them in later processes.
 
     Returns
     -------
     pd.DataFrame
-        A DataFrame with the identifier, metrical position, and the count of sound events.
+        A pandas DataFrame with rows representing the sound event per metrical position count analysis result, including the identifier,
+        metrical positions, and their counts.
 
     Notes
     -----
@@ -533,19 +660,26 @@ def analysis_number_of_sound_events_per_metrical_position(music_obj, identifier)
 
 def analysis_number_of_pitches_per_tone_duration(music_obj, identifier):
     """
-    Analyze the number of pitches per duration (quarter length) in a music21 stream object.
+    Analyze and count the number of pitches per tone duration (quarter length) in a music21 stream object and associate it with an identifier.
+
+    The function first prepares the music object by removing tied notes to ensure that each pitch-duration pair is counted separately.
+    Then, it goes through all the notes in the music object to count the number of occurrences of each pitch-duration combination.
+
+    The pitch count per tone duration can provide insights about the piece's tonality, mode, key, structure, and rhythmic complexity,
+    specifically regarding the usage frequency of different pitches at each tone duration. This could be useful in various music analysis tasks, especially those concerning the interaction of melody and rhythm.
 
     Parameters
     ----------
     music_obj : music21.stream.Stream
-        The music21 stream object to analyze.
+        The music21 stream object representing a musical piece, on which the pitch per tone duration count analysis will be performed.
     identifier : str
-        The identifier string to be added to the analysis.
+        The identifier string which is used to label the analysis result, which could be useful in distinguishing different results or referring to them in later processes.
 
     Returns
     -------
     pd.DataFrame
-        A DataFrame with the identifier, MIDI Pitches, Pitch Names, Duration, Duration Names, and Count of the sound events.
+        A pandas DataFrame with rows representing the pitch per tone duration count analysis result, including the identifier,
+        MIDI Pitch, pitch names, tone durations, their nice names (duration name), and their counts.
 
     Notes
     -----
@@ -590,19 +724,26 @@ def analysis_number_of_pitches_per_tone_duration(music_obj, identifier):
 
 def analysis_number_of_pitches_per_metrical_position(music_obj, identifier):
     """
-    Analyze the number of occurrences of each pitch at each metrical position in a music21 stream object.
+    Analyze and count the number of occurrences of each pitch at each metrical position in a music21 stream object and associate it with an identifier.
+
+    The function first prepares the music object by removing tied notes to ensure that each pitch-metrical position pair is counted separately.
+    Then, it goes through all the notes in the music object to count the number of occurrences of each pitch-metrical position combination.
+
+    The pitch count per metrical position can provide insights about the piece's tonality, mode, key, structure, and rhythmic complexity,
+    specifically regarding the usage frequency of different pitches at each metrical position. This could be useful in various music analysis tasks, especially those concerning the interaction of melody and rhythm.
 
     Parameters
     ----------
     music_obj : music21.stream.Stream
-        The music21 stream object to analyze.
+        The music21 stream object representing a musical piece, on which the pitch per metrical position count analysis will be performed.
     identifier : str
-        The identifier string to be added to the analysis.
+        The identifier string which is used to label the analysis result, which could be useful in distinguishing different results or referring to them in later processes.
 
     Returns
     -------
     pd.DataFrame
-        A DataFrame with the identifier, metrical position, pitch, pitch name, and the count of each pitch.
+        A pandas DataFrame with rows representing the pitch per metrical position count analysis result, including the identifier,
+        MIDI Pitch, pitch names, metrical positions, and their counts.
 
     Notes
     -----
@@ -642,19 +783,26 @@ def analysis_number_of_pitches_per_metrical_position(music_obj, identifier):
 
 def analysis_number_of_pitches_per_offset(music_obj, identifier):
     """
-    Analyze the number of pitches per offset (time position) in a music21 stream object.
+    Analyze and count the number of pitches per offset (time position) in a music21 stream object, and associate it with an identifier.
+
+    The function first prepares the music object by removing tied notes to ensure that each pitch-offset pair is counted separately.
+    Then, it goes through all the notes in the music object to count the number of occurrences of each pitch-offset combination.
+
+    The pitch count per offset can provide insights about the temporal distribution of pitches within the piece, the unfolding of the melody over time,
+    and potential recurring motifs or themes. This could be useful in various music analysis tasks, especially those concerning the interaction of melody and rhythm.
 
     Parameters
     ----------
     music_obj : music21.stream.Stream
-        The music21 stream object to analyze.
+        The music21 stream object representing a musical piece, on which the pitch per offset count analysis will be performed.
     identifier : str
-        The identifier string to be added to the analysis.
+        The identifier string which is used to label the analysis result, which could be useful in distinguishing different results or referring to them in later processes.
 
     Returns
     -------
     pd.DataFrame
-        A DataFrame with the identifier, offset (time position), MIDI pitch, pitch name, and count of the sound events.
+        A pandas DataFrame with rows representing the pitch per offset count analysis result, including the identifier, offset (time position),
+        MIDI pitch, pitch name, and the count of sound events.
 
     Notes
     -----
@@ -702,19 +850,27 @@ def analysis_number_of_pitches_per_offset(music_obj, identifier):
 
 def analysis_number_of_pitch_classes_per_tone_duration(music_obj, identifier):
     """
-    Analyze the number of pitch classes per duration (quarter length) in a music21 stream object.
+    Analyze and count the number of pitch classes per tone duration (quarter length) in a music21 stream object, and associate it with an identifier.
+
+    The function first prepares the music object by removing tied notes to ensure that each pitch class-duration pair is counted separately.
+    Then, it goes through all the notes in the music object to count the number of occurrences of each pitch class-duration combination.
+
+    The pitch class count per tone duration can provide insights about the piece's tonality, mode, key, and rhythmic structure,
+    specifically regarding the usage frequency of different pitch classes at each tone duration. This could be useful in various music analysis tasks,
+    especially those concerning the interaction of melody and rhythm.
 
     Parameters
     ----------
     music_obj : music21.stream.Stream
-        The music21 stream object to analyze.
+        The music21 stream object representing a musical piece, on which the pitch class per tone duration count analysis will be performed.
     identifier : str
-        The identifier string to be added to the analysis.
+        The identifier string which is used to label the analysis result, which could be useful in distinguishing different results or referring to them in later processes.
 
     Returns
     -------
     pd.DataFrame
-        A DataFrame with the identifier, pitch class, duration (quarter length), pitch class symbol, and count of the sound events.
+        A pandas DataFrame with rows representing the pitch class per tone duration count analysis result, including the identifier,
+        pitch class, tone duration, pitch class symbol, and the count of sound events.
     """
     try:
         pitch_classes_over_durations = {}
@@ -748,19 +904,27 @@ def analysis_number_of_pitch_classes_per_tone_duration(music_obj, identifier):
 
 def analysis_number_of_pitch_classes_per_metrical_position(music_obj, identifier):
     """
-    Analyze the number of occurrences of each pitch class at each metrical position in a music21 stream object.
+    Analyze and count the number of occurrences of each pitch class at each metrical position in a music21 stream object, and associate it with an identifier.
+
+    The function first prepares the music object by removing tied notes to ensure that each pitch class-metrical position pair is counted separately.
+    Then, it goes through all the notes in the music object to count the number of occurrences of each pitch class-metrical position combination.
+
+    The pitch class count per metrical position can provide insights about the piece's tonality, mode, key, and rhythmic structure,
+    specifically regarding the usage frequency of different pitch classes at each metrical position. This could be useful in various music analysis tasks,
+    especially those concerning the interaction of melody and rhythm.
 
     Parameters
     ----------
     music_obj : music21.stream.Stream
-        The music21 stream object to analyze.
+        The music21 stream object representing a musical piece, on which the pitch class per metrical position count analysis will be performed.
     identifier : str
-        The identifier string to be added to the analysis.
+        The identifier string which is used to label the analysis result, which could be useful in distinguishing different results or referring to them in later processes.
 
     Returns
     -------
     pd.DataFrame
-        A DataFrame with the identifier, metrical position, pitch class, pitch class name, and the count of each pitch class.
+        A pandas DataFrame with rows representing the pitch class per metrical position count analysis result, including the identifier,
+        metrical position, pitch class, pitch class name, and the count of each pitch class.
 
     Notes
     -----
@@ -801,19 +965,26 @@ def analysis_number_of_pitch_classes_per_metrical_position(music_obj, identifier
 
 def analysis_number_of_pitch_classes_per_offset(music_obj, identifier):
     """
-    Analyze the number of pitch classes per offset (time position) in a music21 stream object.
+    Analyze and count the number of pitch classes per offset (time position) in a music21 stream object, and associate it with an identifier.
+
+    The function first prepares the music object by removing tied notes to ensure that each pitch class-offset pair is counted separately.
+    Then, it goes through all the notes in the music object to count the number of occurrences of each pitch class-offset combination.
+
+    The pitch class count per offset can provide insights about the temporal distribution of pitch classes within the piece, the unfolding of the harmony over time,
+    and potential recurring motifs or themes. This could be useful in various music analysis tasks, especially those concerning the interaction of harmony and rhythm.
 
     Parameters
     ----------
     music_obj : music21.stream.Stream
-        The music21 stream object to analyze.
+        The music21 stream object representing a musical piece, on which the pitch class per offset count analysis will be performed.
     identifier : str
-        The identifier string to be added to the analysis.
+        The identifier string which is used to label the analysis result, which could be useful in distinguishing different results or referring to them in later processes.
 
     Returns
     -------
     pd.DataFrame
-        A DataFrame with the identifier, offset (time position), pitch class, pitch class name, and count of the sound events.
+        A pandas DataFrame with rows representing the pitch class per offset count analysis result, including the identifier, offset (time position),
+        pitch class, pitch class name, and the count of sound events.
 
     Notes
     -----
@@ -863,28 +1034,33 @@ def analysis_number_of_pitch_classes_per_offset(music_obj, identifier):
 
 def analysis_advanced_calculate_activity_rate(music_obj, identifier):
     """
-    Calculate the activity index in a music21 stream object.
+    Calculate the activity index of a music21 stream object, representing the ratio of the number of notes to the number of rests.
+
+    The function calculates the number of notes and rests separately, and then calculates their ratio. If the number of rests is zero,
+    it treats the activity rate as NaN to avoid division by zero.
+
+    The resulting DataFrame contains the identifier (to distinguish different analysis results), the number of notes,
+    the number of rests, and the activity index for the piece. This information can be useful in comparing the musical density
+    or 'activity level' of different pieces or sections.
 
     Parameters
     ----------
     music_obj : music21.stream.Stream
-        The music21 stream object to analyze.
+        The music21 stream object representing a musical piece, on which the activity index will be calculated.
     identifier : str
-        The identifier string to be added to the analysis.
+        The identifier string which is used to label the analysis result, which could be useful in distinguishing different results or referring to them in later processes.
 
     Returns
     -------
     pd.DataFrame
-        A DataFrame with the identifier, number of notes, number of rests, and the activity index.
+        A pandas DataFrame including the identifier, number of notes, number of rests, and the activity index.
 
     Notes
     -----
     The activity index is defined as the ratio of the number of notes to the number of rests in a piece of music.
-    This can be seen as an indication of the "density" of musical events in the piece. A higher activity index means
-    more notes relative to rests, while a lower activity index means more rests relative to notes.
-
-    The resulting DataFrame contains the identifier (to distinguish different analysis results), the number of notes,
-    the number of rests, and the activity index for the piece.
+    This index provides a measure of the 'density' of musical events in the piece, indicating the ratio of musical
+    activity to silence. A higher activity index implies more notes relative to rests, suggesting a more 'active' or 'busy' piece,
+    while a lower activity index means more rests relative to notes, suggesting a more 'calm' or 'sparse' piece.
     """
     try:
         notes_df = analysis_number_of_notes(music_obj, identifier)
@@ -911,36 +1087,39 @@ def analysis_advanced_calculate_activity_rate(music_obj, identifier):
 
 def analysis_advanced_compare_pitches_and_pitch_classes_per_duration(music_obj, identifier):
     """
-    Compare the number of pitches and pitch classes per duration in a music21 stream object.
+    Compare the number of distinct pitches and pitch classes per duration in a music21 stream object.
+
+    This function combines the analysis of the number of distinct pitches per duration and the number of distinct pitch classes per duration.
+    By comparing these two analyses, one can observe how the tonal variety (in terms of both specific pitches and pitch classes)
+    changes with the duration of notes in the music piece.
+
+    The function first calculates the number of distinct pitches and pitch classes per duration separately. Then, it merges the results
+    and calculates the ratio of pitches to pitch classes for each duration.
+
+    The resulting DataFrame includes the identifier, duration (quarter length), duration names, count of distinct pitches,
+    count of distinct pitch classes, and the pitch to pitch class ratio for each duration. This information can be useful in studying
+    the correlation between note duration and tonal variety in the music piece.
 
     Parameters
     ----------
     music_obj : music21.stream.Stream
-        The music21 stream object to analyze.
+        The music21 stream object representing a musical piece, on which the comparison of pitches and pitch classes per duration will be performed.
     identifier : str
-        The identifier string to be added to the analysis.
+        The identifier string which is used to label the analysis result, which could be useful in distinguishing different results or referring to them in later processes.
 
     Returns
     -------
     pd.DataFrame
-        A DataFrame with the identifier, duration, duration names, count of pitches, count of pitch classes,
-        and pitch to pitch class ratio for each duration.
+        A pandas DataFrame including the identifier, duration (quarter length), duration names, count of distinct pitches,
+        count of distinct pitch classes, and the ratio of pitches to pitch classes for each duration.
 
     Notes
     -----
-    This function combines the analysis of the number of pitches per duration and the number of pitch classes
-    per duration. By comparing these two analyses, it's possible to observe how the tonal distribution (both
-    specific pitches and pitch classes) changes with note duration in the music piece.
-
-    The resulting DataFrame contains the identifier, duration (quarter length), duration names, count of pitches,
-    count of pitch classes, and the ratio of pitches to pitch classes for each duration.
-
-    The pitch to pitch class ratio provides a measure of tonal complexity and variety for each note duration:
-    * Ratio = 1: This indicates that every pitch for a given duration is unique, i.e., all the pitches
-      belong to different pitch classes. It suggests a high degree of tonal variety for that duration.
-    * Ratio > 1: This indicates that some pitches are being repeated for notes of that duration.
-      The higher the ratio, the greater the repetition of certain pitches, suggesting a focus or emphasis on these
-      specific pitch classes in that duration.
+    The pitch to pitch class ratio provides a measure of tonal repetition and variety for each note duration:
+    * Ratio = 1: A ratio of 1 indicates that every pitch for a given duration is unique, i.e., all the pitches belong to different pitch classes.
+      This suggests a high degree of tonal variety for that duration.
+    * Ratio > 1: A ratio greater than 1 indicates that some pitches are being repeated for notes of that duration. The higher the ratio,
+      the greater the repetition of certain pitches, suggesting a focus or emphasis on these specific pitch classes in that duration.
     """
     try:
         pitches_df = analysis_number_of_pitches_per_tone_duration(music_obj, identifier)

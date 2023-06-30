@@ -1,8 +1,11 @@
-"""This module handles various types of menu displays, data presentations, and execution of associated actions within
-a CLI.
+"""
+cli.menu_constructors.py
+========================
 
-This Python module is designed to create, manage, and navigate through a menu interface in a console environment. The
-module contains functions for constructing and displaying various types of menus (directed and undirected),
+This module is designed to create, manage, and navigate through a menu interface in a console environment.
+
+This Python module is designed to create, manage, and navigate through a menu interface in a console environment.
+The module contains functions for constructing and displaying various types of menus (directed and undirected),
 handling user navigation, executing menu-associated functions, displaying structured text information, and presenting
 analysis results in an organized, readable format.
 
@@ -12,6 +15,21 @@ menu_stack : list
     A stack to keep track of the previous menus. This stack is used to enable backward and forward navigation in
     undirected menus.
 
+Functions
+---------
+- display_menu_print_results
+- display_menu_print_textblock
+- display_menu_request_selection
+- display_menu_undirected
+- print_menu_entries
+- print_textblock
+- util_convert_imat_datacont_to_pd_dataframe
+- util_convert_pd_dataframe_to_imat_datacont
+
+These functions help in providing a smooth user interface for the command-line operation, ensuring a consistent user
+experience, and reducing complexity in navigating the tool's functionalities. By using these functions,
+the Interactive Music Analysis Tool (I-MaT) system provides an interactive and user-friendly command-line interface
+for music analysis.
 """
 import os
 import textwrap
@@ -49,12 +67,6 @@ def display_menu_undirected(menu_content_dict: callable, parent_menu_func: calla
     Returns
     -------
     None
-
-    See Also
-    --------
-    display_menu_directed : For displaying menus with only forward navigation.
-    example_mainmenu_entries_dict : function that generates a dictionary representing main menu entries
-    example_submenu_entries_dict : function that generates a dictionary representing submenu entries
 
     Examples
     --------
@@ -98,12 +110,12 @@ def display_menu_undirected(menu_content_dict: callable, parent_menu_func: calla
 
             menu_entries = menu_content_dict()["menu_entries"]
 
-            menu_titel = menu_content_dict()["menu_displayed_text"][0]
+            menu_title = menu_content_dict()["menu_displayed_text"][0]
             menu_guideline = menu_content_dict()["menu_displayed_text"][1]
             menu_requested_input = menu_content_dict()["menu_displayed_text"][2]
             menu_columns_description = menu_content_dict()["menu_displayed_text"][3]
 
-            print(menu_titel)
+            print(menu_title)
             print("")
 
             print(menu_guideline)
@@ -265,8 +277,7 @@ def display_menu_print_results(results_dict: dict) -> str:
 
     The results are displayed in the order they are present in the dictionary. After the results are displayed,
     the function requests user input to continue. However, the input does not trigger any further actions within
-    this function itself. Yet, when used in combination with `display_menu_undirected()` or `display_menu_directed()`
-    functions, this user input may serve as a pause before navigating to other parts of a broader workflow,
+    this function itself. Yet, when used in combination with the `display_menu_undirected()` function, this user input may serve as a pause before navigating to other parts of a broader workflow,
     such as exporting results or returning to the respective parent menu.
 
     Parameters
@@ -283,7 +294,6 @@ def display_menu_print_results(results_dict: dict) -> str:
     See Also
     --------
     display_menu_undirected : For displaying menus with both backward and forward navigation.
-    display_menu_directed : For displaying menus with only forward navigation.
     util_convert_pd_dataframe_to_imat_datacont : For converting pandas DataFrame to I-MaT data container
     before passing to this function.
 
@@ -334,12 +344,12 @@ def display_menu_print_results(results_dict: dict) -> str:
 
         menu_entries = results_dict["menu_entries_results"]
 
-        menu_titel = results_dict["menu_displayed_text"][0]
+        menu_title = results_dict["menu_displayed_text"][0]
         menu_guideline = results_dict["menu_displayed_text"][1]
         menu_requested_input = results_dict["menu_displayed_text"][2]
         menu_columns_description = results_dict["menu_displayed_text"][3]
 
-        print(menu_titel)
+        print(menu_title)
         print("")
 
         print(menu_guideline)
@@ -475,11 +485,12 @@ def print_textblock(menu_columns_description: list, menu_entries: list[list], te
     >>> print_textblock(menu_columns_description, menu_entries)
     """
     try:
-        first_col_width = max(
-            len(entry[0]) for entry in menu_entries) + 5  # Or however wide you want the title column to be
+        first_col_width = max(max(len(entry[0]) for entry in menu_entries), len(menu_columns_description[0])) + 5
+        # "+5": Or however wide you want the title column to be
+
         message_col_width = 80  # Or however wide you want the message column to be
         # Print each column name
-        print(f"{'':{first_col_width}} {menu_columns_description[1]}")
+        print(f"{menu_columns_description[0]}{'':{first_col_width-len(menu_columns_description[0])}} {menu_columns_description[1]}")
         print("")
         # Now print each menu item, wrapped if it exceeds 80 characters.
         for row in menu_entries:
@@ -509,8 +520,7 @@ def print_menu_entries(menu_columns_description: list, menu_entries: list[list],
     It formats and prints the entries in a table-like structure. An additional optional parameter controls whether all
     columns or all but the second column are printed.
 
-    This function is used as a helper within `display_menu_undirected`, `display_menu_directed`,
-    and `display_menu_print_results` for displaying menu options or analysis results. However, `print_menu_entries`
+    This function is used as a helper within `display_menu_undirected` and `display_menu_print_results` for displaying menu options or analysis results. However, `print_menu_entries`
     can also be used independently to print a list of results or menu entries without displaying a full menu.
 
     Parameters
@@ -531,7 +541,6 @@ def print_menu_entries(menu_columns_description: list, menu_entries: list[list],
     See Also
     --------
     display_menu_undirected : For displaying menus with both backward and forward navigation.
-    display_menu_directed : For displaying menus with only forward navigation.
     display_menu_print_results : For displaying a list of analysis results.
 
     Examples
@@ -581,7 +590,7 @@ def print_menu_entries(menu_columns_description: list, menu_entries: list[list],
 
 
 def util_convert_pd_dataframe_to_imat_datacont(pd_dataframe: pd.DataFrame,
-                                               menu_titel: str = "Analysis Results",
+                                               menu_title: str = "Analysis Results",
                                                menu_guideline: str = "Please see the following analysis results:",
                                                menu_requested_input: str = "<To continue, please press Enter>",
                                                menu_columns_description: list[str] = None) -> dict:
@@ -595,7 +604,7 @@ def util_convert_pd_dataframe_to_imat_datacont(pd_dataframe: pd.DataFrame,
     ----------
     pd_dataframe : pd.DataFrame
         DataFrame containing the data to be displayed.
-    menu_titel : str, optional
+    menu_title : str, optional
         Title for the data display. Defaults to "Analysis Results".
     menu_guideline : str, optional
         Instruction for the user. Defaults to "Please see the following analysis results:".
@@ -654,7 +663,7 @@ def util_convert_pd_dataframe_to_imat_datacont(pd_dataframe: pd.DataFrame,
 
         imat_datacont = {
             "menu_displayed_text": [
-                menu_titel,
+                menu_title,
                 menu_guideline,
                 menu_requested_input,
                 menu_columns_description,

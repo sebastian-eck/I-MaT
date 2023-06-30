@@ -1,20 +1,44 @@
 """
-This module allows the user to select and load a music score for further processing.
+score_selection.main.py
+=======================
 
-It includes the main function score_selection, which orchestrates the score selection process. The user is first
-prompted to select a source for the score - either from a set of predefined examples or from their own local file
-or URL. Based on their choice, the appropriate helper function is called to guide the user through the selection
-of a specific score.
+This module facilitates the selection and loading of a music score for further analysis or processing.
 
-The helper functions in this module include:
-1. select_score_source: Presents a menu to the user allowing them to choose the source of the score.
-2. select_example_score: Presents a menu to the user allowing them to select a specific example score.
-3. load_example_score: Loads the selected example score, providing troubleshooting guidance if any issues occur.
-4. select_own_score: Presents guidelines to the user for inputting a path or URL to their own score.
-5. load_own_score: Loads the user-provided score, providing troubleshooting guidance if any issues occur.
+The primary function in this module, `score_selection`, coordinates the process of selecting a score. The user is
+initially offered a choice between selecting from a list of pre-defined scores or providing their own score via
+a local file or URL. Depending on their selection, a relevant helper function is invoked to assist the user
+through the selection process.
 
-In the event of any exceptions during this process, they are caught and passed to the handle_error function for
-appropriate handling.
+Functions
+---------
+- `select_score_source`: Displays a menu that allows the user to choose the source of the score.
+- `select_example_score`: Shows a menu that lets the user select a predefined score.
+- `load_example_score`: Loads the selected example score and provides troubleshooting tips if needed.
+- `select_own_score`: Provides instructions to the user for entering a path or URL to their score.
+- `load_own_score`: Starts loading the user-provided score and offers troubleshooting advice if needed.
+
+Each function handles user inputs and may return a music21 stream object
+representing the selected score or guide the user through the score selection process.
+
+In case of any exceptions during the process, they are caught and redirected to the `handle_error` function for
+suitable management and resolution.
+
+Example
+-------
+>>> from score_selection import main
+>>> score = main.load_example_score("path/to/example/score.xml")
+
+Notes
+-----
+This module heavily relies on the `music21` library, specifically the `music21.converter`
+module to load musical scores from various sources and formats.
+
+See Also
+--------
+music21.converter.parse
+music21.stream.Stream
+src.utils.error_handling.handle_error
+
 """
 
 import os
@@ -37,6 +61,11 @@ def score_selection():
     source for the music score - either from a predefined example or from their own local file or URL. The function
     then loads the selected score and calls the select_and_name_parts function to allow the user to name the parts of
     the score. If any exception occurs during this process, it is caught and passed to the handle_error function.
+
+    See Also:
+        select_score_source: Function to select a source of a music score.
+        select_example_score: Function to select an example music score.
+        select_own_score: Function to select a custom music score.
     """
     try:
         source = select_score_source()
@@ -59,11 +88,15 @@ def score_selection():
 
 def select_score_source():
     """
-    Helper function to allow the user to select a source for the music score.
+    Helper function to allow the user to select an example music score.
 
-    This function presents the user with a menu that allows them to choose whether they want to load an example score
-    or their own score. The function uses the display_menu_request_selection function to present the menu and capture
-    the user's choice. If any exception occurs during this process, it is caught and passed to the handle_error function.
+    This function presents the user with a menu of available example scores. The menu entries are constructed based on
+    the entries in the example_scores_dict dictionary. The function uses the display_menu_request_selection function
+    to present the menu and capture the user's choice. If any exception occurs during this process, it is caught and
+    passed to the handle_error function.
+
+    See Also:
+        display_menu_request_selection: Function to display a menu and request a selection.
     """
     try:
         source_menu = {
@@ -87,12 +120,14 @@ def select_score_source():
 
 def select_example_score():
     """
-    Helper function to allow the user to select an example music score.
+    Helper function to allow the user to select their own music score.
 
-    This function presents the user with a menu of available example scores. The menu entries are constructed based on
-    the entries in the example_scores_dict dictionary. The function uses the display_menu_request_selection function
-    to present the menu and capture the user's choice. If any exception occurs during this process, it is caught and
-    passed to the handle_error function.
+    This function presents the user with guidelines for inputting the path or URL to their own score. The function
+    uses the display_menu_print_textblock function to present the guidelines and capture the user's input. If any
+    exception occurs during this process, it is caught and passed to the handle_error function.
+
+    See Also:
+        display_menu_print_textblock: Function to display a text block and request user input.
     """
     try:
         score_menu = {
@@ -120,6 +155,10 @@ def load_example_score(score_url):
     troubleshooting guidance to the user if this fails. If the URL is successfully accessed, the function then
     attempts to parse the score, again providing troubleshooting guidance if this fails. If the score is successfully
     parsed and contains at least one part, it is returned. Otherwise, the user is prompted to select another score.
+
+    See Also:
+        display_menu_print_textblock: Function to display a text block and request user input.
+        score_selection: Main function to orchestrate the selection of music scores.
     """
     try:
         response = requests.get(score_url)
@@ -199,6 +238,9 @@ def select_own_score():
     This function presents the user with guidelines for inputting the path or URL to their own score. The function
     uses the display_menu_print_textblock function to present the guidelines and capture the user's input. If any
     exception occurs during this process, it is caught and passed to the handle_error function.
+
+    See Also:
+        display_menu_print_textblock: Function to display a text block and request user input.
     """
     try:
         text_dict = {
@@ -241,6 +283,10 @@ def load_own_score(filepath):
     troubleshooting guidance if this fails. If the score file is successfully accessed, the function then attempts to
     parse the score, providing troubleshooting guidance if this fails. If the score is successfully parsed and contains
     at least one part, it is returned. Otherwise, the user is prompted to select another score.
+
+    See Also:
+        display_menu_print_textblock: Function to display a text block and request user input.
+        score_selection: Main function to orchestrate the selection of music scores.
     """
     try:
         # Check if the given path is a URL

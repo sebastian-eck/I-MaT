@@ -1,14 +1,81 @@
+"""
+analysis.main.py
+================
+
+This module includes the main function for handling the workflow for analyzing a single musical piece within the Interactive Music Analysis Tool (I-MaT) system.
+
+This module includes the function `analysis_workflow_single_musical_piece`, which is a key function to handle
+the workflow for analyzing a single musical piece in the Interactive Music Analysis Tool (I-MaT) system.
+
+It guides through the entire process of selecting a score, performing the analysis using a user-provided function,
+displaying the results, and handling post-analysis user options.
+
+An important part of this process involves making use of several helper functions from different modules such as
+`score_selection`, `select_parts_and_measures`, `handle_error`, and more.
+
+For a detailed workflow, refer to the docstring of `analysis_workflow_single_musical_piece` function.
+
+This module is intended to be imported and used by the main entry point of the I-MaT system.
+
+Functions
+---------
+- `analysis_workflow_single_musical_piece`: Manages the complete process of selecting a score, performing analysis using a user-specified function, displaying the results, and handling post-analysis user options.
+
+The module utilizes several helper functions from different modules such as `score_selection`, `select_parts_and_measures`, `handle_error`, and more.
+"""
 from src.analysis.utils import display_user_options_post_analysis
 from src.cli.menu_constructors import display_menu_print_results, util_convert_pd_dataframe_to_imat_datacont
 from src.score_selection.main import score_selection
 from src.score_selection.name_parts import selected_score_part_names
 from src.score_selection.select_parts_and_measures import select_parts_and_measures
 from src.utils.error_handling import handle_error
-from src.utils.various import export_results_to_csv_auto
+from src.utils.misc import export_results_to_csv_auto
 from src.visualizations.analysis_results_graphs import map_analysis_functions_to_display_functions
 
 
-def analysis_workflow_single_piece(analysis_func: callable):
+def analysis_workflow_single_musical_piece(analysis_func: callable):
+    """
+    Handles the workflow for analyzing a single musical piece.
+
+    This function manages the entire process of selecting a score,
+    performing the analysis using the provided function, displaying the results,
+    and handling post-analysis user options.
+
+    Parameters
+    ----------
+    analysis_func : callable
+        The function to use for performing the analysis.
+        This function should accept two parameters:
+        a music score object and a string identifier.
+
+    Returns
+    -------
+    None
+
+    Raises
+    ------
+    Exception
+        Handles any exceptions that arise during the analysis workflow by passing them to handle_error(e).
+
+    See Also
+    --------
+    display_user_options_post_analysis : function
+        Presents the user with post-analysis options.
+    select_parts_and_measures : function
+        Selects parts and measures for the musical score.
+
+    Examples
+    --------
+    >>> def my_analysis_func(score, identifier):
+    ...     # Implement analysis logic here
+    ...     pass
+    ...
+    >>> analysis_workflow_single_musical_piece(my_analysis_func)
+
+    Notes
+    -----
+    If the score has not yet been selected, the score selection workflow is started.
+    """
     try:
         # a. Call the select_parts_and_measures() function, if no score has yet been selected, start the score selection
         # workflow by calling the select_score() function.
@@ -34,7 +101,7 @@ def analysis_workflow_single_piece(analysis_func: callable):
 
             # e. Depending on the user's choice ("repeat", "export", "display_results", or "back")
             if option == "repeat":
-                analysis_workflow_single_piece(analysis_func)
+                analysis_workflow_single_musical_piece(analysis_func)
                 break
             elif option == "export":
                 export_results_to_csv_auto(analysis_results, identifier, analysis_func.__name__)

@@ -1,3 +1,35 @@
+"""
+conversion.utils.py
+===================
+
+A module to handle various utility tasks related to the music file conversion process.
+
+This module provides functions for:
+
+- Retrieving a list of parsable music files in a specified directory.
+- Displaying a list of parsable music files in a specified directory.
+- Displaying the success rate of file conversion.
+- Interactively selecting a folder containing parsable music files through a GUI.
+- Providing a user interface to select a music file conversion format.
+- Adding a new entry to a .xlsx log file.
+
+All of these functions are designed to be used in the conversion process, and exceptions raised during their
+execution are handled and displayed to the user.
+
+Functions
+---------
+- 'get_parsable_files_in_folder': Retrieve a list of parsable music files in a given directory.
+- 'display_parseable_files_in_folder': Display a list of parsable music files in a given directory.
+- 'display_success_rate': Display the success rate of file conversion.
+- 'select_folder': Interactively select a folder containing parsable music files.
+- 'select_conversion_format': Provide a user interface to select a music file conversion format.
+- 'create_log_entry': Add a new entry to a .xlsx log file.
+
+Raises
+------
+Exception:
+    Any exception that occurs during the execution of the function is handled and displayed to the user.
+"""
 import os
 import tkinter as tk
 from tkinter import filedialog
@@ -11,17 +43,25 @@ from src.utils.error_handling import handle_error
 
 def get_parsable_files_in_folder(folder_path):
     """
-    Lists all parsable music files in a given folder.
+    Retrieve a list of parsable music files in a given directory.
+
+    This function checks a specified directory for files with parsable music file extensions.
+    It lists all the files with these extensions.
 
     Parameters
     ----------
     folder_path : str
-        Path to the folder to be searched.
+        The path of the directory to check.
 
     Returns
     -------
     list
-        List of parsable music file names.
+        A list of filenames of parsable music files.
+
+    Raises
+    ------
+    Exception
+        Any exception that occurs during the execution of the function is handled and displayed to the user.
     """
     try:
         parsable_extensions = ['.abc', '.capx', '.gex', '.humdrum', '.krn', '.mei', '.midi', '.mid', '.musedata',
@@ -35,6 +75,27 @@ def get_parsable_files_in_folder(folder_path):
 
 
 def display_parseable_files_in_folder(folder_path):
+    """
+    Displays a list of parsable music files in a given directory.
+
+    This function first retrieves a list of parsable music files in the given directory.
+    It then displays these files to the user.
+
+    Parameters
+    ----------
+    folder_path : str
+        The path of the directory to check.
+
+    Returns
+    -------
+    list
+        A list of filenames of parsable music files.
+
+    Raises
+    ------
+    Exception
+        Any exception that occurs during the execution of the function is handled and displayed to the user.
+    """
     try:
         while True:
 
@@ -63,6 +124,26 @@ def display_parseable_files_in_folder(folder_path):
 
 
 def display_success_rate(files_status, num_converted, num_files):
+    """
+    Displays the success rate of file conversion.
+
+    This function calculates the success rate of file conversion based on the total number of files and
+    the number of successfully converted files. It then displays this information along with a list of file conversion statuses.
+
+    Parameters
+    ----------
+    files_status : list
+        A list of tuples where each tuple contains a file's name and its conversion status.
+    num_converted : int
+        The number of files that were successfully converted.
+    num_files : int
+        The total number of files that were attempted to be converted.
+
+    Raises
+    ------
+    Exception
+        Any exception that occurs during the execution of the function is handled and displayed to the user.
+    """
     try:
         # Create text_dict with both conversion success rate and failed files
         text_dict = {
@@ -83,13 +164,22 @@ def display_success_rate(files_status, num_converted, num_files):
 
 def select_folder():
     """
-    User interface for folder selection. The user can input the path to the desired folder.
-    If the path does not exist or does not lead to a directory, an error message is displayed.
+    Interactively select a folder containing parsable music files.
+
+    This function displays a GUI file dialog to the user to select a folder. It ensures that the selected folder
+    contains at least one parsable music file of the supported types. The function loops until a valid folder is
+    selected or the user cancels the operation. It also provides information to the user about the types of parsable
+    music files and folder requirements.
 
     Returns
     -------
     str
-        Path to the selected folder.
+        The path to the selected folder containing parsable music files. Returns None if the operation is cancelled.
+
+    Raises
+    ------
+    Exception
+        Any exception that occurs during the execution of the function is handled and displayed to the user.
     """
     parsable_extensions = ['.abc', '.capx', '.gex', '.humdrum', '.krn', '.mei', '.midi', '.mid', '.musedata',
                            '.musicxml', '.mxl', '.noteworthy', '.nwc', '.romanText', '.rntxt', '.scala',
@@ -159,13 +249,20 @@ def select_folder():
 
 def select_conversion_format():
     """
-    User interface for conversion format selection. The user can choose a conversion format from a list.
-    The function loops until a valid choice is made.
+    Provides a user interface to select a music file conversion format.
+
+    This function displays a list of available music file conversion formats to the user and
+    prompts them to select one. It continues to prompt the user until a valid selection is made.
 
     Returns
     -------
     str
-        Chosen conversion format.
+        The file extension of the chosen conversion format.
+
+    Raises
+    ------
+    Exception
+        Any exception that occurs during the execution of the function is handled and displayed to the user.
     """
     # Get all available formats.
     formats = [
@@ -200,18 +297,26 @@ def select_conversion_format():
 
 def create_log_entry(list, list_path):
     """
-    Appends a new entry to an existing .xlsx file. If the file does not exist, it is created.
+    Add a new entry to a .xlsx log file.
+
+    This function appends a new row to a specified .xlsx file.
+    If the file does not exist, it creates a new one.
 
     Parameters
     ----------
     list : list
-        List of strings to be appended as a new row.
+        The new row to be added to the .xlsx file. Each element in the list represents a cell in the row.
     list_path : str
-        Path to the .xlsx file.
+        The path of the .xlsx file.
 
     Returns
     -------
     None
+
+    Raises
+    ------
+    Exception
+        Any exception that occurs during the execution of the function is handled and displayed to the user.
     """
     try:
         wb = load_workbook(list_path)

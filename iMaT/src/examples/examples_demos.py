@@ -2,7 +2,7 @@
 #
 # from src.analysis.analysis import example_analysis
 # from src.cli.cli_menu_structure import display_menu_directed, display_menu_print_results, display_menu_print_textblock
-# from src.routines.routines_analysis import analysis_workflow_single_piece
+# from src.routines.routines_analysis import analysis_workflow_single_musical_piece
 #
 #
 # def example_mainmenu_entries_dict() -> dict:
@@ -384,7 +384,7 @@
 #             ["DEMO: Enter directed menu", demo_function_directed_menu, "<Enters directed menu structure>"],
 #             ["DEMO: Display demo text", demo_function_print_text, "<Displays a text>"],
 #             ["DEMO: Display demo results", demo_function_print_results, "<Displays a sample analysis result set>"],
-#             ["DEMO: Display demo results", (analysis_workflow_single_piece, example_analysis), "<Starts an example analysis workflow>"],
+#             ["DEMO: Display demo results", (analysis_workflow_single_musical_piece, example_analysis), "<Starts an example analysis workflow>"],
 #             ["BACK: Return to the last menu", 'back', "<Returns to the parent menu>"],
 #             ["MAIN: Return to the main menu", 'main-menu', "<Returns to main menu>"],
 #         ]

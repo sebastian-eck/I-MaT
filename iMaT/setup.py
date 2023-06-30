@@ -1,6 +1,6 @@
 from setuptools import setup
 
-with open("README.md", "r") as fh:
+with open("../README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
@@ -11,7 +11,6 @@ setup(
     description='Interactive Music Analysis Tool (I-MaT)',
     long_description=long_description,
     long_description_content_type="text/markdown",
-    readme='README.md',
     py_modules=['iMaT'],
     package_dir={'': 'src'},
     classifiers=[
@@ -36,21 +35,18 @@ setup(
         "Topic :: Text Processing :: Linguistic",
     ],
     install_requires=[
-        "numpy==1.23.5",
+        "numpy~=1.23.5",
         "matplotlib~=3.7.1",
         "pandas~=2.0.2",
-        "ipython~=8.14.0",
-        "scipy~=1.10.1",
-        "music21==8.3.0",
+        "music21~=8.3.0",
         "miditok~=2.0.6",
-        "miditoolkit~=0.1.16",
-        "tokenizers",
-        "lorem-text",
+        "tokenizers~=0.13.3",
         "requests~=2.31.0",
         "openpyxl~=3.1.2",
         "tqdm~=4.65.0"
     ],
     extras_require={
-        "doc": ["sphinx~=7.0.1"]
+        "doc": ["sphinx~=7.0.1",
+                "sphinxcontrib-napoleon~=0.7"]
     }
 )

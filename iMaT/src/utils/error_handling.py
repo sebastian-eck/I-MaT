@@ -1,15 +1,64 @@
-import logging
+"""
+utils.error_handling.py
+=======================
+
+This module, which is part of the `utils` package, contains functions for handling and reporting errors in a detailed
+and user-friendly manner. This allows for better debugging and understanding of any exceptions that occur during
+the execution of the code.
+
+Functions
+---------
+1. `text_exception_general(e: Exception) -> str`: This function takes an exception as an input and returns a detailed
+   error message. The error message includes the file, function, and line number where the exception occurred, and
+   also the exception message itself.
+
+2. `handle_error(e: Exception) -> None`: This function also takes an exception as an input but instead of returning the
+   error message, it prints the message to the console. This function utilizes `text_exception_general` to generate the
+   error message.
+
+Examples
+--------
+>>> try:
+...     1 / 0  # Raises ZeroDivisionError
+... except Exception as e:
+...     handle_error(e)  # This will print a detailed error message to the console
+"""
 import sys
 import traceback
 
 from src.constants import TITLE_TEXT
 
-# Set up logging
-logging.basicConfig(filename='error_logs/error_log.txt', level=logging.ERROR, format='%(asctime)s - '
-                                                                                     '%(levelname)s - %(message)s')
-
 
 def text_exception_general(e: Exception) -> str:
+    """
+    Generate a detailed error message.
+
+    This function extracts traceback information from an exception and generates a detailed error message.
+    This includes information about the file, function and line number where the error occurred as well
+    as the error message itself.
+
+    Parameters
+    ----------
+    e : Exception
+        The exception from which to generate the error message.
+
+    Returns
+    -------
+    str
+        A string containing the detailed error message.
+
+    Raises
+    ------
+    Exception
+        If there is an error during traceback extraction or error message creation.
+
+    Examples
+    --------
+    >>> try:
+    ...     1 / 0  # Raises ZeroDivisionError
+    ... except Exception as e:
+    ...     print(text_exception_general(e))
+    """
     try:
         # Get the current traceback
         current_traceback = traceback.extract_tb(sys.exc_info()[2])
@@ -40,6 +89,27 @@ def text_exception_general(e: Exception) -> str:
 
 
 def handle_error(e: Exception) -> None:
+    """
+    Handle an error by displaying a detailed error message.
+
+    This function takes an exception as input and prints a detailed error message to the console.
+    The error message is generated using the `text_exception_general` function, and includes
+    information about where the error occurred and the nature of the error.
+
+    Parameters
+    ----------
+    e : Exception
+        The exception to be handled.
+
+    Returns
+    -------
+    None
+
+    Raises
+    ------
+    Exception
+        If there is an error during error message generation or printing.
+    """
     try:
         print(TITLE_TEXT)
 
@@ -50,9 +120,6 @@ def handle_error(e: Exception) -> None:
         print(message)
 
         input("<To continue, please press Enter>")
-
-        # Log the error details for debugging
-        logging.exception(message)
 
     except:
         pass

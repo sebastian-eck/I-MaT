@@ -1,4 +1,7 @@
 """
+score_selection.select_parts_and_measures.py
+============================================
+
 This module provides a user interface to facilitate the selection of musical parts and measures from a given musical
 score using music21, a toolkit for computer-aided musicology.
 
@@ -12,13 +15,8 @@ music21.stream.Part objects.
 
 Functions
 ---------
-select_parts_and_measures():
-    Facilitates the user's selection of musical parts and measures from a global score.
-    Returns a tuple containing the selected score or part and the selected measure range as a tuple.
-
-select_measure_range(score):
-    Prompts the user to input a valid measure range in a given musical score.
-    Returns a tuple containing the start and end measures of the selected range.
+- `select_parts_and_measures`: Guides the user to select parts and measures from a score. Returns the selected part or score and a tuple of the measure range.
+- `select_measure_range`: Asks the user to input a measure range for a given score. Returns a tuple with the start and end measures.
 
 Examples
 --------
@@ -48,7 +46,7 @@ from src.utils.error_handling import handle_error
 previous_score_selection = ()
 
 
-def select_parts_and_measures() -> (music21.stream.Score or music21.stream.Part, (int, int)):
+def select_parts_and_measures() -> (music21.stream.Score or music21.stream.Part, str, (int, int)):
     """
     Facilitates the user's selection of musical parts and measures from a global score.
 

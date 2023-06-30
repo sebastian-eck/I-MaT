@@ -1,3 +1,20 @@
+"""
+tokenization.refine_results.calculate_pitch_intervals.py
+========================================================
+
+This module, part of the `tokenization.refine_results` package, refines tokenized MIDI data by calculating pitch intervals.
+
+Functions
+---------
+- `tokenization_calculate_pitch_intervals`: Handles a workflow for refining tokenized MIDI data by calculating pitch intervals.
+
+- `calculate_pitch_intervals_function`: Helper function used within `tokenization_calculate_pitch_intervals` to add a pitch interval column to a DataFrame.
+
+Notes
+-----
+The module expects CSV files to have a specific structure, including a 'filename' column, and pitches should be represented as MIDI pitch values.
+Please refer to the individual function docstrings for more detailed descriptions and examples of usage.
+"""
 import numpy as np
 import pandas as pd
 from tqdm import tqdm
@@ -10,12 +27,21 @@ from src.utils.error_handling import handle_error
 
 def tokenization_calculate_pitch_intervals():
     """
-    This function lets the user choose a CSV file, then refines the data by calculating intervals, and finally,
-    asks the user if they want to save the refined data into a new CSV file.
+    Executes a workflow for refining CSV data by calculating pitch intervals.
+
+    This function guides the user to select a CSV file, performs data refining operations to calculate pitch
+    differences between the current row and the next row (grouped by filename if available), and displays a
+    table with the results. The user then has an option to save the refined data into a new CSV file.
 
     Parameters: None
 
     Returns: None
+
+    See Also
+    --------
+    select_csv_file_2d_token_representation : Opens a file dialog allowing the user to select a CSV file.
+    calculate_pitch_intervals_function : Refines a pandas DataFrame by calculating pitch differences
+                                         between the current row and the next row, grouping by filename if available.
     """
     try:
         while True:
@@ -72,14 +98,28 @@ def tokenization_calculate_pitch_intervals():
 
 def calculate_pitch_intervals_function(df):
     """
-    This function refines a pandas DataFrame by calculating pitch differences between the current row and the next
-    row, grouping by file name if available.
+    Refines a pandas DataFrame by calculating pitch differences between the current row and the next row.
 
-    Parameters:
-    df (DataFrame): The input pandas DataFrame.
+    This function first checks if the 'Pitch' column exists in the DataFrame. If so, it calculates the pitch
+    differences between the current row and the next row. The operation is performed for each unique filename
+    if a 'filename' column exists in the DataFrame. If the 'Pitch' column contained non-numeric entries
+    (i.e., had a prefix), it adds the prefix to the calculated difference values.
 
-    Returns:
-    DataFrame: The pandas DataFrame with added 'PitchDifferenceToNextPitch' column.
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        The DataFrame to refine.
+
+    Returns
+    -------
+    pandas.DataFrame
+        The DataFrame with added 'PitchDifferenceToNextPitch' column.
+
+    See Also
+    --------
+    pandas.DataFrame.diff : Calculates the difference of a DataFrame element compared with another
+                            element in the DataFrame (default is the element in the same column of the previous row).
+    pandas.DataFrame.shift : Shifts index by desired number of periods with an optional time freq.
     """
     try:
         if 'Pitch' not in df.columns:

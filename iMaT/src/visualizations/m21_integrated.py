@@ -1,3 +1,31 @@
+"""
+visualizations.m21_integrated.py
+================================
+
+This module, part of the `visualizations` package, leverages the `music21` library to provide various methods of
+displaying and analyzing musical scores.
+
+Functions
+---------
+- `play_midi_score(selected_score)`: Plays the selected score in MIDI format.
+- `show_musescore(selected_score)`: Displays the selected score in MuseScore.
+- `show_chord_connections(selected_score)`: Visualizes the chord connections in the selected score.
+- `show_figured_bass(selected_score)`: Presents the figured bass notation in the selected score.
+- `show_chord_scale_system(selected_score)`: Visualizes the chord-scale system in the selected score.
+- `show_pianoroll(selected_score)`: Creates a pianoroll view of the selected score.
+- `show_voice_progression(selected_score)`: Illustrates the voice progression in the selected score.
+- `show_volume_change(selected_score)`: Plots the volume change over time in the selected score.
+- `show_key_analysis(selected_score)`: Provides a key analysis of the selected score.
+- `display_file_export_directory()`: Prints the directory where the score or analysis result files are exported.
+
+These functions manage exceptions by leveraging the `handle_error` function from the `src.utils` package.
+The `display_menu_print_textblock` and `display_menu_request_selection` functions from `src.cli.menu_constructors` are
+used to interact with the user.
+
+Examples
+--------
+Please refer to the individual function docstrings for specific examples of how to use these functions.
+"""
 import music21
 from music21 import environment, roman
 from tqdm import tqdm

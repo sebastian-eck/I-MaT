@@ -1,3 +1,22 @@
+"""
+tokenization.refine_results.asbolute_duration.py
+================================================
+
+This module, a part of the `tokenization.refine_results` package, refines MIDI data by converting string representations of duration to absolute numerical values.
+
+Functions
+---------
+- `corpus_tokenization_refine_data_absolute_duration`: Handles a workflow for refining tokenized data by converting duration values to numerical format.
+
+- `convert_duration_to_numerical`: Helper function that converts a duration string to a numerical format.
+
+- `refine_data_function_absolute_duration`: Applies the `convert_duration_to_numerical` function to the 'Duration' column of a DataFrame.
+
+Notes
+-----
+The module expects CSV files to have a specific structure, including a 'Duration' column.
+Please refer to the individual function docstrings for more detailed descriptions and examples of usage.
+"""
 import re
 
 import pandas as pd
@@ -16,16 +35,21 @@ tokenizers_available_for_refining = ['CPWord', 'Octuple', 'OctupleMono', 'MuMIDI
 
 def corpus_tokenization_refine_data_absolute_duration():
     """
-    This function performs several operations to refine tokenized and cleaned CSV data by creating and replacing
-    column entries.
+    Executes a workflow for refining tokenized and cleaned CSV data.
 
-    This function first lets the user choose a csv file with a predefined file naming pattern, it then performs data
-    refining operations, and then displays a table with the results. The user then has an option to save the refined
-    data into a new CSV file.
+    This function guides the user to select a CSV file with a predefined naming pattern, performs data refining operations
+    on the data within, and displays a table with the refined results. The user then has an option to save the refined data
+    into a new CSV file.
 
     Parameters: None
 
     Returns: None
+
+    See Also
+    --------
+    select_csv_file_2d_token_representation : Opens a file dialog allowing the user to select a CSV file.
+    refine_data_function_absolute_duration : Applies the convert_duration_to_numerical function to the 'Duration'
+                                             column of a pandas DataFrame.
     """
     try:
         while True:
@@ -82,15 +106,22 @@ def corpus_tokenization_refine_data_absolute_duration():
 
 def convert_duration_to_numerical(duration):
     """
-    This function converts a duration from a string format ("a.b.c") to a numerical value if the format matches. If
-    not, it returns the input as is.
+    Converts a duration from a string format ("a.b.c") to a numerical value if the format matches.
 
-    Parameters:
-    duration (str): The duration value to be converted, in "a.b.c" format.
+    The function checks whether the duration starts with the prefix "Duration_", and if so, removes the prefix
+    before performing the conversion. If the format of the duration doesn't match the expected format, the function
+    returns the original duration.
 
-    Returns:
-    float: The converted duration as a numerical value, if the format matches.
-    str: The original duration, if the format doesn't match.
+    Parameters
+    ----------
+    duration : str
+        The duration value to be converted, in "a.b.c" format.
+
+    Returns
+    -------
+    float or str
+        The converted duration as a numerical value, if the format matches.
+        The original duration, if the format doesn't match.
     """
     try:
         prefix = ""
@@ -117,13 +148,26 @@ def convert_duration_to_numerical(duration):
 
 def refine_data_function_absolute_duration(df):
     """
-    This function applies the convert_duration_to_numerical function to the 'Duration' column of a pandas DataFrame.
+    Applies the convert_duration_to_numerical function to the 'Duration' column of a pandas DataFrame.
 
-    Parameters:
-    df (DataFrame): The input pandas DataFrame.
+    This function first checks if the 'Duration' column exists in the DataFrame. If so, it applies the
+    convert_duration_to_numerical function to each entry in the column, converting string representations of
+    duration into numerical values where possible.
 
-    Returns:
-    DataFrame: The pandas DataFrame with converted 'Duration' column.
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        The DataFrame to refine.
+
+    Returns
+    -------
+    pandas.DataFrame
+        The DataFrame with converted 'Duration' column.
+
+    See Also
+    --------
+    convert_duration_to_numerical : Converts a duration from a string format ("a.b.c") to a numerical value
+                                    if the format matches.
     """
     try:
         print("Converting 'duration' column to numerical format...")

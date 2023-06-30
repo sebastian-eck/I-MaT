@@ -1,3 +1,41 @@
+"""
+m21_environment.main.py
+=======================
+
+This module contains the implementation of various functions for managing user preferences
+for the Music21 library, including setting user preferences, checking the environment file,
+and displaying the environment file.
+
+The `set_user_preferences` function is used to prompt the user for various settings and
+set these as preferences in the Music21 environment. The function handles the creation of
+a new environment file if it does not already exist.
+
+The `check_environmentFile` function is used to verify if the Music21 environment file exists.
+If it does not exist, the function prompts the user to either create a new one or continue
+without creating one.
+
+The `display_environment_file` function is used to display the contents of the Music21
+environment file to the user. If the environment file does not exist, the function informs
+the user and provides instructions on how to create a new one.
+
+Each function in this module is designed to handle any exceptions that occur during its
+execution and display these to the user.
+
+Functions
+---------
+- `set_user_preferences`: Prompts the user for various settings and updates these preferences in the Music21 environment. Also takes care of creating a new environment file if it doesn't exist.
+- `check_environmentFile`: Verifies the presence of the Music21 environment file. If not found, it asks the user to either create a new one or continue without one.
+- `display_environment_file`: Showcases the contents of the Music21 environment file. If the file doesn't exist, the function notifies the user and provides steps to create a new one.
+
+Notes
+-----
+These functions are designed to handle exceptions that may arise during their execution and present them to the user.
+
+Raises
+------
+Exception: If an error occurs during the execution of the functions, it is handled and displayed to the user.
+
+"""
 import os
 from tkinter import Tk
 from tkinter.filedialog import askdirectory, askopenfilename
@@ -11,6 +49,15 @@ from src.utils.error_handling import handle_error
 def set_user_preferences():
     """
     Prompt user for settings and set preferences in music21.
+
+    This function creates a new environment file if it does not already exist, prompts the user for their scratch directory
+    and MuseScore path, and sets their autoDownload preference to "allow". It is crucial to use this function to set user
+    preferences correctly for the proper functioning of music21.
+
+    Raises
+    ------
+    Exception
+        Any exception that occurs during the execution of the function is handled and displayed to the user.
     """
     try:
         Tk().withdraw()  # we don't want a full GUI, so keep the root window from appearing
@@ -85,7 +132,16 @@ def set_user_preferences():
 
 def check_environmentFile():
     """
-    Check if the music21 environment file exists
+    Check if the music21 environment file exists.
+
+    This function checks whether the music21 environment file already exists. If it does not, it prompts the user
+    to create a new one or continue without creating it (not recommended). If the user chooses to create a new
+    environment file, the function calls `set_user_preferences` to do so.
+
+    Raises
+    ------
+    Exception
+        Any exception that occurs during the execution of the function is handled and displayed to the user.
     """
     try:
         us = environment.UserSettings()
@@ -96,7 +152,7 @@ def check_environmentFile():
                 "-- Check music21 environment file --",
                 "A music21 environment file does not (yet) exist. The file is necessary for the tool to function properly.",
                 "Enter your choice (1 or 2): ",
-                ["Menu Item", "<Explanation>"]
+                ["Menu item", "<Explanation>"]
             ],
             "menu_entries": [
                 ["NEW:  Create a new environment file", "create", "<A new environment file will be created>"],
@@ -119,6 +175,15 @@ def check_environmentFile():
 def display_environment_file():
     """
     Display the contents of the music21 environment file.
+
+    This function reads the music21 environment file and displays its key-value pairs to the user.
+    If the environment file does not exist, it informs the user and provides instructions on how to create a new one.
+    The function is useful for users to check and understand their current music21 settings.
+
+    Raises
+    ------
+    Exception
+        Any exception that occurs during the execution of the function is handled and displayed to the user.
     """
     try:
         us = environment.UserSettings()

@@ -1,30 +1,30 @@
 """
-todo: take predefined names (wihtin the files) for each part of the score into account and assign them to the corresponding music21 stream parts when assigning generic names.
+score_selection.name_parts.py
+=============================
 
-This module provides functions for handling and manipulating music scores using the music21 library.
+This module provides functionalities to interact with and manipulate music scores using the music21 library. It takes
+into account predefined names for each part of the score within the files and assigns them to the corresponding
+music21 stream parts when assigning generic names.
 
-The module contains the following main functions:
+Functions
+---------
+- `select_and_name_parts`: Initializes the `selected_score_part_names` dictionary and engages with the user to name the parts of the score.
+- `rename_parts`: Allows the user to rename the parts of the chosen score.
+- `view_score`: Displays the selected score by using the `show` method of `music21`.
 
-1. `select_and_name_parts`: Initializes the `selected_score_part_names` global dictionary and interacts with the user
-   to name the parts of the score. It provides options for assigning individual names, using generic names, or viewing
-   the selected sheet music. Based on the user's choice, the function executes the appropriate subsequent function.
-
-2. `rename_parts`: Enables the user to rename the parts of a selected score. It creates a local copy of
-   `selected_score_part_names` and allows the user to provide new names for each part. If the new name is unique and the
-   user confirms the changes, the function updates the `selected_score_part_names` dictionary.
-
-3. `view_score`: Displays the selected music score by calling music21's `show` method. Prior to showing the score,
-   the function informs the user that they may need to close the music score viewer to continue with the module.
+Notes
+-----
+This module uses the `music21` library and functions from `src.cli.menu_constructors` and `src.utils.error_handling`.
+The global variable `selected_score_part_names` associates part names with their corresponding `music21 Score` or `Part` objects.
 
 Module-level variable definitions
 ---------------------------------
 
 The module also defines a global variable:
 
-selected_score_part_names: dict
-    This global dictionary maps part names to their corresponding music21 Score or Part objects, facilitating user
-    interaction with named parts rather than abstract music21 objects. The key 'Full Score' is reserved for the complete
-    Score object. The structure of the dictionary is as follows:
+selected_score_part_names: dict This global dictionary associates part names to their corresponding music21 Score or
+Part objects, enabling user interaction with named parts rather than abstract music21 objects. The key 'Full Score'
+is reserved for the whole Score object. The structure of the dictionary is as follows:
 
     ```
     selected_score_part_names = {
@@ -67,6 +67,11 @@ def select_and_name_parts(selected_score: music21.stream.Score) -> None:
 
     Returns:
         None. This function modifies the global 'selected_score_part_names' dictionary and doesn't return a value.
+
+    See Also:
+        1. `rename_parts()`: To assign individual names based on user input.
+        2. `view_score()`: To display the music score.
+        3. `handle_error()`: For handling exceptions occurring during the execution of this function.
     """
 
     try:
@@ -148,6 +153,11 @@ def rename_parts() -> None:
 
     Raises:
         Any exceptions raised by this function are passed to the `handle_error` function for error handling.
+
+    See Also:
+        1. `display_menu_print_results()`: For displaying a list of current part names and to present new/unchanged names.
+        2. `display_menu_request_selection()`: For requesting the user to select between confirming or rejecting the new names.
+        3. `handle_error()`: For handling exceptions that occur during the renaming process.
     """
     try:
         global selected_score_part_names
@@ -257,6 +267,10 @@ def view_score(selected_score: music21.stream.Score) -> None:
 
     Returns:
         None. This function only performs actions and does not return a value.
+
+    See Also:
+        1. `display_menu_print_textblock()`: For displaying the notice before the Score is opened.
+        2. `handle_error()`: For handling exceptions that occur while attempting to display the Score or during user interaction.
     """
 
     try:

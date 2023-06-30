@@ -1,22 +1,25 @@
 """
-File tokenization module for MIDI files
+tokenization.main.py
+====================
 
-This module provides a variety of functions for tokenizing MIDI files in a selected directory.
-These MIDI files are then converted to sequences of tokens using one or more tokenizers.
+This module provides functions for tokenizing MIDI files in a selected directory. These files are converted into token sequences
+using one or more tokenizers and saved as CSV files in a subdirectory of the original directory.
+
+Functions
+---------
+- `tokenization_tokenize_folder_midi_files`: Tokenizes all MIDI files in a user-selected directory using selected tokenizers.
+- `select_miditok_tokenizer`: Presents a user interface for tokenizer selection.
+- `select_folder_midi_files`: Presents a user interface for folder selection.
+- `tokenize_midi_file`: Tokenizes a MIDI file with a specified tokenizer class and saves the tokenized sequence to a CSV file.
+- `extract_tokens_from_token_string_within_list`: Extracts tokens from a string representation of a list using regex.
+- `extract_tokens_from_token_string_within_nested_list`: Extracts tokens from a string representation of a nested list using regex and abstract syntax trees (AST).
+
+Notes
+-----
+Functions in this module can be used directly or through the CLI interface provided by the `cli.cli_menu_structure` module.
 The tokenized sequences are saved as CSV files in a subdirectory of the original directory.
-A user interface allows the user to select the tokenizers and the folder to be tokenized.
-
-Dependencies:
-- os, re, ast, datetime
-- pandas (pd)
-- openpyxl
-- tqdm
-- miditok: Tokenizers for MIDI files
-- CLI interface: cli.cli_menu_structure
-
-Main function: corpus_tokenization
+Please refer to the individual function docstrings for more detailed descriptions and examples of usage.
 """
-
 import ast
 import datetime
 import os
@@ -92,18 +95,30 @@ MIDITOK_TOKENIZERS_ADDITIONAL_TOKENS = {
 }
 
 
-def corpus_tokenization():
+def tokenization_tokenize_folder_midi_files():
     """
-    Main function for tokenizing MIDI files.
+    Tokenizes all MIDI files in a user-selected directory using the selected tokenizers.
 
-    It asks the user to select a directory and one or more tokenizers, and then tokenizes
-    all MIDI files in the selected directory using the chosen tokenizers. The tokenized
-    sequences are saved as CSV files in a subdirectory of the original directory.
-    Tokenization results and errors are logged in an Excel file in the same subdirectory.
+    This function prompts the user to select a directory and one or more tokenizers.
+    After selection, the function tokenizes all MIDI files in the directory using the
+    chosen tokenizers. The tokenized sequences are saved as CSV files in a subdirectory
+    of the original directory named "tokenized_YYYYMMDD_HHMMSS". Additionally, any tokenization
+    results and errors are logged in an Excel file named "tokenization_log.xlsx" in the
+    same subdirectory.
+
+    Parameters
+    ----------
+    None
 
     Returns
     -------
     None
+
+    See Also
+    --------
+    select_folder_midi_files : Function to interact with user for selecting a folder.
+    display_tokenizable_files_in_folder : Function to display tokenizable files.
+    select_miditok_tokenizer : Function to interact with user for selecting tokenizer(s).
     """
     folder_path = select_folder_midi_files()
     if folder_path is None:
@@ -185,14 +200,28 @@ def corpus_tokenization():
 
 def select_miditok_tokenizer():
     """
-    Provides a user interface for tokenizer selection.
+    Interacts with the user via a user interface for tokenizer selection.
 
-    The user can select one or more tokenizers from a predefined list.
+    This function prompts the user to select one or more tokenizers from a predefined list.
+    Depending on the user's choice, it returns the selected tokenizers.
+
+    Parameters
+    ----------
+    None
 
     Returns
     -------
     list
-        List of selected tokenizer classes.
+        A list containing the selected tokenizer(s) classes.
+
+    Raises
+    ------
+    Exception
+        If an error occurs while processing the user's selection.
+
+    See Also
+    --------
+    display_menu_request_selection : Function to display menu and request user selection.
     """
     try:
         tokenizer_dict = {
@@ -218,13 +247,31 @@ def select_miditok_tokenizer():
 
 def select_folder_midi_files():
     """
-    User interface for folder selection. The user can input the path to the desired folder.
-    If the path does not exist or does not lead to a directory, an error message is displayed.
+    Interacts with the user via a user interface for folder selection.
+
+    This function prompts the user to input the path to the desired folder. It validates
+    the input and ensures the folder contains parsable music files. If not, it prompts the
+    user to input another path.
+
+    Parameters
+    ----------
+    None
 
     Returns
     -------
     str
-        Path to the selected folder.
+        A string containing the path to the selected folder, or None if the user cancelled
+        the dialog or didn't select a suitable folder.
+
+    Raises
+    ------
+    Exception
+        If an error occurs while processing the user's selection.
+
+    See Also
+    --------
+    get_tokenizable_files_in_folder : Function to get tokenizable files in the selected folder.
+    display_menu_print_textblock : Function to display menu.
     """
     try:
         parsable_extensions = ['.midi', '.mid']
@@ -291,21 +338,31 @@ def select_folder_midi_files():
 
 def tokenize_midi_file(midi_file_path, tokenizer_class, tokenized_file_folder):
     """
-    Tokenizes a MIDI file using a specified tokenizer class and saves the tokenized sequence to a
-    CSV file.
+        Tokenizes a MIDI file using a specified tokenizer class and saves the tokenized sequence to a
+        CSV file. It handles both single-layer and nested token lists.
 
-    Parameters
-    ----------
-    midi_file_path : str
-        Path to the MIDI file to be tokenized.
-    tokenizer_class : class
-        Class of the tokenizer to be used.
-    tokenized_file_folder : str
-        Path to the folder where the CSV file will be saved.
+        Parameters
+        ----------
+        midi_file_path : str
+            Path to the MIDI file to be tokenized.
+        tokenizer_class : class
+            Class of the tokenizer to be used for tokenizing the MIDI file.
+        tokenized_file_folder : str
+            Path to the folder where the CSV file containing the tokenized sequence will be saved.
 
-    Returns
-    -------
-    None
+        Returns
+        -------
+        None
+
+        Raises
+        ------
+        Exception
+            If an error occurs during tokenization or saving the tokenized sequence.
+
+        See Also
+        --------
+        extract_tokens_from_token_string_within_list : Function to extract tokens from a list.
+        extract_tokens_from_token_string_within_nested_list : Function to extract tokens from a nested list.
     """
     try:
         # create the tokenizer and convert the MIDI to tokens
@@ -335,17 +392,30 @@ def tokenize_midi_file(midi_file_path, tokenizer_class, tokenized_file_folder):
 
 def extract_tokens_from_token_string_within_list(tokens_string):
     """
-    Extracts tokens from a string representation of a list.
+    Extracts tokens from a string representation of a list using regular expressions.
+
+    This function is designed to process a string that represents a list of tokens.
+    It utilizes regular expressions to accurately identify and extract all tokens within the string.
+    The extracted tokens are returned as a list of strings.
 
     Parameters
     ----------
     tokens_string : str
-        String representation of a list of tokens.
+        String representation of a list of tokens. Expected to follow the pattern '= [<tokens>]'.
 
     Returns
     -------
     list
-        List of tokens.
+        List of extracted tokens as strings.
+
+    Raises
+    ------
+    Exception
+        If the provided tokens string is not formatted correctly or an error occurs during extraction.
+
+    See Also
+    --------
+    tokenize_midi_file : Function to tokenize MIDI files.
     """
     try:
         # cut away the beginning of the string
@@ -368,17 +438,32 @@ def extract_tokens_from_token_string_within_list(tokens_string):
 
 def extract_tokens_from_token_string_within_nested_list(tokens_string):
     """
-    Extracts tokens from a string representation of a nested list.
+    Extracts tokens from a string representation of a nested list using regular expressions and
+    abstract syntax trees (AST).
+
+    This function is designed to handle complex token string that represents a nested list of tokens.
+    It uses a combination of regular expressions and abstract syntax trees to extract the tokens accurately
+    from the string. The result is returned as a list of lists, where each sublist contains the tokens extracted
+    from one of the nested lists in the string.
 
     Parameters
     ----------
     tokens_string : str
-        String representation of a nested list of tokens.
+        String representation of a nested list of tokens. Expected to follow the pattern '= [<nested lists>], ids='.
 
     Returns
     -------
     list
-        List of token lists.
+        List of lists, with each sublist containing extracted tokens as strings.
+
+    Raises
+    ------
+    Exception
+        If the provided tokens string is not formatted correctly or an error occurs during extraction.
+
+    See Also
+    --------
+    tokenize_midi_file : Function to tokenize MIDI files.
     """
     try:
         # cut away everything before the string "[TokSequence(tokens=["
@@ -398,5 +483,3 @@ def extract_tokens_from_token_string_within_nested_list(tokens_string):
 
     except Exception as e:
         handle_error(e)
-
-

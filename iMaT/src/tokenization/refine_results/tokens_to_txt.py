@@ -1,3 +1,22 @@
+"""
+tokenization.refine_results.tokens_to_txt.py
+============================================
+
+This module, a part of the `tokenization.refine_results` package, handles the conversion of tokenized data from a CSV file
+to individual text files.
+
+Functions
+---------
+- `tokenization_export_csv_columns_to_txt_file`: Exports a CSV file's contents to individual text files, with directories
+  for each column.
+
+- `save_txt_files_to_directory`: Saves data from a dictionary into text files, organizing the files into directories based on keys.
+
+Notes
+-----
+The module expects CSV files to have a specific structure, including a 'filename' column.
+Please refer to the individual function docstrings for more detailed descriptions and examples of usage.
+"""
 import os
 from datetime import datetime
 
@@ -9,7 +28,24 @@ from src.utils.error_handling import handle_error
 
 tokenizers_available_for_refining = ['CPWord', 'Octuple', 'OctupleMono', 'MuMIDI']
 
-def export_csv_columns_to_txt_file():
+def tokenization_export_csv_columns_to_txt_file():
+    """
+    Exports the columns of a CSV file to individual text files.
+
+    This function asks the user to select a CSV file, and then groups the DataFrame by filename. For each group,
+    it concatenates the values of each column into a string. Finally, it saves each column's concatenated string
+    into individual text files in directories named after each column. These directories are then bundled into
+    a single directory named 'extracted_data_[current date and time]'.
+
+    Parameters: None
+
+    Returns: None
+
+    See Also
+    --------
+    select_csv_file_2d_token_representation : Opens a file dialog allowing the user to select a CSV file.
+    save_txt_files_to_directory : Saves the refined data into text files in directories named after each column.
+    """
     try:
         file_path = select_csv_file_2d_token_representation()
 
@@ -50,15 +86,29 @@ def export_csv_columns_to_txt_file():
 
 def save_txt_files_to_directory(data, file_path):
     """
-    This function saves the refined data into text files in directories named after each column. These directories
-    are then bundled into a single directory named 'enhanced_csv_[current date and time]'.
+    Saves a dictionary of data into text files in directories named after each key.
 
-    Parameters:
-    data (dict): The dictionary of data to be saved.
-    file_path (str): The original file path used to generate the new file name.
+    Each key-value pair in the data dictionary represents a filename and its associated data respectively.
+    For each filename, the function creates a directory and within that directory, it creates a text file for
+    each data column and writes the corresponding data into it. These directories are then bundled into a
+    single directory named 'extracted_data_[current date and time]'.
 
-    Returns:
-    str: The path to the new directory.
+    Parameters
+    ----------
+    data : dict
+        The dictionary of data to be saved. Each key-value pair represents a filename and its associated data.
+    file_path : str
+        The original file path used to generate the new directory's name.
+
+    Returns
+    -------
+    str
+        The path to the newly created directory.
+
+    See Also
+    --------
+    os.path.dirname : Returns the directory component of a pathname.
+    os.makedirs : Recursively creates directories.
     """
     try:
         folder_path = os.path.dirname(file_path)  # Get the directory path of the file

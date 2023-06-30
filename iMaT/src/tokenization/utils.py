@@ -1,3 +1,24 @@
+"""
+tokenization.utils.py
+=====================
+
+This module provides various utility functions that assist in the tokenization of MIDI files and handling of data.
+
+Functions
+---------
+- `save_data_to_new_csv_file`: Saves a DataFrame to a new CSV file in a timestamped directory.
+- `select_csv_file_2d_token_representation`: Opens a dialog for the user to select a CSV file.
+- `display_tokenizable_files_in_folder`: Prints all the tokenizable files in a specific folder.
+- `get_tokenizable_files_in_folder`: Retrieves all tokenizable MIDI files in a specific folder.
+- `display_success_rate`: Shows the success rate of the tokenization process and any errors.
+- `combine_csv_files_in_directory`: Merges all CSV files in a specific directory into one CSV file.
+- `create_log_entry`: Adds a new entry to an existing Excel file, or creates a new one if it doesn't exist.
+
+Notes
+-----
+These functions are used throughout the package to facilitate the tokenization process for MIDI files and ensure correct data handling, saving, and logging.
+Please refer to the individual function docstrings for more detailed descriptions and examples of usage.
+"""
 import glob
 import os
 import tkinter as tk
@@ -14,15 +35,30 @@ from src.utils.error_handling import handle_error
 
 def save_data_to_new_csv_file(df, file_name, identifier):
     """
-    This function saves the refined DataFrame into a new CSV file in a directory named 'enhanced_csv_[current date
-    and time]'.
+    Saves the refined DataFrame to a new CSV file in a directory named 'enhanced_csv_[current date and time]'.
 
-    Parameters:
-    df (DataFrame): The pandas DataFrame to be saved.
-    file_name (str): The original file name used to generate the new file name.
+    This function extracts the directory path of the provided file, then creates a new directory in that path
+    with the provided identifier and current timestamp. The DataFrame is then saved to this new directory
+    with the identifier prepended to the original filename.
 
-    Returns:
-    str: The path to the new CSV file.
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        The DataFrame to be saved.
+    file_name : str
+        The original file name used to generate the new file name.
+    identifier : str
+        A string to be used as an identifier for the new directory and file name.
+
+    Returns
+    -------
+    str
+        The path to the new CSV file.
+
+    Raises
+    ------
+    Exception
+        If an error occurs during directory creation or file saving.
     """
     try:
         folder_path = os.path.dirname(file_name)  # Get the directory path of the file
@@ -44,13 +80,23 @@ def save_data_to_new_csv_file(df, file_name, identifier):
 
 def select_csv_file_2d_token_representation():
     """
-    This function opens a file dialog to allow the user to select a CSV file.
+    Opens a file dialog allowing the user to select a CSV file.
 
-    Parameters: None
+    This function guides the user to select a suitable CSV file for further processing.
+    It makes use of a graphical file dialog and informs the user about the requirements
+    for the file selection via terminal outputs.
 
-    Returns:
-    str: The path to the selected file, if a file was selected.
-    None: None, if the user canceled the dialog.
+    Returns
+    -------
+    str
+        The path to the selected file if a file was selected.
+    None
+        None if the user canceled the dialog.
+
+    Raises
+    ------
+    Exception
+        If an error occurs during file selection.
     """
     try:
         while True:
@@ -119,6 +165,28 @@ def select_csv_file_2d_token_representation():
 
 
 def display_tokenizable_files_in_folder(folder_path):
+    """
+    Displays the tokenizable files in the provided directory.
+
+    The function uses the 'get_tokenizable_files_in_folder' function to fetch all tokenizable files from
+    the directory. Then, it displays the files to the user. If more than 30 files exist in the directory,
+    only the first 30 are displayed, along with a note indicating more files are not shown.
+
+    Parameters
+    ----------
+    folder_path : str
+        The path of the directory to search for tokenizable files.
+
+    Returns
+    -------
+    list
+        A list of tokenizable file names.
+
+    Raises
+    ------
+    Exception
+        If an error occurs during the process.
+    """
     try:
         while True:
 
@@ -147,17 +215,25 @@ def display_tokenizable_files_in_folder(folder_path):
 
 def get_tokenizable_files_in_folder(folder_path):
     """
-    Lists all MIDI files in a given folder.
+    Retrieves all tokenizable MIDI files in the given folder.
+
+    This function inspects the given directory and identifies all files with the extensions '.midi' or '.mid',
+    which are considered tokenizable.
 
     Parameters
     ----------
     folder_path : str
-        Path to the folder to be searched.
+        The path of the folder to be searched.
 
     Returns
     -------
     list
-        List of MIDI file names.
+        A list of filenames that can be tokenized.
+
+    Raises
+    ------
+    Exception
+        If an error occurs during the process.
     """
     try:
         tokenizable_extensions = ['.midi', '.mid']
@@ -169,6 +245,30 @@ def get_tokenizable_files_in_folder(folder_path):
 
 
 def display_success_rate(files_status, num_files_tokenized, num_tokenized):
+    """
+    Displays the tokenization success rate and details of failed tokenizations.
+
+    This function calculates and displays the success rate of file tokenization. It also identifies
+    and displays any failed tokenizations, including details of the associated tokenizer and file.
+
+    Parameters
+    ----------
+    files_status : list
+        A list of status messages from the file tokenization process.
+    num_files_tokenized : int
+        The total number of files that were attempted to be tokenized.
+    num_tokenized : int
+        The total number of files that were successfully tokenized.
+
+    Returns
+    -------
+    None
+
+    Raises
+    ------
+    Exception
+        If an error occurs during the process.
+    """
     try:
         # Create text_dict with both tokenization success rate and failed files
         failed_files_status = [status for status in files_status if "<successfully converted>" not in status]
@@ -211,18 +311,27 @@ def display_success_rate(files_status, num_files_tokenized, num_tokenized):
 
 def combine_csv_files_in_directory(directory_path, output_file_name):
     """
-    Combine all CSV files in a given directory into a single CSV file.
+    Combines all CSV files in a given directory into a single CSV file.
+
+    This function reads all CSV files in the provided directory, extracts the original filenames from these files,
+    and adds these as a new column in the DataFrames. The DataFrames are then concatenated and saved as a new CSV file
+    in the same directory.
 
     Parameters
     ----------
     directory_path : str
-        Path to the directory with the CSV files.
+        The path to the directory containing the CSV files.
     output_file_name : str
-        Name of the combined output CSV file.
+        The name of the combined output CSV file.
 
     Returns
     -------
     None
+
+    Raises
+    ------
+    Exception
+        If an error occurs during the process.
     """
     try:
         # Get a list of all CSV files in the directory
@@ -257,20 +366,26 @@ def combine_csv_files_in_directory(directory_path, output_file_name):
 
 def create_log_entry(log_list, log_list_path):
     """
-    Appends a new entry to an existing .xlsx file.
+    Appends a new entry to an existing .xlsx file or creates the file if it doesn't exist.
 
-    If the file does not exist, it is created.
+    The function uses the openpyxl library to open or create a .xlsx file at the provided path.
+    It then appends the provided log_list as a new row to the first sheet of the workbook.
 
     Parameters
     ----------
     log_list : list
-        List of strings to be appended as a new row.
+        A list of strings to be appended as a new row.
     log_list_path : str
-        Path to the .xlsx file.
+        The path to the .xlsx file.
 
     Returns
     -------
     None
+
+    Raises
+    ------
+    Exception
+        If an error occurs during the process.
     """
     try:
         wb = load_workbook(log_list_path)

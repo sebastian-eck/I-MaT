@@ -1,3 +1,20 @@
+"""
+tokenization.refine_results.remove_prefixes.py
+==============================================
+
+This module, part of the `tokenization.refine_results` package, refines tokenized data in a CSV file by removing unwanted prefixes.
+
+Functions
+---------
+- `corpus_tokenization_refine_data_remove_prefixes`: Handles a workflow for refining tokenized data by removing unwanted prefixes.
+
+- `remove_prefixes_function`: Helper function used within `corpus_tokenization_refine_data_remove_prefixes` to refine a DataFrame.
+
+Notes
+-----
+The module expects CSV files to have a specific structure, including a 'filename' column, and is designed to remove prefixes like 'Ignore_'.
+Please refer to the individual function docstrings for more detailed descriptions and examples of usage.
+"""
 import re
 
 import pandas as pd
@@ -9,13 +26,22 @@ from src.tokenization.utils import save_data_to_new_csv_file, select_csv_file_2d
 from src.utils.error_handling import handle_error
 
 
-def corpus_tokenization_remove_prefixes():
+def corpus_tokenization_refine_data_remove_prefixes():
     """
-    Refines the data from a previously tokenized csv file by removing unwanted prefixes from the data.
-    The csv file should be named according to either of the two patterns:
-    1) 00_combined_tokenizer_[tokenizer name]_tokens.csv
-    2) [some individual file name string]_tokenizer_[tokenizer name]_tokens.csv
-    where [tokenizer name] should be from the tokenizers_available_for_refining list.
+    Refines CSV data by removing unwanted prefixes from the data.
+
+    This function guides the user to select a CSV file, performs data refining operations to remove unwanted
+    prefixes (specifically "Ignore_" prefixes and any prefixes that match column names), and displays a
+    table with the results. The user then has an option to save the refined data into a new CSV file.
+
+    Parameters: None
+
+    Returns: None
+
+    See Also
+    --------
+    select_csv_file_2d_token_representation : Opens a file dialog allowing the user to select a CSV file.
+    remove_prefixes_function : Refines the pandas DataFrame by removing unwanted prefixes.
     """
     try:
         while True:
@@ -72,7 +98,20 @@ def corpus_tokenization_remove_prefixes():
 
 def remove_prefixes_function(df):
     """
-    Refines the DataFrame by removing unwanted prefixes from the data.
+    Refines a pandas DataFrame by removing unwanted prefixes from the data.
+
+    This function removes "Ignore_" prefixes from all entries in the DataFrame. Then, it iterates over each
+    column in the DataFrame and removes any prefixes that match the column name.
+
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        The DataFrame to refine.
+
+    Returns
+    -------
+    pandas.DataFrame
+        The DataFrame with removed unwanted prefixes.
     """
     try:
         # tqdm adds a progress bar
