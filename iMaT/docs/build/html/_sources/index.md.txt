@@ -9,6 +9,9 @@
 This is under heavy development.
 ```
 
+For further informations, check out {doc}`usage`.
+How to start the program: {ref}`Starting the Program`
+
 ```{include} ../../../README.md
 :relative-images:
 ```
@@ -16,6 +19,8 @@ This is under heavy development.
 ```{toctree}
 :caption: 'Contents:'
 :maxdepth: 2
+
+usage
 ```
 
 # Indices and tables

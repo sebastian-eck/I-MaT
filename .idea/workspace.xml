@@ -7,14 +7,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="261d9175-119f-4a99-aab1-0189b930fb8c" name="Changes" comment="Added module docstrings">
+    <list default="true" id="261d9175-119f-4a99-aab1-0189b930fb8c" name="Changes" comment="added building dependency. Added html theme">
+      <change afterPath="$PROJECT_DIR$/iMaT/docs/source/usage.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_sources/index.md.txt" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_sources/index.md.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/genindex.html" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/genindex.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/objects.inv" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/objects.inv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/search.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/searchindex.js" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/searchindex.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/source/conf.py" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/source/conf.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/source/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/source/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/setup.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -447,7 +451,7 @@
       <workItem from="1688090012725" duration="6326000" />
       <workItem from="1688099162906" duration="751000" />
       <workItem from="1688110309151" duration="5930000" />
-      <workItem from="1688116876003" duration="3865000" />
+      <workItem from="1688116876003" duration="4570000" />
     </task>
     <task id="LOCAL-00001" summary="Splitting (lots of work to do)">
       <created>1686194669168</created>
@@ -589,7 +593,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688119326282</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="added building dependency. Added html theme">
+      <created>1688120847683</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1688120847683</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -635,7 +646,8 @@
     <MESSAGE value="added exception handling to all functions" />
     <MESSAGE value="added the rest of the exception handling and checked file formats for file conversion" />
     <MESSAGE value="Added module docstrings" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added module docstrings" />
+    <MESSAGE value="added building dependency. Added html theme" />
+    <option name="LAST_COMMIT_MESSAGE" value="added building dependency. Added html theme" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

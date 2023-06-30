@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Usage" href="usage.html" />
 
     <!-- Generated with Sphinx 6.2.1 and Furo 2023.05.20 -->
         <title>I-MaT 0.0.1 documentation</title>
@@ -154,7 +154,11 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+</ul>
+
 </div>
 </div>
 
@@ -193,6 +197,8 @@
 <p class="admonition-title">Warning</p>
 <p>This is under heavy development.</p>
 </div>
+<p>For further informations, check out <a class="reference internal" href="usage.html"><span class="doc">Usage</span></a>.
+How to start the program: <a class="reference internal" href="usage.html#starting-the-program"><span class="std std-ref">Starting the Program</span></a></p>
 </section>
 <section id="interactive-music-analysis-tool-i-mat">
 <h1>Interactive Music Analysis Tool (I-MaT)<a class="headerlink" href="#interactive-music-analysis-tool-i-mat" title="Permalink to this heading">#</a></h1>
@@ -267,92 +273,6 @@ Which menu item should be executed? (&lt;No. of menu item&gt;):
 <li><p><a class="reference external" href="https://web.mit.edu/music21/doc/about/referenceCorpus.html">Music21 Corpus, MIT</a>.</p></li>
 </ul>
 </section>
-</section>
-<section id="download-and-installation">
-<h2>Download and Installation<a class="headerlink" href="#download-and-installation" title="Permalink to this heading">#</a></h2>
-<p>To use the Interactive Music Analysis Tool (I-MaT), follow these steps:</p>
-<ol class="arabic simple">
-<li><p><strong>Install Anaconda or Miniconda</strong>: Download and install Anaconda or Miniconda on your system.</p>
-<ul class="simple">
-<li><p>For installation instructions, refer to the <a class="reference external" href="https://analyse.hfm-weimar.de/doku.php?id=en:jupyter-anaconda">installation guide</a>.</p></li>
-<li><p>Make sure to include the current version of the HfM environment (<code class="docutils literal notranslate"><span class="pre">hfm_x.x.x.yml</span></code>). You can download it from <a class="reference external" href="https://analyse.hfm-weimar.de/scripts/hfm_1.1.2.yml">here</a> (right click: save link as..).</p></li>
-<li><p>Additionally, install <a class="reference external" href="https://musescore.org/en">MuseScore</a>.</p></li>
-</ul>
-</li>
-<li><p><strong>Download the I-MaT program</strong>:</p>
-<ul class="simple">
-<li><p>Right-click on the <a class="reference external" href="https://analyse.hfm-weimar.de/jupyter/I-MaT-InteraktivesMusikanalyse-Tool.py">Download link</a> for the Python script.</p></li>
-<li><p>Select “Save link as” to download the file.</p></li>
-<li><p>Save the file on your desktop (for both Windows and Mac).</p></li>
-</ul>
-</li>
-</ol>
-</section>
-<section id="starting-the-program">
-<h2>Starting the Program<a class="headerlink" href="#starting-the-program" title="Permalink to this heading">#</a></h2>
-<p>Follow these steps to start the I-MaT program:</p>
-<ol class="arabic">
-<li><p><strong>Open the Anaconda Prompt</strong>:</p>
-<ul class="simple">
-<li><p>On Windows:</p>
-<ul>
-<li><p>Go to the Start menu.</p></li>
-<li><p>Navigate to “Anaconda 3 (64-bit)”.</p></li>
-<li><p>Choose either “Anaconda Powershell Prompt (anaconda3)” or “Anaconda Prompt (anaconda3)”.</p></li>
-</ul>
-</li>
-<li><p>On Mac:</p>
-<ul>
-<li><p>Locate the Anaconda Powershell Prompt or Anaconda Prompt in the Finder.</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>Activate the project-specific Python environment</strong>:</p>
-<ul>
-<li><p>In the Anaconda Prompt, you will see a line starting with <code class="docutils literal notranslate"><span class="pre">(base)</span> <span class="pre">C:\Users\Username&gt;</span></code>.</p></li>
-<li><p>Enter the following command and press Enter:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">hfm_1</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">x</span>
-</pre></div>
-</div>
-<p>Note: Replace <code class="docutils literal notranslate"><span class="pre">1.x.x</span></code> with the actual version number.</p>
-</li>
-</ul>
-</li>
-<li><p><strong>Start the program</strong>:</p>
-<ul class="simple">
-<li><p>In the Anaconda Prompt, type <code class="docutils literal notranslate"><span class="pre">python</span></code>.</p></li>
-<li><p>Drag and drop the ‘I-MaT - Interaktives Musikanalyse-Tool.py’ file into the prompt window.</p></li>
-<li><p>Press Enter to start the program.</p></li>
-</ul>
-</li>
-</ol>
-<p>Example command with the program file saved on the desktop (Windows):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">hfm_1</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">x</span><span class="p">)</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">Username</span><span class="o">&gt;</span><span class="n">python</span> <span class="s2">&quot;C:\Users\Username\Desktop\I-MaT - Interaktives Musikanalyse-Tool.py&quot;</span>
-</pre></div>
-</div>
-<p>The I-MaT program will start running after a few seconds.</p>
-</section>
-<section id="troubleshooting">
-<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading">#</a></h2>
-<p>If you encounter any issues, follow these steps:</p>
-<ol class="arabic simple">
-<li><p>Check if the project-specific Python environment is installed correctly:</p></li>
-</ol>
-<ul class="simple">
-<li><p>Open the Anaconda Prompt.</p></li>
-<li><p>Enter the command <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">info</span> <span class="pre">--envs</span></code> and press Enter.</p></li>
-<li><p>Make sure the desired version (<code class="docutils literal notranslate"><span class="pre">hfm_1.x.x</span></code>) is listed in the output.</p></li>
-</ul>
-<ol class="arabic simple" start="2">
-<li><p>If the version is missing, install the project-specific Python environment by referring to the installation instructions:</p></li>
-</ol>
-<ul class="simple">
-<li><p><a class="reference external" href="https://analyse.hfm-weimar.de/doku.php?id=en:installation_windows">Windows</a></p></li>
-<li><p><a class="reference external" href="https://analyse.hfm-weimar.de/doku.php?id=en:installation_mac">Mac</a></p></li>
-<li><p><a class="reference external" href="https://analyse.hfm-weimar.de/doku.php?id=en:installation_linux">Linux</a></p></li>
-<li><p>Follow the instructions provided under “2. Project-specific Python environment”.</p></li>
-</ul>
 </section>
 <section id="appendix-figures">
 <h2>Appendix: Figures<a class="headerlink" href="#appendix-figures" title="Permalink to this heading">#</a></h2>
@@ -677,6 +597,15 @@ Which menu item should be executed? (&lt;No. of menu item&gt;):
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
 <div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#download-and-installation">Download and Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#starting-the-program">Starting the Program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+</ul>
 </div>
 </section>
 </section>
@@ -761,7 +690,15 @@ Which menu item should be executed? (&lt;No. of menu item&gt;):
       <footer>
         
         <div class="related-pages">
-          
+          <a class="next-page" href="usage.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Usage</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
           
         </div>
         <div class="bottom-of-page">
