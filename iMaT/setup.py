@@ -47,6 +47,9 @@ setup(
     ],
     extras_require={
         "doc": ["sphinx~=7.0.1",
-                "sphinxcontrib-napoleon~=0.7"]
+                "sphinxcontrib-napoleon~=0.7",
+                "sphinx-autobuild",
+                "myst_parser",
+                "furo"]
     }
 )

@@ -3,7 +3,15 @@
 % You can adapt this file completely to your liking, but it should at least
 % contain the root `toctree` directive.
 
-# Welcome to I-MaT's documentation!
+# Welcome to I-MaT's documentation.
+
+```{warning}
+This is under heavy development.
+```
+
+```{include} ../../../README.md
+:relative-images:
+```
 
 ```{toctree}
 :caption: 'Contents:'

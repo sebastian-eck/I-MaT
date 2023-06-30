@@ -7,7 +7,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="261d9175-119f-4a99-aab1-0189b930fb8c" name="Changes" comment="Added module docstrings" />
+    <list default="true" id="261d9175-119f-4a99-aab1-0189b930fb8c" name="Changes" comment="Added module docstrings">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_sources/index.md.txt" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_sources/index.md.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/searchindex.js" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/searchindex.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/docs/source/conf.py" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/source/conf.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/docs/source/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/source/index.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/setup.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -439,7 +447,7 @@
       <workItem from="1688090012725" duration="6326000" />
       <workItem from="1688099162906" duration="751000" />
       <workItem from="1688110309151" duration="5930000" />
-      <workItem from="1688116876003" duration="2284000" />
+      <workItem from="1688116876003" duration="3865000" />
     </task>
     <task id="LOCAL-00001" summary="Splitting (lots of work to do)">
       <created>1686194669168</created>
@@ -574,7 +582,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688118731094</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Added module docstrings">
+      <created>1688119326282</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1688119326282</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
