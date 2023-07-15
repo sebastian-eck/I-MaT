@@ -1,4 +1,0 @@
-from i_mat_new.src.cli.cli_menu_entries import startmenu_entries
-from i_mat_new.src.cli.cli_menu_structure import display_menu_undirected
-
-display_menu_undirected(startmenu_entries)

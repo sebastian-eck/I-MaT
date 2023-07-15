@@ -1,6 +1,34 @@
+Metadata-Version: 2.1
+Name: iMaT
+Version: 0.0.1
+Summary: Interactive Music Analysis Tool (I-MaT)
+Home-page: https://github.com/sebastian-eck/I-MaT
+Author: Sebastian Oliver Eck
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: Unix
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Framework :: Matplotlib
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Science/Research
+Classifier: Natural Language :: English
+Classifier: Topic :: Documentation :: Sphinx
+Classifier: Topic :: Education
+Classifier: Topic :: Education :: Computer Aided Instruction (CAI)
+Classifier: Topic :: Multimedia :: Sound/Audio :: Analysis
+Classifier: Topic :: Multimedia :: Sound/Audio :: MIDI
+Classifier: Topic :: Text Processing :: Linguistic
+Description-Content-Type: text/markdown
+Provides-Extra: doc
+
 # Interactive Music Analysis Tool (I-MaT)
 
-The **Interactive Music Analysis Tool (I-MaT)**[^1] is a modular program designed for producing visualizations and statistical analyses of sheet music files. It is based on the **music21** python library ([GitHub repository](https://github.com/cuthbertLab/music21.git)), developed by the Massachusetts Institute of Technology (MIT),[^2] and was originally created as a subproject of the fellowship project Computer-assisted Music Analysis in Digital University Teaching ([Computergestützte Musikanalyse in der digitalen Hochschullehre, 2021, project report (PDF)](https://stifterverband.org/file/10986/download?token=tl9S2EL_)).[^3]
+The **Interactive Music Analysis Tool (I-MaT)**[^1] is a modular program designed for producing visualizations and statistical analyses of sheet music files. It is based on the **music21** python library ([GitHub repository](https://github.com/cuthbertLab/music21.git)), developed by the Massachusetts Institute of Technology (MIT),[^2] and was originally created as a subproject of the fellowship project Computer-assisted Music Analysis in Digital University Teaching ([ComputergestÃ¼tzte Musikanalyse in der digitalen Hochschullehre, 2021, project report (PDF)](https://stifterverband.org/file/10986/download?token=tl9S2EL_)).[^3]
 
 The project was located at the Department of Musicology Weimar-Jena at the Franz Liszt University of Music Weimar[^4] and was funded by the Thuringian Ministry for Economy, Science and Digital Change and the Deutscher Stifterverband.[^5]
 
@@ -38,7 +66,7 @@ No.  Menu item                                                         <Explanat
 1    PROG: Analysis of a single piece of music                         <Analysis of a single piece of music>
 2    SETT: Settings                                                    <View the settings in the music21 environment file>
 3    HELP: Project overview                                            <Information about the project "Computer-Aided Music Analysis">
-4    LANG: Ändere Ausgabesprache auf DEUTSCH                           <Ändert die Ausgabesprache des Programms auf Deutsch>
+4    LANG: Ã„ndere Ausgabesprache auf DEUTSCH                           <Ã„ndert die Ausgabesprache des Programms auf Deutsch>
 5    EXIT: Exit programm                                               <Exits the Python script>
 
 Which menu item should be executed? (<No. of menu item>):
@@ -79,6 +107,72 @@ The fellowship project uses several, under the Common Licence freely available o
 - [Tobi's Notenarchiv](http://www.tobis-notenarchiv.de/noten/index.htm).
 - [Sethus Calvisius' cantional settings, edited by Dr. Franz Kaern-Biederstedt](https://analyse.hfm-weimar.de/doku.php?id=en:calvisius).
 - [Music21 Corpus, MIT](https://web.mit.edu/music21/doc/about/referenceCorpus.html).
+
+## Download and Installation
+
+To use the Interactive Music Analysis Tool (I-MaT), follow these steps:
+
+1. **Install Anaconda or Miniconda**: Download and install Anaconda or Miniconda on your system.
+   - For installation instructions, refer to the [installation guide](https://analyse.hfm-weimar.de/doku.php?id=en:jupyter-anaconda).
+   - Make sure to include the current version of the HfM environment (`hfm_x.x.x.yml`). You can download it from [here](https://analyse.hfm-weimar.de/scripts/hfm_1.1.2.yml) (right click: save link as..).
+   - Additionally, install [MuseScore](https://musescore.org/en).
+
+2. **Download the I-MaT program**:
+   - Right-click on the [Download link](https://analyse.hfm-weimar.de/jupyter/I-MaT-InteraktivesMusikanalyse-Tool.py) for the Python script.
+   - Select "Save link as" to download the file.
+   - Save the file on your desktop (for both Windows and Mac).
+
+## Starting the Program
+
+Follow these steps to start the I-MaT program:
+
+1. **Open the Anaconda Prompt**:
+
+   - On Windows:
+     - Go to the Start menu.
+     - Navigate to "Anaconda 3 (64-bit)".
+     - Choose either "Anaconda Powershell Prompt (anaconda3)" or "Anaconda Prompt (anaconda3)".
+     
+   - On Mac:
+     - Locate the Anaconda Powershell Prompt or Anaconda Prompt in the Finder.
+
+2. **Activate the project-specific Python environment**:
+
+   - In the Anaconda Prompt, you will see a line starting with `(base) C:\Users\Username>`.
+   - Enter the following command and press Enter:
+     ```
+     conda activate hfm_1.x.x
+     ```
+     Note: Replace `1.x.x` with the actual version number.
+
+3. **Start the program**:
+
+   - In the Anaconda Prompt, type `python`.
+   - Drag and drop the 'I-MaT - Interaktives Musikanalyse-Tool.py' file into the prompt window.
+   - Press Enter to start the program.
+
+Example command with the program file saved on the desktop (Windows):
+
+```
+(hfm_1.x.x) C:\Users\Username>python "C:\Users\Username\Desktop\I-MaT - Interaktives Musikanalyse-Tool.py"
+```
+
+The I-MaT program will start running after a few seconds.
+
+## Troubleshooting
+
+If you encounter any issues, follow these steps:
+
+1. Check if the project-specific Python environment is installed correctly:
+- Open the Anaconda Prompt.
+- Enter the command `conda info --envs` and press Enter.
+- Make sure the desired version (`hfm_1.x.x`) is listed in the output.
+
+2. If the version is missing, install the project-specific Python environment by referring to the installation instructions:
+- [Windows](https://analyse.hfm-weimar.de/doku.php?id=en:installation_windows)
+- [Mac](https://analyse.hfm-weimar.de/doku.php?id=en:installation_mac)
+- [Linux](https://analyse.hfm-weimar.de/doku.php?id=en:installation_linux)
+- Follow the instructions provided under "2. Project-specific Python environment".
 
 ## Appendix: Figures
 
@@ -316,27 +410,27 @@ Please select:
 
 No.  Menu item
 
-1    ‾‾‾‾  -   C-flat
+1    â€¾â€¾â€¾â€¾  -   C-flat
 2    C         C
-3    ____  ♯   C-sharp
-4    ‾‾‾‾  -   D-flat
+3    ____  â™¯   C-sharp
+4    â€¾â€¾â€¾â€¾  -   D-flat
 5    D         D
-6    ____  ♯   D-sharp
-7    ‾‾‾‾  -   E-flat
+6    ____  â™¯   D-sharp
+7    â€¾â€¾â€¾â€¾  -   E-flat
 8    E         E
-9    ____  ♯   E-sharp
-10   ‾‾‾‾  -   F-flat
+9    ____  â™¯   E-sharp
+10   â€¾â€¾â€¾â€¾  -   F-flat
 11   F         F
-12   ____  ♯   F-sharp
-13   ‾‾‾‾  -   G-flat
+12   ____  â™¯   F-sharp
+13   â€¾â€¾â€¾â€¾  -   G-flat
 14   G         G
-15   ____  ♯   G-sharp
-16   ‾‾‾‾  -   A-flat
+15   ____  â™¯   G-sharp
+16   â€¾â€¾â€¾â€¾  -   A-flat
 17   A         A
-18   ____  ♯   A-sharp
-19   ‾‾‾‾  -   B-flat
+18   ____  â™¯   A-sharp
+19   â€¾â€¾â€¾â€¾  -   B-flat
 20   B         B
-21   ____  ♯   B-sharp
+21   ____  â™¯   B-sharp
 22   BACK: Remove the last note entered
 23   DONE: Finish input
 
@@ -442,9 +536,9 @@ Figure 12: *I-Mat - 2  SEAR: Pattern search (without rhythmic values/transposed)
 
 [^1]: Official project website: "Interactive Music Analysis Tool (I-MaT)", accessible at: https://analyse.hfm-weimar.de/doku.php?id=en:interaktive_musikanalyse (last accessed on: 2023-04-25).
 [^2]: Official project website: "music11: a toolkit for computer-aided musicology", accessible at: http://web.mit.edu/music21/ (last accessed on: 2023-04-25).
-[^3]: Official project website: "Computergestützte Musikanalyse in der digitalen Hochschullehre", accessible at: https://analyse.hfm-weimar.de/doku.php?id=en:start (last accessed on: 2023-04-25).
+[^3]: Official project website: "ComputergestÃ¼tzte Musikanalyse in der digitalen Hochschullehre", accessible at: https://analyse.hfm-weimar.de/doku.php?id=en:start (last accessed on: 2023-04-25).
 [^4]: University of Music Franz Liszt Weimar. Department of Musicology Weimar-Jena, https://www.hfm-weimar.de/en/department-of-musicology-weimar-jena/department-of-musicology-weimar-jena (last accessed on: 2023-04-25).
-[^5]: Fellowships Hochschullehre "Deutscher Stifterverband": Fellows 2020, Prof. Dr. Martin Pfleiderer (Hochschule für Musik Franz Liszt Weimar, Institut für Musikwissenschaft Weimar-Jena); Fellowship für Innovationen in der digitalen Hochschullehre, Projekt: Computergestützte Musikanalyse, https://stifterverband.org/digital-lehrfellows-thueringen/2020/pfleiderer (last accessed on: 2023-04-25).
+[^5]: Fellowships Hochschullehre "Deutscher Stifterverband": Fellows 2020, Prof. Dr. Martin Pfleiderer (Hochschule fÃ¼r Musik Franz Liszt Weimar, Institut fÃ¼r Musikwissenschaft Weimar-Jena); Fellowship fÃ¼r Innovationen in der digitalen Hochschullehre, Projekt: ComputergestÃ¼tzte Musikanalyse, https://stifterverband.org/digital-lehrfellows-thueringen/2020/pfleiderer (last accessed on: 2023-04-25).
 [^6]: Egor Poliakovand Christon R. Nada: "CAMAT: Computer Assisted Music Analysis Toolkit", DMRN+16: Digital Music Research Network, One-Day Workshop 2021; Queen Mary University London, Tue 21 Devember 2021, https://analyse.hfm-weimar.de/lib/exe/fetch.php?media=en:dmrn-16-proceedings_camat.pdf (last accessed on: 2023-04-25).
 [^7]: Official project website: 1) "Module Basics: Sheet Music Analysis with music21", https://analyse.hfm-weimar.de/doku.php?id=en:basics1; 2) "Module Advanced Sheet Music Analysis with music21: Searching for Tone Sequences", https://analyse.hfm-weimar.de/doku.php?id=en:advanced1 (last accessed on: 2023-04-25).
 [^8]: Official project website: 1) "Module Basics Sheet Music Analysis with CAMAT", https://analyse.hfm-weimar.de/doku.php?id=en:camat; 2) "Module Advanced: Sheet Music Analysis with CAMAT", https://analyse.hfm-weimar.de/doku.php?id=en:advanced_camat (last accessed on: 2023-04-25).
