@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Package: Visualizations (src.visualizations) &mdash; I-MaT 3.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Module: Constants (src.constants)" href="src.constants.html" />
+    <link rel="prev" title="Package: Utility Functions (src.utils)" href="src.utils.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            I-MaT
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started with I-MaT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute.html">How to Contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="src.html">I-MaT: Source Code</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="src.analysis.html">Package: Analysis (src.analysis)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.cli.html">Package: Command Line Interface (src.cli)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.conversion.html">Package: File Conversion (src.conversion)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.m21_environment.html">Package: music21 Environment File Configuration (src.m21_environment)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.pattern_search.html">Package: Pattern Search (src.pattern_search)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.score_selection.html">Package: Score Selection (src.score_selection)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.tokenization.html">Package: Tokenization (src.tokenization)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.utils.html">Package: Utility Functions (src.utils)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Package: Visualizations (src.visualizations)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-visualizations-analysis-results-graphs-py">Module: visualizations.analysis_results_graphs.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.visualizations.analysis_results_graphs.display_advanced_pitch_class_duration_analysis"><code class="docutils literal notranslate"><span class="pre">display_advanced_pitch_class_duration_analysis()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.visualizations.analysis_results_graphs.display_analysis_number_of_intervals_per_type"><code class="docutils literal notranslate"><span class="pre">display_analysis_number_of_intervals_per_type()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.visualizations.analysis_results_graphs.display_analysis_number_of_intervals_per_type_with_direction"><code class="docutils literal notranslate"><span class="pre">display_analysis_number_of_intervals_per_type_with_direction()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.visualizations.analysis_results_graphs.display_analysis_number_of_pitch_classes_per_metrical_position"><code class="docutils literal notranslate"><span class="pre">display_analysis_number_of_pitch_classes_per_metrical_position()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.visualizations.analysis_results_graphs.display_analysis_number_of_pitch_classes_per_offset"><code class="docutils literal notranslate"><span class="pre">display_analysis_number_of_pitch_classes_per_offset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.visualizations.analysis_results_graphs.display_analysis_number_of_pitch_classes_per_tone_duration"><code class="docutils literal notranslate"><span class="pre">display_analysis_number_of_pitch_classes_per_tone_duration()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.visualizations.analysis_results_graphs.display_analysis_number_of_pitches_per_metrical_position"><code class="docutils literal notranslate"><span class="pre">display_analysis_number_of_pitches_per_metrical_position()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.visualizations.analysis_results_graphs.display_analysis_number_of_pitches_per_offset"><code class="docutils literal notranslate"><span class="pre">display_analysis_number_of_pitches_per_offset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.visualizations.analysis_results_graphs.display_analysis_number_of_pitches_per_tone_duration"><code class="docutils literal notranslate"><span class="pre">display_analysis_number_of_pitches_per_tone_duration()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.visualizations.analysis_results_graphs.display_analysis_number_of_rests_per_rest_duration"><code class="docutils literal notranslate"><span class="pre">display_analysis_number_of_rests_per_rest_duration()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.visualizations.analysis_results_graphs.display_analysis_number_of_sound_events_per_metrical_position"><code class="docutils literal notranslate"><span class="pre">display_analysis_number_of_sound_events_per_metrical_position()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.visualizations.analysis_results_graphs.display_analysis_number_of_sound_events_per_pitch"><code class="docutils literal notranslate"><span class="pre">display_analysis_number_of_sound_events_per_pitch()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.visualizations.analysis_results_graphs.display_analysis_number_of_sound_events_per_pitch_class"><code class="docutils literal notranslate"><span class="pre">display_analysis_number_of_sound_events_per_pitch_class()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.visualizations.analysis_results_graphs.display_analysis_number_of_sound_events_per_tone_duration"><code class="docutils literal notranslate"><span class="pre">display_analysis_number_of_sound_events_per_tone_duration()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.visualizations.analysis_results_graphs.map_analysis_functions_to_display_functions"><code class="docutils literal notranslate"><span class="pre">map_analysis_functions_to_display_functions()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-visualizations-m21-integrated-py">Module: visualizations.m21_integrated.py</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.visualizations.m21_integrated.display_file_export_directory"><code class="docutils literal notranslate"><span class="pre">display_file_export_directory()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.visualizations.m21_integrated.play_midi_score"><code class="docutils literal notranslate"><span class="pre">play_midi_score()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.visualizations.m21_integrated.show_chord_connections"><code class="docutils literal notranslate"><span class="pre">show_chord_connections()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.visualizations.m21_integrated.show_chord_scale_system"><code class="docutils literal notranslate"><span class="pre">show_chord_scale_system()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.visualizations.m21_integrated.show_figured_bass"><code class="docutils literal notranslate"><span class="pre">show_figured_bass()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.visualizations.m21_integrated.show_key_analysis"><code class="docutils literal notranslate"><span class="pre">show_key_analysis()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.visualizations.m21_integrated.show_musescore"><code class="docutils literal notranslate"><span class="pre">show_musescore()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.visualizations.m21_integrated.show_pianoroll"><code class="docutils literal notranslate"><span class="pre">show_pianoroll()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.visualizations.m21_integrated.show_voice_progression"><code class="docutils literal notranslate"><span class="pre">show_voice_progression()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.visualizations.m21_integrated.show_volume_change"><code class="docutils literal notranslate"><span class="pre">show_volume_change()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-visualizations-main-py">Module: visualizations.main.py</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.visualizations.main.generic_display_workflow"><code class="docutils literal notranslate"><span class="pre">generic_display_workflow()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.visualizations.main.get_user_option_post_display"><code class="docutils literal notranslate"><span class="pre">get_user_option_post_display()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.constants.html">Module: Constants (src.constants)</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">I-MaT</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="src.html">I-MaT: Source Code</a></li>
+      <li class="breadcrumb-item active">Package: Visualizations (src.visualizations)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/module_files/src.visualizations.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-iMaT.src.visualizations.analysis_results_graphs">
+<span id="package-visualizations-src-visualizations"></span><h1>Package: Visualizations (src.visualizations)<a class="headerlink" href="#module-iMaT.src.visualizations.analysis_results_graphs" title="Permalink to this heading"></a></h1>
+<section id="module-visualizations-analysis-results-graphs-py">
+<h2>Module: visualizations.analysis_results_graphs.py<a class="headerlink" href="#module-visualizations-analysis-results-graphs-py" title="Permalink to this heading"></a></h2>
+<p>This module, part of the <cite>visualizations</cite> package, provides a suite of methods for generating visualizations from
+the analysis results of musical scores.</p>
+<p>The purpose of these functions is to create comprehensive and understandable visualizations of the musical structures
+and characteristics that emerge from the analysis of musical scores.</p>
+</section>
+<dl class="py function">
+<dt class="sig sig-object py" id="iMaT.src.visualizations.analysis_results_graphs.display_advanced_pitch_class_duration_analysis">
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.visualizations.analysis_results_graphs.</span></span><span class="sig-name descname"><span class="pre">display_advanced_pitch_class_duration_analysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">analysis_results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.visualizations.analysis_results_graphs.display_advanced_pitch_class_duration_analysis" title="Permalink to this definition"></a></dt>
+<dd><p>Display a series of bar plots for the advanced pitch and pitch class duration analysis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>analysis_results</strong> (<em>pd.DataFrame</em>) – The DataFrame with the results of the analysis.</p></li>
+<li><p><strong>identifier</strong> (<em>str</em>) – The identifier string to be added to the plot title.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iMaT.src.visualizations.analysis_results_graphs.display_analysis_number_of_intervals_per_type">
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.visualizations.analysis_results_graphs.</span></span><span class="sig-name descname"><span class="pre">display_analysis_number_of_intervals_per_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">analysis_results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.visualizations.analysis_results_graphs.display_analysis_number_of_intervals_per_type" title="Permalink to this definition"></a></dt>
+<dd><p>Display a bar diagram of the number of interval types.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>analysis_results</strong> (<em>pd.DataFrame</em>) – The DataFrame with the results of the analysis.</p></li>
+<li><p><strong>identifier</strong> (<em>str</em>) – The identifier string to be added to the plot title.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iMaT.src.visualizations.analysis_results_graphs.display_analysis_number_of_intervals_per_type_with_direction">
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.visualizations.analysis_results_graphs.</span></span><span class="sig-name descname"><span class="pre">display_analysis_number_of_intervals_per_type_with_direction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">analysis_results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.visualizations.analysis_results_graphs.display_analysis_number_of_intervals_per_type_with_direction" title="Permalink to this definition"></a></dt>
+<dd><p>Display a bar diagram of the number of ascending and descending interval types.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>analysis_results</strong> (<em>pd.DataFrame</em>) – The DataFrame with the results of the analysis.</p></li>
+<li><p><strong>identifier</strong> (<em>str</em>) – The identifier string to be added to the plot title.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iMaT.src.visualizations.analysis_results_graphs.display_analysis_number_of_pitch_classes_per_metrical_position">
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.visualizations.analysis_results_graphs.</span></span><span class="sig-name descname"><span class="pre">display_analysis_number_of_pitch_classes_per_metrical_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">analysis_results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.visualizations.analysis_results_graphs.display_analysis_number_of_pitch_classes_per_metrical_position" title="Permalink to this definition"></a></dt>
+<dd><p>Display a matrix plot of the number of pitch classes per metrical position.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>analysis_results</strong> (<em>pd.DataFrame</em>) – The DataFrame with the results of the analysis.</p></li>
+<li><p><strong>identifier</strong> (<em>str</em>) – The identifier string to be added to the plot title.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iMaT.src.visualizations.analysis_results_graphs.display_analysis_number_of_pitch_classes_per_offset">
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.visualizations.analysis_results_graphs.</span></span><span class="sig-name descname"><span class="pre">display_analysis_number_of_pitch_classes_per_offset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">analysis_results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.visualizations.analysis_results_graphs.display_analysis_number_of_pitch_classes_per_offset" title="Permalink to this definition"></a></dt>
+<dd><p>Display a matrix plot of the number of pitch classes per offset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>analysis_results</strong> (<em>pd.DataFrame</em>) – The DataFrame with the results of the analysis.</p></li>
+<li><p><strong>identifier</strong> (<em>str</em>) – The identifier string to be added to the plot title.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iMaT.src.visualizations.analysis_results_graphs.display_analysis_number_of_pitch_classes_per_tone_duration">
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.visualizations.analysis_results_graphs.</span></span><span class="sig-name descname"><span class="pre">display_analysis_number_of_pitch_classes_per_tone_duration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">analysis_results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.visualizations.analysis_results_graphs.display_analysis_number_of_pitch_classes_per_tone_duration" title="Permalink to this definition"></a></dt>
+<dd><p>Display a matrix plot of the number of pitch classes per duration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>analysis_results</strong> (<em>pd.DataFrame</em>) – The DataFrame with the results of the analysis.</p></li>
+<li><p><strong>identifier</strong> (<em>str</em>) – The identifier string to be added to the plot title.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iMaT.src.visualizations.analysis_results_graphs.display_analysis_number_of_pitches_per_metrical_position">
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.visualizations.analysis_results_graphs.</span></span><span class="sig-name descname"><span class="pre">display_analysis_number_of_pitches_per_metrical_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">analysis_results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.visualizations.analysis_results_graphs.display_analysis_number_of_pitches_per_metrical_position" title="Permalink to this definition"></a></dt>
+<dd><p>Display a matrix plot of the number of pitches per metrical position.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>analysis_results</strong> (<em>pd.DataFrame</em>) – The DataFrame with the results of the analysis.</p></li>
+<li><p><strong>identifier</strong> (<em>str</em>) – The identifier string to be added to the plot title.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iMaT.src.visualizations.analysis_results_graphs.display_analysis_number_of_pitches_per_offset">
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.visualizations.analysis_results_graphs.</span></span><span class="sig-name descname"><span class="pre">display_analysis_number_of_pitches_per_offset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">analysis_results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.visualizations.analysis_results_graphs.display_analysis_number_of_pitches_per_offset" title="Permalink to this definition"></a></dt>
+<dd><p>Display a matrix plot of the number of pitches per offset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>analysis_results</strong> (<em>pd.DataFrame</em>) – The DataFrame with the results of the analysis.</p></li>
+<li><p><strong>identifier</strong> (<em>str</em>) – The identifier string to be added to the plot title.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iMaT.src.visualizations.analysis_results_graphs.display_analysis_number_of_pitches_per_tone_duration">
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.visualizations.analysis_results_graphs.</span></span><span class="sig-name descname"><span class="pre">display_analysis_number_of_pitches_per_tone_duration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">analysis_results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.visualizations.analysis_results_graphs.display_analysis_number_of_pitches_per_tone_duration" title="Permalink to this definition"></a></dt>
+<dd><p>Display a matrix plot of the number of pitches per duration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>analysis_results</strong> (<em>pd.DataFrame</em>) – The DataFrame with the results of the analysis.</p></li>
+<li><p><strong>identifier</strong> (<em>str</em>) – The identifier string to be added to the plot title.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iMaT.src.visualizations.analysis_results_graphs.display_analysis_number_of_rests_per_rest_duration">
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.visualizations.analysis_results_graphs.</span></span><span class="sig-name descname"><span class="pre">display_analysis_number_of_rests_per_rest_duration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">analysis_results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.visualizations.analysis_results_graphs.display_analysis_number_of_rests_per_rest_duration" title="Permalink to this definition"></a></dt>
+<dd><p>Display a bar diagram of the number of rests per rest duration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>analysis_results</strong> (<em>pd.DataFrame</em>) – The DataFrame with the results of the analysis.</p></li>
+<li><p><strong>identifier</strong> (<em>str</em>) – The identifier string to be added to the plot title.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iMaT.src.visualizations.analysis_results_graphs.display_analysis_number_of_sound_events_per_metrical_position">
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.visualizations.analysis_results_graphs.</span></span><span class="sig-name descname"><span class="pre">display_analysis_number_of_sound_events_per_metrical_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">analysis_results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.visualizations.analysis_results_graphs.display_analysis_number_of_sound_events_per_metrical_position" title="Permalink to this definition"></a></dt>
+<dd><p>Display a bar diagram of the number of sound events per metrical position.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>analysis_results</strong> (<em>pd.DataFrame</em>) – The DataFrame with the results of the analysis.</p></li>
+<li><p><strong>identifier</strong> (<em>str</em>) – The identifier string to be added to the plot title.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iMaT.src.visualizations.analysis_results_graphs.display_analysis_number_of_sound_events_per_pitch">
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.visualizations.analysis_results_graphs.</span></span><span class="sig-name descname"><span class="pre">display_analysis_number_of_sound_events_per_pitch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">analysis_results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.visualizations.analysis_results_graphs.display_analysis_number_of_sound_events_per_pitch" title="Permalink to this definition"></a></dt>
+<dd><p>Display a bar diagram of the number of sound events per pitch.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>analysis_results</strong> (<em>pd.DataFrame</em>) – The DataFrame with the results of the analysis.</p></li>
+<li><p><strong>identifier</strong> (<em>str</em>) – The identifier string to be added to the plot title.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iMaT.src.visualizations.analysis_results_graphs.display_analysis_number_of_sound_events_per_pitch_class">
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.visualizations.analysis_results_graphs.</span></span><span class="sig-name descname"><span class="pre">display_analysis_number_of_sound_events_per_pitch_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">analysis_results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.visualizations.analysis_results_graphs.display_analysis_number_of_sound_events_per_pitch_class" title="Permalink to this definition"></a></dt>
+<dd><p>Display a bar diagram of the number of sound events per pitch class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>analysis_results</strong> (<em>pd.DataFrame</em>) – The DataFrame with the results of the analysis.</p></li>
+<li><p><strong>identifier</strong> (<em>str</em>) – The identifier string to be added to the plot title.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iMaT.src.visualizations.analysis_results_graphs.display_analysis_number_of_sound_events_per_tone_duration">
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.visualizations.analysis_results_graphs.</span></span><span class="sig-name descname"><span class="pre">display_analysis_number_of_sound_events_per_tone_duration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">analysis_results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.visualizations.analysis_results_graphs.display_analysis_number_of_sound_events_per_tone_duration" title="Permalink to this definition"></a></dt>
+<dd><p>Display a bar diagram of the number of sound events per tone duration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>analysis_results</strong> (<em>pd.DataFrame</em>) – The DataFrame with the results of the analysis.</p></li>
+<li><p><strong>identifier</strong> (<em>str</em>) – The identifier string to be added to the plot title.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iMaT.src.visualizations.analysis_results_graphs.map_analysis_functions_to_display_functions">
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.visualizations.analysis_results_graphs.</span></span><span class="sig-name descname"><span class="pre">map_analysis_functions_to_display_functions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">analysis_func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">callable</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.visualizations.analysis_results_graphs.map_analysis_functions_to_display_functions" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the corresponding results display function for a provided analysis function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>analysis_func</strong> (<em>callable</em>) – The analysis function for which the corresponding results display function is to be returned.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The corresponding results display function.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>function</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the provided analysis function is not mapped to a results display function.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-iMaT.src.visualizations.m21_integrated"></span><section id="module-visualizations-m21-integrated-py">
+<h2>Module: visualizations.m21_integrated.py<a class="headerlink" href="#module-visualizations-m21-integrated-py" title="Permalink to this heading"></a></h2>
+<p>This module, part of the <cite>visualizations</cite> package, leverages the <cite>music21</cite> library to provide various methods of
+displaying and analyzing musical scores.</p>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><cite>play_midi_score(selected_score)</cite>: Plays the selected score in MIDI format.</p></li>
+<li><p><cite>show_musescore(selected_score)</cite>: Displays the selected score in MuseScore.</p></li>
+<li><p><cite>show_chord_connections(selected_score)</cite>: Visualizes the chord connections in the selected score.</p></li>
+<li><p><cite>show_figured_bass(selected_score)</cite>: Presents the figured bass notation in the selected score.</p></li>
+<li><p><cite>show_chord_scale_system(selected_score)</cite>: Visualizes the chord-scale system in the selected score.</p></li>
+<li><p><cite>show_pianoroll(selected_score)</cite>: Creates a pianoroll view of the selected score.</p></li>
+<li><p><cite>show_voice_progression(selected_score)</cite>: Illustrates the voice progression in the selected score.</p></li>
+<li><p><cite>show_volume_change(selected_score)</cite>: Plots the volume change over time in the selected score.</p></li>
+<li><p><cite>show_key_analysis(selected_score)</cite>: Provides a key analysis of the selected score.</p></li>
+<li><p><cite>display_file_export_directory()</cite>: Prints the directory where the score or analysis result files are exported.</p></li>
+</ul>
+<p>These functions manage exceptions by leveraging the <cite>handle_error</cite> function from the <cite>src.utils</cite> package.
+The <cite>display_menu_print_textblock</cite> and <cite>display_menu_request_selection</cite> functions from <cite>src.cli.menu_constructors</cite> are
+used to interact with the user.</p>
+</section>
+</section>
+<dl class="py function">
+<dt class="sig sig-object py" id="iMaT.src.visualizations.m21_integrated.display_file_export_directory">
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.visualizations.m21_integrated.</span></span><span class="sig-name descname"><span class="pre">display_file_export_directory</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.visualizations.m21_integrated.display_file_export_directory" title="Permalink to this definition"></a></dt>
+<dd><p>Prints the directory where the files are exported and waits for the user to press enter to continue.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iMaT.src.visualizations.m21_integrated.play_midi_score">
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.visualizations.m21_integrated.</span></span><span class="sig-name descname"><span class="pre">play_midi_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selected_score</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.visualizations.m21_integrated.play_midi_score" title="Permalink to this definition"></a></dt>
+<dd><p>Plays the selected score in MIDI format and prints the directory where it’s exported.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>selected_score</strong> (<em>music21 stream</em>) – Music21 stream object of the selected score.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iMaT.src.visualizations.m21_integrated.show_chord_connections">
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.visualizations.m21_integrated.</span></span><span class="sig-name descname"><span class="pre">show_chord_connections</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selected_score</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.visualizations.m21_integrated.show_chord_connections" title="Permalink to this definition"></a></dt>
+<dd><p>Shows chord connections of the selected score and prints the directory where it’s exported.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>selected_score</strong> (<em>music21 stream</em>) – Music21 stream object of the selected score.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iMaT.src.visualizations.m21_integrated.show_chord_scale_system">
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.visualizations.m21_integrated.</span></span><span class="sig-name descname"><span class="pre">show_chord_scale_system</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selected_score</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.visualizations.m21_integrated.show_chord_scale_system" title="Permalink to this definition"></a></dt>
+<dd><p>Shows chord-scale system of the selected score and prints the directory where it’s exported.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>selected_score</strong> (<em>music21 stream</em>) – Music21 stream object of the selected score.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iMaT.src.visualizations.m21_integrated.show_figured_bass">
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.visualizations.m21_integrated.</span></span><span class="sig-name descname"><span class="pre">show_figured_bass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selected_score</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.visualizations.m21_integrated.show_figured_bass" title="Permalink to this definition"></a></dt>
+<dd><p>Shows figured bass notation of the selected score and prints the directory where it’s exported.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>selected_score</strong> (<em>music21 stream</em>) – Music21 stream object of the selected score.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iMaT.src.visualizations.m21_integrated.show_key_analysis">
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.visualizations.m21_integrated.</span></span><span class="sig-name descname"><span class="pre">show_key_analysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selected_score</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.visualizations.m21_integrated.show_key_analysis" title="Permalink to this definition"></a></dt>
+<dd><p>Shows key analysis of the selected score and prints the directory where it’s exported.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>selected_score</strong> (<em>music21 stream</em>) – Music21 stream object of the selected score.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iMaT.src.visualizations.m21_integrated.show_musescore">
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.visualizations.m21_integrated.</span></span><span class="sig-name descname"><span class="pre">show_musescore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selected_score</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.visualizations.m21_integrated.show_musescore" title="Permalink to this definition"></a></dt>
+<dd><p>Shows the selected score in MuseScore and prints the directory where it’s exported.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>selected_score</strong> (<em>music21 stream</em>) – Music21 stream object of the selected score.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iMaT.src.visualizations.m21_integrated.show_pianoroll">
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.visualizations.m21_integrated.</span></span><span class="sig-name descname"><span class="pre">show_pianoroll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selected_score</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.visualizations.m21_integrated.show_pianoroll" title="Permalink to this definition"></a></dt>
+<dd><p>Shows a pianoroll view of the selected score and prints the directory where it’s exported.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>selected_score</strong> (<em>music21 stream</em>) – Music21 stream object of the selected score.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iMaT.src.visualizations.m21_integrated.show_voice_progression">
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.visualizations.m21_integrated.</span></span><span class="sig-name descname"><span class="pre">show_voice_progression</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selected_score</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.visualizations.m21_integrated.show_voice_progression" title="Permalink to this definition"></a></dt>
+<dd><p>Shows voice progression of the selected score and prints the directory where it’s exported.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>selected_score</strong> (<em>music21 stream</em>) – Music21 stream object of the selected score.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iMaT.src.visualizations.m21_integrated.show_volume_change">
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.visualizations.m21_integrated.</span></span><span class="sig-name descname"><span class="pre">show_volume_change</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selected_score</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.visualizations.m21_integrated.show_volume_change" title="Permalink to this definition"></a></dt>
+<dd><p>Shows volume change over time of the selected score and prints the directory where it’s exported.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>selected_score</strong> (<em>music21 stream</em>) – Music21 stream object of the selected score.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-iMaT.src.visualizations.main"></span><section id="module-visualizations-main-py">
+<h2>Module: visualizations.main.py<a class="headerlink" href="#module-visualizations-main-py" title="Permalink to this heading"></a></h2>
+<p>This module, part of the <cite>visualizations</cite> package, provides workflow management for the display and playback of musical
+scores. It includes functions that manage score selection and handle user interaction post-analysis.</p>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><cite>generic_display_workflow(display_func)</cite>: Manages the workflow for displaying or playing back a musical score.</p></li>
+<li><p><cite>get_user_option_post_display()</cite>: Presents post-analysis options to the user and retrieves their selection.</p></li>
+</ul>
+<p>This module interacts with several other packages including <cite>src.cli.menu_constructors</cite>, <cite>src.score_selection.main</cite>,
+<cite>src.score_selection.name_parts</cite>, and <cite>src.score_selection.select_parts_and_measures</cite>.</p>
+<p class="rubric">Examples</p>
+<p>Please see the docstrings of individual functions for specific examples of their use.</p>
+</section>
+</section>
+<dl class="py function">
+<dt class="sig sig-object py" id="iMaT.src.visualizations.main.generic_display_workflow">
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.visualizations.main.</span></span><span class="sig-name descname"><span class="pre">generic_display_workflow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">display_func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">callable</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.visualizations.main.generic_display_workflow" title="Permalink to this definition"></a></dt>
+<dd><p>Handles the display/playback function workflow for a musical score.</p>
+<p>The workflow includes score selection, application of the display function,
+and the post-display options.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>display_func</strong> (<em>callable</em>) – Function to display or playback the musical score.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iMaT.src.visualizations.main.get_user_option_post_display">
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.visualizations.main.</span></span><span class="sig-name descname"><span class="pre">get_user_option_post_display</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.visualizations.main.get_user_option_post_display" title="Permalink to this definition"></a></dt>
+<dd><p>Presents the user with post-analysis options and retrieves their selection.</p>
+<p>The post-analysis options include “repeat”, “export”, “display_results”, or “back”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>User’s selected option as a string.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-iMaT.src.visualizations"></span></section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="src.utils.html" class="btn btn-neutral float-left" title="Package: Utility Functions (src.utils)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="src.constants.html" class="btn btn-neutral float-right" title="Module: Constants (src.constants)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Sebastian Oliver Eck.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
