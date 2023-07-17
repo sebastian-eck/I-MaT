@@ -8,14 +8,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="261d9175-119f-4a99-aab1-0189b930fb8c" name="Changes" comment="final changes (for now)">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/doctrees/environment.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/doctrees/environment.pickle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/doctrees/index.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/doctrees/index.doctree" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.buildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.buildinfo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/api_reference.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/api_reference.doctree" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/contribute.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/contribute.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/environment.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/environment.pickle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/analysis/src.analysis.functions.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/analysis/src.analysis.functions.doctree" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/analysis/src.analysis.main.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/analysis/src.analysis.main.doctree" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/analysis/src.analysis.utils.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/analysis/src.analysis.utils.doctree" afterDir="false" />
@@ -103,23 +101,7 @@
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/visualizations/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/visualizations/main.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_sources/contribute.md.txt" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_sources/contribute.md.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/_sphinx_javascript_frameworks_compat.js" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/_sphinx_javascript_frameworks_compat.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/Roboto-Slab-Bold.woff" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/Roboto-Slab-Bold.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/Roboto-Slab-Bold.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/Roboto-Slab-Bold.woff2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/Roboto-Slab-Regular.woff" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/Roboto-Slab-Regular.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/Roboto-Slab-Regular.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/Roboto-Slab-Regular.woff2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/fontawesome-webfont.eot" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/fontawesome-webfont.eot" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/fontawesome-webfont.svg" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/fontawesome-webfont.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/fontawesome-webfont.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/fontawesome-webfont.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/fontawesome-webfont.woff" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/fontawesome-webfont.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/fontawesome-webfont.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/fontawesome-webfont.woff2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/lato-bold-italic.woff" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/lato-bold-italic.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/lato-bold-italic.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/lato-bold-italic.woff2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/lato-bold.woff" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/lato-bold.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/lato-bold.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/lato-bold.woff2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/lato-normal-italic.woff" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/lato-normal-italic.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/lato-normal-italic.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/lato-normal-italic.woff2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/lato-normal.woff" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/lato-normal.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/lato-normal.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/lato-normal.woff2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/theme.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/custom.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/debug.css" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/debug.css" afterDir="false" />
@@ -128,7 +110,6 @@
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/jquery.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/js/html5shiv-printshiv.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/js/html5shiv-printshiv.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/js/html5shiv.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/js/html5shiv.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/pygments.css" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/pygments.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/scripts/furo.js" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/scripts/furo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/scripts/furo.js.LICENSE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/scripts/furo.js.LICENSE.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/searchtools.js" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/searchtools.js" afterDir="false" />
@@ -161,6 +142,23 @@
       <change beforePath="$PROJECT_DIR$/iMaT/docs/source/conf.py" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/source/conf.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/source/contribute.md" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/source/contribute.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/src/cli/menu_constructors.py" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/src/cli/menu_constructors.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/Roboto-Slab-Bold.woff" beforeDir="false" afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/Roboto-Slab-Bold.woff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/Roboto-Slab-Bold.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/Roboto-Slab-Bold.woff2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/Roboto-Slab-Regular.woff" beforeDir="false" afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/Roboto-Slab-Regular.woff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/Roboto-Slab-Regular.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/Roboto-Slab-Regular.woff2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/fontawesome-webfont.eot" beforeDir="false" afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/fontawesome-webfont.eot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/fontawesome-webfont.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/fontawesome-webfont.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/fontawesome-webfont.woff" beforeDir="false" afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/fontawesome-webfont.woff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/fontawesome-webfont.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/fontawesome-webfont.woff2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/lato-bold-italic.woff" beforeDir="false" afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/lato-bold-italic.woff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/lato-bold-italic.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/lato-bold-italic.woff2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/lato-bold.woff" beforeDir="false" afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/lato-bold.woff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/lato-bold.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/lato-bold.woff2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/lato-normal-italic.woff" beforeDir="false" afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/lato-normal-italic.woff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/lato-normal-italic.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/lato-normal-italic.woff2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/lato-normal.woff" beforeDir="false" afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/lato-normal.woff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/lato-normal.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/lato-normal.woff2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imat/docs/build/html/_static/pygments.css" beforeDir="false" afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/pygments.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -636,7 +634,7 @@
       <workItem from="1689605091269" duration="76000" />
       <workItem from="1689605717270" duration="1607000" />
       <workItem from="1689607895633" duration="572000" />
-      <workItem from="1689608572510" duration="1066000" />
+      <workItem from="1689608572510" duration="1397000" />
     </task>
     <task id="LOCAL-00001" summary="Splitting (lots of work to do)">
       <created>1686194669168</created>
@@ -799,7 +797,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689608105647</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="final changes (for now)">
+      <created>1689609726637</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1689609726637</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
