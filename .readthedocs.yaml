@@ -6,11 +6,11 @@ build:
     python: "3.9"
 
 sphinx:
-  configurration: iMaT/docs/source/conf.py
+  configuration: iMaT/docs/source/conf.py
 
 python:
   install:
     - method: pip
       path: .
-      extra_requirements
+      extra_requirements:
         - doc
