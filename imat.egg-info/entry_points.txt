@@ -1,0 +1,2 @@
+[console_scripts]
+iMaT = iMaT.__main__:main

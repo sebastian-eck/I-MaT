@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Subpackage: Tokenization Refinement (src.tokenization.refine_results) &#8212; I-MaT 3.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Package: Utility Functions (src.utils)" href="src.utils.html" />
+    <link rel="prev" title="Package: Tokenization (src.tokenization)" href="src.tokenization.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="subpackage-tokenization-refinement-src-tokenization-refine-results">
+<h1>Subpackage: Tokenization Refinement (src.tokenization.refine_results)<a class="headerlink" href="#subpackage-tokenization-refinement-src-tokenization-refine-results" title="Permalink to this heading">¶</a></h1>
+<section id="module-iMaT.src.tokenization.refine_results.absolute_duration">
+<span id="module-src-tokenization-refine-results-absolute-duration"></span><h2>Module: src.tokenization.refine_results.absolute_duration<a class="headerlink" href="#module-iMaT.src.tokenization.refine_results.absolute_duration" title="Permalink to this heading">¶</a></h2>
+<section id="module-tokenization-refine-results-asbolute-duration-py">
+<h3>Module: tokenization.refine_results.asbolute_duration.py<a class="headerlink" href="#module-tokenization-refine-results-asbolute-duration-py" title="Permalink to this heading">¶</a></h3>
+<p>This module, a part of the <cite>tokenization.refine_results</cite> package, refines MIDI data by converting string representations of duration to absolute numerical values.</p>
+<section id="functions">
+<h4>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h4>
+<ul class="simple">
+<li><p><cite>corpus_tokenization_refine_data_absolute_duration</cite>: Handles a workflow for refining tokenized data by converting duration values to numerical format.</p></li>
+<li><p><cite>convert_duration_to_numerical</cite>: Helper function that converts a duration string to a numerical format.</p></li>
+<li><p><cite>refine_data_function_absolute_duration</cite>: Applies the <cite>convert_duration_to_numerical</cite> function to the ‘Duration’ column of a DataFrame.</p></li>
+</ul>
+<p class="rubric">Notes</p>
+<p>The module expects CSV files to have a specific structure, including a ‘Duration’ column.
+Please refer to the individual function docstrings for more detailed descriptions and examples of usage.</p>
+</section>
+</section>
+<dl class="py function">
+<dt class="sig sig-object py" id="iMaT.src.tokenization.refine_results.absolute_duration.convert_duration_to_numerical">
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.tokenization.refine_results.absolute_duration.</span></span><span class="sig-name descname"><span class="pre">convert_duration_to_numerical</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">duration</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.tokenization.refine_results.absolute_duration.convert_duration_to_numerical" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a duration from a string format (“a.b.c”) to a numerical value if the format matches.</p>
+<p>The function checks whether the duration starts with the prefix “<a href="#id1"><span class="problematic" id="id2">Duration_</span></a>”, and if so, removes the prefix
+before performing the conversion. If the format of the duration doesn’t match the expected format, the function
+returns the original duration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>duration</strong> (<em>str</em>) – The duration value to be converted, in “a.b.c” format.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The converted duration as a numerical value, if the format matches.
+The original duration, if the format doesn’t match.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float or str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iMaT.src.tokenization.refine_results.absolute_duration.corpus_tokenization_refine_data_absolute_duration">
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.tokenization.refine_results.absolute_duration.</span></span><span class="sig-name descname"><span class="pre">corpus_tokenization_refine_data_absolute_duration</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.tokenization.refine_results.absolute_duration.corpus_tokenization_refine_data_absolute_duration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Executes a workflow for refining tokenized and cleaned CSV data.</p>
+<p>This function guides the user to select a CSV file with a predefined naming pattern, performs data refining operations
+on the data within, and displays a table with the refined results. The user then has an option to save the refined data
+into a new CSV file.</p>
+<p>Parameters: None</p>
+<p>Returns: None</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">select_csv_file_2d_token_representation</span></code></dt><dd><p>Opens a file dialog allowing the user to select a CSV file.</p>
+</dd>
+<dt><a class="reference internal" href="#iMaT.src.tokenization.refine_results.absolute_duration.refine_data_function_absolute_duration" title="iMaT.src.tokenization.refine_results.absolute_duration.refine_data_function_absolute_duration"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refine_data_function_absolute_duration</span></code></a></dt><dd><p>Applies the convert_duration_to_numerical function to the ‘Duration’ column of a pandas DataFrame.</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iMaT.src.tokenization.refine_results.absolute_duration.refine_data_function_absolute_duration">
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.tokenization.refine_results.absolute_duration.</span></span><span class="sig-name descname"><span class="pre">refine_data_function_absolute_duration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.tokenization.refine_results.absolute_duration.refine_data_function_absolute_duration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies the convert_duration_to_numerical function to the ‘Duration’ column of a pandas DataFrame.</p>
+<p>This function first checks if the ‘Duration’ column exists in the DataFrame. If so, it applies the
+convert_duration_to_numerical function to each entry in the column, converting string representations of
+duration into numerical values where possible.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>pandas.DataFrame</em>) – The DataFrame to refine.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The DataFrame with converted ‘Duration’ column.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#iMaT.src.tokenization.refine_results.absolute_duration.convert_duration_to_numerical" title="iMaT.src.tokenization.refine_results.absolute_duration.convert_duration_to_numerical"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_duration_to_numerical</span></code></a></dt><dd><p>Converts a duration from a string format (“a.b.c”) to a numerical value if the format matches.</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+</section>
+<section id="module-iMaT.src.tokenization.refine_results.calculate_pitch_intervals">
+<span id="module-src-tokenization-refine-results-calculate-pitch-intervals"></span><h2>Module: src.tokenization.refine_results.calculate_pitch_intervals<a class="headerlink" href="#module-iMaT.src.tokenization.refine_results.calculate_pitch_intervals" title="Permalink to this heading">¶</a></h2>
+<section id="module-tokenization-refine-results-calculate-pitch-intervals-py">
+<h3>Module: tokenization.refine_results.calculate_pitch_intervals.py<a class="headerlink" href="#module-tokenization-refine-results-calculate-pitch-intervals-py" title="Permalink to this heading">¶</a></h3>
+<p>This module, part of the <cite>tokenization.refine_results</cite> package, refines tokenized MIDI data by calculating pitch intervals.</p>
+<section id="functions">
+<h4>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h4>
+<ul class="simple">
+<li><p><cite>tokenization_calculate_pitch_intervals</cite>: Handles a workflow for refining tokenized MIDI data by calculating pitch intervals.</p></li>
+<li><p><cite>calculate_pitch_intervals_function</cite>: Helper function used within <cite>tokenization_calculate_pitch_intervals</cite> to add a pitch interval column to a DataFrame.</p></li>
+</ul>
+<p class="rubric">Notes</p>
+<p>The module expects CSV files to have a specific structure, including a ‘filename’ column, and pitches should be represented as MIDI pitch values.
+Please refer to the individual function docstrings for more detailed descriptions and examples of usage.</p>
+</section>
+</section>
+<dl class="py function">
+<dt class="sig sig-object py" id="iMaT.src.tokenization.refine_results.calculate_pitch_intervals.calculate_pitch_intervals_function">
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.tokenization.refine_results.calculate_pitch_intervals.</span></span><span class="sig-name descname"><span class="pre">calculate_pitch_intervals_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.tokenization.refine_results.calculate_pitch_intervals.calculate_pitch_intervals_function" title="Permalink to this definition">¶</a></dt>
+<dd><p>Refines a pandas DataFrame by calculating pitch differences between the current row and the next row.</p>
+<p>This function first checks if the ‘Pitch’ column exists in the DataFrame. If so, it calculates the pitch
+differences between the current row and the next row. The operation is performed for each unique filename
+if a ‘filename’ column exists in the DataFrame. If the ‘Pitch’ column contained non-numeric entries
+(i.e., had a prefix), it adds the prefix to the calculated difference values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>pandas.DataFrame</em>) – The DataFrame to refine.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The DataFrame with added ‘PitchDifferenceToNextPitch’ column.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">pandas.DataFrame.diff</span></code></dt><dd><p>Calculates the difference of a DataFrame element compared with another element in the DataFrame (default is the element in the same column of the previous row).</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">pandas.DataFrame.shift</span></code></dt><dd><p>Shifts index by desired number of periods with an optional time freq.</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iMaT.src.tokenization.refine_results.calculate_pitch_intervals.tokenization_calculate_pitch_intervals">
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.tokenization.refine_results.calculate_pitch_intervals.</span></span><span class="sig-name descname"><span class="pre">tokenization_calculate_pitch_intervals</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.tokenization.refine_results.calculate_pitch_intervals.tokenization_calculate_pitch_intervals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Executes a workflow for refining CSV data by calculating pitch intervals.</p>
+<p>This function guides the user to select a CSV file, performs data refining operations to calculate pitch
+differences between the current row and the next row (grouped by filename if available), and displays a
+table with the results. The user then has an option to save the refined data into a new CSV file.</p>
+<p>Parameters: None</p>
+<p>Returns: None</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">select_csv_file_2d_token_representation</span></code></dt><dd><p>Opens a file dialog allowing the user to select a CSV file.</p>
+</dd>
+<dt><a class="reference internal" href="#iMaT.src.tokenization.refine_results.calculate_pitch_intervals.calculate_pitch_intervals_function" title="iMaT.src.tokenization.refine_results.calculate_pitch_intervals.calculate_pitch_intervals_function"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calculate_pitch_intervals_function</span></code></a></dt><dd><p>Refines a pandas DataFrame by calculating pitch differences between the current row and the next row, grouping by filename if available.</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+</section>
+<section id="module-iMaT.src.tokenization.refine_results.remove_prefixes">
+<span id="module-src-tokenization-refine-results-remove-prefixes"></span><h2>Module: src.tokenization.refine_results.remove_prefixes<a class="headerlink" href="#module-iMaT.src.tokenization.refine_results.remove_prefixes" title="Permalink to this heading">¶</a></h2>
+<section id="module-tokenization-refine-results-remove-prefixes-py">
+<h3>Module: tokenization.refine_results.remove_prefixes.py<a class="headerlink" href="#module-tokenization-refine-results-remove-prefixes-py" title="Permalink to this heading">¶</a></h3>
+<p>This module, part of the <cite>tokenization.refine_results</cite> package, refines tokenized data in a CSV file by removing unwanted prefixes.</p>
+<section id="functions">
+<h4>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h4>
+<ul class="simple">
+<li><p><cite>corpus_tokenization_refine_data_remove_prefixes</cite>: Handles a workflow for refining tokenized data by removing unwanted prefixes.</p></li>
+<li><p><cite>remove_prefixes_function</cite>: Helper function used within <cite>corpus_tokenization_refine_data_remove_prefixes</cite> to refine a DataFrame.</p></li>
+</ul>
+<p class="rubric">Notes</p>
+<p>The module expects CSV files to have a specific structure, including a ‘filename’ column, and is designed to remove prefixes like ‘<a href="#id3"><span class="problematic" id="id4">Ignore_</span></a>’.
+Please refer to the individual function docstrings for more detailed descriptions and examples of usage.</p>
+</section>
+</section>
+<dl class="py function">
+<dt class="sig sig-object py" id="iMaT.src.tokenization.refine_results.remove_prefixes.corpus_tokenization_refine_data_remove_prefixes">
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.tokenization.refine_results.remove_prefixes.</span></span><span class="sig-name descname"><span class="pre">corpus_tokenization_refine_data_remove_prefixes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.tokenization.refine_results.remove_prefixes.corpus_tokenization_refine_data_remove_prefixes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Refines CSV data by removing unwanted prefixes from the data.</p>
+<p>This function guides the user to select a CSV file, performs data refining operations to remove unwanted
+prefixes (specifically “<a href="#id5"><span class="problematic" id="id6">Ignore_</span></a>” prefixes and any prefixes that match column names), and displays a
+table with the results. The user then has an option to save the refined data into a new CSV file.</p>
+<p>Parameters: None</p>
+<p>Returns: None</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">select_csv_file_2d_token_representation</span></code></dt><dd><p>Opens a file dialog allowing the user to select a CSV file.</p>
+</dd>
+<dt><a class="reference internal" href="#iMaT.src.tokenization.refine_results.remove_prefixes.remove_prefixes_function" title="iMaT.src.tokenization.refine_results.remove_prefixes.remove_prefixes_function"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_prefixes_function</span></code></a></dt><dd><p>Refines the pandas DataFrame by removing unwanted prefixes.</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iMaT.src.tokenization.refine_results.remove_prefixes.remove_prefixes_function">
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.tokenization.refine_results.remove_prefixes.</span></span><span class="sig-name descname"><span class="pre">remove_prefixes_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.tokenization.refine_results.remove_prefixes.remove_prefixes_function" title="Permalink to this definition">¶</a></dt>
+<dd><p>Refines a pandas DataFrame by removing unwanted prefixes from the data.</p>
+<p>This function removes “<a href="#id7"><span class="problematic" id="id8">Ignore_</span></a>” prefixes from all entries in the DataFrame. Then, it iterates over each
+column in the DataFrame and removes any prefixes that match the column name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>pandas.DataFrame</em>) – The DataFrame to refine.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The DataFrame with removed unwanted prefixes.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-iMaT.src.tokenization.refine_results.tokens_to_txt">
+<span id="module-src-tokenization-refine-results-tokens-to-txt"></span><h2>Module: src.tokenization.refine_results.tokens_to_txt<a class="headerlink" href="#module-iMaT.src.tokenization.refine_results.tokens_to_txt" title="Permalink to this heading">¶</a></h2>
+<section id="module-tokenization-refine-results-tokens-to-txt-py">
+<h3>Module: tokenization.refine_results.tokens_to_txt.py<a class="headerlink" href="#module-tokenization-refine-results-tokens-to-txt-py" title="Permalink to this heading">¶</a></h3>
+<p>This module, a part of the <cite>tokenization.refine_results</cite> package, handles the conversion of tokenized data from a CSV file
+to individual text files.</p>
+<section id="functions">
+<h4>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h4>
+<ul class="simple">
+<li><p><cite>tokenization_export_csv_columns_to_txt_file</cite>: Exports a CSV file’s contents to individual text files, with directories
+for each column.</p></li>
+<li><p><cite>save_txt_files_to_directory</cite>: Saves data from a dictionary into text files, organizing the files into directories based on keys.</p></li>
+</ul>
+<p class="rubric">Notes</p>
+<p>The module expects CSV files to have a specific structure, including a ‘filename’ column.
+Please refer to the individual function docstrings for more detailed descriptions and examples of usage.</p>
+</section>
+</section>
+<dl class="py function">
+<dt class="sig sig-object py" id="iMaT.src.tokenization.refine_results.tokens_to_txt.save_txt_files_to_directory">
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.tokenization.refine_results.tokens_to_txt.</span></span><span class="sig-name descname"><span class="pre">save_txt_files_to_directory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.tokenization.refine_results.tokens_to_txt.save_txt_files_to_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves a dictionary of data into text files in directories named after each key.</p>
+<p>Each key-value pair in the data dictionary represents a filename and its associated data respectively.
+For each filename, the function creates a directory and within that directory, it creates a text file for
+each data column and writes the corresponding data into it. These directories are then bundled into a
+single directory named ‘extracted_data_[current date and time]’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>dict</em>) – The dictionary of data to be saved. Each key-value pair represents a filename and its associated data.</p></li>
+<li><p><strong>file_path</strong> (<em>str</em>) – The original file path used to generate the new directory’s name.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The path to the newly created directory.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">os.path.dirname</span></code></dt><dd><p>Returns the directory component of a pathname.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">os.makedirs</span></code></dt><dd><p>Recursively creates directories.</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="iMaT.src.tokenization.refine_results.tokens_to_txt.tokenization_export_csv_columns_to_txt_file">
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.tokenization.refine_results.tokens_to_txt.</span></span><span class="sig-name descname"><span class="pre">tokenization_export_csv_columns_to_txt_file</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.tokenization.refine_results.tokens_to_txt.tokenization_export_csv_columns_to_txt_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exports the columns of a CSV file to individual text files.</p>
+<p>This function asks the user to select a CSV file, and then groups the DataFrame by filename. For each group,
+it concatenates the values of each column into a string. Finally, it saves each column’s concatenated string
+into individual text files in directories named after each column. These directories are then bundled into
+a single directory named ‘extracted_data_[current date and time]’.</p>
+<p>Parameters: None</p>
+<p>Returns: None</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">select_csv_file_2d_token_representation</span></code></dt><dd><p>Opens a file dialog allowing the user to select a CSV file.</p>
+</dd>
+<dt><a class="reference internal" href="#iMaT.src.tokenization.refine_results.tokens_to_txt.save_txt_files_to_directory" title="iMaT.src.tokenization.refine_results.tokens_to_txt.save_txt_files_to_directory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_txt_files_to_directory</span></code></a></dt><dd><p>Saves the refined data into text files in directories named after each column.</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">I-MaT</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started with I-MaT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute.html">How to Contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="src.html">I-MaT: Source Code</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="src.analysis.html">Package: Analysis (src.analysis)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.cli.html">Package: Command Line Interface (src.cli)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.conversion.html">Package: File Conversion (src.conversion)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.m21_environment.html">Package: music21 Environment File Configuration (src.m21_environment)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.pattern_search.html">Package: Pattern Search (src.pattern_search)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.score_selection.html">Package: Score Selection (src.score_selection)</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="src.tokenization.html">Package: Tokenization (src.tokenization)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.utils.html">Package: Utility Functions (src.utils)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.visualizations.html">Package: Visualizations (src.visualizations)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.constants.html">Module: Constants (src.constants)</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="src.html">I-MaT: Source Code</a><ul>
+  <li><a href="src.tokenization.html">Package: Tokenization (src.tokenization)</a><ul>
+      <li>Previous: <a href="src.tokenization.html" title="previous chapter">Package: Tokenization (src.tokenization)</a></li>
+      <li>Next: <a href="src.utils.html" title="next chapter">Package: Utility Functions (src.utils)</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Sebastian Oliver Eck.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="../_sources/module_files/src.tokenization.refine_results.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
