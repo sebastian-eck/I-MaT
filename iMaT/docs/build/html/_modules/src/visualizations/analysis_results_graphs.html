@@ -1,0 +1,660 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>src.visualizations.analysis_results_graphs &#8212; I-MaT 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for src.visualizations.analysis_results_graphs</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Module: visualizations.analysis_results_graphs.py</span>
+<span class="sd">=================================================</span>
+
+<span class="sd">This module, part of the `visualizations` package, provides a suite of methods for generating visualizations from</span>
+<span class="sd">the analysis results of musical scores.</span>
+
+<span class="sd">The purpose of these functions is to create comprehensive and understandable visualizations of the musical structures</span>
+<span class="sd">and characteristics that emerge from the analysis of musical scores.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="kn">from</span> <span class="nn">iMaT.src.cli.menu_constructors</span> <span class="kn">import</span> <span class="n">display_menu_print_textblock</span>
+<span class="kn">from</span> <span class="nn">iMaT.src.utils.error_handling</span> <span class="kn">import</span> <span class="n">handle_error</span>
+
+
+<div class="viewcode-block" id="map_analysis_functions_to_display_functions"><a class="viewcode-back" href="../../../module_files/src.visualizations.html#src.visualizations.analysis_results_graphs.map_analysis_functions_to_display_functions">[docs]</a><span class="k">def</span> <span class="nf">map_analysis_functions_to_display_functions</span><span class="p">(</span><span class="n">analysis_func</span><span class="p">:</span> <span class="nb">callable</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns the corresponding results display function for a provided analysis function.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    analysis_func : callable</span>
+<span class="sd">        The analysis function for which the corresponding results display function is to be returned.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    function</span>
+<span class="sd">        The corresponding results display function.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ValueError</span>
+<span class="sd">        If the provided analysis function is not mapped to a results display function.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">function_mapping</span> <span class="o">=</span> <span class="p">{</span>
+
+            <span class="s1">&#39;analysis_number_of_rests_per_rest_duration&#39;</span><span class="p">:</span> <span class="n">display_analysis_number_of_rests_per_rest_duration</span><span class="p">,</span>
+            <span class="s1">&#39;analysis_number_of_intervals_per_type&#39;</span><span class="p">:</span> <span class="n">display_analysis_number_of_intervals_per_type</span><span class="p">,</span>
+            <span class="s1">&#39;analysis_number_of_intervals_per_type_with_direction&#39;</span><span class="p">:</span> <span class="n">display_analysis_number_of_intervals_per_type_with_direction</span><span class="p">,</span>
+            <span class="s1">&#39;analysis_number_of_sound_events_per_pitch&#39;</span><span class="p">:</span> <span class="n">display_analysis_number_of_sound_events_per_pitch</span><span class="p">,</span>
+            <span class="s1">&#39;analysis_number_of_sound_events_per_pitch_class&#39;</span><span class="p">:</span> <span class="n">display_analysis_number_of_sound_events_per_pitch_class</span><span class="p">,</span>
+            <span class="s1">&#39;analysis_number_of_sound_events_per_tone_duration&#39;</span><span class="p">:</span> <span class="n">display_analysis_number_of_sound_events_per_tone_duration</span><span class="p">,</span>
+            <span class="s1">&#39;analysis_number_of_sound_events_per_metrical_position&#39;</span><span class="p">:</span> <span class="n">display_analysis_number_of_sound_events_per_metrical_position</span><span class="p">,</span>
+            <span class="s1">&#39;analysis_number_of_pitches_per_tone_duration&#39;</span><span class="p">:</span> <span class="n">display_analysis_number_of_pitches_per_tone_duration</span><span class="p">,</span>
+            <span class="s1">&#39;analysis_number_of_pitches_per_metrical_position&#39;</span><span class="p">:</span> <span class="n">display_analysis_number_of_pitches_per_metrical_position</span><span class="p">,</span>
+            <span class="s1">&#39;analysis_number_of_pitches_per_offset&#39;</span><span class="p">:</span> <span class="n">display_analysis_number_of_pitches_per_offset</span><span class="p">,</span>
+            <span class="s1">&#39;analysis_number_of_pitch_classes_per_tone_duration&#39;</span><span class="p">:</span> <span class="n">display_analysis_number_of_pitch_classes_per_tone_duration</span><span class="p">,</span>
+            <span class="s1">&#39;analysis_number_of_pitch_classes_per_metrical_position&#39;</span><span class="p">:</span> <span class="n">display_analysis_number_of_pitch_classes_per_metrical_position</span><span class="p">,</span>
+            <span class="s1">&#39;analysis_number_of_pitch_classes_per_offset&#39;</span><span class="p">:</span> <span class="n">display_analysis_number_of_pitch_classes_per_offset</span><span class="p">,</span>
+            <span class="s1">&#39;analysis_advanced_compare_pitches_and_pitch_classes_per_duration&#39;</span><span class="p">:</span> <span class="n">display_advanced_pitch_class_duration_analysis</span>
+
+        <span class="p">}</span>
+
+        <span class="n">function_name</span> <span class="o">=</span> <span class="n">analysis_func</span><span class="o">.</span><span class="vm">__name__</span>
+
+        <span class="n">display_results_func</span> <span class="o">=</span> <span class="n">function_mapping</span><span class="p">[</span><span class="n">function_name</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">display_results_func</span>
+
+    <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+
+        <span class="n">text_dict</span> <span class="o">=</span> <span class="p">{</span>
+
+            <span class="s2">&quot;menu_displayed_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;-- Attention --&quot;</span><span class="p">,</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">For the chosen analysis function is no display function available. Please see below for possible &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;reasons:&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;&lt;To continue, please press Enter&gt;&quot;</span><span class="p">,</span>
+                <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;Error Messages&quot;</span><span class="p">]</span>
+
+            <span class="p">],</span>
+
+            <span class="s2">&quot;menu_entries_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">[</span><span class="s2">&quot;Function in Question:&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">function_name</span><span class="si">}</span><span class="s2">&#39;.&quot;</span><span class="p">],</span>
+                <span class="p">[</span><span class="s2">&quot;Possible Reasons&quot;</span><span class="p">,</span> <span class="s2">&quot;Not all analysis functions necessarily have a corresponding display function. &quot;</span>
+                                     <span class="s2">&quot;The display functions are intended to provide visual representations of the &quot;</span>
+                                     <span class="s2">&quot;analysis results, but for some analyses, that generate only very limited data, &quot;</span>
+                                     <span class="s2">&quot;the numerical or tabular results shown in the previous window may be sufficient.&quot;</span><span class="p">],</span>
+                <span class="p">[</span><span class="s2">&quot;Possible Solution&quot;</span><span class="p">,</span> <span class="s2">&quot;Check the function mapping or the available display functions in the code. &quot;</span>
+                                      <span class="s2">&quot;It&#39;s also possible that a display function for the given analysis function has &quot;</span>
+                                      <span class="s2">&quot;not been implemented yet. Feel free to contribute your own display function!&quot;</span><span class="p">],</span>
+
+            <span class="p">]</span>
+
+        <span class="p">}</span>
+
+        <span class="n">display_menu_print_textblock</span><span class="p">(</span><span class="n">text_dict</span><span class="p">)</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">handle_error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="display_analysis_number_of_rests_per_rest_duration"><a class="viewcode-back" href="../../../module_files/src.visualizations.html#src.visualizations.analysis_results_graphs.display_analysis_number_of_rests_per_rest_duration">[docs]</a><span class="k">def</span> <span class="nf">display_analysis_number_of_rests_per_rest_duration</span><span class="p">(</span><span class="n">analysis_results</span><span class="p">,</span> <span class="n">identifier</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Display a bar diagram of the number of rests per rest duration.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    analysis_results : pd.DataFrame</span>
+<span class="sd">        The DataFrame with the results of the analysis.</span>
+<span class="sd">    identifier : str</span>
+<span class="sd">        The identifier string to be added to the plot title.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Create the plot</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Rest Duration&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Count&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">analysis_results</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Rotate x-axis labels for better readability</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+
+        <span class="c1"># Add labels and title</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Number of Rests per Rest Duration for </span><span class="si">{</span><span class="n">identifier</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Rest Duration&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Display the plot</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">handle_error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="display_analysis_number_of_intervals_per_type"><a class="viewcode-back" href="../../../module_files/src.visualizations.html#src.visualizations.analysis_results_graphs.display_analysis_number_of_intervals_per_type">[docs]</a><span class="k">def</span> <span class="nf">display_analysis_number_of_intervals_per_type</span><span class="p">(</span><span class="n">analysis_results</span><span class="p">,</span> <span class="n">identifier</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Display a bar diagram of the number of interval types.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    analysis_results : pd.DataFrame</span>
+<span class="sd">        The DataFrame with the results of the analysis.</span>
+<span class="sd">    identifier : str</span>
+<span class="sd">        The identifier string to be added to the plot title.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Create the plot</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Interval Type&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Count&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">analysis_results</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Rotate x-axis labels for better readability</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+
+        <span class="c1"># Add labels and title</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Number of Interval Types for </span><span class="si">{</span><span class="n">identifier</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Interval Type&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Display the plot</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">handle_error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="display_analysis_number_of_intervals_per_type_with_direction"><a class="viewcode-back" href="../../../module_files/src.visualizations.html#src.visualizations.analysis_results_graphs.display_analysis_number_of_intervals_per_type_with_direction">[docs]</a><span class="k">def</span> <span class="nf">display_analysis_number_of_intervals_per_type_with_direction</span><span class="p">(</span><span class="n">analysis_results</span><span class="p">,</span> <span class="n">identifier</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Display a bar diagram of the number of ascending and descending interval types.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    analysis_results : pd.DataFrame</span>
+<span class="sd">        The DataFrame with the results of the analysis.</span>
+<span class="sd">    identifier : str</span>
+<span class="sd">        The identifier string to be added to the plot title.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Create the plot</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Interval&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Count&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">analysis_results</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Rotate x-axis labels for better readability</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+
+        <span class="c1"># Add labels and title</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Number of Ascending and Descending Interval Types for </span><span class="si">{</span><span class="n">identifier</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Interval&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Display the plot</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">handle_error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="display_analysis_number_of_sound_events_per_pitch"><a class="viewcode-back" href="../../../module_files/src.visualizations.html#src.visualizations.analysis_results_graphs.display_analysis_number_of_sound_events_per_pitch">[docs]</a><span class="k">def</span> <span class="nf">display_analysis_number_of_sound_events_per_pitch</span><span class="p">(</span><span class="n">analysis_results</span><span class="p">,</span> <span class="n">identifier</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Display a bar diagram of the number of sound events per pitch.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    analysis_results : pd.DataFrame</span>
+<span class="sd">        The DataFrame with the results of the analysis.</span>
+<span class="sd">    identifier : str</span>
+<span class="sd">        The identifier string to be added to the plot title.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Create the plot</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Pitch Name&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Count&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">analysis_results</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Rotate x-axis labels for better readability</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+
+        <span class="c1"># Add labels and title</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Number of Sound Events Per Pitch for </span><span class="si">{</span><span class="n">identifier</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Pitch Name&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Display the plot</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">handle_error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="display_analysis_number_of_sound_events_per_pitch_class"><a class="viewcode-back" href="../../../module_files/src.visualizations.html#src.visualizations.analysis_results_graphs.display_analysis_number_of_sound_events_per_pitch_class">[docs]</a><span class="k">def</span> <span class="nf">display_analysis_number_of_sound_events_per_pitch_class</span><span class="p">(</span><span class="n">analysis_results</span><span class="p">,</span> <span class="n">identifier</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Display a bar diagram of the number of sound events per pitch class.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    analysis_results : pd.DataFrame</span>
+<span class="sd">        The DataFrame with the results of the analysis.</span>
+<span class="sd">    identifier : str</span>
+<span class="sd">        The identifier string to be added to the plot title.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Create the plot</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Pitch Class Name&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Count&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">analysis_results</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Add labels and title</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Number of Sound Events Per Pitch Class for </span><span class="si">{</span><span class="n">identifier</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Pitch Class Name&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Display the plot</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">handle_error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="display_analysis_number_of_sound_events_per_tone_duration"><a class="viewcode-back" href="../../../module_files/src.visualizations.html#src.visualizations.analysis_results_graphs.display_analysis_number_of_sound_events_per_tone_duration">[docs]</a><span class="k">def</span> <span class="nf">display_analysis_number_of_sound_events_per_tone_duration</span><span class="p">(</span><span class="n">analysis_results</span><span class="p">,</span> <span class="n">identifier</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Display a bar diagram of the number of sound events per tone duration.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    analysis_results : pd.DataFrame</span>
+<span class="sd">        The DataFrame with the results of the analysis.</span>
+<span class="sd">    identifier : str</span>
+<span class="sd">        The identifier string to be added to the plot title.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Create the plot</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Tone Duration&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Count&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">analysis_results</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Add labels and title</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Number of Sound Events Per Tone Duration for </span><span class="si">{</span><span class="n">identifier</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Tone Duration&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Display the plot</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">handle_error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="display_analysis_number_of_sound_events_per_metrical_position"><a class="viewcode-back" href="../../../module_files/src.visualizations.html#src.visualizations.analysis_results_graphs.display_analysis_number_of_sound_events_per_metrical_position">[docs]</a><span class="k">def</span> <span class="nf">display_analysis_number_of_sound_events_per_metrical_position</span><span class="p">(</span><span class="n">analysis_results</span><span class="p">,</span> <span class="n">identifier</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Display a bar diagram of the number of sound events per metrical position.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    analysis_results : pd.DataFrame</span>
+<span class="sd">        The DataFrame with the results of the analysis.</span>
+<span class="sd">    identifier : str</span>
+<span class="sd">        The identifier string to be added to the plot title.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Create the plot</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Metrical Position&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Count&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">analysis_results</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Add labels and title</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Number of Sound Events Per Metrical Position for </span><span class="si">{</span><span class="n">identifier</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Metrical Position&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Display the plot</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">handle_error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="display_analysis_number_of_pitches_per_tone_duration"><a class="viewcode-back" href="../../../module_files/src.visualizations.html#src.visualizations.analysis_results_graphs.display_analysis_number_of_pitches_per_tone_duration">[docs]</a><span class="k">def</span> <span class="nf">display_analysis_number_of_pitches_per_tone_duration</span><span class="p">(</span><span class="n">analysis_results</span><span class="p">,</span> <span class="n">identifier</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Display a matrix plot of the number of pitches per duration.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    analysis_results : pd.DataFrame</span>
+<span class="sd">        The DataFrame with the results of the analysis.</span>
+<span class="sd">    identifier : str</span>
+<span class="sd">        The identifier string to be added to the plot title.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Pivot the DataFrame to create a matrix format for the heatmap</span>
+        <span class="n">df_pivot</span> <span class="o">=</span> <span class="n">analysis_results</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;Duration&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;MIDI Pitches&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Create the plot</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">df_pivot</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;YlGnBu&quot;</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">.5</span><span class="p">)</span>
+
+        <span class="c1"># Add labels and title</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Pitches Over Durations for </span><span class="si">{</span><span class="n">identifier</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Duration&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;MIDI Pitches&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Invert the y-axis</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+
+        <span class="c1"># Display the plot</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">handle_error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="display_analysis_number_of_pitches_per_metrical_position"><a class="viewcode-back" href="../../../module_files/src.visualizations.html#src.visualizations.analysis_results_graphs.display_analysis_number_of_pitches_per_metrical_position">[docs]</a><span class="k">def</span> <span class="nf">display_analysis_number_of_pitches_per_metrical_position</span><span class="p">(</span><span class="n">analysis_results</span><span class="p">,</span> <span class="n">identifier</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Display a matrix plot of the number of pitches per metrical position.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    analysis_results : pd.DataFrame</span>
+<span class="sd">        The DataFrame with the results of the analysis.</span>
+<span class="sd">    identifier : str</span>
+<span class="sd">        The identifier string to be added to the plot title.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Pivot the DataFrame to create a matrix format for the heatmap</span>
+        <span class="n">df_pivot</span> <span class="o">=</span> <span class="n">analysis_results</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;Metrical Position&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;MIDI Pitches&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Create the plot</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">df_pivot</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;YlGnBu&quot;</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">.5</span><span class="p">)</span>
+
+        <span class="c1"># Add labels and title</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Pitches Over Metrical Positions for </span><span class="si">{</span><span class="n">identifier</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Metrical Position&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;MIDI Pitches&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Invert the y-axis</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+
+        <span class="c1"># Display the plot</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">handle_error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="display_analysis_number_of_pitches_per_offset"><a class="viewcode-back" href="../../../module_files/src.visualizations.html#src.visualizations.analysis_results_graphs.display_analysis_number_of_pitches_per_offset">[docs]</a><span class="k">def</span> <span class="nf">display_analysis_number_of_pitches_per_offset</span><span class="p">(</span><span class="n">analysis_results</span><span class="p">,</span> <span class="n">identifier</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Display a matrix plot of the number of pitches per offset.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    analysis_results : pd.DataFrame</span>
+<span class="sd">        The DataFrame with the results of the analysis.</span>
+<span class="sd">    identifier : str</span>
+<span class="sd">        The identifier string to be added to the plot title.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Pivot the DataFrame to create a matrix format for the heatmap</span>
+        <span class="n">df_pivot</span> <span class="o">=</span> <span class="n">analysis_results</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;Offset&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;MIDI Pitches&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Create the plot</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">df_pivot</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;YlGnBu&quot;</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">.5</span><span class="p">)</span>
+
+        <span class="c1"># Add labels and title</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Pitches Over Offsets for </span><span class="si">{</span><span class="n">identifier</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Offset&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;MIDI Pitches&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Invert the y-axis</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+
+        <span class="c1"># Display the plot</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">handle_error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="display_analysis_number_of_pitch_classes_per_tone_duration"><a class="viewcode-back" href="../../../module_files/src.visualizations.html#src.visualizations.analysis_results_graphs.display_analysis_number_of_pitch_classes_per_tone_duration">[docs]</a><span class="k">def</span> <span class="nf">display_analysis_number_of_pitch_classes_per_tone_duration</span><span class="p">(</span><span class="n">analysis_results</span><span class="p">,</span> <span class="n">identifier</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Display a matrix plot of the number of pitch classes per duration.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    analysis_results : pd.DataFrame</span>
+<span class="sd">        The DataFrame with the results of the analysis.</span>
+<span class="sd">    identifier : str</span>
+<span class="sd">        The identifier string to be added to the plot title.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Pivot the DataFrame to create a matrix format for the heatmap</span>
+        <span class="n">df_pivot</span> <span class="o">=</span> <span class="n">analysis_results</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;Duration&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Pitch Class&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Create the plot</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">df_pivot</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;YlGnBu&quot;</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">.5</span><span class="p">)</span>
+
+        <span class="c1"># Add labels and title</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Pitch Classes Over Duration for </span><span class="si">{</span><span class="n">identifier</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Duration (quarter length)&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Pitch Class&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Invert the y-axis</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+
+        <span class="c1"># Display the plot</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">handle_error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="display_analysis_number_of_pitch_classes_per_metrical_position"><a class="viewcode-back" href="../../../module_files/src.visualizations.html#src.visualizations.analysis_results_graphs.display_analysis_number_of_pitch_classes_per_metrical_position">[docs]</a><span class="k">def</span> <span class="nf">display_analysis_number_of_pitch_classes_per_metrical_position</span><span class="p">(</span><span class="n">analysis_results</span><span class="p">,</span> <span class="n">identifier</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Display a matrix plot of the number of pitch classes per metrical position.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    analysis_results : pd.DataFrame</span>
+<span class="sd">        The DataFrame with the results of the analysis.</span>
+<span class="sd">    identifier : str</span>
+<span class="sd">        The identifier string to be added to the plot title.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Pivot the DataFrame to create a matrix format for the heatmap</span>
+        <span class="n">df_pivot</span> <span class="o">=</span> <span class="n">analysis_results</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;Metrical Position&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Pitch Class&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Create the plot</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">df_pivot</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;YlGnBu&quot;</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">.5</span><span class="p">)</span>
+
+        <span class="c1"># Add labels and title</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Pitch Classes Over Metrical Positions for </span><span class="si">{</span><span class="n">identifier</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Metrical Position&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Pitch Class&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Invert the y-axis</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+
+        <span class="c1"># Display the plot</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">handle_error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="display_analysis_number_of_pitch_classes_per_offset"><a class="viewcode-back" href="../../../module_files/src.visualizations.html#src.visualizations.analysis_results_graphs.display_analysis_number_of_pitch_classes_per_offset">[docs]</a><span class="k">def</span> <span class="nf">display_analysis_number_of_pitch_classes_per_offset</span><span class="p">(</span><span class="n">analysis_results</span><span class="p">,</span> <span class="n">identifier</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Display a matrix plot of the number of pitch classes per offset.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    analysis_results : pd.DataFrame</span>
+<span class="sd">        The DataFrame with the results of the analysis.</span>
+<span class="sd">    identifier : str</span>
+<span class="sd">        The identifier string to be added to the plot title.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Pivot the DataFrame to create a matrix format for the heatmap</span>
+        <span class="n">df_pivot</span> <span class="o">=</span> <span class="n">analysis_results</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;Offset&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Pitch Class&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Create the plot</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">df_pivot</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;YlGnBu&quot;</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">.5</span><span class="p">)</span>
+
+        <span class="c1"># Add labels and title</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Pitch Classes Over Offsets for </span><span class="si">{</span><span class="n">identifier</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Offset&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Pitch Class&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Invert the y-axis</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+
+        <span class="c1"># Display the plot</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">handle_error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="display_advanced_pitch_class_duration_analysis"><a class="viewcode-back" href="../../../module_files/src.visualizations.html#src.visualizations.analysis_results_graphs.display_advanced_pitch_class_duration_analysis">[docs]</a><span class="k">def</span> <span class="nf">display_advanced_pitch_class_duration_analysis</span><span class="p">(</span><span class="n">analysis_results</span><span class="p">,</span> <span class="n">identifier</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Display a series of bar plots for the advanced pitch and pitch class duration analysis.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    analysis_results : pd.DataFrame</span>
+<span class="sd">        The DataFrame with the results of the analysis.</span>
+<span class="sd">    identifier : str</span>
+<span class="sd">        The identifier string to be added to the plot title.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Generate subplots</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="c1"># Plot data</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Duration&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Pitches Count&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">analysis_results</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Duration&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Pitch Classes Count&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">analysis_results</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">)</span>
+        <span class="n">ratio_plot</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Duration&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Pitch to Pitch Class Ratio&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">analysis_results</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+                                 <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Apply transparency to bars below 1</span>
+        <span class="k">for</span> <span class="n">patch</span> <span class="ow">in</span> <span class="n">ratio_plot</span><span class="o">.</span><span class="n">patches</span><span class="p">:</span>
+            <span class="n">current_value</span> <span class="o">=</span> <span class="n">patch</span><span class="o">.</span><span class="n">get_height</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">current_value</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">patch</span><span class="o">.</span><span class="n">set_alpha</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+
+        <span class="c1"># Set labels and titles</span>
+        <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Pitches Count&#39;</span><span class="p">)</span>
+        <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Number of Pitches per Duration for </span><span class="si">{</span><span class="n">identifier</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Pitch Classes Count&#39;</span><span class="p">)</span>
+        <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Number of Pitch Classes per Duration for </span><span class="si">{</span><span class="n">identifier</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Pitch to Pitch Class Ratio&#39;</span><span class="p">)</span>
+        <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Pitch to Pitch Class Ratio per Duration for </span><span class="si">{</span><span class="n">identifier</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Set y-axis limit for the ratio plot to start at 0.75</span>
+        <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">0.75</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="c1"># Add a horizontal line at y=1</span>
+        <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Set x-axis labels to show duration values and rotate for better readability</span>
+        <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axs</span><span class="p">:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">analysis_results</span><span class="p">[</span><span class="s1">&#39;Duration&#39;</span><span class="p">],</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+
+        <span class="c1"># Display the plots</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">handle_error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">I-MaT</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started.html">Getting Started: How to use I-MaT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contribute.html">How to Contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_files/src.html">I-MaT: Source Code</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Sebastian Oliver Eck.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 6.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

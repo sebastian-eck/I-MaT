@@ -1,0 +1,38 @@
+# src.tokenization package
+
+## Subpackages
+
+```{toctree}
+:maxdepth: 4
+
+src.tokenization.refine_results
+```
+
+## Submodules
+
+## src.tokenization.main module
+
+```{eval-rst}
+.. automodule:: src.tokenization.main
+   :members:
+   :undoc-members:
+   :show-inheritance:
+```
+
+## src.tokenization.utils module
+
+```{eval-rst}
+.. automodule:: src.tokenization.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+```
+
+## Module contents
+
+```{eval-rst}
+.. automodule:: src.tokenization
+   :members:
+   :undoc-members:
+   :show-inheritance:
+```

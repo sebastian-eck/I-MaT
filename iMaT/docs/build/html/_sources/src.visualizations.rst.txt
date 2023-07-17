@@ -1,0 +1,37 @@
+src.visualizations package
+==========================
+
+Submodules
+----------
+
+src.visualizations.analysis\_results\_graphs module
+---------------------------------------------------
+
+.. automodule:: src.visualizations.analysis_results_graphs
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.visualizations.m21\_integrated module
+-----------------------------------------
+
+.. automodule:: src.visualizations.m21_integrated
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.visualizations.main module
+------------------------------
+
+.. automodule:: src.visualizations.main
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: src.visualizations
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,37 @@
+src.tokenization package
+========================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   src.tokenization.refine_results
+
+Submodules
+----------
+
+src.tokenization.main module
+----------------------------
+
+.. automodule:: src.tokenization.main
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.tokenization.utils module
+-----------------------------
+
+.. automodule:: src.tokenization.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: src.tokenization
+   :members:
+   :undoc-members:
+   :show-inheritance:
