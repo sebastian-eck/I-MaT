@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>src.pattern_search.utils &#8212; I-MaT 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for src.pattern_search.utils</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Module: pattern_search.utils.py</span>
+<span class="sd">===============================</span>
+
+<span class="sd">Provides utility functions for selecting musical patterns based on notes, rhythm,</span>
+<span class="sd">or a combination of both in the pattern_search package. Each function prompts the</span>
+<span class="sd">user to make selections and constructs musical patterns accordingly.</span>
+
+<span class="sd">Functions</span>
+<span class="sd">---------</span>
+<span class="sd">- &#39;pattern_selection_notes_only&#39;: Allows the user to select a pattern based on notes only.</span>
+<span class="sd">- &#39;pattern_selection_rhythm_only&#39;: Allows the user to select a pattern based on rhythm only.</span>
+<span class="sd">- &#39;pattern_selection_notes_and_rhythm&#39;: Allows the user to select a pattern based on both notes and rhythm.</span>
+
+<span class="sd">Each function returns a tuple containing the list of music21.note.Note objects</span>
+<span class="sd">and a list of clear names, and handles errors using the `handle_error` function from the `src.utils.error_handling` module.</span>
+
+<span class="sd">Notes</span>
+<span class="sd">-----</span>
+<span class="sd">This module uses the `music21` library, a toolkit for computer-aided musicology.</span>
+<span class="sd">`music21`&#39;s note.Note objects are used to represent individual notes in a musical pattern.</span>
+
+<span class="sd">This module also uses the `src.cli.menu_constructors.display_menu_request_selection`</span>
+<span class="sd">function to interactively display menus and handle user input.</span>
+
+<span class="sd">Example</span>
+<span class="sd">-------</span>
+<span class="sd">&gt;&gt;&gt; from pattern_search import utils</span>
+<span class="sd">&gt;&gt;&gt; utils.pattern_selection_notes_and_rhythm()</span>
+<span class="sd">([&lt;music21.note.Note C quarterLength=0.5&gt;], [[&#39;C&#39;, &#39;0.5&#39;]])</span>
+
+<span class="sd">See Also</span>
+<span class="sd">--------</span>
+<span class="sd">music21.note.Note</span>
+<span class="sd">src.cli.menu_constructors.display_menu_request_selection</span>
+<span class="sd">src.utils.error_handling.handle_error</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">music21</span> <span class="kn">import</span> <span class="n">note</span>
+
+<span class="kn">from</span> <span class="nn">iMaT.src.cli.menu_constructors</span> <span class="kn">import</span> <span class="n">display_menu_request_selection</span>
+<span class="kn">from</span> <span class="nn">iMaT.src.constants</span> <span class="kn">import</span> <span class="n">NOTES_LIST</span><span class="p">,</span> <span class="n">RHYTHMIC_VALUES_LIST</span>
+<span class="kn">from</span> <span class="nn">iMaT.src.utils.error_handling</span> <span class="kn">import</span> <span class="n">handle_error</span>
+
+
+<div class="viewcode-block" id="pattern_selection_notes_only"><a class="viewcode-back" href="../../../module_files/src.pattern_search.html#src.pattern_search.utils.pattern_selection_notes_only">[docs]</a><span class="k">def</span> <span class="nf">pattern_selection_notes_only</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Allows the user to select a pattern based on notes only.</span>
+
+<span class="sd">    The user can add notes to the pattern, remove the last added note,</span>
+<span class="sd">    or complete the pattern selection.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    tuple</span>
+<span class="sd">        Tuple containing the list of note.Note objects and a list of clear names.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    Exception</span>
+<span class="sd">        Any exception that occurs is caught and handled using `handle_error`.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    src.cli.menu_constructors.display_menu_request_selection</span>
+<span class="sd">    music21.note.Note</span>
+<span class="sd">    src.utils.error_handling.handle_error</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; pattern_selection_notes_only()</span>
+<span class="sd">    ([&lt;music21.note.Note C&gt;], [&#39;C&#39;])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">search_pattern_clear_names</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">search_pattern</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+
+            <span class="n">enter_notes_dict</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;menu_displayed_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="sa">f</span><span class="s2">&quot;Pattern Search: Select Note Pattern - Pattern entered: </span><span class="si">{</span><span class="n">search_pattern_clear_names</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;Please select one note by selecting the corresponding index number:&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;Which menu item do you want to select? (&lt;No. of menu item&gt;): &quot;</span><span class="p">,</span>
+                    <span class="p">[</span><span class="s2">&quot;Menu item title&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Short Explanation&gt;&quot;</span><span class="p">],</span>
+                <span class="p">],</span>
+                <span class="s2">&quot;menu_entries&quot;</span><span class="p">:</span> <span class="n">NOTES_LIST</span>
+            <span class="p">}</span>
+
+            <span class="n">selection</span> <span class="o">=</span> <span class="n">display_menu_request_selection</span><span class="p">(</span><span class="n">enter_notes_dict</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">selection</span> <span class="o">==</span> <span class="s2">&quot;remove&quot;</span><span class="p">:</span>
+
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">search_pattern</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">search_pattern</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+            <span class="k">elif</span> <span class="n">selection</span> <span class="o">==</span> <span class="s2">&quot;complete&quot;</span><span class="p">:</span>
+
+                <span class="k">return</span> <span class="n">search_pattern</span><span class="p">,</span> <span class="n">search_pattern_clear_names</span>
+
+            <span class="k">else</span><span class="p">:</span>
+
+                <span class="n">search_pattern_clear_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">selection</span><span class="p">)</span>
+                <span class="n">search_pattern</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">note</span><span class="o">.</span><span class="n">Note</span><span class="p">(</span><span class="n">selection</span><span class="p">))</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">handle_error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="pattern_selection_rhythm_only"><a class="viewcode-back" href="../../../module_files/src.pattern_search.html#src.pattern_search.utils.pattern_selection_rhythm_only">[docs]</a><span class="k">def</span> <span class="nf">pattern_selection_rhythm_only</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Allows the user to select a pattern based on rhythm only.</span>
+
+<span class="sd">    The user can add rhythms to the pattern, remove the last added rhythm,</span>
+<span class="sd">    or complete the rhythm selection. The rhythm values are converted to</span>
+<span class="sd">    quarterLength attribute of note.Note objects.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    tuple</span>
+<span class="sd">        Tuple containing the list of note.Note objects with specified quarterLength</span>
+<span class="sd">        and a list of clear names.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    Exception</span>
+<span class="sd">        Any exception that occurs is caught and handled using `handle_error`.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    src.cli.menu_constructors.display_menu_request_selection</span>
+<span class="sd">    music21.note.Note</span>
+<span class="sd">    src.utils.error_handling.handle_error</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; pattern_selection_rhythm_only()</span>
+<span class="sd">    ([&lt;music21.note.Note C quarterLength=0.5&gt;], [&#39;0.5&#39;])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">search_pattern_clear_names</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">search_pattern</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+
+            <span class="n">enter_notes_dict</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;menu_displayed_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="sa">f</span><span class="s2">&quot;Pattern Search: Select Note Pattern - Pattern entered: </span><span class="si">{</span><span class="n">search_pattern_clear_names</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;Please select one note by selecting the corresponding index number:&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;Which menu item do you want to select? (&lt;No. of menu item&gt;): &quot;</span><span class="p">,</span>
+                    <span class="p">[</span><span class="s2">&quot;Menu item title&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Short Explanation&gt;&quot;</span><span class="p">],</span>
+                <span class="p">],</span>
+                <span class="s2">&quot;menu_entries&quot;</span><span class="p">:</span> <span class="n">RHYTHMIC_VALUES_LIST</span>
+            <span class="p">}</span>
+
+            <span class="n">selection</span> <span class="o">=</span> <span class="n">display_menu_request_selection</span><span class="p">(</span><span class="n">enter_notes_dict</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">selection</span> <span class="o">==</span> <span class="s2">&quot;remove&quot;</span><span class="p">:</span>
+
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">search_pattern</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">search_pattern</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+
+            <span class="k">elif</span> <span class="n">selection</span> <span class="o">==</span> <span class="s2">&quot;complete&quot;</span><span class="p">:</span>
+
+                <span class="n">prepared_search_pattern</span> <span class="o">=</span> <span class="p">[]</span>
+
+                <span class="k">for</span> <span class="n">rhythm</span> <span class="ow">in</span> <span class="n">search_pattern</span><span class="p">:</span>
+
+                    <span class="k">if</span> <span class="s2">&quot;/&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">rhythm</span><span class="p">):</span>
+
+                        <span class="n">numerator</span><span class="p">,</span> <span class="n">denominator</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">rhythm</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">))</span>
+
+                        <span class="n">prepared_search_pattern</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">note</span><span class="o">.</span><span class="n">Note</span><span class="p">(</span><span class="n">quarterLength</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">numerator</span> <span class="o">/</span> <span class="n">denominator</span><span class="p">)))</span>
+
+                    <span class="k">else</span><span class="p">:</span>
+
+                        <span class="n">prepared_search_pattern</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">note</span><span class="o">.</span><span class="n">Note</span><span class="p">(</span><span class="n">quarterLength</span><span class="o">=</span><span class="n">rhythm</span><span class="p">))</span>
+
+                <span class="k">return</span> <span class="n">prepared_search_pattern</span><span class="p">,</span> <span class="n">search_pattern_clear_names</span>
+
+            <span class="k">else</span><span class="p">:</span>
+
+                <span class="n">search_pattern_clear_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">selection</span><span class="p">)</span>
+                <span class="n">search_pattern</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">selection</span><span class="p">)</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">handle_error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="pattern_selection_notes_and_rhythm"><a class="viewcode-back" href="../../../module_files/src.pattern_search.html#src.pattern_search.utils.pattern_selection_notes_and_rhythm">[docs]</a><span class="k">def</span> <span class="nf">pattern_selection_notes_and_rhythm</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Allows the user to select a pattern based on both notes and rhythm.</span>
+
+<span class="sd">        The user can add notes and rhythms to the pattern, remove the last added pair,</span>
+<span class="sd">        or complete the pattern selection. The rhythm values are converted to</span>
+<span class="sd">        quarterLength attribute of note.Note objects.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        tuple</span>
+<span class="sd">            Tuple containing the list of note.Note objects with specified quarterLength</span>
+<span class="sd">            and a list of clear names.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        Exception</span>
+<span class="sd">            Any exception that occurs is caught and handled using `handle_error`.</span>
+
+<span class="sd">        See Also</span>
+<span class="sd">        --------</span>
+<span class="sd">        src.cli.menu_constructors.display_menu_request_selection</span>
+<span class="sd">        music21.note.Note</span>
+<span class="sd">        src.utils.error_handling.handle_error</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; pattern_selection_notes_and_rhythm()</span>
+<span class="sd">        ([&lt;music21.note.Note C quarterLength=0.5&gt;], [[&#39;C&#39;, &#39;0.5&#39;]])</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">search_pattern_clear_names</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">search_pattern</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+
+            <span class="n">enter_notes_dict</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;menu_displayed_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="sa">f</span><span class="s2">&quot;Pattern Search: Select Note Pattern - Pattern entered: </span><span class="si">{</span><span class="n">search_pattern_clear_names</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;Please select one note by selecting the corresponding index number:&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;Which menu item do you want to select? (&lt;No. of menu item&gt;): &quot;</span><span class="p">,</span>
+                    <span class="p">[</span><span class="s2">&quot;Menu item title&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Short Explanation&gt;&quot;</span><span class="p">],</span>
+                <span class="p">],</span>
+                <span class="s2">&quot;menu_entries&quot;</span><span class="p">:</span> <span class="n">NOTES_LIST</span>
+            <span class="p">}</span>
+
+            <span class="n">note_selection</span> <span class="o">=</span> <span class="n">display_menu_request_selection</span><span class="p">(</span><span class="n">enter_notes_dict</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">note_selection</span> <span class="o">==</span> <span class="s2">&quot;remove&quot;</span><span class="p">:</span>
+
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">search_pattern</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">search_pattern</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+            <span class="k">elif</span> <span class="n">note_selection</span> <span class="o">==</span> <span class="s2">&quot;complete&quot;</span><span class="p">:</span>
+                <span class="n">prepared_search_pattern</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">pitch_name</span><span class="p">,</span> <span class="n">rhythm</span> <span class="ow">in</span> <span class="n">search_pattern</span><span class="p">:</span>
+
+                    <span class="k">if</span> <span class="s2">&quot;/&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">rhythm</span><span class="p">):</span>
+                        <span class="n">numerator</span><span class="p">,</span> <span class="n">denominator</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">rhythm</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">))</span>
+                        <span class="n">prepared_search_pattern</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">note</span><span class="o">.</span><span class="n">Note</span><span class="p">(</span><span class="n">pitch_name</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">quarterLength</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">numerator</span> <span class="o">/</span> <span class="n">denominator</span><span class="p">)))</span>
+
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">prepared_search_pattern</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">note</span><span class="o">.</span><span class="n">Note</span><span class="p">(</span><span class="n">pitch_name</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">quarterLength</span><span class="o">=</span><span class="n">rhythm</span><span class="p">))</span>
+
+                <span class="k">return</span> <span class="n">prepared_search_pattern</span><span class="p">,</span> <span class="n">search_pattern_clear_names</span>
+
+            <span class="k">else</span><span class="p">:</span>
+
+                <span class="n">enter_notes_dict</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="s2">&quot;menu_displayed_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="sa">f</span><span class="s2">&quot;Pattern Search: Select Note Pattern - Pattern entered: </span><span class="si">{</span><span class="n">search_pattern_clear_names</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;Please select one note by selecting the corresponding index number:&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;Which menu item do you want to select? (&lt;No. of menu item&gt;): &quot;</span><span class="p">,</span>
+                        <span class="p">[</span><span class="s2">&quot;Menu item title&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Short Explanation&gt;&quot;</span><span class="p">],</span>
+                    <span class="p">],</span>
+                    <span class="s2">&quot;menu_entries&quot;</span><span class="p">:</span> <span class="n">RHYTHMIC_VALUES_LIST</span>
+                <span class="p">}</span>
+
+                <span class="n">rhythm_selection</span> <span class="o">=</span> <span class="n">display_menu_request_selection</span><span class="p">(</span><span class="n">enter_notes_dict</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">rhythm_selection</span> <span class="o">==</span> <span class="s2">&quot;remove&quot;</span><span class="p">:</span>
+
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">search_pattern</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="n">search_pattern</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+
+                <span class="k">elif</span> <span class="n">note_selection</span> <span class="o">==</span> <span class="s2">&quot;complete&quot;</span><span class="p">:</span>
+
+                    <span class="n">prepared_search_pattern</span> <span class="o">=</span> <span class="p">[]</span>
+
+                    <span class="k">for</span> <span class="n">pitch_name</span><span class="p">,</span> <span class="n">rhythm</span> <span class="ow">in</span> <span class="n">search_pattern</span><span class="p">:</span>
+
+                        <span class="k">if</span> <span class="s2">&quot;/&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">rhythm</span><span class="p">):</span>
+
+                            <span class="n">numerator</span><span class="p">,</span> <span class="n">denominator</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">rhythm</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">))</span>
+
+                            <span class="n">prepared_search_pattern</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">note</span><span class="o">.</span><span class="n">Note</span><span class="p">(</span><span class="n">pitch_name</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">quarterLength</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">numerator</span> <span class="o">/</span> <span class="n">denominator</span><span class="p">)))</span>
+
+
+                        <span class="k">else</span><span class="p">:</span>
+
+                            <span class="n">prepared_search_pattern</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">note</span><span class="o">.</span><span class="n">Note</span><span class="p">(</span><span class="n">pitch_name</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">quarterLength</span><span class="o">=</span><span class="n">rhythm</span><span class="p">))</span>
+
+                    <span class="k">return</span> <span class="n">prepared_search_pattern</span><span class="p">,</span> <span class="n">search_pattern_clear_names</span>
+
+                <span class="k">else</span><span class="p">:</span>
+
+                    <span class="n">search_pattern_clear_names</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">note_selection</span><span class="p">,</span> <span class="n">rhythm_selection</span><span class="p">])</span>
+                    <span class="n">search_pattern</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">note</span><span class="o">.</span><span class="n">Note</span><span class="p">(</span><span class="n">note_selection</span><span class="p">),</span> <span class="n">rhythm_selection</span><span class="p">])</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">handle_error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">I-MaT</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started.html">Getting Started with I-MaT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contribute.html">How to Contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_files/src.html">I-MaT: Source Code</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Sebastian Oliver Eck.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

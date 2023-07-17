@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>src.tokenization.refine_results.absolute_duration &#8212; I-MaT 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/alabaster.css" />
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for src.tokenization.refine_results.absolute_duration</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Module: tokenization.refine_results.asbolute_duration.py</span>
+<span class="sd">========================================================</span>
+
+<span class="sd">This module, a part of the `tokenization.refine_results` package, refines MIDI data by converting string representations of duration to absolute numerical values.</span>
+
+<span class="sd">Functions</span>
+<span class="sd">---------</span>
+<span class="sd">- `corpus_tokenization_refine_data_absolute_duration`: Handles a workflow for refining tokenized data by converting duration values to numerical format.</span>
+
+<span class="sd">- `convert_duration_to_numerical`: Helper function that converts a duration string to a numerical format.</span>
+
+<span class="sd">- `refine_data_function_absolute_duration`: Applies the `convert_duration_to_numerical` function to the &#39;Duration&#39; column of a DataFrame.</span>
+
+<span class="sd">Notes</span>
+<span class="sd">-----</span>
+<span class="sd">The module expects CSV files to have a specific structure, including a &#39;Duration&#39; column.</span>
+<span class="sd">Please refer to the individual function docstrings for more detailed descriptions and examples of usage.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="kn">from</span> <span class="nn">iMaT.src.tokenization.utils</span> <span class="kn">import</span> <span class="n">save_data_to_new_csv_file</span><span class="p">,</span> <span class="n">select_csv_file_2d_token_representation</span>
+<span class="kn">from</span> <span class="nn">iMaT.src.utils.error_handling</span> <span class="kn">import</span> <span class="n">handle_error</span>
+
+<span class="n">tqdm</span><span class="o">.</span><span class="n">pandas</span><span class="p">()</span>
+
+<span class="kn">from</span> <span class="nn">iMaT.src.cli.menu_constructors</span> <span class="kn">import</span> <span class="n">display_menu_print_results</span><span class="p">,</span> <span class="n">display_menu_print_textblock</span><span class="p">,</span> \
+    <span class="n">display_menu_request_selection</span><span class="p">,</span> <span class="n">util_convert_pd_dataframe_to_imat_datacont</span>
+
+<span class="n">tokenizers_available_for_refining</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;CPWord&#39;</span><span class="p">,</span> <span class="s1">&#39;Octuple&#39;</span><span class="p">,</span> <span class="s1">&#39;OctupleMono&#39;</span><span class="p">,</span> <span class="s1">&#39;MuMIDI&#39;</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="corpus_tokenization_refine_data_absolute_duration"><a class="viewcode-back" href="../../../../module_files/src.tokenization.refine_results.html#src.tokenization.refine_results.absolute_duration.corpus_tokenization_refine_data_absolute_duration">[docs]</a><span class="k">def</span> <span class="nf">corpus_tokenization_refine_data_absolute_duration</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Executes a workflow for refining tokenized and cleaned CSV data.</span>
+
+<span class="sd">    This function guides the user to select a CSV file with a predefined naming pattern, performs data refining operations</span>
+<span class="sd">    on the data within, and displays a table with the refined results. The user then has an option to save the refined data</span>
+<span class="sd">    into a new CSV file.</span>
+
+<span class="sd">    Parameters: None</span>
+
+<span class="sd">    Returns: None</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    select_csv_file_2d_token_representation : Opens a file dialog allowing the user to select a CSV file.</span>
+<span class="sd">    refine_data_function_absolute_duration : Applies the convert_duration_to_numerical function to the &#39;Duration&#39;</span>
+<span class="sd">                                             column of a pandas DataFrame.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">file_name</span> <span class="o">=</span> <span class="n">select_csv_file_2d_token_representation</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="n">file_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">break</span>
+
+            <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+
+            <span class="n">df</span> <span class="o">=</span> <span class="n">refine_data_function_absolute_duration</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+            <span class="c1"># Step 4: show the user the first 30 rows after executing step 2 and 3</span>
+            <span class="n">results_dict</span> <span class="o">=</span> <span class="n">util_convert_pd_dataframe_to_imat_datacont</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">30</span><span class="p">))</span>
+            <span class="n">display_menu_print_results</span><span class="p">(</span><span class="n">results_dict</span><span class="p">)</span>
+
+            <span class="c1"># Step 5: ask the user whether he wants to save the new file</span>
+            <span class="n">yes_no_menu</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;menu_displayed_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;Save Refined Data&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;Do you want to save the refined data to a new CSV file?&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;Please select your choice (1-2): &quot;</span><span class="p">,</span>
+                    <span class="p">[</span><span class="s2">&quot;Choice&quot;</span><span class="p">,</span> <span class="s2">&quot;Description&quot;</span><span class="p">],</span>
+                <span class="p">],</span>
+                <span class="s2">&quot;menu_entries&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">[</span><span class="s2">&quot;CONT: Save the new file&quot;</span><span class="p">,</span> <span class="s2">&quot;Yes&quot;</span><span class="p">,</span> <span class="s2">&quot;Yes, save the refined data to a new CSV file&quot;</span><span class="p">],</span>
+                    <span class="p">[</span><span class="s2">&quot;DONT: Do not save the new file&quot;</span><span class="p">,</span> <span class="s2">&quot;No&quot;</span><span class="p">,</span> <span class="s2">&quot;No, do not save the refined data&quot;</span><span class="p">],</span>
+                <span class="p">]</span>
+            <span class="p">}</span>
+
+            <span class="n">save_input</span> <span class="o">=</span> <span class="n">display_menu_request_selection</span><span class="p">(</span><span class="n">yes_no_menu</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">save_input</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;yes&#39;</span><span class="p">:</span>
+                <span class="n">new_file_path</span> <span class="o">=</span> <span class="n">save_data_to_new_csv_file</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">file_name</span><span class="p">,</span> <span class="s2">&quot;abs_duration_&quot;</span><span class="p">)</span>
+
+                <span class="n">textblock_dict_newfile</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="s2">&quot;menu_displayed_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="s2">&quot;-- New File Path --&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;Please read the following message:&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;&lt;To continue, please press Enter&gt;&quot;</span><span class="p">,</span>
+                        <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;Message&quot;</span><span class="p">],</span>
+                    <span class="p">],</span>
+                    <span class="s2">&quot;menu_entries_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="p">[</span><span class="s2">&quot;New File Path&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;The refined data has been saved to a new CSV file: </span><span class="si">{</span><span class="n">new_file_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span>
+                    <span class="p">]</span>
+                <span class="p">}</span>
+
+                <span class="n">display_menu_print_textblock</span><span class="p">(</span><span class="n">textblock_dict_newfile</span><span class="p">)</span>
+            <span class="k">break</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">handle_error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="convert_duration_to_numerical"><a class="viewcode-back" href="../../../../module_files/src.tokenization.refine_results.html#src.tokenization.refine_results.absolute_duration.convert_duration_to_numerical">[docs]</a><span class="k">def</span> <span class="nf">convert_duration_to_numerical</span><span class="p">(</span><span class="n">duration</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts a duration from a string format (&quot;a.b.c&quot;) to a numerical value if the format matches.</span>
+
+<span class="sd">    The function checks whether the duration starts with the prefix &quot;Duration_&quot;, and if so, removes the prefix</span>
+<span class="sd">    before performing the conversion. If the format of the duration doesn&#39;t match the expected format, the function</span>
+<span class="sd">    returns the original duration.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    duration : str</span>
+<span class="sd">        The duration value to be converted, in &quot;a.b.c&quot; format.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float or str</span>
+<span class="sd">        The converted duration as a numerical value, if the format matches.</span>
+<span class="sd">        The original duration, if the format doesn&#39;t match.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">prefix</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">entry_string</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">duration</span><span class="p">)</span>
+
+        <span class="c1"># check if the input string starts with &quot;Duration_&quot;</span>
+        <span class="k">if</span> <span class="n">entry_string</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;Duration_&quot;</span><span class="p">):</span>
+            <span class="n">prefix</span> <span class="o">=</span> <span class="s2">&quot;Duration_&quot;</span>
+            <span class="n">entry_string</span> <span class="o">=</span> <span class="n">entry_string</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">prefix</span><span class="p">):]</span>  <span class="c1"># strip off the prefix</span>
+
+        <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d+\.\d+\.\d+&quot;</span><span class="p">,</span> <span class="n">entry_string</span><span class="p">):</span>
+            <span class="n">parts</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">entry_string</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)))</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+                <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">parts</span>
+                <span class="k">return</span> <span class="n">prefix</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">/</span> <span class="n">c</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">duration</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">duration</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">handle_error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="refine_data_function_absolute_duration"><a class="viewcode-back" href="../../../../module_files/src.tokenization.refine_results.html#src.tokenization.refine_results.absolute_duration.refine_data_function_absolute_duration">[docs]</a><span class="k">def</span> <span class="nf">refine_data_function_absolute_duration</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Applies the convert_duration_to_numerical function to the &#39;Duration&#39; column of a pandas DataFrame.</span>
+
+<span class="sd">    This function first checks if the &#39;Duration&#39; column exists in the DataFrame. If so, it applies the</span>
+<span class="sd">    convert_duration_to_numerical function to each entry in the column, converting string representations of</span>
+<span class="sd">    duration into numerical values where possible.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    df : pandas.DataFrame</span>
+<span class="sd">        The DataFrame to refine.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.DataFrame</span>
+<span class="sd">        The DataFrame with converted &#39;Duration&#39; column.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    convert_duration_to_numerical : Converts a duration from a string format (&quot;a.b.c&quot;) to a numerical value</span>
+<span class="sd">                                    if the format matches.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Converting &#39;duration&#39; column to numerical format...&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s1">&#39;Duration&#39;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Duration&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Duration&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">progress_apply</span><span class="p">(</span><span class="n">convert_duration_to_numerical</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">df</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">handle_error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
+
+
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../index.html">I-MaT</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started.html">Getting Started with I-MaT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contribute.html">How to Contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../module_files/src.html">I-MaT: Source Code</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Sebastian Oliver Eck.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

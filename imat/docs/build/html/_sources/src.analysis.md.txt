@@ -1,0 +1,39 @@
+# src.analysis package
+
+## Submodules
+
+## src.analysis.functions module
+
+```{eval-rst}
+.. automodule:: src.analysis.functions
+   :members:
+   :undoc-members:
+   :show-inheritance:
+```
+
+## src.analysis.main module
+
+```{eval-rst}
+.. automodule:: src.analysis.main
+   :members:
+   :undoc-members:
+   :show-inheritance:
+```
+
+## src.analysis.utils module
+
+```{eval-rst}
+.. automodule:: src.analysis.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+```
+
+## Module contents
+
+```{eval-rst}
+.. automodule:: src.analysis
+   :members:
+   :undoc-members:
+   :show-inheritance:
+```

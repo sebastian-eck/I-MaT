@@ -1,0 +1,325 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>src.conversion package &#8212; I-MaT 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="src-conversion-package">
+<h1>src.conversion package<a class="headerlink" href="#src-conversion-package" title="Permalink to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="module-src.conversion.main">
+<span id="src-conversion-main-module"></span><h2>src.conversion.main module<a class="headerlink" href="#module-src.conversion.main" title="Permalink to this heading">¶</a></h2>
+<section id="conversion-main-py">
+<h3>conversion.main.py<a class="headerlink" href="#conversion-main-py" title="Permalink to this heading">¶</a></h3>
+<p>This module provides functionality to convert multiple music files from a user-selected folder to a user-selected format.</p>
+<p>The main function in this module is convert_multiple_files_filetype(). This function allows the user to select a
+folder containing music files and choose a format to convert these files into. The function will then convert each
+file in the folder into the selected format. Any errors or issues encountered during the conversion process are
+logged to specific .xlsx files for easy tracking and debugging.</p>
+<p>Other utility functions imported from the src.conversion.utils and src.utils.error_handling modules are used to handle
+various tasks such as creating log entries, selecting conversion formats and folders, displaying success rates, and
+handling exceptions.</p>
+<section id="functions">
+<h4>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>convert_multiple_files_filetype: Convert multiple music files from a user-selected folder to a user-selected format.</p></li>
+</ul>
+</section>
+<section id="utilities">
+<h4>Utilities:<a class="headerlink" href="#utilities" title="Permalink to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>‘create_log_entry’: Used to create log entries in the .xlsx files for errors occurred during parsing and conversion.</p></li>
+<li><p>‘display_parseable_files_in_folder’: Displays all parsable music files in a selected folder.</p></li>
+<li><p>‘display_success_rate’: Calculates and displays the success rate of the conversion process.</p></li>
+<li><p>‘select_conversion_format’: Prompts the user to select a conversion format from the available options.</p></li>
+<li><p>‘select_folder’: Prompts the user to select a folder containing music files for conversion.</p></li>
+<li><p>‘handle_error’: Handles any exceptions that occur during the execution of the function and displays the error to the user.</p></li>
+</ul>
+</section>
+</section>
+<dl class="py function">
+<dt class="sig sig-object py" id="src.conversion.main.convert_multiple_files_filetype">
+<span class="sig-prename descclassname"><span class="pre">src.conversion.main.</span></span><span class="sig-name descname"><span class="pre">convert_multiple_files_filetype</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.conversion.main.convert_multiple_files_filetype" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert multiple music files from a user-selected folder to a user-selected format.</p>
+<p>This function first lists all parsable music files in a user-selected folder.
+Then it prompts the user to select a conversion format from the available options.
+The function then attempts to convert each file to the selected format and saves them in a newly created directory.
+Any failures during the parsing and conversion processes are logged to respective .xlsx files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – Any exception that occurs during the execution of the function is handled and displayed to the user.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The function can convert files to different formats based on the options provided by the music21 converter.
+The available options include ‘musicxml’, ‘midi’, ‘braille’, etc.
+Not all formats may be available for all files. If a conversion is not possible, an error will be logged.</p>
+</div>
+</dd></dl>
+
+</section>
+<section id="module-src.conversion.utils">
+<span id="src-conversion-utils-module"></span><h2>src.conversion.utils module<a class="headerlink" href="#module-src.conversion.utils" title="Permalink to this heading">¶</a></h2>
+<section id="conversion-utils-py">
+<h3>conversion.utils.py<a class="headerlink" href="#conversion-utils-py" title="Permalink to this heading">¶</a></h3>
+<p>A module to handle various utility tasks related to the music file conversion process.</p>
+<p>This module provides functions for:</p>
+<ul class="simple">
+<li><p>Retrieving a list of parsable music files in a specified directory.</p></li>
+<li><p>Displaying a list of parsable music files in a specified directory.</p></li>
+<li><p>Displaying the success rate of file conversion.</p></li>
+<li><p>Interactively selecting a folder containing parsable music files through a GUI.</p></li>
+<li><p>Providing a user interface to select a music file conversion format.</p></li>
+<li><p>Adding a new entry to a .xlsx log file.</p></li>
+</ul>
+<p>All of these functions are designed to be used in the conversion process, and exceptions raised during their
+execution are handled and displayed to the user.</p>
+<section id="id1">
+<h4>Functions<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>‘get_parsable_files_in_folder’: Retrieve a list of parsable music files in a given directory.</p></li>
+<li><p>‘display_parseable_files_in_folder’: Display a list of parsable music files in a given directory.</p></li>
+<li><p>‘display_success_rate’: Display the success rate of file conversion.</p></li>
+<li><p>‘select_folder’: Interactively select a folder containing parsable music files.</p></li>
+<li><p>‘select_conversion_format’: Provide a user interface to select a music file conversion format.</p></li>
+<li><p>‘create_log_entry’: Add a new entry to a .xlsx log file.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">raises Exception:<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Any exception that occurs during the execution of the function is handled and displayed to the user.</p>
+</dd>
+</dl>
+</section>
+</section>
+<dl class="py function">
+<dt class="sig sig-object py" id="src.conversion.utils.create_log_entry">
+<span class="sig-prename descclassname"><span class="pre">src.conversion.utils.</span></span><span class="sig-name descname"><span class="pre">create_log_entry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.conversion.utils.create_log_entry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a new entry to a .xlsx log file.</p>
+<p>This function appends a new row to a specified .xlsx file.
+If the file does not exist, it creates a new one.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>list</strong> (<em>list</em>) – The new row to be added to the .xlsx file. Each element in the list represents a cell in the row.</p></li>
+<li><p><strong>list_path</strong> (<em>str</em>) – The path of the .xlsx file.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>Exception</strong> – Any exception that occurs during the execution of the function is handled and displayed to the user.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.conversion.utils.display_parseable_files_in_folder">
+<span class="sig-prename descclassname"><span class="pre">src.conversion.utils.</span></span><span class="sig-name descname"><span class="pre">display_parseable_files_in_folder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.conversion.utils.display_parseable_files_in_folder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays a list of parsable music files in a given directory.</p>
+<p>This function first retrieves a list of parsable music files in the given directory.
+It then displays these files to the user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>folder_path</strong> (<em>str</em>) – The path of the directory to check.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of filenames of parsable music files.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – Any exception that occurs during the execution of the function is handled and displayed to the user.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.conversion.utils.display_success_rate">
+<span class="sig-prename descclassname"><span class="pre">src.conversion.utils.</span></span><span class="sig-name descname"><span class="pre">display_success_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">files_status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_converted</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_files</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.conversion.utils.display_success_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays the success rate of file conversion.</p>
+<p>This function calculates the success rate of file conversion based on the total number of files and
+the number of successfully converted files. It then displays this information along with a list of file conversion statuses.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>files_status</strong> (<em>list</em>) – A list of tuples where each tuple contains a file’s name and its conversion status.</p></li>
+<li><p><strong>num_converted</strong> (<em>int</em>) – The number of files that were successfully converted.</p></li>
+<li><p><strong>num_files</strong> (<em>int</em>) – The total number of files that were attempted to be converted.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – Any exception that occurs during the execution of the function is handled and displayed to the user.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.conversion.utils.get_parsable_files_in_folder">
+<span class="sig-prename descclassname"><span class="pre">src.conversion.utils.</span></span><span class="sig-name descname"><span class="pre">get_parsable_files_in_folder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.conversion.utils.get_parsable_files_in_folder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve a list of parsable music files in a given directory.</p>
+<p>This function checks a specified directory for files with parsable music file extensions.
+It lists all the files with these extensions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>folder_path</strong> (<em>str</em>) – The path of the directory to check.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of filenames of parsable music files.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – Any exception that occurs during the execution of the function is handled and displayed to the user.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.conversion.utils.select_conversion_format">
+<span class="sig-prename descclassname"><span class="pre">src.conversion.utils.</span></span><span class="sig-name descname"><span class="pre">select_conversion_format</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.conversion.utils.select_conversion_format" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provides a user interface to select a music file conversion format.</p>
+<p>This function displays a list of available music file conversion formats to the user and
+prompts them to select one. It continues to prompt the user until a valid selection is made.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The file extension of the chosen conversion format.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>Exception</strong> – Any exception that occurs during the execution of the function is handled and displayed to the user.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.conversion.utils.select_folder">
+<span class="sig-prename descclassname"><span class="pre">src.conversion.utils.</span></span><span class="sig-name descname"><span class="pre">select_folder</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.conversion.utils.select_folder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Interactively select a folder containing parsable music files.</p>
+<p>This function displays a GUI file dialog to the user to select a folder. It ensures that the selected folder
+contains at least one parsable music file of the supported types. The function loops until a valid folder is
+selected or the user cancels the operation. It also provides information to the user about the types of parsable
+music files and folder requirements.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The path to the selected folder containing parsable music files. Returns None if the operation is cancelled.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>Exception</strong> – Any exception that occurs during the execution of the function is handled and displayed to the user.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-src.conversion">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-src.conversion" title="Permalink to this heading">¶</a></h2>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">I-MaT</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Sebastian Oliver Eck.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 6.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="../_sources/src/src.conversion.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

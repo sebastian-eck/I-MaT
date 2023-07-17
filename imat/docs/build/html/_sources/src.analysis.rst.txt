@@ -1,0 +1,37 @@
+src.analysis package
+====================
+
+Submodules
+----------
+
+src.analysis.functions module
+-----------------------------
+
+.. automodule:: src.analysis.functions
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.analysis.main module
+------------------------
+
+.. automodule:: src.analysis.main
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.analysis.utils module
+-------------------------
+
+.. automodule:: src.analysis.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: src.analysis
+   :members:
+   :undoc-members:
+   :show-inheritance:

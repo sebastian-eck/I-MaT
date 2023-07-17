@@ -1,0 +1,30 @@
+# src.conversion package
+
+## Submodules
+
+## src.conversion.main module
+
+```{eval-rst}
+.. automodule:: src.conversion.main
+   :members:
+   :undoc-members:
+   :show-inheritance:
+```
+
+## src.conversion.utils module
+
+```{eval-rst}
+.. automodule:: src.conversion.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+```
+
+## Module contents
+
+```{eval-rst}
+.. automodule:: src.conversion
+   :members:
+   :undoc-members:
+   :show-inheritance:
+```

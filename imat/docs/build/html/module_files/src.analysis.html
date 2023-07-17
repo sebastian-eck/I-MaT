@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Package: Analysis (src.analysis) &#8212; I-MaT 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Package: Command Line Interface (src.cli)" href="src.cli.html" />
+    <link rel="prev" title="I-MaT: Source Code" href="src.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="package-analysis-src-analysis">
+<h1>Package: Analysis (src.analysis)<a class="headerlink" href="#package-analysis-src-analysis" title="Permalink to this heading">¶</a></h1>
+<span class="target" id="module-src.analysis.functions"><span id="analysis-functions"></span></span><section id="module-analysis-functions-py">
+<h2>Module: analysis.functions.py<a class="headerlink" href="#module-analysis-functions-py" title="Permalink to this heading">¶</a></h2>
+<p>This module includes various functions for musical analysis in the Interactive Music Analysis Tool (I-MaT). These functions take a music21 stream object and return the result as a pandas DataFrame.</p>
+<p>This module contains various musical analysis functions to be used within the Interactive Music Analysis Tool (I-MaT).
+Each function in this module performs a specific type of music analysis on a music21 stream object and returns the
+result as a pandas DataFrame. The type of analysis performed includes, but is not limited to, ambitus calculation,
+note and rest counting, pitch and interval analysis, and more complex tasks such as calculating activity rates or
+comparing pitches and pitch classes per duration.</p>
+<p>The functions in this module are designed to be easily callable from other parts of the application, and their results
+are designed to be easily readable, making them flexible tools for musical analysis. They also use a standard interface,
+accepting a music21 stream object and an identifier string as input and returning a pandas DataFrame as output.</p>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>analysis_advanced_calculate_activity_rate</p></li>
+<li><p>analysis_advanced_compare_pitches_and_pitch_classes_per_duration</p></li>
+<li><p>analysis_ambitus</p></li>
+<li><p>analysis_number_of_intervals_per_type</p></li>
+<li><p>analysis_number_of_intervals_per_type_with_direction</p></li>
+<li><p>analysis_number_of_notes</p></li>
+<li><p>analysis_number_of_pitch_classes_per_metrical_position</p></li>
+<li><p>analysis_number_of_pitch_classes_per_offset</p></li>
+<li><p>analysis_number_of_pitch_classes_per_tone_duration</p></li>
+<li><p>analysis_number_of_pitches_per_metrical_position</p></li>
+<li><p>analysis_number_of_pitches_per_offset</p></li>
+<li><p>analysis_number_of_pitches_per_tone_duration</p></li>
+<li><p>analysis_number_of_rests</p></li>
+<li><p>analysis_number_of_rests_per_rest_duration</p></li>
+<li><p>analysis_number_of_sound_events_per_metrical_position</p></li>
+<li><p>analysis_number_of_sound_events_per_pitch</p></li>
+<li><p>analysis_number_of_sound_events_per_pitch_class</p></li>
+<li><p>analysis_number_of_sound_events_per_tone_duration</p></li>
+</ul>
+<p>Each function performs a specific type of music analysis such as ambitus calculation, note and rest counting, pitch and interval analysis, and more complex tasks like calculating activity rates or comparing pitches and pitch classes per duration.</p>
+</section>
+</section>
+<dl class="py function">
+<dt class="sig sig-object py" id="src.analysis.functions.analysis_advanced_calculate_activity_rate">
+<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_advanced_calculate_activity_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_advanced_calculate_activity_rate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_advanced_calculate_activity_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the activity index of a music21 stream object, representing the ratio of the number of notes to the number of rests.</p>
+<p>The function calculates the number of notes and rests separately, and then calculates their ratio. If the number of rests is zero,
+it treats the activity rate as NaN to avoid division by zero.</p>
+<p>The resulting DataFrame contains the identifier (to distinguish different analysis results), the number of notes,
+the number of rests, and the activity index for the piece. This information can be useful in comparing the musical density
+or ‘activity level’ of different pieces or sections.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>music_obj</strong> (<em>music21.stream.Stream</em>) – The music21 stream object representing a musical piece, on which the activity index will be calculated.</p></li>
+<li><p><strong>identifier</strong> (<em>str</em>) – The identifier string which is used to label the analysis result, which could be useful in distinguishing different results or referring to them in later processes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A pandas DataFrame including the identifier, number of notes, number of rests, and the activity index.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The activity index is defined as the ratio of the number of notes to the number of rests in a piece of music.
+This index provides a measure of the ‘density’ of musical events in the piece, indicating the ratio of musical
+activity to silence. A higher activity index implies more notes relative to rests, suggesting a more ‘active’ or ‘busy’ piece,
+while a lower activity index means more rests relative to notes, suggesting a more ‘calm’ or ‘sparse’ piece.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.analysis.functions.analysis_advanced_compare_pitches_and_pitch_classes_per_duration">
+<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_advanced_compare_pitches_and_pitch_classes_per_duration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_advanced_compare_pitches_and_pitch_classes_per_duration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_advanced_compare_pitches_and_pitch_classes_per_duration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compare the number of distinct pitches and pitch classes per duration in a music21 stream object.</p>
+<p>This function combines the analysis of the number of distinct pitches per duration and the number of distinct pitch classes per duration.
+By comparing these two analyses, one can observe how the tonal variety (in terms of both specific pitches and pitch classes)
+changes with the duration of notes in the music piece.</p>
+<p>The function first calculates the number of distinct pitches and pitch classes per duration separately. Then, it merges the results
+and calculates the ratio of pitches to pitch classes for each duration.</p>
+<p>The resulting DataFrame includes the identifier, duration (quarter length), duration names, count of distinct pitches,
+count of distinct pitch classes, and the pitch to pitch class ratio for each duration. This information can be useful in studying
+the correlation between note duration and tonal variety in the music piece.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>music_obj</strong> (<em>music21.stream.Stream</em>) – The music21 stream object representing a musical piece, on which the comparison of pitches and pitch classes per duration will be performed.</p></li>
+<li><p><strong>identifier</strong> (<em>str</em>) – The identifier string which is used to label the analysis result, which could be useful in distinguishing different results or referring to them in later processes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A pandas DataFrame including the identifier, duration (quarter length), duration names, count of distinct pitches, count of distinct pitch classes, and the ratio of pitches to pitch classes for each duration.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The pitch to pitch class ratio provides a measure of tonal repetition and variety for each note duration:
+* Ratio = 1: A ratio of 1 indicates that every pitch for a given duration is unique, i.e., all the pitches belong to different pitch classes.</p>
+<blockquote>
+<div><p>This suggests a high degree of tonal variety for that duration.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>Ratio &gt; 1: A ratio greater than 1 indicates that some pitches are being repeated for notes of that duration. The higher the ratio,
+the greater the repetition of certain pitches, suggesting a focus or emphasis on these specific pitch classes in that duration.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.analysis.functions.analysis_ambitus">
+<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_ambitus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_ambitus"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_ambitus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Analyze and calculate the ambitus (range) of pitches in a music21 stream object and associate it with an identifier.</p>
+<p>The function first prepares the music object by removing tied notes, which might alter the true ambitus range.
+Then, it goes through all the note elements in the music object to determine the lowest and highest pitches.
+If there are no pitches in the music (for example, if the music only contains rests), then the DataFrame will
+indicate this with dashes (“-”) in all the pitch-related columns.</p>
+<p>The ambitus analysis can be a useful metric in music analysis tasks, as it provides a simple numerical
+representation of the piece’s melodic complexity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>music_obj</strong> (<em>music21.stream.Stream</em>) – The music21 stream object representing a musical piece, on which the ambitus analysis will be performed.</p></li>
+<li><p><strong>identifier</strong> (<em>str</em>) – The identifier string which is used to label the analysis result, which could be useful in distinguishing
+different results or referring to them in later processes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A pandas DataFrame with a row representing the ambitus analysis result, including the identifier, MIDI
+pitch values and names of the lowest and highest notes, and the ambitus (range) in MIDI pitches and
+musical interval.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The ambitus refers to the range of pitches (notes) covered by a piece of music. It is determined by
+identifying the lowest and highest pitches in the music. The function calculates the MIDI pitch values
+(integer representation of pitches) and the note names (pitch names with octave) of the lowest and highest
+pitches, as well as the interval (distance) between them. The ambitus provides insight into the melodic
+and tonal span of the music.</p>
+<p>The resulting DataFrame contains the identifier (to distinguish different analysis results), the MIDI pitch
+value of the lowest and highest pitches, the ambitus range in MIDI pitches, the note name of the lowest and
+highest pitches, and the interval name (distance between the lowest and highest pitches) in music theory terms.
+If there are no pitches in the music, the ambitus values will be indicated with dashes (“-“).</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.analysis.functions.analysis_number_of_intervals_per_type">
+<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_intervals_per_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_intervals_per_type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_intervals_per_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Analyze and count the number of different interval types in a music21 stream object and associate it with an identifier.</p>
+<p>The function first prepares the music object by removing tied notes to ensure that each interval is counted separately.
+Then, it goes through all the pairs of consecutive notes in the music object to determine the type of interval between
+them and count the number of occurrences of each interval type.</p>
+<p>The interval type count can provide insights about the piece’s melodic complexity and structure, specifically
+regarding the variety and distribution of interval types used. This could be useful in various music analysis tasks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>music_obj</strong> (<em>music21.stream.Stream</em>) – The music21 stream object representing a musical piece, on which the interval type count analysis will be performed.</p></li>
+<li><p><strong>identifier</strong> (<em>str</em>) – The identifier string which is used to label the analysis result, which could be useful in distinguishing
+different results or referring to them in later processes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A pandas DataFrame with rows representing the interval type count analysis result, including the identifier,
+interval types, their nice names, positive MIDI pitch value intervals, and their counts.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>In music theory and analysis, intervals refer to the distance between two pitches. This function analyzes
+the music21 stream object and counts the number of occurrences of different interval types.</p>
+<p>The interval types are represented by their name, and the nice name provides a more descriptive representation.
+The MIDI pitch value intervals are calculated as the absolute difference between the MIDI pitch values of
+consecutive notes in the stream. Only positive MIDI pitch value intervals are considered to avoid duplication
+of intervals with reverse directions.</p>
+<p>The resulting DataFrame contains the identifier (to distinguish different analysis results), the interval
+types, their nice names, the positive MIDI pitch value intervals, and the counts of occurrences for each
+interval type in the music.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.analysis.functions.analysis_number_of_intervals_per_type_with_direction">
+<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_intervals_per_type_with_direction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_intervals_per_type_with_direction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_intervals_per_type_with_direction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Analyze and count the number of different interval types in a music21 stream object and associate it with an identifier,
+considering the direction of the interval.</p>
+<p>The function first prepares the music object by removing tied notes to ensure that each interval is counted separately.
+Then, it goes through all the pairs of consecutive notes in the music object to determine the type and direction of the
+interval between them and count the number of occurrences of each interval type.</p>
+<p>The interval type count can provide insights about the piece’s melodic complexity and structure, specifically
+regarding the variety and distribution of interval types used, taking into account their direction.
+This could be useful in various music analysis tasks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>music_obj</strong> (<em>music21.stream.Stream</em>) – The music21 stream object representing a musical piece, on which the interval type count analysis will be performed.</p></li>
+<li><p><strong>identifier</strong> (<em>str</em>) – The identifier string which is used to label the analysis result, which could be useful in distinguishing
+different results or referring to them in later processes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A pandas DataFrame with rows representing the interval type count analysis result, including the identifier,
+interval types, their nice names, MIDI pitch value intervals (including direction), and their counts.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>In music theory and analysis, intervals refer to the distance between two pitches. Interval directions indicate
+whether the interval moves upwards (ascending) or downwards (descending) in pitch. This function analyzes the
+music21 stream object and counts the number of occurrences of different interval types in both ascending and
+descending directions.</p>
+<p>The interval types are represented by their directed name, which indicates the direction (e.g., “A2” for an
+ascending second, “d5” for a descending fifth). The nice name provides a more descriptive representation of the
+interval. The MIDI pitch value intervals represent the difference in MIDI pitch values between consecutive notes
+in the stream.</p>
+<p>The resulting DataFrame contains the identifier (to distinguish different analysis results), the interval types,
+their nice names, the MIDI pitch value intervals, and the frequencies of occurrence for each interval type in
+both ascending and descending directions.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.analysis.functions.analysis_number_of_notes">
+<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_notes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_notes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_notes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Analyze and count the number of notes (individual pitches) in a music21 stream object and associate it with an identifier.</p>
+<p>The function first prepares the music object by removing tied notes to ensure that each pitch is counted separately.
+Then, it goes through all the note elements in the music object to count the number of notes. Note that only
+actual pitches are counted, and rests or other non-pitched elements are not included.</p>
+<p>The note count can serve as a simple metric of the piece’s complexity and could be useful in various music
+analysis tasks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>music_obj</strong> (<em>music21.stream.Stream</em>) – The music21 stream object representing a musical piece, on which the note count analysis will be performed.</p></li>
+<li><p><strong>identifier</strong> (<em>str</em>) – The identifier string which is used to label the analysis result, which could be useful in distinguishing
+different results or referring to them in later processes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A pandas DataFrame with a row representing the note count analysis result, including the identifier and
+the count of notes.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>In music, a tone refers to an individual pitch, typically represented by a note. This function analyzes the
+music21 stream object and counts the number of occurrences of notes within the stream.</p>
+<p>The function considers any note object present in the stream, including notes with different durations, pitches,
+and other attributes. Rests and other non-pitched elements are excluded from the count.</p>
+<p>The resulting DataFrame contains the identifier (to distinguish different analysis results) and the count of
+notes in the stream.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.analysis.functions.analysis_number_of_pitch_classes_per_metrical_position">
+<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_pitch_classes_per_metrical_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_pitch_classes_per_metrical_position"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_pitch_classes_per_metrical_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Analyze and count the number of occurrences of each pitch class at each metrical position in a music21 stream object, and associate it with an identifier.</p>
+<p>The function first prepares the music object by removing tied notes to ensure that each pitch class-metrical position pair is counted separately.
+Then, it goes through all the notes in the music object to count the number of occurrences of each pitch class-metrical position combination.</p>
+<p>The pitch class count per metrical position can provide insights about the piece’s tonality, mode, key, and rhythmic structure,
+specifically regarding the usage frequency of different pitch classes at each metrical position. This could be useful in various music analysis tasks,
+especially those concerning the interaction of melody and rhythm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>music_obj</strong> (<em>music21.stream.Stream</em>) – The music21 stream object representing a musical piece, on which the pitch class per metrical position count analysis will be performed.</p></li>
+<li><p><strong>identifier</strong> (<em>str</em>) – The identifier string which is used to label the analysis result, which could be useful in distinguishing different results or referring to them in later processes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A pandas DataFrame with rows representing the pitch class per metrical position count analysis result, including the identifier,
+metrical position, pitch class, pitch class name, and the count of each pitch class.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Metrical positions refer to the specific positions within the musical meter, typically measured in beats. This analysis
+counts the number of occurrences of each pitch class (without octave information) that start on the same metrical
+positions in the music.</p>
+<p>The resulting DataFrame contains the identifier (to distinguish different analysis results), the metrical position,
+the number and name of each pitch class, and the count of each pitch class at each metrical position.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.analysis.functions.analysis_number_of_pitch_classes_per_offset">
+<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_pitch_classes_per_offset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_pitch_classes_per_offset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_pitch_classes_per_offset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Analyze and count the number of pitch classes per offset (time position) in a music21 stream object, and associate it with an identifier.</p>
+<p>The function first prepares the music object by removing tied notes to ensure that each pitch class-offset pair is counted separately.
+Then, it goes through all the notes in the music object to count the number of occurrences of each pitch class-offset combination.</p>
+<p>The pitch class count per offset can provide insights about the temporal distribution of pitch classes within the piece, the unfolding of the harmony over time,
+and potential recurring motifs or themes. This could be useful in various music analysis tasks, especially those concerning the interaction of harmony and rhythm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>music_obj</strong> (<em>music21.stream.Stream</em>) – The music21 stream object representing a musical piece, on which the pitch class per offset count analysis will be performed.</p></li>
+<li><p><strong>identifier</strong> (<em>str</em>) – The identifier string which is used to label the analysis result, which could be useful in distinguishing different results or referring to them in later processes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A pandas DataFrame with rows representing the pitch class per offset count analysis result, including the identifier, offset (time position),
+pitch class, pitch class name, and the count of sound events.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>An offset refers to the time position of a musical event within a piece of music. It represents the time elapsed
+since the beginning of the music or a specific reference point. In this analysis, the function examines the pitch
+classes (chromatic pitch values without octave) occurring at different offsets (time positions) in the music and
+counts the number of occurrences for each pitch class at each offset.</p>
+<p>The offset values represent the time positions in the music stream, usually measured in beats or fractions of beats.
+By analyzing the pitch classes over offsets, it is possible to observe the distribution of pitch classes and their
+temporal relationships within the music.</p>
+<p>The resulting DataFrame contains the identifier (to distinguish different analysis results), the offset (time
+position), the pitch class (chromatic pitch value without octave), the pitch class name, and the count of sound
+events (number of occurrences) for each combination of offset and pitch class.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.analysis.functions.analysis_number_of_pitch_classes_per_tone_duration">
+<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_pitch_classes_per_tone_duration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_pitch_classes_per_tone_duration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_pitch_classes_per_tone_duration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Analyze and count the number of pitch classes per tone duration (quarter length) in a music21 stream object, and associate it with an identifier.</p>
+<p>The function first prepares the music object by removing tied notes to ensure that each pitch class-duration pair is counted separately.
+Then, it goes through all the notes in the music object to count the number of occurrences of each pitch class-duration combination.</p>
+<p>The pitch class count per tone duration can provide insights about the piece’s tonality, mode, key, and rhythmic structure,
+specifically regarding the usage frequency of different pitch classes at each tone duration. This could be useful in various music analysis tasks,
+especially those concerning the interaction of melody and rhythm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>music_obj</strong> (<em>music21.stream.Stream</em>) – The music21 stream object representing a musical piece, on which the pitch class per tone duration count analysis will be performed.</p></li>
+<li><p><strong>identifier</strong> (<em>str</em>) – The identifier string which is used to label the analysis result, which could be useful in distinguishing different results or referring to them in later processes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A pandas DataFrame with rows representing the pitch class per tone duration count analysis result, including the identifier,
+pitch class, tone duration, pitch class symbol, and the count of sound events.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.analysis.functions.analysis_number_of_pitches_per_metrical_position">
+<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_pitches_per_metrical_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_pitches_per_metrical_position"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_pitches_per_metrical_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Analyze and count the number of occurrences of each pitch at each metrical position in a music21 stream object and associate it with an identifier.</p>
+<p>The function first prepares the music object by removing tied notes to ensure that each pitch-metrical position pair is counted separately.
+Then, it goes through all the notes in the music object to count the number of occurrences of each pitch-metrical position combination.</p>
+<p>The pitch count per metrical position can provide insights about the piece’s tonality, mode, key, structure, and rhythmic complexity,
+specifically regarding the usage frequency of different pitches at each metrical position. This could be useful in various music analysis tasks, especially those concerning the interaction of melody and rhythm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>music_obj</strong> (<em>music21.stream.Stream</em>) – The music21 stream object representing a musical piece, on which the pitch per metrical position count analysis will be performed.</p></li>
+<li><p><strong>identifier</strong> (<em>str</em>) – The identifier string which is used to label the analysis result, which could be useful in distinguishing different results or referring to them in later processes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A pandas DataFrame with rows representing the pitch per metrical position count analysis result, including the identifier,
+MIDI Pitch, pitch names, metrical positions, and their counts.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Metrical positions refer to the specific positions within the musical meter, typically measured in beats. This analysis
+counts the number of occurrences of each pitch (including octave information) that start on the same metrical
+positions in the music.</p>
+<p>The resulting DataFrame contains the identifier (to distinguish different analysis results), the metrical position,
+the MIDI number and name of each pitch, and the count of each pitch at each metrical position.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.analysis.functions.analysis_number_of_pitches_per_offset">
+<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_pitches_per_offset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_pitches_per_offset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_pitches_per_offset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Analyze and count the number of pitches per offset (time position) in a music21 stream object, and associate it with an identifier.</p>
+<p>The function first prepares the music object by removing tied notes to ensure that each pitch-offset pair is counted separately.
+Then, it goes through all the notes in the music object to count the number of occurrences of each pitch-offset combination.</p>
+<p>The pitch count per offset can provide insights about the temporal distribution of pitches within the piece, the unfolding of the melody over time,
+and potential recurring motifs or themes. This could be useful in various music analysis tasks, especially those concerning the interaction of melody and rhythm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>music_obj</strong> (<em>music21.stream.Stream</em>) – The music21 stream object representing a musical piece, on which the pitch per offset count analysis will be performed.</p></li>
+<li><p><strong>identifier</strong> (<em>str</em>) – The identifier string which is used to label the analysis result, which could be useful in distinguishing different results or referring to them in later processes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A pandas DataFrame with rows representing the pitch per offset count analysis result, including the identifier, offset (time position),
+MIDI pitch, pitch name, and the count of sound events.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>An offset refers to the time position of a musical event within a piece of music. It represents the time elapsed
+since the beginning of the music or a specific reference point. In this analysis, the function examines the pitches
+(notes) occurring at different offsets (time positions) in the music and counts the number of occurrences for each
+pitch at each offset.</p>
+<p>The offset values represent the time positions in the music stream, usually measured in beats or fractions of beats.
+By analyzing the pitches over offsets, it is possible to gain insights into the distribution of pitches and their
+temporal relationships within the music.</p>
+<p>The resulting DataFrame contains the identifier (to distinguish different analysis results), the offset (time
+position), the MIDI pitch, the pitch name, and the count of sound events (number of occurrences) for each combination
+of offset and pitch.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.analysis.functions.analysis_number_of_pitches_per_tone_duration">
+<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_pitches_per_tone_duration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_pitches_per_tone_duration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_pitches_per_tone_duration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Analyze and count the number of pitches per tone duration (quarter length) in a music21 stream object and associate it with an identifier.</p>
+<p>The function first prepares the music object by removing tied notes to ensure that each pitch-duration pair is counted separately.
+Then, it goes through all the notes in the music object to count the number of occurrences of each pitch-duration combination.</p>
+<p>The pitch count per tone duration can provide insights about the piece’s tonality, mode, key, structure, and rhythmic complexity,
+specifically regarding the usage frequency of different pitches at each tone duration. This could be useful in various music analysis tasks, especially those concerning the interaction of melody and rhythm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>music_obj</strong> (<em>music21.stream.Stream</em>) – The music21 stream object representing a musical piece, on which the pitch per tone duration count analysis will be performed.</p></li>
+<li><p><strong>identifier</strong> (<em>str</em>) – The identifier string which is used to label the analysis result, which could be useful in distinguishing different results or referring to them in later processes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A pandas DataFrame with rows representing the pitch per tone duration count analysis result, including the identifier,
+MIDI Pitch, pitch names, tone durations, their nice names (duration name), and their counts.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This function analyzes the music21 stream object and counts the number of pitches per duration (quarter length).</p>
+<p>The analysis considers each pitch occurring in the music stream along with its associated duration. The duration
+is represented by the quarter length, indicating the length of the pitch in terms of musical beats. The count of
+sound events (pitches) is calculated for each combination of pitch and duration.</p>
+<p>The resulting DataFrame contains the identifier (to distinguish different analysis results), the MIDI Pitches,
+Pitch Names, Duration, Duration Names, and the count of sound events for each combination of pitch and duration.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.analysis.functions.analysis_number_of_rests">
+<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_rests</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_rests"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_rests" title="Permalink to this definition">¶</a></dt>
+<dd><p>Analyze and count the number of rests in a music21 stream object and associate it with an identifier.</p>
+<p>The function first prepares the music object by removing tied notes to ensure that each rest is counted separately.
+Then, it goes through all the rest elements in the music object to count the number of rests.</p>
+<p>The rest count can provide insights about the piece’s rhythmic complexity and structure, and could be useful
+in various music analysis tasks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>music_obj</strong> (<em>music21.stream.Stream</em>) – The music21 stream object representing a musical piece, on which the rest count analysis will be performed.</p></li>
+<li><p><strong>identifier</strong> (<em>str</em>) – The identifier string which is used to label the analysis result, which could be useful in distinguishing
+different results or referring to them in later processes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A pandas DataFrame with a row representing the rest count analysis result, including the identifier and
+the count of rests.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>In music notation, a rest indicates a period of silence or absence of musical sound. Rests are used to
+indicate pauses or breaks in the music. This function analyzes the music21 stream object and counts the
+number of rest elements present in the music.</p>
+<p>The resulting DataFrame contains the identifier (to distinguish different analysis results) and the count
+of rests in the music.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.analysis.functions.analysis_number_of_rests_per_rest_duration">
+<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_rests_per_rest_duration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_rests_per_rest_duration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_rests_per_rest_duration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Analyze and count the number of rests per duration in a music21 stream object and associate it with an identifier.</p>
+<p>The function first prepares the music object by removing tied notes to ensure that each rest is counted separately.
+Then, it goes through all the rest elements in the music object to count the number of rests per duration.</p>
+<p>The rest duration count can provide insights about the piece’s rhythmic complexity and structure, specifically
+regarding the variety and distribution of rest lengths used. This could be useful in various music analysis tasks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>music_obj</strong> (<em>music21.stream.Stream</em>) – The music21 stream object representing a musical piece, on which the rest duration count analysis will be performed.</p></li>
+<li><p><strong>identifier</strong> (<em>str</em>) – The identifier string which is used to label the analysis result, which could be useful in distinguishing
+different results or referring to them in later processes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A pandas DataFrame with rows representing the rest duration count analysis result, including the identifier,
+rest durations, rest names, and their counts.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>In music notation, rests indicate periods of silence or absence of musical sound. Rests are assigned
+specific durations, indicating the length of the pause or break in the music. This function analyzes the
+music21 stream object and counts the number of rests per duration.</p>
+<p>The resulting DataFrame contains the identifier (to distinguish different analysis results), the rest
+durations (quarter lengths), the rest names (duration representations), and the counts of rests for each
+duration in the music.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.analysis.functions.analysis_number_of_sound_events_per_metrical_position">
+<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_sound_events_per_metrical_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_sound_events_per_metrical_position"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_sound_events_per_metrical_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Analyze and count the number of sound events per metrical position in a music21 stream object and associate it with an identifier.</p>
+<p>The function first prepares the music object by removing tied notes to ensure that each sound event is counted separately.
+Then, it goes through all the notes in the music object to count the number of occurrences of each metrical position.</p>
+<p>The sound event count per metrical position can provide insights about the rhythmic complexity and structure of the piece,
+specifically regarding the distribution and emphasis of metrical positions. This could be useful in various music analysis tasks, especially those concerning rhythmic patterns and accentuation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>music_obj</strong> (<em>music21.stream.Stream</em>) – The music21 stream object representing a musical piece, on which the sound event per metrical position count analysis will be performed.</p></li>
+<li><p><strong>identifier</strong> (<em>str</em>) – The identifier string which is used to label the analysis result, which could be useful in distinguishing different results or referring to them in later processes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A pandas DataFrame with rows representing the sound event per metrical position count analysis result, including the identifier,
+metrical positions, and their counts.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Metrical positions refer to the specific positions within the musical meter, typically measured in beats.
+This analysis counts the number of sound events (tones) that start on the same metrical positions in the music.</p>
+<p>The resulting DataFrame contains the identifier (to distinguish different analysis results), the metrical position,
+and the count of sound events for each metrical position.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.analysis.functions.analysis_number_of_sound_events_per_pitch">
+<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_sound_events_per_pitch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_sound_events_per_pitch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_sound_events_per_pitch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Analyze and count the number of sound events per pitch in a music21 stream object and associate it with an identifier.</p>
+<p>The function first prepares the music object by removing tied notes to ensure that each sound event is counted separately.
+Then, it goes through all the notes in the music object to count the number of occurrences of each pitch.</p>
+<p>The sound event count per pitch can provide insights about the piece’s tonality, mode, key, and structure,
+specifically regarding the usage frequency of different pitches. This could be useful in various music analysis tasks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>music_obj</strong> (<em>music21.stream.Stream</em>) – The music21 stream object representing a musical piece, on which the sound event per pitch count analysis will be performed.</p></li>
+<li><p><strong>identifier</strong> (<em>str</em>) – The identifier string which is used to label the analysis result, which could be useful in distinguishing
+different results or referring to them in later processes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A pandas DataFrame with rows representing the sound events per pitch count analysis result, including the identifier,
+MIDI Pitch, pitch names, and their counts.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Sound events refer to individual occurrences of pitches in the music stream. This function analyzes the
+music21 stream object and counts the number of sound events (notes) per pitch.</p>
+<p>The analysis considers the MIDI pitch value, the pitch name with octave information, and the count of sound
+events for each pitch.</p>
+<p>The resulting DataFrame contains the identifier (to distinguish different analysis results), the MIDI pitch
+value, the pitch name, and the count of sound events for each pitch.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.analysis.functions.analysis_number_of_sound_events_per_pitch_class">
+<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_sound_events_per_pitch_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_sound_events_per_pitch_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_sound_events_per_pitch_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>Analyze and count the number of sound events per pitch class in a music21 stream object and associate it with an identifier.</p>
+<p>The function first prepares the music object by removing tied notes to ensure that each sound event is counted separately.
+Then, it goes through all the notes in the music object to count the number of occurrences of each pitch class.</p>
+<p>The sound event count per pitch class can provide insights about the piece’s tonality, mode, key, and structure,
+specifically regarding the usage frequency of different pitch classes, irrespective of the octave they belong to.
+This could be useful in various music analysis tasks, especially those concerning tonal or modal attributes of the music.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>music_obj</strong> (<em>music21.stream.Stream</em>) – The music21 stream object representing a musical piece, on which the sound event per pitch class count analysis will be performed.</p></li>
+<li><p><strong>identifier</strong> (<em>str</em>) – The identifier string which is used to label the analysis result, which could be useful in distinguishing
+different results or referring to them in later processes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A pandas DataFrame with rows representing the sound events per pitch class count analysis result, including the identifier,
+MIDI Pitch Class, pitch class names, and their counts.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Sound events refer to individual occurrences of pitches in the music stream. This function analyzes the
+music21 stream object and counts the number of sound events (notes) per pitch class.</p>
+<p>The pitch class represents the chromatic pitch value without octave information. The analysis assigns
+pitch class symbols (e.g., “C”, “D#”, “G”) to each pitch class. The count of sound events (notes) for
+each pitch class is also calculated.</p>
+<p>The resulting DataFrame contains the identifier (to distinguish different analysis results), the MIDI pitch
+class value, the pitch class symbol, and the count of sound events for each pitch class.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.analysis.functions.analysis_number_of_sound_events_per_tone_duration">
+<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_sound_events_per_tone_duration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_sound_events_per_tone_duration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_sound_events_per_tone_duration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Analyze and count the number of sound events per tone duration (quarter length) in a music21 stream object,
+and associate it with an identifier.</p>
+<p>The function first prepares the music object by removing tied notes to ensure that each sound event is counted separately.
+Then, it goes through all the notes in the music object to count the number of occurrences of each tone duration.</p>
+<p>The sound event count per tone duration can provide insights about the rhythmic complexity and structure of the piece,
+specifically regarding the usage frequency of different tone durations. This could be useful in various music analysis tasks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>music_obj</strong> (<em>music21.stream.Stream</em>) – The music21 stream object representing a musical piece, on which the sound event per tone duration count analysis will be performed.</p></li>
+<li><p><strong>identifier</strong> (<em>str</em>) – The identifier string which is used to label the analysis result, which could be useful in distinguishing different results or referring to them in later processes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A pandas DataFrame with rows representing the sound event per tone duration count analysis result, including the identifier, tone duration,
+their nice names (duration name), and their counts.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Sound events refer to individual occurrences of tones in the music stream. This function analyzes the music21
+stream object and counts the number of sound events (notes) per tone duration.</p>
+<p>The tone duration is represented by the quarter length, which indicates the duration of a tone in terms of
+musical beats. The analysis includes the tone duration name (e.g., “Whole”, “Half”, “Quarter”) and the count
+of sound events for each tone duration.</p>
+<p>The resulting DataFrame contains the identifier (to distinguish different analysis results), the tone duration,
+the tone duration name, and the count of sound events for each tone duration.</p>
+</dd></dl>
+
+<span class="target" id="module-src.analysis.main"></span><section id="module-analysis-main-py">
+<h2>Module: analysis.main.py<a class="headerlink" href="#module-analysis-main-py" title="Permalink to this heading">¶</a></h2>
+<p>This module includes the main function for handling the workflow for analyzing a single musical piece within the Interactive Music Analysis Tool (I-MaT) tool.</p>
+<p>This module includes the function <cite>analysis_workflow_single_musical_piece</cite>, which is a key function to handle
+the workflow for analyzing a single musical piece in the Interactive Music Analysis Tool (I-MaT) tool.</p>
+<p>It guides through the entire process of selecting a score, performing the analysis using a user-provided function,
+displaying the results, and handling post-analysis user options.</p>
+<p>An important part of this process involves making use of several helper functions from different modules such as
+<cite>score_selection</cite>, <cite>select_parts_and_measures</cite>, <cite>handle_error</cite>, and more.</p>
+<p>For a detailed workflow, refer to the docstring of <cite>analysis_workflow_single_musical_piece</cite> function.</p>
+<p>This module is intended to be imported and used by the main entry point of the I-MaT system.</p>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><cite>analysis_workflow_single_musical_piece</cite>: Manages the complete process of selecting a score, performing analysis using a user-specified function, displaying the results, and handling post-analysis user options.</p></li>
+</ul>
+<p>The module utilizes several helper functions from different modules such as <cite>score_selection</cite>, <cite>select_parts_and_measures</cite>, <cite>handle_error</cite>, and more.</p>
+</section>
+</section>
+<dl class="py function">
+<dt class="sig sig-object py" id="src.analysis.main.analysis_workflow_single_musical_piece">
+<span class="sig-prename descclassname"><span class="pre">src.analysis.main.</span></span><span class="sig-name descname"><span class="pre">analysis_workflow_single_musical_piece</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">analysis_func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">callable</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/main.html#analysis_workflow_single_musical_piece"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.main.analysis_workflow_single_musical_piece" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handles the workflow for analyzing a single musical piece.</p>
+<p>This function manages the entire process of selecting a score,
+performing the analysis using the provided function, displaying the results,
+and handling post-analysis user options.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>analysis_func</strong> (<em>callable</em>) – The function to use for performing the analysis.
+This function should accept two parameters:
+a music score object and a string identifier.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>Exception</strong> – Handles any exceptions that arise during the analysis workflow by passing them to handle_error(e).</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">display_user_options_post_analysis</span></code></dt><dd><p>function Presents the user with post-analysis options.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">select_parts_and_measures</span></code></dt><dd><p>function Selects parts and measures for the musical score.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_analysis_func</span><span class="p">(</span><span class="n">score</span><span class="p">,</span> <span class="n">identifier</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="c1"># Implement analysis logic here</span>
+<span class="gp">... </span>    <span class="k">pass</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">analysis_workflow_single_musical_piece</span><span class="p">(</span><span class="n">my_analysis_func</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Notes</p>
+<p>If the score has not yet been selected, the score selection workflow is started.</p>
+</dd></dl>
+
+<span class="target" id="module-src.analysis.utils"></span><section id="module-analysis-utils-py">
+<h2>Module: analysis.utils.py<a class="headerlink" href="#module-analysis-utils-py" title="Permalink to this heading">¶</a></h2>
+<p>This module contains utility functions that are used within the analysis package, particularly
+for displaying menus and handling user input post analysis. These functions are used to enhance
+the interaction of the users with the Interactive Music Analysis Tool (I-MaT) system.</p>
+<p>The primary function in this module is <cite>display_user_options_post_analysis</cite>, which provides
+the user with a menu of options after a piece has been analyzed. This function allows for smooth
+user interaction during the post-analysis phase, offering choices like repeating the analysis,
+exporting results, displaying results, or going back to the main menu.</p>
+<p>This module also interacts with other modules, for instance, <cite>display_menu_request_selection</cite> from
+<cite>menu_constructors</cite> module and <cite>handle_error</cite> from <cite>error_handling</cite> module are used to handle menu
+displays and error scenarios respectively.</p>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><cite>display_user_options_post_analysis</cite>: Presents the user with a menu of options after the analysis of a piece. This includes options to repeat the analysis, export results, display results, or go back to the main menu.</p></li>
+</ul>
+<p>The module interacts with other modules like <cite>menu_constructors</cite> for displaying menus and <cite>error_handling</cite> for managing errors.</p>
+</section>
+</section>
+<dl class="py function">
+<dt class="sig sig-object py" id="src.analysis.utils.display_user_options_post_analysis">
+<span class="sig-prename descclassname"><span class="pre">src.analysis.utils.</span></span><span class="sig-name descname"><span class="pre">display_user_options_post_analysis</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/utils.html#display_user_options_post_analysis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.utils.display_user_options_post_analysis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display a menu with post-analysis options and return the user’s choice.</p>
+<p>This function presents the user with a list of options after a musical piece has been analyzed.
+The available options are: ‘repeat’, ‘export’, ‘display_results’, or ‘back’. The user’s selection
+is then returned as a string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>User’s chosen option from the post-analysis menu. Options include: ‘repeat’, ‘export’, ‘display_results’, ‘back’.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>Exception</strong> – Handles any exceptions that arise during the menu display and option selection by passing them to handle_error(e).</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">display_menu_request_selection</span></code></dt><dd><p>function Constructs a menu and handles user selection based on a given data container.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">user_choice</span> <span class="o">=</span> <span class="n">display_user_options_post_analysis</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">user_choice</span><span class="p">)</span>
+<span class="go">&#39;repeat&#39;</span>
+</pre></div>
+</div>
+<p class="rubric">Notes</p>
+<p>The function constructs the menu options using a predefined data container which contains the necessary details for each option.</p>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">I-MaT</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started with I-MaT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute.html">How to Contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="src.html">I-MaT: Source Code</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Package: Analysis (src.analysis)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.cli.html">Package: Command Line Interface (src.cli)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.conversion.html">Package: File Conversion (src.conversion)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.m21_environment.html">Package: music21 Environment File Configuration (src.m21_environment)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.pattern_search.html">Package: Pattern Search (src.pattern_search)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.score_selection.html">Package: Score Selection (src.score_selection)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.tokenization.html">Package: Tokenization (src.tokenization)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.utils.html">Package: Utility Functions (src.utils)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.visualizations.html">Package: Visualizations (src.visualizations)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.constants.html">Module: Constants (src.constants)</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="src.html">I-MaT: Source Code</a><ul>
+      <li>Previous: <a href="src.html" title="previous chapter">I-MaT: Source Code</a></li>
+      <li>Next: <a href="src.cli.html" title="next chapter">Package: Command Line Interface (src.cli)</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Sebastian Oliver Eck.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="../_sources/module_files/src.analysis.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

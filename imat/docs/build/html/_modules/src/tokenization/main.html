@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>src.tokenization.main &#8212; I-MaT 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for src.tokenization.main</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Module: tokenization.main.py</span>
+<span class="sd">============================</span>
+
+<span class="sd">This module provides functions for tokenizing MIDI files in a selected directory. These files are converted into token sequences</span>
+<span class="sd">using one or more tokenizers and saved as CSV files in a subdirectory of the original directory.</span>
+
+<span class="sd">Functions</span>
+<span class="sd">---------</span>
+<span class="sd">- `tokenization_tokenize_folder_midi_files`: Tokenizes all MIDI files in a user-selected directory using selected tokenizers.</span>
+<span class="sd">- `select_miditok_tokenizer`: Presents a user interface for tokenizer selection.</span>
+<span class="sd">- `select_folder_midi_files`: Presents a user interface for folder selection.</span>
+<span class="sd">- `tokenize_midi_file`: Tokenizes a MIDI file with a specified tokenizer class and saves the tokenized sequence to a CSV file.</span>
+<span class="sd">- `extract_tokens_from_token_string_within_list`: Extracts tokens from a string representation of a list using regex.</span>
+<span class="sd">- `extract_tokens_from_token_string_within_nested_list`: Extracts tokens from a string representation of a nested list using regex and abstract syntax trees (AST).</span>
+
+<span class="sd">Notes</span>
+<span class="sd">-----</span>
+<span class="sd">Functions in this module can be used directly or through the CLI interface provided by the `cli.cli_menu_structure` module.</span>
+<span class="sd">The tokenized sequences are saved as CSV files in a subdirectory of the original directory.</span>
+<span class="sd">Please refer to the individual function docstrings for more detailed descriptions and examples of usage.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">ast</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
+<span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="n">filedialog</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">miditok</span> <span class="kn">import</span> <span class="n">CPWord</span><span class="p">,</span> <span class="n">MIDILike</span><span class="p">,</span> <span class="n">MuMIDI</span><span class="p">,</span> <span class="n">Octuple</span><span class="p">,</span> <span class="n">OctupleMono</span><span class="p">,</span> <span class="n">REMI</span><span class="p">,</span> <span class="n">REMIPlus</span><span class="p">,</span> <span class="n">Structured</span><span class="p">,</span> <span class="n">TSD</span>
+<span class="kn">from</span> <span class="nn">openpyxl.workbook</span> <span class="kn">import</span> <span class="n">Workbook</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="kn">from</span> <span class="nn">iMaT.src.cli.menu_constructors</span> <span class="kn">import</span> <span class="n">display_menu_print_textblock</span><span class="p">,</span> \
+    <span class="n">display_menu_request_selection</span>
+<span class="kn">from</span> <span class="nn">iMaT.src.tokenization.utils</span> <span class="kn">import</span> <span class="n">combine_csv_files_in_directory</span><span class="p">,</span> <span class="n">create_log_entry</span><span class="p">,</span> <span class="n">display_success_rate</span><span class="p">,</span> \
+    <span class="n">display_tokenizable_files_in_folder</span><span class="p">,</span> \
+    <span class="n">get_tokenizable_files_in_folder</span>
+<span class="kn">from</span> <span class="nn">iMaT.src.utils.error_handling</span> <span class="kn">import</span> <span class="n">handle_error</span>
+
+<span class="n">MIDITOK_TOKENIZERS_LIST</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s1">&#39;REMI&#39;</span><span class="p">,</span> <span class="n">REMI</span><span class="p">,</span> <span class="s1">&#39;&lt;One-Dimensional: Event-based, includes timing, bar info&gt;&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;REMIPlus&#39;</span><span class="p">,</span> <span class="n">REMIPlus</span><span class="p">,</span> <span class="s1">&#39;&lt;One-Dimensional: Extended REMI, multi-track, multi-signature&gt;&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;MIDILike&#39;</span><span class="p">,</span> <span class="n">MIDILike</span><span class="p">,</span> <span class="s1">&#39;&lt;One-Dimensional: Converts MIDI messages to tokens&gt;&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;TSD&#39;</span><span class="p">,</span> <span class="n">TSD</span><span class="p">,</span> <span class="s1">&#39;&lt;One-Dimensional: Similar to MIDI-Like, uses explicit Duration tokens&gt;&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;Structured&#39;</span><span class="p">,</span> <span class="n">Structured</span><span class="p">,</span> <span class="s1">&#39;&lt;One-Dimensional: Similar to TSD, consistent token type succession&gt;&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;CPWord&#39;</span><span class="p">,</span> <span class="n">CPWord</span><span class="p">,</span> <span class="s1">&#39;&lt;Two-Dimensional: Uses embedding pooling to reduce sequence length&gt;&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;Octuple&#39;</span><span class="p">,</span> <span class="n">Octuple</span><span class="p">,</span> <span class="s1">&#39;&lt;Two-Dimensional: Embedding pooling, single note representation&gt;&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;OctupleMono&#39;</span><span class="p">,</span> <span class="n">OctupleMono</span><span class="p">,</span> <span class="s1">&#39;&lt;Two-Dimensional: Like Octuple, but suited for one track&gt;&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;MuMIDI&#39;</span><span class="p">,</span> <span class="n">MuMIDI</span><span class="p">,</span> <span class="s1">&#39;&lt;Two-Dimensional: Multitrack tasks, uses embedding pooling&gt;&#39;</span><span class="p">]</span>
+<span class="p">]</span>
+
+<span class="n">MIDITOK_TOKENIZERS_HEADERS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;REMI&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Tokens&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;REMIPlus&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Tokens&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;MIDILike&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Tokens&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;TSD&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Tokens&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Structured&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Tokens&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;CPWord&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Family&#39;</span><span class="p">,</span> <span class="s1">&#39;Position&#39;</span><span class="p">,</span> <span class="s1">&#39;Pitch&#39;</span><span class="p">,</span> <span class="s1">&#39;Velocity&#39;</span><span class="p">,</span> <span class="s1">&#39;Duration&#39;</span><span class="p">,</span> <span class="s1">&#39;Rest&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Octuple&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Pitch&#39;</span><span class="p">,</span> <span class="s1">&#39;Velocity&#39;</span><span class="p">,</span> <span class="s1">&#39;Duration&#39;</span><span class="p">,</span> <span class="s1">&#39;Program&#39;</span><span class="p">,</span> <span class="s1">&#39;Position&#39;</span><span class="p">,</span> <span class="s1">&#39;Bar&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;OctupleMono&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Pitch&#39;</span><span class="p">,</span> <span class="s1">&#39;Velocity&#39;</span><span class="p">,</span> <span class="s1">&#39;Duration&#39;</span><span class="p">,</span> <span class="s1">&#39;Position&#39;</span><span class="p">,</span> <span class="s1">&#39;Bar&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;MuMIDI&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Type*&#39;</span><span class="p">,</span> <span class="s1">&#39;BarPosEnc&#39;</span><span class="p">,</span> <span class="s1">&#39;PositionPosEnc&#39;</span><span class="p">,</span> <span class="s1">&#39;Velocity&#39;</span><span class="p">,</span> <span class="s1">&#39;Duration&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">MIDITOK_TOKENIZERS_ADDITIONAL_TOKENS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Chord&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s1">&#39;Program&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s1">&#39;Rest&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s1">&#39;Tempo&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s1">&#39;TimeSignature&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s1">&#39;chord_maps&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;7aug&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span>
+        <span class="s1">&#39;7dim&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span>
+        <span class="s1">&#39;7dom&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+        <span class="s1">&#39;7halfdim&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+        <span class="s1">&#39;7maj&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span>
+        <span class="s1">&#39;7min&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+        <span class="s1">&#39;9maj&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">14</span><span class="p">),</span>
+        <span class="s1">&#39;9min&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">13</span><span class="p">),</span>
+        <span class="s1">&#39;aug&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+        <span class="s1">&#39;dim&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>
+        <span class="s1">&#39;maj&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span>
+        <span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span>
+        <span class="s1">&#39;sus2&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span>
+        <span class="s1">&#39;sus4&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;chord_tokens_with_root_note&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s1">&#39;chord_unknown&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s1">&#39;nb_tempos&#39;</span><span class="p">:</span> <span class="mi">32</span><span class="p">,</span>
+    <span class="s1">&#39;programs&#39;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">128</span><span class="p">)),</span>
+    <span class="s1">&#39;rest_range&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span>
+    <span class="s1">&#39;tempo_range&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">250</span><span class="p">),</span>
+    <span class="s1">&#39;time_signature_range&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="p">}</span>
+
+
+<div class="viewcode-block" id="tokenization_tokenize_folder_midi_files"><a class="viewcode-back" href="../../../module_files/src.tokenization.html#src.tokenization.main.tokenization_tokenize_folder_midi_files">[docs]</a><span class="k">def</span> <span class="nf">tokenization_tokenize_folder_midi_files</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Tokenizes all MIDI files in a user-selected directory using the selected tokenizers.</span>
+
+<span class="sd">    This function prompts the user to select a directory and one or more tokenizers.</span>
+<span class="sd">    After selection, the function tokenizes all MIDI files in the directory using the</span>
+<span class="sd">    chosen tokenizers. The tokenized sequences are saved as CSV files in a subdirectory</span>
+<span class="sd">    of the original directory named &quot;tokenized_YYYYMMDD_HHMMSS&quot;. Additionally, any tokenization</span>
+<span class="sd">    results and errors are logged in an Excel file named &quot;tokenization_log.xlsx&quot; in the</span>
+<span class="sd">    same subdirectory.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    None</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    None</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    select_folder_midi_files : Function to interact with user for selecting a folder.</span>
+<span class="sd">    display_tokenizable_files_in_folder : Function to display tokenizable files.</span>
+<span class="sd">    select_miditok_tokenizer : Function to interact with user for selecting tokenizer(s).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">folder_path</span> <span class="o">=</span> <span class="n">select_folder_midi_files</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">folder_path</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span>
+
+    <span class="n">tokenizable_files</span> <span class="o">=</span> <span class="n">display_tokenizable_files_in_folder</span><span class="p">(</span><span class="n">folder_path</span><span class="p">)</span>
+
+    <span class="n">selected_tokenizers</span> <span class="o">=</span> <span class="n">select_miditok_tokenizer</span><span class="p">()</span>
+
+    <span class="n">tokenization_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder_path</span><span class="p">,</span> <span class="s2">&quot;tokenized_&quot;</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y%m</span><span class="si">%d</span><span class="s2">_%H%M%S&quot;</span><span class="p">))</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">tokenization_dir</span><span class="p">)</span>
+
+    <span class="n">workbook</span> <span class="o">=</span> <span class="n">Workbook</span><span class="p">()</span>
+    <span class="n">workbook</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">tokenization_dir</span> <span class="o">+</span> <span class="sa">r</span><span class="s1">&#39;\tokenization_log.xlsx&#39;</span><span class="p">)</span>
+
+    <span class="n">num_files_tokenized</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tokenizable_files</span><span class="p">)</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">selected_tokenizers</span><span class="p">)</span>
+    <span class="n">num_tokenized</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">files_status</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">tokenizer_class</span> <span class="ow">in</span> <span class="n">selected_tokenizers</span><span class="p">:</span>
+        <span class="c1"># Look up the name of the tokenizer</span>
+        <span class="n">tokenizer_name</span> <span class="o">=</span> <span class="nb">next</span><span class="p">((</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">MIDITOK_TOKENIZERS_LIST</span> <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">tokenizer_class</span><span class="p">),</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">tokenizer_name</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error: Could not find tokenizer &#39;</span><span class="si">{</span><span class="n">tokenizer_name</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+            <span class="k">continue</span>  <span class="c1"># Skip if the tokenizer name is not found</span>
+
+        <span class="k">if</span> <span class="n">tokenizer_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Structured&#39;</span><span class="p">,</span> <span class="s1">&#39;REMIPlus&#39;</span><span class="p">]:</span>
+            <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">tokenizer_class</span><span class="p">(</span><span class="n">additional_tokens</span><span class="o">=</span><span class="n">MIDITOK_TOKENIZERS_ADDITIONAL_TOKENS</span><span class="p">,</span> <span class="n">beat_res</span><span class="o">=</span><span class="p">{(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="p">):</span> <span class="mi">16</span><span class="p">})</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">tokenizer_class</span><span class="p">()</span>
+
+        <span class="n">tokenized_file_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tokenization_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;tokenizer_</span><span class="si">{</span><span class="n">tokenizer_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">tokenized_file_folder</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">tokenizable_files</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">70</span><span class="p">):</span>  <span class="c1"># Wrap tokenizable_files with tqdm for progress bar</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">midi_file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder_path</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+                <span class="n">tokens</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">(</span><span class="n">midi_file_path</span><span class="p">)</span>
+                <span class="n">tokens_string</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
+
+                <span class="c1"># check if the tokens are in a nested list</span>
+                <span class="k">if</span> <span class="s2">&quot;[[&quot;</span> <span class="ow">in</span> <span class="n">tokens_string</span> <span class="ow">and</span> <span class="s2">&quot;]]&quot;</span> <span class="ow">in</span> <span class="n">tokens_string</span><span class="p">:</span>
+                    <span class="n">tokens_list</span> <span class="o">=</span> <span class="n">extract_tokens_from_token_string_within_nested_list</span><span class="p">(</span><span class="n">tokens_string</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">tokens_list</span> <span class="o">=</span> <span class="n">extract_tokens_from_token_string_within_list</span><span class="p">(</span><span class="n">tokens_string</span><span class="p">)</span>
+
+                <span class="c1"># Convert the list of tokens to a DataFrame</span>
+                <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">tokens_list</span><span class="p">)</span>
+
+                <span class="c1"># Get the column names for the current tokenizer</span>
+                <span class="n">headers</span> <span class="o">=</span> <span class="n">MIDITOK_TOKENIZERS_HEADERS</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">tokenizer_name</span><span class="p">,</span> <span class="p">[])</span>
+
+                <span class="c1"># Check if the DataFrame has the right number of columns</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">headers</span><span class="p">):</span>
+                    <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">headers</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Warning: Number of columns in the DataFrame does not match the number of headers for &#39;</span>
+                        <span class="sa">f</span><span class="s1">&#39;tokenizer </span><span class="si">{</span><span class="n">tokenizer_name</span><span class="si">}</span><span class="s1">. Defaulting to generic headers.</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+                    <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;column&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
+
+                <span class="c1"># Save the DataFrame to a CSV file</span>
+                <span class="n">base_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">file</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Get file base name without extension</span>
+                <span class="n">file_name_token</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_name</span><span class="si">}</span><span class="s2">_tokenizer_</span><span class="si">{</span><span class="n">tokenizer_name</span><span class="si">}</span><span class="s2">_tokens.csv&quot;</span>
+                <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tokenized_file_folder</span><span class="p">,</span> <span class="n">file_name_token</span><span class="p">)</span>
+
+                <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                <span class="n">num_tokenized</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">files_status</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">tokenizer_name</span><span class="p">,</span> <span class="n">file</span><span class="p">,</span> <span class="s2">&quot;&lt;successfully converted&gt;&quot;</span><span class="p">])</span>
+
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">files_status</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">tokenizer_name</span><span class="p">,</span> <span class="n">file</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)])</span>
+                <span class="n">exception_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">tokenizer_name</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tokenized_file_folder</span><span class="p">,</span> <span class="n">file</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)]</span>
+                <span class="n">create_log_entry</span><span class="p">(</span><span class="n">exception_list</span><span class="p">,</span> <span class="n">tokenization_dir</span> <span class="o">+</span> <span class="sa">r</span><span class="s1">&#39;\tokenization_log.xlsx&#39;</span><span class="p">)</span>
+
+        <span class="n">combine_csv_files_in_directory</span><span class="p">(</span><span class="n">tokenized_file_folder</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;00_combined_tokenizer_</span><span class="si">{</span><span class="n">tokenizer_name</span><span class="si">}</span><span class="s2">_tokens.csv&quot;</span><span class="p">)</span>
+
+    <span class="n">display_success_rate</span><span class="p">(</span><span class="n">files_status</span><span class="p">,</span> <span class="n">num_files_tokenized</span><span class="p">,</span> <span class="n">num_tokenized</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="select_miditok_tokenizer"><a class="viewcode-back" href="../../../module_files/src.tokenization.html#src.tokenization.main.select_miditok_tokenizer">[docs]</a><span class="k">def</span> <span class="nf">select_miditok_tokenizer</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Interacts with the user via a user interface for tokenizer selection.</span>
+
+<span class="sd">    This function prompts the user to select one or more tokenizers from a predefined list.</span>
+<span class="sd">    Depending on the user&#39;s choice, it returns the selected tokenizers.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    None</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list</span>
+<span class="sd">        A list containing the selected tokenizer(s) classes.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    Exception</span>
+<span class="sd">        If an error occurs while processing the user&#39;s selection.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    display_menu_request_selection : Function to display menu and request user selection.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">tokenizer_dict</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;menu_displayed_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;File Tokenization: Tokenizer Selection&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Please select one of the following tokenizers by entering the corresponding index number:&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Which tokenizer do you want to select? (&lt;No. of menu item&gt;): &quot;</span><span class="p">,</span>
+                <span class="p">[</span><span class="s2">&quot;Tokenizer&quot;</span><span class="p">,</span> <span class="s2">&quot;Description&quot;</span><span class="p">]</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;menu_entries&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="n">tokenizer</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">tokenizer</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">tokenizer</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span> <span class="k">for</span> <span class="n">tokenizer</span> <span class="ow">in</span> <span class="n">MIDITOK_TOKENIZERS_LIST</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span>
+                <span class="p">[</span><span class="s2">&quot;All&quot;</span><span class="p">,</span> <span class="s2">&quot;return_all&quot;</span><span class="p">,</span> <span class="s2">&quot;Apply all tokenizers&quot;</span><span class="p">]]</span>
+        <span class="p">}</span>
+        <span class="n">choice</span> <span class="o">=</span> <span class="n">display_menu_request_selection</span><span class="p">(</span><span class="n">tokenizer_dict</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;return_all&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">tokenizer</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">tokenizer</span> <span class="ow">in</span> <span class="n">MIDITOK_TOKENIZERS_LIST</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">choice</span><span class="p">]</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">handle_error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="select_folder_midi_files"><a class="viewcode-back" href="../../../module_files/src.tokenization.html#src.tokenization.main.select_folder_midi_files">[docs]</a><span class="k">def</span> <span class="nf">select_folder_midi_files</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Interacts with the user via a user interface for folder selection.</span>
+
+<span class="sd">    This function prompts the user to input the path to the desired folder. It validates</span>
+<span class="sd">    the input and ensures the folder contains parsable music files. If not, it prompts the</span>
+<span class="sd">    user to input another path.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    None</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    str</span>
+<span class="sd">        A string containing the path to the selected folder, or None if the user cancelled</span>
+<span class="sd">        the dialog or didn&#39;t select a suitable folder.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    Exception</span>
+<span class="sd">        If an error occurs while processing the user&#39;s selection.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    get_tokenizable_files_in_folder : Function to get tokenizable files in the selected folder.</span>
+<span class="sd">    display_menu_print_textblock : Function to display menu.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">parsable_extensions</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;.midi&#39;</span><span class="p">,</span> <span class="s1">&#39;.mid&#39;</span><span class="p">]</span>
+
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">textblock_dict</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;menu_displayed_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;-- Folder Selection --&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;Please read the following information:&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;&lt;To continue and select a folder, please press Enter&gt;&quot;</span><span class="p">,</span>
+                    <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;Information&quot;</span><span class="p">],</span>
+                <span class="p">],</span>
+                <span class="s2">&quot;menu_entries_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">[</span><span class="s2">&quot;Parsable Music File Types&quot;</span><span class="p">,</span>
+                     <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">parsable_extensions</span><span class="p">)],</span>
+                    <span class="p">[</span><span class="s2">&quot;Folder Requirements&quot;</span><span class="p">,</span>
+                     <span class="s2">&quot;The folder must contain at least one parsable music file of the above types to be processed by this tool.&quot;</span><span class="p">],</span>
+                    <span class="p">[</span><span class="s2">&quot;Return to Main Menu&quot;</span><span class="p">,</span>
+                     <span class="s2">&quot;If you do not have a suitable folder with valid files at the moment, press enter and close the selection display that will be displayed right after.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                     <span class="s2">&quot;You will then be returned to the Main Menu.&quot;</span><span class="p">]</span>
+                <span class="p">]</span>
+            <span class="p">}</span>
+
+            <span class="n">display_menu_print_textblock</span><span class="p">(</span><span class="n">textblock_dict</span><span class="p">)</span>
+
+            <span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+            <span class="c1"># root.withdraw()  # Hide the root window</span>
+
+            <span class="c1"># Open a file dialog and get the selected file path</span>
+            <span class="n">folder_path</span> <span class="o">=</span> <span class="n">filedialog</span><span class="o">.</span><span class="n">askdirectory</span><span class="p">()</span>
+
+            <span class="n">root</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span>  <span class="c1"># Destroy the root window</span>
+
+            <span class="k">if</span> <span class="n">folder_path</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>  <span class="c1"># If the user canceled the dialog</span>
+                <span class="k">return</span> <span class="kc">None</span>
+
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">get_tokenizable_files_in_folder</span><span class="p">(</span><span class="n">folder_path</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">error_message_dict</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="s2">&quot;menu_displayed_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="s2">&quot;File Conversion: Folder Selection - Error&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;The selected directory contains no parsable music files:&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;&lt;To continue, please press Enter&gt;&quot;</span><span class="p">,</span>
+                        <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;Troubleshooting assistance:&quot;</span><span class="p">]</span>
+                    <span class="p">],</span>
+                    <span class="s2">&quot;menu_entries_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="p">[</span><span class="s2">&quot;Parsable Music File Types&quot;</span><span class="p">,</span>
+                         <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">parsable_extensions</span><span class="p">)],</span>
+                        <span class="p">[</span><span class="s2">&quot;Reason 1:&quot;</span><span class="p">,</span> <span class="s2">&quot;There are no parsable music files in the selected directory.&quot;</span><span class="p">],</span>
+                        <span class="p">[</span><span class="s2">&quot;Reason 2:&quot;</span><span class="p">,</span> <span class="s2">&quot;Ensure the directory you select contains the music files you want to convert.&quot;</span><span class="p">],</span>
+                        <span class="p">[</span><span class="s2">&quot;Return to Main Menu&quot;</span><span class="p">,</span>
+                         <span class="s2">&quot;If you do not have a suitable folder with valid files at the moment, press enter and close the &quot;</span>
+                         <span class="s2">&quot;selection display that will be displayed right after.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                         <span class="s2">&quot;You will then be returned to the Main Menu.&quot;</span><span class="p">]</span>
+                    <span class="p">]</span>
+                <span class="p">}</span>
+                <span class="n">display_menu_print_textblock</span><span class="p">(</span><span class="n">error_message_dict</span><span class="p">)</span>
+                <span class="k">continue</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">folder_path</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">handle_error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="tokenize_midi_file"><a class="viewcode-back" href="../../../module_files/src.tokenization.html#src.tokenization.main.tokenize_midi_file">[docs]</a><span class="k">def</span> <span class="nf">tokenize_midi_file</span><span class="p">(</span><span class="n">midi_file_path</span><span class="p">,</span> <span class="n">tokenizer_class</span><span class="p">,</span> <span class="n">tokenized_file_folder</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Tokenizes a MIDI file using a specified tokenizer class and saves the tokenized sequence to a</span>
+<span class="sd">        CSV file. It handles both single-layer and nested token lists.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        midi_file_path : str</span>
+<span class="sd">            Path to the MIDI file to be tokenized.</span>
+<span class="sd">        tokenizer_class : class</span>
+<span class="sd">            Class of the tokenizer to be used for tokenizing the MIDI file.</span>
+<span class="sd">        tokenized_file_folder : str</span>
+<span class="sd">            Path to the folder where the CSV file containing the tokenized sequence will be saved.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        Exception</span>
+<span class="sd">            If an error occurs during tokenization or saving the tokenized sequence.</span>
+
+<span class="sd">        See Also</span>
+<span class="sd">        --------</span>
+<span class="sd">        extract_tokens_from_token_string_within_list : Function to extract tokens from a list.</span>
+<span class="sd">        extract_tokens_from_token_string_within_nested_list : Function to extract tokens from a nested list.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># create the tokenizer and convert the MIDI to tokens</span>
+        <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">tokenizer_class</span><span class="p">()</span>
+        <span class="n">tokens</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">(</span><span class="n">midi_file_path</span><span class="p">)</span>
+
+        <span class="n">tokens_string</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
+
+        <span class="c1"># check if the tokens are in a nested list</span>
+        <span class="k">if</span> <span class="s2">&quot;[[&quot;</span> <span class="ow">in</span> <span class="n">tokens_string</span> <span class="ow">and</span> <span class="s2">&quot;]]&quot;</span> <span class="ow">in</span> <span class="n">tokens_string</span><span class="p">:</span>
+            <span class="n">tokens_list</span> <span class="o">=</span> <span class="n">extract_tokens_from_token_string_within_nested_list</span><span class="p">(</span><span class="n">tokens_string</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">tokens_list</span> <span class="o">=</span> <span class="n">extract_tokens_from_token_string_within_list</span><span class="p">(</span><span class="n">tokens_string</span><span class="p">)</span>
+
+        <span class="c1"># convert the list of tokens to a DataFrame</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">tokens_list</span><span class="p">)</span>
+
+        <span class="c1"># save the DataFrame to a CSV file</span>
+        <span class="n">file_name_token</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">tokenizer_class</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">_tokens.csv&quot;</span>
+        <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tokenized_file_folder</span><span class="p">,</span> <span class="n">file_name_token</span><span class="p">)</span>
+
+        <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">handle_error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="extract_tokens_from_token_string_within_list"><a class="viewcode-back" href="../../../module_files/src.tokenization.html#src.tokenization.main.extract_tokens_from_token_string_within_list">[docs]</a><span class="k">def</span> <span class="nf">extract_tokens_from_token_string_within_list</span><span class="p">(</span><span class="n">tokens_string</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Extracts tokens from a string representation of a list using regular expressions.</span>
+
+<span class="sd">    This function is designed to process a string that represents a list of tokens.</span>
+<span class="sd">    It utilizes regular expressions to accurately identify and extract all tokens within the string.</span>
+<span class="sd">    The extracted tokens are returned as a list of strings.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tokens_string : str</span>
+<span class="sd">        String representation of a list of tokens. Expected to follow the pattern &#39;= [&lt;tokens&gt;]&#39;.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list</span>
+<span class="sd">        List of extracted tokens as strings.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    Exception</span>
+<span class="sd">        If the provided tokens string is not formatted correctly or an error occurs during extraction.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    tokenize_midi_file : Function to tokenize MIDI files.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># cut away the beginning of the string</span>
+        <span class="n">start_index</span> <span class="o">=</span> <span class="n">tokens_string</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;=[&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span>
+        <span class="n">trimmed_string</span> <span class="o">=</span> <span class="n">tokens_string</span><span class="p">[</span><span class="n">start_index</span><span class="p">:]</span>
+
+        <span class="c1"># cut away everything after the first appearing &quot;]&quot;</span>
+        <span class="n">end_index</span> <span class="o">=</span> <span class="n">trimmed_string</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;]&#39;</span><span class="p">)</span>
+        <span class="n">trimmed_string</span> <span class="o">=</span> <span class="n">trimmed_string</span><span class="p">[:</span><span class="n">end_index</span><span class="p">]</span>
+
+        <span class="c1"># extract strings using regular expression</span>
+        <span class="n">search_pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;&#39;([^&#39;]*)&#39;&quot;</span>
+        <span class="n">token_list</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">search_pattern</span><span class="p">,</span> <span class="n">trimmed_string</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">token_list</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">handle_error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="extract_tokens_from_token_string_within_nested_list"><a class="viewcode-back" href="../../../module_files/src.tokenization.html#src.tokenization.main.extract_tokens_from_token_string_within_nested_list">[docs]</a><span class="k">def</span> <span class="nf">extract_tokens_from_token_string_within_nested_list</span><span class="p">(</span><span class="n">tokens_string</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Extracts tokens from a string representation of a nested list using regular expressions and</span>
+<span class="sd">    abstract syntax trees (AST).</span>
+
+<span class="sd">    This function is designed to handle complex token string that represents a nested list of tokens.</span>
+<span class="sd">    It uses a combination of regular expressions and abstract syntax trees to extract the tokens accurately</span>
+<span class="sd">    from the string. The result is returned as a list of lists, where each sublist contains the tokens extracted</span>
+<span class="sd">    from one of the nested lists in the string.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tokens_string : str</span>
+<span class="sd">        String representation of a nested list of tokens. Expected to follow the pattern &#39;= [&lt;nested lists&gt;], ids=&#39;.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list</span>
+<span class="sd">        List of lists, with each sublist containing extracted tokens as strings.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    Exception</span>
+<span class="sd">        If the provided tokens string is not formatted correctly or an error occurs during extraction.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    tokenize_midi_file : Function to tokenize MIDI files.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># cut away everything before the string &quot;[TokSequence(tokens=[&quot;</span>
+        <span class="n">start_index</span> <span class="o">=</span> <span class="n">tokens_string</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;=[&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span>
+        <span class="n">trimmed_string</span> <span class="o">=</span> <span class="n">tokens_string</span><span class="p">[</span><span class="n">start_index</span><span class="p">:]</span>
+
+        <span class="c1"># cut away everything after the string &quot;, ids=&quot;</span>
+        <span class="n">end_index</span> <span class="o">=</span> <span class="n">trimmed_string</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;], ids=&#39;</span><span class="p">)</span>
+        <span class="n">trimmed_string</span> <span class="o">=</span> <span class="n">trimmed_string</span><span class="p">[:</span><span class="n">end_index</span><span class="p">]</span>
+
+        <span class="n">search_pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;\[([^\[\]]*?)\]&#39;</span>
+        <span class="n">matched_lists</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">search_pattern</span><span class="p">,</span> <span class="n">trimmed_string</span><span class="p">)</span>
+
+        <span class="n">token_lists</span> <span class="o">=</span> <span class="p">[</span><span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">(</span><span class="n">selected_list</span><span class="p">)</span> <span class="k">for</span> <span class="n">selected_list</span> <span class="ow">in</span> <span class="n">matched_lists</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">token_lists</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">handle_error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">I-MaT</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started.html">Getting Started with I-MaT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contribute.html">How to Contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_files/src.html">I-MaT: Source Code</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Sebastian Oliver Eck.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
