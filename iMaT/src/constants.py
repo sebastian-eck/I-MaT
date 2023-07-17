@@ -1,6 +1,6 @@
 """
-constants.py
-============
+Module: constants.py
+====================
 
 This Python script contains a set of constants to be used in the Interactive Music Analysis Tool (I-MaT) application.
 
@@ -20,9 +20,11 @@ license information, and copyright statement.
 # CONSTANTS:
 
 """
+
 TITLE_TEXT is a string that contains the title text for the application. It includes the name and version of the 
 application, the associated project and institution, the license information, and the copyright statement. This text 
 is used to display a title or header in the application's user interface.
+
 """
 
 TITLE_TEXT = (
@@ -33,9 +35,11 @@ TITLE_TEXT = (
 )
 
 """
+
 KEYS_LIST is a list of musical keys in the format ["Key-Name", "Abbreviation"]. It includes major and minor keys in
 different pitches. This list is used to represent and validate keys that are input or output by the system. The
 "Abbreviation" part of each list item is used for displaying or inputting keys in a compact way.
+
 """
 
 KEYS_LIST = [
@@ -84,9 +88,11 @@ KEYS_LIST = [
 ]
 
 """
+
 NOTES_LIST is a list of musical notes in the format ["Note-Name", "Abbreviation"]. It covers a variety of notes 
 including flat ("-") and sharp ("#") versions. The last two entries in the list provide options to remove the last 
 note entered or finish input. 
+
 """
 
 NOTES_LIST = [
@@ -116,9 +122,11 @@ NOTES_LIST = [
 ]
 
 """
+
 RHYTHMIC_VALUES_LIST represents rhythmic values of musical notes. Each entry contains a display string and the 
 corresponding rhythmic value. The rhythmic value is represented either as a float or as a string, in case of triplets. 
 The list entries cover note values from thirty-second notes to double whole notes, including dotted and triplet versions.
+
 """
 
 RHYTHMIC_VALUES_LIST = [
@@ -145,9 +153,11 @@ RHYTHMIC_VALUES_LIST = [
 ]
 
 """
+
 PITCH_CLASS_NAMES is a dictionary that maps integers to pitch class names. In music theory, pitch classes are the set 
 of all pitches that are integer multiples of the octave. This constant is useful for converting pitch class integers 
 into human-readable names.
+
 """
 
 PITCH_CLASS_NAMES = {
@@ -166,9 +176,11 @@ PITCH_CLASS_NAMES = {
 }
 
 """
+
 EXAMPLE_SCORES_DICT is a dictionary containing data about example scores. Each entry includes the title of the score, 
 the URL where the score can be found, and the subcorpus the score belongs to. This dictionary is used to provide users 
 with a selection of example scores for analysis.
+
 """
 
 EXAMPLE_SCORES_DICT = \

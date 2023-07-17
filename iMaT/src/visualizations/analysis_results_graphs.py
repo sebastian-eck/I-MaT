@@ -1,22 +1,18 @@
 """
-visualizations.analysis_results_graphs.py
-=========================================
+Module: visualizations.analysis_results_graphs.py
+=================================================
 
 This module, part of the `visualizations` package, provides a suite of methods for generating visualizations from
 the analysis results of musical scores.
 
 The purpose of these functions is to create comprehensive and understandable visualizations of the musical structures
 and characteristics that emerge from the analysis of musical scores.
-
-Examples
---------
-Please refer to the individual function docstrings for specific examples of how to use these functions.
 """
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-from src.cli.menu_constructors import display_menu_print_textblock
-from src.utils.error_handling import handle_error
+from iMaT.src.cli.menu_constructors import display_menu_print_textblock
+from iMaT.src.utils.error_handling import handle_error
 
 
 def map_analysis_functions_to_display_functions(analysis_func: callable):

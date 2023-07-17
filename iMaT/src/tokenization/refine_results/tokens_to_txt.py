@@ -1,6 +1,6 @@
 """
-tokenization.refine_results.tokens_to_txt.py
-============================================
+Module: tokenization.refine_results.tokens_to_txt.py
+====================================================
 
 This module, a part of the `tokenization.refine_results` package, handles the conversion of tokenized data from a CSV file
 to individual text files.
@@ -23,8 +23,8 @@ from datetime import datetime
 import pandas as pd
 from tqdm import tqdm
 
-from src.tokenization.utils import select_csv_file_2d_token_representation
-from src.utils.error_handling import handle_error
+from iMaT.src.tokenization.utils import select_csv_file_2d_token_representation
+from iMaT.src.utils.error_handling import handle_error
 
 tokenizers_available_for_refining = ['CPWord', 'Octuple', 'OctupleMono', 'MuMIDI']
 

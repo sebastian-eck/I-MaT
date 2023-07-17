@@ -1,6 +1,6 @@
 """
-analysis.functions.py
-=====================
+Module: analysis.functions.py
+=============================
 
 This module includes various functions for musical analysis in the Interactive Music Analysis Tool (I-MaT). These functions take a music21 stream object and return the result as a pandas DataFrame.
 
@@ -41,8 +41,8 @@ import music21.stream
 import pandas as pd
 from music21 import interval, note
 
-from src.constants import PITCH_CLASS_NAMES
-from src.utils.error_handling import handle_error
+from iMaT.src.constants import PITCH_CLASS_NAMES
+from iMaT.src.utils.error_handling import handle_error
 
 
 def analysis_ambitus(music_obj, identifier):
@@ -1110,8 +1110,7 @@ def analysis_advanced_compare_pitches_and_pitch_classes_per_duration(music_obj, 
     Returns
     -------
     pd.DataFrame
-        A pandas DataFrame including the identifier, duration (quarter length), duration names, count of distinct pitches,
-        count of distinct pitch classes, and the ratio of pitches to pitch classes for each duration.
+        A pandas DataFrame including the identifier, duration (quarter length), duration names, count of distinct pitches, count of distinct pitch classes, and the ratio of pitches to pitch classes for each duration.
 
     Notes
     -----

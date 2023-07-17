@@ -1,6 +1,6 @@
 """
-utils.error_handling.py
-=======================
+Module: utils.error_handling.py
+===============================
 
 This module, which is part of the `utils` package, contains functions for handling and reporting errors in a detailed
 and user-friendly manner. This allows for better debugging and understanding of any exceptions that occur during
@@ -26,7 +26,7 @@ Examples
 import sys
 import traceback
 
-from src.constants import TITLE_TEXT
+from iMaT.src.constants import TITLE_TEXT
 
 
 def text_exception_general(e: Exception) -> str:

@@ -1,6 +1,6 @@
 """
-utils.misc.py
-=============
+Module: utils.misc.py
+=====================
 
 This module, part of the `utils` package, provides various utilities for manipulating, displaying and exporting
 musical score metadata, part names, and analysis results. It uses the `music21` library for handling music data
@@ -14,19 +14,15 @@ Functions
 - `export_results_to_csv_auto(previous_results, identifier, function_name)`: Exports the results of the
    previous analysis to a CSV file. The file name is automatically generated based on the analysis function name, a modified
    identifier (selected scores + selected measures), and the current timestamp.
-
-Examples
---------
-Please refer to the individual function docstrings for specific examples of how to use these functions.
 """
 import datetime
 import os
 
 from music21 import environment
 
-from src.cli.menu_constructors import display_menu_print_results
-from src.score_selection.name_parts import select_and_name_parts, selected_score_part_names
-from src.utils.error_handling import handle_error
+from iMaT.src.cli.menu_constructors import display_menu_print_results
+from iMaT.src.score_selection.name_parts import select_and_name_parts, selected_score_part_names
+from iMaT.src.utils.error_handling import handle_error
 
 
 def show_metadata():

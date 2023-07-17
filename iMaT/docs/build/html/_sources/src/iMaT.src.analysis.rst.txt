@@ -1,0 +1,37 @@
+iMaT.src.analysis package
+=========================
+
+Submodules
+----------
+
+iMaT.src.analysis.functions module
+----------------------------------
+
+.. automodule:: iMaT.src.analysis.functions
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+iMaT.src.analysis.main module
+-----------------------------
+
+.. automodule:: iMaT.src.analysis.main
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+iMaT.src.analysis.utils module
+------------------------------
+
+.. automodule:: iMaT.src.analysis.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: iMaT.src.analysis
+   :members:
+   :undoc-members:
+   :show-inheritance:

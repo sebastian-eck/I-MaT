@@ -1,0 +1,29 @@
+iMaT.src.conversion package
+===========================
+
+Submodules
+----------
+
+iMaT.src.conversion.main module
+-------------------------------
+
+.. automodule:: iMaT.src.conversion.main
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+iMaT.src.conversion.utils module
+--------------------------------
+
+.. automodule:: iMaT.src.conversion.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: iMaT.src.conversion
+   :members:
+   :undoc-members:
+   :show-inheritance:

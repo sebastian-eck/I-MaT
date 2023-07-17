@@ -1,6 +1,6 @@
 """
-tokenization.utils.py
-=====================
+Module: tokenization.utils.py
+=============================
 
 This module provides various utility functions that assist in the tokenization of MIDI files and handling of data.
 
@@ -29,8 +29,8 @@ import pandas as pd
 from openpyxl import load_workbook
 from tqdm import tqdm
 
-from src.cli.menu_constructors import display_menu_print_results, display_menu_print_textblock
-from src.utils.error_handling import handle_error
+from iMaT.src.cli.menu_constructors import display_menu_print_results, display_menu_print_textblock
+from iMaT.src.utils.error_handling import handle_error
 
 
 def save_data_to_new_csv_file(df, file_name, identifier):

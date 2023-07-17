@@ -1,6 +1,6 @@
 """
-conversion.utils.py
-===================
+Module: conversion.utils.py
+===========================
 
 A module to handle various utility tasks related to the music file conversion process.
 
@@ -36,9 +36,9 @@ from tkinter import filedialog
 
 from openpyxl import load_workbook
 
-from src.cli.menu_constructors import display_menu_print_results, display_menu_print_textblock, \
+from iMaT.src.cli.menu_constructors import display_menu_print_results, display_menu_print_textblock, \
     display_menu_request_selection
-from src.utils.error_handling import handle_error
+from iMaT.src.utils.error_handling import handle_error
 
 
 def get_parsable_files_in_folder(folder_path):

@@ -1,6 +1,6 @@
 """
-pattern_search.functions.py
-===========================
+Module: pattern_search.functions.py
+===================================
 
 This module contains the functions to search for specific musical patterns in a given score.
 The search can be performed with various combinations of considerations for transposition and rhythm.
@@ -24,7 +24,7 @@ For usage examples, refer to the individual function docstrings.
 import pandas as pd
 from music21 import search
 
-from src.utils.error_handling import handle_error
+from iMaT.src.utils.error_handling import handle_error
 
 
 def pattern_search_without_transposition_without_rhythm(identifier, selected_score_deepcopy,

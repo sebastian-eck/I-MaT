@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Package: Command Line Interface (src.cli) &mdash; imat 0.0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Package: File Conversion (src.conversion)" href="src.conversion.html" />
+    <link rel="prev" title="Package: Analysis (src.analysis)" href="src.analysis.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            imat
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started with I-MaT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute.html">How to Contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="src.html">I-MaT: Source Code</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="src.analysis.html">Package: Analysis (src.analysis)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Package: Command Line Interface (src.cli)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-cli-menu-constructors-py">Module: cli.menu_constructors.py</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#module-level-variables">Module-level variables:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#src.cli.menu_constructors.display_menu_print_results"><code class="docutils literal notranslate"><span class="pre">display_menu_print_results()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.cli.menu_constructors.display_menu_print_textblock"><code class="docutils literal notranslate"><span class="pre">display_menu_print_textblock()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.cli.menu_constructors.display_menu_request_selection"><code class="docutils literal notranslate"><span class="pre">display_menu_request_selection()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.cli.menu_constructors.display_menu_undirected"><code class="docutils literal notranslate"><span class="pre">display_menu_undirected()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.cli.menu_constructors.print_menu_entries"><code class="docutils literal notranslate"><span class="pre">print_menu_entries()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.cli.menu_constructors.print_textblock"><code class="docutils literal notranslate"><span class="pre">print_textblock()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.cli.menu_constructors.util_convert_imat_datacont_to_pd_dataframe"><code class="docutils literal notranslate"><span class="pre">util_convert_imat_datacont_to_pd_dataframe()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.cli.menu_constructors.util_convert_pd_dataframe_to_imat_datacont"><code class="docutils literal notranslate"><span class="pre">util_convert_pd_dataframe_to_imat_datacont()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-cli-menu-entries-py">Module: cli.menu_entries.py</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#src.cli.menu_entries.mainmenu_environment_settings_entries"><code class="docutils literal notranslate"><span class="pre">mainmenu_environment_settings_entries()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.cli.menu_entries.mainmenu_single_musical_piece_entries"><code class="docutils literal notranslate"><span class="pre">mainmenu_single_musical_piece_entries()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.cli.menu_entries.mainmenu_tokenization_entries"><code class="docutils literal notranslate"><span class="pre">mainmenu_tokenization_entries()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.cli.menu_entries.start_menu_entries"><code class="docutils literal notranslate"><span class="pre">start_menu_entries()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.cli.menu_entries.submenu_single_musical_piece_basic_functions_entries"><code class="docutils literal notranslate"><span class="pre">submenu_single_musical_piece_basic_functions_entries()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.cli.menu_entries.submenu_single_musical_piece_pattern_search_entries"><code class="docutils literal notranslate"><span class="pre">submenu_single_musical_piece_pattern_search_entries()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.cli.menu_entries.submenu_single_musical_piece_statistical_analysis_page1_entries"><code class="docutils literal notranslate"><span class="pre">submenu_single_musical_piece_statistical_analysis_page1_entries()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.cli.menu_entries.submenu_single_musical_piece_statistical_analysis_page2_entries"><code class="docutils literal notranslate"><span class="pre">submenu_single_musical_piece_statistical_analysis_page2_entries()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.cli.menu_entries.submenu_single_musical_piece_visualizations_entries"><code class="docutils literal notranslate"><span class="pre">submenu_single_musical_piece_visualizations_entries()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.cli.menu_entries.submenu_tokenization_calculations_entries"><code class="docutils literal notranslate"><span class="pre">submenu_tokenization_calculations_entries()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.cli.menu_entries.submenu_tokenization_refine_data_entries"><code class="docutils literal notranslate"><span class="pre">submenu_tokenization_refine_data_entries()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.conversion.html">Package: File Conversion (src.conversion)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.m21_environment.html">Package: music21 Environment File Configuration (src.m21_environment)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.pattern_search.html">Package: Pattern Search (src.pattern_search)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.score_selection.html">Package: Score Selection (src.score_selection)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.tokenization.html">Package: Tokenization (src.tokenization)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.utils.html">Package: Utility Functions (src.utils)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.visualizations.html">Package: Visualizations (src.visualizations)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.constants.html">Module: Constants (src.constants)</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">imat</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="src.html">I-MaT: Source Code</a></li>
+      <li class="breadcrumb-item active">Package: Command Line Interface (src.cli)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/module_files/src.cli.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-src.cli.menu_constructors">
+<span id="package-command-line-interface-src-cli"></span><h1>Package: Command Line Interface (src.cli)<a class="headerlink" href="#module-src.cli.menu_constructors" title="Permalink to this heading"></a></h1>
+<section id="module-cli-menu-constructors-py">
+<h2>Module: cli.menu_constructors.py<a class="headerlink" href="#module-cli-menu-constructors-py" title="Permalink to this heading"></a></h2>
+<p>This module is designed to create, manage, and navigate through a menu interface in a console environment.</p>
+<p>This Python module is designed to create, manage, and navigate through a menu interface in a console environment.
+The module contains functions for constructing and displaying various types of menus (directed and undirected),
+handling user navigation, executing menu-associated functions, displaying structured text information, and presenting
+analysis results in an organized, readable format.</p>
+<section id="module-level-variables">
+<h3>Module-level variables:<a class="headerlink" href="#module-level-variables" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>menu_stack<span class="classifier">list</span></dt><dd><p>A stack to keep track of the previous menus. This stack is used to enable backward and forward navigation in
+undirected menus.</p>
+</dd>
+</dl>
+</section>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>display_menu_print_results</p></li>
+<li><p>display_menu_print_textblock</p></li>
+<li><p>display_menu_request_selection</p></li>
+<li><p>display_menu_undirected</p></li>
+<li><p>print_menu_entries</p></li>
+<li><p>print_textblock</p></li>
+<li><p>util_convert_imat_datacont_to_pd_dataframe</p></li>
+<li><p>util_convert_pd_dataframe_to_imat_datacont</p></li>
+</ul>
+<p>These functions help in providing a smooth user interface for the command-line operation, ensuring a consistent user
+experience, and reducing complexity in navigating the tool’s functionalities. By using these functions,
+the Interactive Music Analysis Tool (I-MaT) system provides an interactive and user-friendly command-line interface
+for music analysis.</p>
+</section>
+</section>
+<dl class="py function">
+<dt class="sig sig-object py" id="src.cli.menu_constructors.display_menu_print_results">
+<span class="sig-prename descclassname"><span class="pre">src.cli.menu_constructors.</span></span><span class="sig-name descname"><span class="pre">display_menu_print_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#src.cli.menu_constructors.display_menu_print_results" title="Permalink to this definition"></a></dt>
+<dd><p>Display analysis results in a console in a formatted manner.</p>
+<p>This function receives a dictionary, which includes a description of the results and a
+list of result entries. The function uses this information to print the content in a well-formatted manner.</p>
+<p>Note that if the results are stored in a pandas DataFrame, they need to be converted to an I-MaT data container
+using <cite>util_convert_pd_dataframe_to_imat_datacont()</cite> function before being passed to this function.</p>
+<p>The results are displayed in the order they are present in the dictionary. After the results are displayed,
+the function requests user input to continue. However, the input does not trigger any further actions within
+this function itself. Yet, when used in combination with the <cite>display_menu_undirected()</cite> function, this user input may serve as a pause before navigating to other parts of a broader workflow,
+such as exporting results or returning to the respective parent menu.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>results_dict</strong> (<em>dict</em>) – A dictionary containing the results of an analysis. If the results are saved within a pandas DataFrame,
+they need to be converted to an I-MaT data container using <cite>util_convert_pd_dataframe_to_imat_datacont()</cite>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The user input collected after displaying the text block.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#src.cli.menu_constructors.display_menu_undirected" title="src.cli.menu_constructors.display_menu_undirected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">display_menu_undirected</span></code></a></dt><dd><p>For displaying menus with both backward and forward navigation.</p>
+</dd>
+<dt><a class="reference internal" href="#src.cli.menu_constructors.util_convert_pd_dataframe_to_imat_datacont" title="src.cli.menu_constructors.util_convert_pd_dataframe_to_imat_datacont"><code class="xref py py-obj docutils literal notranslate"><span class="pre">util_convert_pd_dataframe_to_imat_datacont</span></code></a></dt><dd><p>For converting pandas DataFrame to I-MaT data container</p>
+</dd>
+</dl>
+<p><code class="xref py py-obj docutils literal notranslate"><span class="pre">before</span></code></p>
+</div>
+<p class="rubric">Examples</p>
+<p>Here is how to use <cite>display_menu_print_results</cite>.
+In this example, we have a pandas DataFrame <cite>df</cite> that needs to be converted to an I-MaT data container before being
+passed to the <cite>display_menu_print_results</cite> function.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;col1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Result 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Result 2&#39;</span><span class="p">,</span> <span class="s1">&#39;Result 3&#39;</span><span class="p">],</span>
+<span class="gp">... </span>                   <span class="s1">&#39;col2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;&lt;Displays the 1st Column&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Displays the 1st Column&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Displays the 1st Column&gt;&quot;</span><span class="p">],</span>
+<span class="gp">... </span>                   <span class="s1">&#39;col3&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;&lt;Displays the 2nd Column&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Displays the 2nd Column&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Displays the 2nd Column&gt;&quot;</span><span class="p">]})</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">results_dict</span> <span class="o">=</span> <span class="n">util_convert_pd_dataframe_to_imat_datacont</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">display_menu_print_results</span><span class="p">(</span><span class="n">results_dict</span><span class="p">,</span> <span class="n">print_all_columns</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A I-MaT data container can directly be passed to the <cite>display_menu_print_results</cite> function:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">imat_data_container</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">... </span>   <span class="s2">&quot;menu_displayed_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">... </span>       <span class="s2">&quot;Analysis Results&quot;</span><span class="p">,</span>
+<span class="gp">... </span>       <span class="s2">&quot;Please see the following analysis results:&quot;</span><span class="p">,</span>
+<span class="gp">... </span>       <span class="s2">&quot;&lt;To continue, please press Enter&gt;&quot;</span><span class="p">,</span>
+<span class="gp">... </span>       <span class="p">[</span><span class="s2">&quot;&lt;Identifier&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Description&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Description&gt;&quot;</span><span class="p">],</span>
+<span class="gp">... </span>   <span class="p">],</span>
+<span class="gp">... </span>   <span class="s2">&quot;menu_entries_results&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">... </span>       <span class="p">[</span><span class="s2">&quot;Result 1&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Displays the 1st Column&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Displays the 2nd Column &gt;&quot;</span><span class="p">],</span>
+<span class="gp">... </span>       <span class="p">[</span><span class="s2">&quot;Result 2&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Displays the 1st Column&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Displays the 2nd Column &gt;&quot;</span><span class="p">],</span>
+<span class="gp">... </span>       <span class="p">[</span><span class="s2">&quot;Result 3&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Displays the 1st Column&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Displays the 2nd Column &gt;&quot;</span><span class="p">],</span>
+<span class="gp">... </span>   <span class="p">]</span>
+<span class="go">...}</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">display_menu_print_results</span><span class="p">(</span><span class="n">imat_data_container</span><span class="p">,</span> <span class="n">print_all_columns</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note: the actual output of <cite>display_menu_print_results</cite> depends on the dictionary created by
+<cite>util_convert_pd_dataframe_to_imat_datacont()</cite> and would show three result lines in this case.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.cli.menu_constructors.display_menu_print_textblock">
+<span class="sig-prename descclassname"><span class="pre">src.cli.menu_constructors.</span></span><span class="sig-name descname"><span class="pre">display_menu_print_textblock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">textblock_sep_line</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#src.cli.menu_constructors.display_menu_print_textblock" title="Permalink to this definition"></a></dt>
+<dd><p>Prints a formatted text block in the console based on a provided dictionary.</p>
+<p>This function takes a dictionary which includes a title, a request, column descriptions, and an input prompt,
+as well as a list of text entries to display. It uses this information to print the content in a formatted
+manner on the console.</p>
+<p>The text_dict should be a dictionary that contains two key-value pairs:
+1. “menu_displayed_text”: A list containing the menu title, request, columns description, and input prompt.
+2. “menu_entries_text”: A list containing pairs of title and corresponding text messages to be displayed.</p>
+<p>After displaying the text blocks, it requests a user input to continue. The input is not validated
+and does not trigger any further actions within this function itself.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text_dict</strong> (<em>dict</em>) – A dictionary containing custom text for display.</p></li>
+<li><p><strong>textblock_sep_line</strong> (<em>bool</em>) – If True, a separator line is printed after each text block.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The user input collected after displaying the text block.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#src.cli.menu_constructors.print_textblock" title="src.cli.menu_constructors.print_textblock"><code class="xref py py-obj docutils literal notranslate"><span class="pre">print_textblock</span></code></a></dt><dd><p>function that prints out a block of text given in a list or a single string.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">example_text_dict</span></code></dt><dd><p>function that generates a dictionary representing text content.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<p>Here is how to use <cite>display_menu_print_textblock</cite>:</p>
+<p>The function <cite>example_text_dict</cite> generates a dictionary that represents a text block to be displayed.
+This dictionary is then passed as a parameter to the <cite>display_menu_print_textblock</cite> function:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span>    <span class="n">example_text_dict</span> <span class="p">{</span>
+<span class="gp">... </span>        <span class="s2">&quot;menu_displayed_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">... </span>            <span class="s2">&quot;-- message to the user --&quot;</span><span class="p">,</span>
+<span class="gp">... </span>            <span class="s2">&quot;Please read the following message:&quot;</span><span class="p">,</span>
+<span class="gp">... </span>            <span class="s2">&quot;&lt;To continue, please press Enter&gt;&quot;</span><span class="p">,</span>
+<span class="gp">... </span>            <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;Message&quot;</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">],</span>
+<span class="gp">... </span>        <span class="s2">&quot;menu_entries_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">... </span>            <span class="p">[</span><span class="s2">&quot;Message 1&quot;</span><span class="p">,</span> <span class="s2">&quot;Textblock 1&quot;</span><span class="p">],</span>
+<span class="gp">... </span>            <span class="p">[</span><span class="s2">&quot;Message 2&quot;</span><span class="p">,</span> <span class="s2">&quot;Textblock 2&quot;</span><span class="p">],</span>
+<span class="gp">... </span>            <span class="p">[</span><span class="s2">&quot;Message 3&quot;</span><span class="p">,</span> <span class="s2">&quot;Textblock 3&quot;</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">]</span>
+<span class="gp">... </span>    <span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">display_menu_print_textblock</span><span class="p">(</span><span class="n">example_text_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.cli.menu_constructors.display_menu_request_selection">
+<span class="sig-prename descclassname"><span class="pre">src.cli.menu_constructors.</span></span><span class="sig-name descname"><span class="pre">display_menu_request_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">imat_data_container</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_column_width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#src.cli.menu_constructors.display_menu_request_selection" title="Permalink to this definition"></a></dt>
+<dd><p>Display menu items in a console in a formatted manner.</p>
+<p>This function receives a dictionary, which includes a description of the menu items and a
+list of menu entries. The function uses this information to print the content in a well-formatted manner.</p>
+<p>The menu items are displayed in the order they are present in the dictionary. After the menu items are displayed,
+the function requests user input to choose a menu item. The input is validated to make sure it is a valid choice
+from the menu items. The function then returns the corresponding “string to return” of the chosen menu item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>imat_data_container</strong> (<em>dict</em>) – A dictionary containing the menu items of an analysis.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The “string to return” of the chosen menu item.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Here is how to use <cite>display_menu_print_results</cite>.
+In this example, we have a dictionary <cite>imat_data_container</cite> that represents the menu items.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">imat_data_container</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">... </span>    <span class="s2">&quot;menu_displayed_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">... </span>        <span class="s2">&quot;Menu Title&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;Please select one of the following menu options by entering the corresponding index number:&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;Which menu item do you want to select? (&lt;No. of menu item&gt;): &quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="p">[</span><span class="s2">&quot;Menu item title&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Short Explanation&gt;&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">],</span>
+<span class="gp">... </span>    <span class="s2">&quot;menu_entries&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">... </span>        <span class="p">[</span><span class="s2">&quot;ABBR: Option 1 title&quot;</span><span class="p">,</span> <span class="s2">&quot;string to return 1&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Returns option 1&gt;&quot;</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">[</span><span class="s2">&quot;ABBR: Option 2 title&quot;</span><span class="p">,</span> <span class="s2">&quot;string to return 2&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Returns option 2&gt;&quot;</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">[</span><span class="s2">&quot;ABBR: Option 3 title&quot;</span><span class="p">,</span> <span class="s2">&quot;string to return 3&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Returns option 3&gt;&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">]</span>
+<span class="gp">... </span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">display_menu_request_selection</span><span class="p">(</span><span class="n">imat_data_container</span><span class="p">,</span> <span class="n">min_column_width</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note: the actual output of <cite>display_menu_print_results</cite> depends on the dictionary <cite>imat_data_container</cite>.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.cli.menu_constructors.display_menu_undirected">
+<span class="sig-prename descclassname"><span class="pre">src.cli.menu_constructors.</span></span><span class="sig-name descname"><span class="pre">display_menu_undirected</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">menu_content_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent_menu_func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#src.cli.menu_constructors.display_menu_undirected" title="Permalink to this definition"></a></dt>
+<dd><p>Display a menu allowing the user to navigate between different levels.</p>
+<p>This function prints an interactive, navigation-capable menu from a dictionary.
+The dictionary represents the current menu, including its title, guidelines, requested input, and menu entries.
+Each menu entry consists of a title, function or menu control keyword, and description.</p>
+<p>This function allows the user to navigate freely between the different menu levels. This includes both backward
+and forward navigation.</p>
+<p>If the user selects a function that returns a dictionary (i.e., a submenu), the function enters a sublevel menu.
+If a function is selected, the function is executed and after its execution, the user will find themselves back
+in the menu. The user can also return to the parent menu or the main menu by selecting the appropriate options.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>menu_content_dict</strong> (<em>function</em>) – A function returning a dictionary that contains information about the menu entries and displayed texts.</p></li>
+<li><p><strong>parent_menu_func</strong> (<em>function</em><em>, </em><em>optional</em>) – A function returning a dictionary representing the parent menu from which the current menu was accessed.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>This is a usage example where we consider four types of entries in our menu:
+going to a submenu, executing a function, and returning to the main menu or a parent menu.</p>
+<ol class="arabic simple">
+<li><p>If a function that returns a dictionary (representing a new menu structure) is selected by the user,
+such as <cite>submenu_entries_dict</cite>, a sublevel menu is entered.</p></li>
+<li><p>If the user selects a function, such as <cite>some_function</cite>, the function is executed and after its execution,
+the user will find themselves back in the menu where the function was selected.</p></li>
+<li><p>If the user selects the “BACK: Return to the last menu” option, they are returned to the parent menu.</p></li>
+<li><p>If the user selects the “MAIN: Return to the main menu” option, they are returned to the main menu.</p></li>
+</ol>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">example_menu_entries_dict</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">... </span>    <span class="s2">&quot;menu_displayed_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">... </span>        <span class="s2">&quot;Menu Titel&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;Please select one of the following menu options by entering the corresponding index number:&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;Which menu item should be executed? (&lt;No. of menu item&gt;): &quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="p">[</span><span class="s2">&quot;Menu item titel&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Short Explanation&gt;&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">],</span>
+<span class="gp">... </span>    <span class="s2">&quot;menu_entries&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">... </span>        <span class="p">[</span><span class="s2">&quot;ABBR: Option 1 titel&quot;</span><span class="p">,</span> <span class="n">example_submenu_entries_dict</span><span class="p">,</span> <span class="s2">&quot;&lt;Goes to submenu&gt;&quot;</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">[</span><span class="s2">&quot;ABBR: Option 2 titel&quot;</span><span class="p">,</span> <span class="n">example_some_function</span><span class="p">,</span> <span class="s2">&quot;&lt;Executes some function&gt;&quot;</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">[</span><span class="s2">&quot;ABBR: Option 3 titel&quot;</span><span class="p">,</span> <span class="n">example_another_function</span><span class="p">,</span> <span class="s2">&quot;&lt;Executes another function&gt;&quot;</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">[</span><span class="s2">&quot;BACK: Return to the last menu&quot;</span><span class="p">,</span> <span class="s1">&#39;back&#39;</span><span class="p">,</span> <span class="s2">&quot;&lt;Returns to the parent menu&gt;&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">]</span>
+<span class="gp">... </span><span class="p">}</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">display_menu_undirected</span><span class="p">(</span><span class="n">example_menu_entries_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.cli.menu_constructors.print_menu_entries">
+<span class="sig-prename descclassname"><span class="pre">src.cli.menu_constructors.</span></span><span class="sig-name descname"><span class="pre">print_menu_entries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">menu_columns_description</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">menu_entries</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_col_width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">45</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_all_columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#src.cli.menu_constructors.print_menu_entries" title="Permalink to this definition"></a></dt>
+<dd><p>Prints a formatted list of menu entries in the console.</p>
+<p>This function takes a list of menu entries and column descriptions, along with an optional minimum column width.
+It formats and prints the entries in a table-like structure. An additional optional parameter controls whether all
+columns or all but the second column are printed.</p>
+<p>This function is used as a helper within <cite>display_menu_undirected</cite> and <cite>display_menu_print_results</cite> for displaying menu options or analysis results. However, <cite>print_menu_entries</cite>
+can also be used independently to print a list of results or menu entries without displaying a full menu.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>menu_columns_description</strong> (<em>list</em>) – A list containing column descriptions.</p></li>
+<li><p><strong>menu_entries</strong> (<em>list</em><em>[</em><em>list</em><em>]</em>) – A list of menu entries. Each entry is a list itself containing strings representing each column’s data.</p></li>
+<li><p><strong>min_col_width</strong> (<em>int</em><em>, </em><em>optional</em>) – Minimum width for each column. Default is 45.</p></li>
+<li><p><strong>print_all_columns</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, all columns are printed. If False (default), all columns but the second one are printed.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#src.cli.menu_constructors.display_menu_undirected" title="src.cli.menu_constructors.display_menu_undirected"><code class="xref py py-obj docutils literal notranslate"><span class="pre">display_menu_undirected</span></code></a></dt><dd><p>For displaying menus with both backward and forward navigation.</p>
+</dd>
+<dt><a class="reference internal" href="#src.cli.menu_constructors.display_menu_print_results" title="src.cli.menu_constructors.display_menu_print_results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">display_menu_print_results</span></code></a></dt><dd><p>For displaying a list of analysis results.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<p>Here is how to use <cite>print_menu_entries</cite>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">menu_columns_description</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;&lt;Identifier&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Description&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Description&gt;&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">menu_entries</span> <span class="o">=</span> <span class="p">[</span>
+<span class="gp">... </span>       <span class="p">[</span><span class="s2">&quot;Result 1&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Displays the 1st Column&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Displays the 2nd Column&gt;&quot;</span><span class="p">],</span>
+<span class="gp">... </span>       <span class="p">[</span><span class="s2">&quot;Result 2&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Displays the 1st Column&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Displays the 2nd Column&gt;&quot;</span><span class="p">],</span>
+<span class="gp">... </span>       <span class="p">[</span><span class="s2">&quot;Result 3&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Displays the 1st Column&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Displays the 2nd Column&gt;&quot;</span><span class="p">],</span>
+<span class="gp">... </span>   <span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">print_menu_entries</span><span class="p">(</span><span class="n">menu_columns_description</span><span class="p">,</span> <span class="n">menu_entries</span><span class="p">,</span> <span class="n">print_all_columns</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.cli.menu_constructors.print_textblock">
+<span class="sig-prename descclassname"><span class="pre">src.cli.menu_constructors.</span></span><span class="sig-name descname"><span class="pre">print_textblock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">menu_columns_description</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">menu_entries</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">textblock_sep_line</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#src.cli.menu_constructors.print_textblock" title="Permalink to this definition"></a></dt>
+<dd><p>Prints a formatted text block in the console.</p>
+<p>This function takes in a description for menu columns, a list of menu entries, and a boolean indicating whether
+to separate text blocks with a line. It uses this information to print a formatted text block on the console.</p>
+<p>The function is used as a helper within <cite>display_menu_print_textblock</cite> which not only prints the text but also
+displays a full menu above the printed text. However, <cite>print_textblock</cite> can be independently used to print text
+without displaying a full menu.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>menu_columns_description</strong> (<em>list</em>) – A list containing column descriptions. For instance, [“&lt;Identifier&gt;”, “&lt;Description&gt;”].</p></li>
+<li><p><strong>menu_entries</strong> (<em>list</em>) – A list of lists where each sublist contains the title and message for a text block.</p></li>
+<li><p><strong>textblock_sep_line</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, a separator line is printed after each text block. By default, it is set to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#src.cli.menu_constructors.display_menu_print_textblock" title="src.cli.menu_constructors.display_menu_print_textblock"><code class="xref py py-obj docutils literal notranslate"><span class="pre">display_menu_print_textblock</span></code></a></dt><dd><p>For displaying custom text blocks using the same structure as a menu.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<p>Here is how to use <cite>print_textblock</cite>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">menu_columns_description</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;Message&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">menu_entries</span> <span class="o">=</span> <span class="p">[</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="s2">&quot;Message 1&quot;</span><span class="p">,</span> <span class="s2">&quot;Textblock 1&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="s2">&quot;Message 2&quot;</span><span class="p">,</span> <span class="s2">&quot;Textblock 2&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="s2">&quot;Message 3&quot;</span><span class="p">,</span> <span class="s2">&quot;Textblock 3&quot;</span><span class="p">],</span>
+<span class="gp">... </span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">print_textblock</span><span class="p">(</span><span class="n">menu_columns_description</span><span class="p">,</span> <span class="n">menu_entries</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.cli.menu_constructors.util_convert_imat_datacont_to_pd_dataframe">
+<span class="sig-prename descclassname"><span class="pre">src.cli.menu_constructors.</span></span><span class="sig-name descname"><span class="pre">util_convert_imat_datacont_to_pd_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">imat_cont</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#src.cli.menu_constructors.util_convert_imat_datacont_to_pd_dataframe" title="Permalink to this definition"></a></dt>
+<dd><p>Converts an I-MaT data container to a pandas DataFrame format.</p>
+<p>This function takes an I-MaT data container and converts it into a pandas DataFrame. It’s an excellent way to
+facilitate user-friendly, manual data entry, as the vertical orientation of the I-MaT data container is easier to
+read than a typical pandas DataFrame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>imat_cont</strong> (<em>dict</em>) – I-MaT data container dictionary containing the data to be converted into a DataFrame.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A DataFrame containing the data from the I-MaT data container.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#src.cli.menu_constructors.display_menu_print_results" title="src.cli.menu_constructors.display_menu_print_results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">display_menu_print_results</span></code></a></dt><dd><p>Use this function to display data from the I-MaT data container.</p>
+</dd>
+<dt><a class="reference internal" href="#src.cli.menu_constructors.util_convert_pd_dataframe_to_imat_datacont" title="src.cli.menu_constructors.util_convert_pd_dataframe_to_imat_datacont"><code class="xref py py-obj docutils literal notranslate"><span class="pre">util_convert_pd_dataframe_to_imat_datacont</span></code></a></dt><dd><p>For the reverse operation - converting a pandas DataFrame</p>
+</dd>
+</dl>
+<p><code class="xref py py-obj docutils literal notranslate"><span class="pre">into</span></code></p>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+</pre></div>
+</div>
+<p>…     ‘col1’: [‘Result 1’, ‘Result 2’, ‘Result 3’],
+…     ‘col2’: [‘&lt;Displays the 1st Column&gt;’, ‘&lt;Displays the 1st Column&gt;’, ‘&lt;Displays the 1st Column&gt;’],
+…     ‘col3’: [‘&lt;Displays the 2nd Column&gt;’, ‘&lt;Displays the 2nd Column&gt;’, ‘&lt;Displays the 2nd Column&gt;’]
+… })</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">imat_cont</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">... </span>    <span class="s2">&quot;menu_displayed_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">... </span>        <span class="s2">&quot;Analysis Results&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;Please see the following analysis results:&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;&lt;To continue, please press Enter&gt;&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="p">[</span><span class="s2">&quot;&lt;Identifier&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Description&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Description&gt;&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">],</span>
+<span class="gp">... </span>    <span class="s2">&quot;menu_entries_results&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">... </span>        <span class="p">[</span><span class="s2">&quot;Result 1&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Displays the 1st Column&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Displays the 2nd Column&gt;&quot;</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">[</span><span class="s2">&quot;Result 2&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Displays the 1st Column&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Displays the 2nd Column&gt;&quot;</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">[</span><span class="s2">&quot;Result 3&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Displays the 1st Column&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Displays the 2nd Column&gt;&quot;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="p">]</span>
+<span class="gp">... </span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">util_convert_imat_datacont_to_pd_dataframe</span><span class="p">(</span><span class="n">imat_cont</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This will convert the I-MaT data container to a DataFrame with 3 rows. The DataFrame can then be used for further
+data processing or analysis.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.cli.menu_constructors.util_convert_pd_dataframe_to_imat_datacont">
+<span class="sig-prename descclassname"><span class="pre">src.cli.menu_constructors.</span></span><span class="sig-name descname"><span class="pre">util_convert_pd_dataframe_to_imat_datacont</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pd_dataframe</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">menu_title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Analysis</span> <span class="pre">Results'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">menu_guideline</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Please</span> <span class="pre">see</span> <span class="pre">the</span> <span class="pre">following</span> <span class="pre">analysis</span> <span class="pre">results:'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">menu_requested_input</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'&lt;To</span> <span class="pre">continue,</span> <span class="pre">please</span> <span class="pre">press</span> <span class="pre">Enter&gt;'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">menu_columns_description</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#src.cli.menu_constructors.util_convert_pd_dataframe_to_imat_datacont" title="Permalink to this definition"></a></dt>
+<dd><p>Converts a pandas DataFrame to an I-MaT data container format.</p>
+<p>This function converts a pandas DataFrame into a data format compatible with I-MaT’s display functions. It’s
+particularly useful for preparing data to be displayed in the console via <cite>display_menu_print_results()</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pd_dataframe</strong> (<em>pd.DataFrame</em>) – DataFrame containing the data to be displayed.</p></li>
+<li><p><strong>menu_title</strong> (<em>str</em><em>, </em><em>optional</em>) – Title for the data display. Defaults to “Analysis Results”.</p></li>
+<li><p><strong>menu_guideline</strong> (<em>str</em><em>, </em><em>optional</em>) – Instruction for the user. Defaults to “Please see the following analysis results:”.</p></li>
+<li><p><strong>menu_requested_input</strong> (<em>str</em><em>, </em><em>optional</em>) – Prompt for user input. Defaults to “&lt;To continue, please press Enter&gt;”.</p></li>
+<li><p><strong>menu_columns_description</strong> (<em>List</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – Descriptions for data columns. If not provided, the DataFrame’s column names will be used.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary in I-MaT data container format that can be used by the <cite>display_menu_print_results()</cite> function.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#src.cli.menu_constructors.display_menu_print_results" title="src.cli.menu_constructors.display_menu_print_results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">display_menu_print_results</span></code></a></dt><dd><p>Use this function to display the converted DataFrame in console.</p>
+</dd>
+<dt><a class="reference internal" href="#src.cli.menu_constructors.util_convert_imat_datacont_to_pd_dataframe" title="src.cli.menu_constructors.util_convert_imat_datacont_to_pd_dataframe"><code class="xref py py-obj docutils literal notranslate"><span class="pre">util_convert_imat_datacont_to_pd_dataframe</span></code></a></dt><dd><p>For the reverse operation - converting an I-MaT data container</p>
+</dd>
+</dl>
+<p><code class="xref py py-obj docutils literal notranslate"><span class="pre">into</span></code></p>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+<span class="gp">... </span>    <span class="s1">&#39;col1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Result 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Result 2&#39;</span><span class="p">,</span> <span class="s1">&#39;Result 3&#39;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="s1">&#39;col2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;&lt;Displays the 1st Column&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;Displays the 1st Column&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;Displays the 1st Column&gt;&#39;</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="s1">&#39;col3&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;&lt;Displays the 2nd Column&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;Displays the 2nd Column&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;Displays the 2nd Column&gt;&#39;</span><span class="p">]</span>
+<span class="gp">... </span><span class="p">})</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">results_dict</span> <span class="o">=</span> <span class="n">util_convert_pd_dataframe_to_imat_datacont</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">display_menu_print_results</span><span class="p">(</span><span class="n">results_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This will display a result set with 3 rows in the console. The actual output is determined by the dictionary
+returned from <cite>util_convert_pd_dataframe_to_imat_datacont()</cite>.</p>
+<p>An I-MaT data container created from a DataFrame would look like this:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">example_analysis_results_dict</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="p">{</span>
+<span class="gp">... </span>        <span class="s2">&quot;menu_displayed_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">... </span>            <span class="s2">&quot;Analysis Results&quot;</span><span class="p">,</span>
+<span class="gp">... </span>            <span class="s2">&quot;Please see the following analysis results:&quot;</span><span class="p">,</span>
+<span class="gp">... </span>            <span class="s2">&quot;&lt;To continue, please press Enter&gt;&quot;</span><span class="p">,</span>
+<span class="gp">... </span>            <span class="p">[</span><span class="s2">&quot;&lt;Identifier&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Description&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Description&gt;&quot;</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">],</span>
+<span class="gp">... </span>        <span class="s2">&quot;menu_entries_results&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="gp">... </span>            <span class="p">[</span><span class="s2">&quot;Result 1&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Displays the 1st Column&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Displays the 2nd Column&gt;&quot;</span><span class="p">],</span>
+<span class="gp">... </span>            <span class="p">[</span><span class="s2">&quot;Result 2&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Displays the 1st Column&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Displays the 2nd Column&gt;&quot;</span><span class="p">],</span>
+<span class="gp">... </span>            <span class="p">[</span><span class="s2">&quot;Result 3&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Displays the 1st Column&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Displays the 2nd Column&gt;&quot;</span><span class="p">],</span>
+<span class="gp">... </span>        <span class="p">]</span>
+<span class="gp">... </span>    <span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<span class="target" id="module-src.cli.menu_entries"><span id="menu-entries"></span></span><section id="module-cli-menu-entries-py">
+<h2>Module: cli.menu_entries.py<a class="headerlink" href="#module-cli-menu-entries-py" title="Permalink to this heading"></a></h2>
+<p>This module provides functionalities to construct the entries for various menus used within the command-line interface (CLI) of the Interactive Music Analysis Tool (I-MaT).</p>
+<p>This module is responsible for constructing the menu entries for different sections of the command line interface (CLI)
+of the Interactive Music Analysis Tool (I-MaT). The menus are used to navigate through the CLI, and the functions
+in this module return the entries for each menu in a structured format.</p>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><cite>mainmenu_environment_settings_entries</cite>: Returns the menu entries for the main environment settings menu.</p></li>
+<li><p><cite>mainmenu_single_musical_piece_entries</cite>: Returns the menu entries for the single musical piece menu.</p></li>
+<li><p><cite>mainmenu_tokenization_entries</cite>: Returns the menu entries for the tokenization menu.</p></li>
+<li><p><cite>start_menu_entries</cite>: Returns the menu entries for the start menu.</p></li>
+<li><p><cite>submenu_single_musical_piece_basic_functions_entries</cite>: Returns the menu entries for the basic functions submenu.</p></li>
+<li><p><cite>submenu_single_musical_piece_pattern_search_entries</cite>: Returns the menu entries for the pattern search submenu.</p></li>
+<li><p><cite>submenu_single_musical_piece_statistical_analysis_page1_entries</cite>: Returns the menu entries for the first page of the statistical analysis submenu.</p></li>
+<li><p><cite>submenu_single_musical_piece_statistical_analysis_page2_entries</cite>: Returns the menu entries for the second page of the statistical analysis submenu.</p></li>
+<li><p><cite>submenu_single_musical_piece_visualizations_entries</cite>: Returns the menu entries for the visualizations submenu.</p></li>
+<li><p><cite>submenu_tokenization_calculations_entries</cite>: Returns the menu entries for the calculations submenu in tokenization.</p></li>
+<li><p><cite>submenu_tokenization_refine_data_entries</cite>: Returns the menu entries for the refine data submenu in tokenization.</p></li>
+</ul>
+<p>Each function returns a dictionary representing the menu entries for a specific menu. The dictionary includes the
+menu text to be displayed, the function to be executed when the menu entry is selected, and other relevant information.</p>
+<p>These functions allow for easy modification of the menu structure and contents, providing flexibility in the design
+and functionality of the CLI. The module aids in ensuring that the command-line interface remains user-friendly
+and intuitive, providing clear navigation and straightforward access to the tool’s functionalities.</p>
+</section>
+</section>
+<dl class="py function">
+<dt class="sig sig-object py" id="src.cli.menu_entries.mainmenu_environment_settings_entries">
+<span class="sig-prename descclassname"><span class="pre">src.cli.menu_entries.</span></span><span class="sig-name descname"><span class="pre">mainmenu_environment_settings_entries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.cli.menu_entries.mainmenu_environment_settings_entries" title="Permalink to this definition"></a></dt>
+<dd><p>Menu for managing software paths and user preferences.</p>
+<p>Level: First Child (Parent: start_menu_entries)</p>
+<p>This function defines the second level menu for updating software
+paths and preferences. It provides options to display the
+environment file and to update paths and preferences.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.cli.menu_entries.mainmenu_single_musical_piece_entries">
+<span class="sig-prename descclassname"><span class="pre">src.cli.menu_entries.</span></span><span class="sig-name descname"><span class="pre">mainmenu_single_musical_piece_entries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.cli.menu_entries.mainmenu_single_musical_piece_entries" title="Permalink to this definition"></a></dt>
+<dd><p>Menu dedicated to operations and analyses related to a single piece of music.</p>
+<p>Level: First Child (Parent: start_menu_entries)</p>
+<p>This function defines the second level menu that is specific to
+analyzing a single piece of music. It provides options to access
+basic functions, statistical analysis tools, visualization tools,
+and pattern search tools.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.cli.menu_entries.mainmenu_tokenization_entries">
+<span class="sig-prename descclassname"><span class="pre">src.cli.menu_entries.</span></span><span class="sig-name descname"><span class="pre">mainmenu_tokenization_entries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.cli.menu_entries.mainmenu_tokenization_entries" title="Permalink to this definition"></a></dt>
+<dd><p>Main menu for operations related to music tokenization.</p>
+<p>Level: First Child (Parent: start_menu_entries)</p>
+<p>This function defines the second level menu for tokenization
+operations. It provides options to tokenize a folder of midi files,
+refine tokenization results, perform calculations on tokens, and
+extract token data to a TXT file.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.cli.menu_entries.start_menu_entries">
+<span class="sig-prename descclassname"><span class="pre">src.cli.menu_entries.</span></span><span class="sig-name descname"><span class="pre">start_menu_entries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.cli.menu_entries.start_menu_entries" title="Permalink to this definition"></a></dt>
+<dd><p>Entry point for the program, allowing navigation through various functionalities.</p>
+<p>Level: Root</p>
+<p>This function defines the top level menu of the application.
+It provides options to either analyze a single sheet music file,
+convert multiple music files, tokenize multiple music files, or
+update the software paths and preferences.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.cli.menu_entries.submenu_single_musical_piece_basic_functions_entries">
+<span class="sig-prename descclassname"><span class="pre">src.cli.menu_entries.</span></span><span class="sig-name descname"><span class="pre">submenu_single_musical_piece_basic_functions_entries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.cli.menu_entries.submenu_single_musical_piece_basic_functions_entries" title="Permalink to this definition"></a></dt>
+<dd><p>Submenu offering basic operations such as score selection and metadata display.</p>
+<p>Level: Second Child (Parent: mainmenu_single_musical_piece_entries)</p>
+<p>This function defines the third level menu for accessing basic
+functions of the program. It provides options such as selecting a
+music score, displaying metadata, listing part names, and renaming
+parts.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.cli.menu_entries.submenu_single_musical_piece_pattern_search_entries">
+<span class="sig-prename descclassname"><span class="pre">src.cli.menu_entries.</span></span><span class="sig-name descname"><span class="pre">submenu_single_musical_piece_pattern_search_entries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.cli.menu_entries.submenu_single_musical_piece_pattern_search_entries" title="Permalink to this definition"></a></dt>
+<dd><p>Submenu for various pattern search tools in a single piece of music.</p>
+<p>Level: Second Child (Parent: mainmenu_single_musical_piece_entries)</p>
+<p>This function defines the third level menu for performing pattern
+searches on a single piece of music.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.cli.menu_entries.submenu_single_musical_piece_statistical_analysis_page1_entries">
+<span class="sig-prename descclassname"><span class="pre">src.cli.menu_entries.</span></span><span class="sig-name descname"><span class="pre">submenu_single_musical_piece_statistical_analysis_page1_entries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.cli.menu_entries.submenu_single_musical_piece_statistical_analysis_page1_entries" title="Permalink to this definition"></a></dt>
+<dd><p>Submenu offering various statistical analyses for a single piece of music.</p>
+<p>Level: Second Child (Parent: mainmenu_single_musical_piece_entries)</p>
+<p>This function defines the third level menu for performing
+statistical analysis on a single piece of music. It provides
+options for analyzing different aspects of the piece, such as the
+number of tones, number of rests, etc.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.cli.menu_entries.submenu_single_musical_piece_statistical_analysis_page2_entries">
+<span class="sig-prename descclassname"><span class="pre">src.cli.menu_entries.</span></span><span class="sig-name descname"><span class="pre">submenu_single_musical_piece_statistical_analysis_page2_entries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.cli.menu_entries.submenu_single_musical_piece_statistical_analysis_page2_entries" title="Permalink to this definition"></a></dt>
+<dd><p>Submenu dedicated to advanced statistical analyses for a single piece of music.</p>
+<p>Level: Third Child (Parent: submenu_single_musical_piece_statistical_analysis_page1_entries)</p>
+<p>This function defines the fourth level menu for performing
+advanced statistical calculations on a single piece of music.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.cli.menu_entries.submenu_single_musical_piece_visualizations_entries">
+<span class="sig-prename descclassname"><span class="pre">src.cli.menu_entries.</span></span><span class="sig-name descname"><span class="pre">submenu_single_musical_piece_visualizations_entries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.cli.menu_entries.submenu_single_musical_piece_visualizations_entries" title="Permalink to this definition"></a></dt>
+<dd><p>Submenu offering various visualization tools for a single piece of music.</p>
+<p>Level: Second Child (Parent: mainmenu_single_musical_piece_entries)</p>
+<p>This function defines the third level menu for visualizing various
+aspects of a single piece of music.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.cli.menu_entries.submenu_tokenization_calculations_entries">
+<span class="sig-prename descclassname"><span class="pre">src.cli.menu_entries.</span></span><span class="sig-name descname"><span class="pre">submenu_tokenization_calculations_entries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.cli.menu_entries.submenu_tokenization_calculations_entries" title="Permalink to this definition"></a></dt>
+<dd><p>Submenu for conducting various calculations on tokenized data.</p>
+<p>Level: Second Child (Parent: mainmenu_tokenization_entries)</p>
+<p>This function defines the third level menu for performing
+calculations on tokens. It provides an option to calculate intervals
+between pitch values.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.cli.menu_entries.submenu_tokenization_refine_data_entries">
+<span class="sig-prename descclassname"><span class="pre">src.cli.menu_entries.</span></span><span class="sig-name descname"><span class="pre">submenu_tokenization_refine_data_entries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.cli.menu_entries.submenu_tokenization_refine_data_entries" title="Permalink to this definition"></a></dt>
+<dd><p>Submenu for refining tokenized data.</p>
+<p>Level: Second Child (Parent: mainmenu_tokenization_entries)</p>
+<p>This function defines the third level menu for refining
+tokenization results. It provides options to remove string prefixes
+and convert duration values to a different format.</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="src.analysis.html" class="btn btn-neutral float-left" title="Package: Analysis (src.analysis)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="src.conversion.html" class="btn btn-neutral float-right" title="Package: File Conversion (src.conversion)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Sebastian Oliver Eck.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

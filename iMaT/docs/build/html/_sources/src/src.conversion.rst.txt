@@ -1,0 +1,29 @@
+src.conversion package
+======================
+
+Submodules
+----------
+
+src.conversion.main module
+--------------------------
+
+.. automodule:: src.conversion.main
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.conversion.utils module
+---------------------------
+
+.. automodule:: src.conversion.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: src.conversion
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,396 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>src.score_selection.name_parts &#8212; I-MaT 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for src.score_selection.name_parts</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Module: score_selection.name_parts.py</span>
+<span class="sd">=====================================</span>
+
+<span class="sd">This module provides functionalities to interact with and manipulate music scores using the music21 library. It takes</span>
+<span class="sd">into account predefined names for each part of the score within the files and assigns them to the corresponding</span>
+<span class="sd">music21 stream parts when assigning generic names.</span>
+
+<span class="sd">Functions</span>
+<span class="sd">---------</span>
+<span class="sd">- `select_and_name_parts`: Initializes the `selected_score_part_names` dictionary and engages with the user to name the parts of the score.</span>
+<span class="sd">- `rename_parts`: Allows the user to rename the parts of the chosen score.</span>
+<span class="sd">- `view_score`: Displays the selected score by using the `show` method of `music21`.</span>
+
+<span class="sd">Notes</span>
+<span class="sd">-----</span>
+<span class="sd">This module uses the `music21` library and functions from `src.cli.menu_constructors` and `src.utils.error_handling`.</span>
+<span class="sd">The global variable `selected_score_part_names` associates part names with their corresponding `music21 Score` or `Part` objects.</span>
+
+<span class="sd">Module-level variable definitions</span>
+<span class="sd">---------------------------------</span>
+
+<span class="sd">The module also defines a global variable:</span>
+
+<span class="sd">selected_score_part_names: dict This global dictionary associates part names to their corresponding music21 Score or</span>
+<span class="sd">Part objects, enabling user interaction with named parts rather than abstract music21 objects. The key &#39;Full Score&#39;</span>
+<span class="sd">is reserved for the whole Score object. The structure of the dictionary is as follows:</span>
+
+<span class="sd">    ```</span>
+<span class="sd">    selected_score_part_names = {</span>
+<span class="sd">        &#39;Full Score&#39;: &lt;music21.stream.Score 0x230ce950730&gt;,</span>
+<span class="sd">        &#39;Part 1&#39;: &lt;music21.stream.Part Soprano&gt;,</span>
+<span class="sd">        &#39;Part 2&#39;: &lt;music21.stream.Part Alto&gt;,</span>
+<span class="sd">        &#39;Part 3&#39;: &lt;music21.stream.Part Tenor&gt;,</span>
+<span class="sd">        &#39;Part 4&#39;: &lt;music21.stream.Part Bass&gt;</span>
+<span class="sd">    }</span>
+<span class="sd">    ```</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">music21</span>
+
+<span class="kn">from</span> <span class="nn">iMaT.src.cli.menu_constructors</span> <span class="kn">import</span> <span class="n">display_menu_print_results</span><span class="p">,</span> <span class="n">display_menu_print_textblock</span><span class="p">,</span> \
+    <span class="n">display_menu_request_selection</span>
+<span class="kn">from</span> <span class="nn">iMaT.src.utils.error_handling</span> <span class="kn">import</span> <span class="n">handle_error</span>
+
+<span class="n">selected_score_part_names</span> <span class="o">=</span> <span class="p">{}</span>
+
+<div class="viewcode-block" id="select_and_name_parts"><a class="viewcode-back" href="../../../module_files/src.score_selection.html#src.score_selection.name_parts.select_and_name_parts">[docs]</a><span class="k">def</span> <span class="nf">select_and_name_parts</span><span class="p">(</span><span class="n">selected_score</span><span class="p">:</span> <span class="n">music21</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">Score</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Interacts with the user to assign custom or generic names to the parts of a provided music21 Score object.</span>
+
+<span class="sd">    This function first clears and then repopulates the `selected_score_part_names` global dictionary, associating</span>
+<span class="sd">    names (keys) with the parts of the given Score (values). The &#39;Full Score&#39; key represents the entire Score object.</span>
+
+<span class="sd">    The function presents a menu to the user to choose between assigning individual names, using generic names,</span>
+<span class="sd">    or viewing the selected score. Depending on the user&#39;s choice, it either calls the `rename_parts` function</span>
+<span class="sd">    to assign individual names, prints the `selected_score_part_names` dictionary if the user chooses generic names,</span>
+<span class="sd">    or calls `view_score` to display the music score.</span>
+
+<span class="sd">    The function handles exceptions by passing them to the `handle_error` function.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        selected_score (music21.stream.Score): The Score object for which parts are to be named.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        Any exceptions occurring during the execution are caught and passed to the `handle_error` function.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        None. This function modifies the global &#39;selected_score_part_names&#39; dictionary and doesn&#39;t return a value.</span>
+
+<span class="sd">    See Also:</span>
+<span class="sd">        1. `rename_parts()`: To assign individual names based on user input.</span>
+<span class="sd">        2. `view_score()`: To display the music score.</span>
+<span class="sd">        3. `handle_error()`: For handling exceptions occurring during the execution of this function.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">selected_score_part_names</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>  <span class="c1"># Clear the dictionary</span>
+        <span class="n">selected_score_part_names</span><span class="p">[</span><span class="s1">&#39;Full Score&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">selected_score</span>  <span class="c1"># Modify the dictionary</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">part</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">selected_score</span><span class="o">.</span><span class="n">parts</span><span class="p">):</span>
+            <span class="n">selected_score_part_names</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;Part </span><span class="si">{</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">part</span>
+
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">menu_text</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;menu_displayed_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;Naming parts (custom/generic)&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;Please select an option:&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;Enter your choice (1-3): &quot;</span><span class="p">,</span>
+                    <span class="p">[</span><span class="s2">&quot;Menu item&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Explanation&gt;&quot;</span><span class="p">],</span>
+                <span class="p">],</span>
+                <span class="s2">&quot;menu_entries&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">[</span><span class="s2">&quot;GNRC: Assign generic names to parts&quot;</span><span class="p">,</span> <span class="s2">&quot;Use generic names&quot;</span><span class="p">,</span>
+                     <span class="s2">&quot;&lt;Use generic names (Part 1, Part 2, etc.)&gt;&quot;</span><span class="p">],</span>
+                    <span class="p">[</span><span class="s2">&quot;INDV: Assign individual/custom names to parts&quot;</span><span class="p">,</span> <span class="s2">&quot;Assign individual names&quot;</span><span class="p">,</span>
+                     <span class="s2">&quot;&lt;Type in custom names for individual parts&gt;&quot;</span><span class="p">],</span>
+                    <span class="p">[</span><span class="s2">&quot;VIEW: View the selected sheet music&quot;</span><span class="p">,</span> <span class="s2">&quot;View the score&quot;</span><span class="p">,</span>
+                     <span class="s2">&quot;&lt;Open the score for viewing in the defined sheet music program&gt;&quot;</span><span class="p">],</span>
+                <span class="p">]</span>
+            <span class="p">}</span>
+
+            <span class="n">choice</span> <span class="o">=</span> <span class="n">display_menu_request_selection</span><span class="p">(</span><span class="n">menu_text</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;Assign individual names&quot;</span><span class="p">:</span>
+                <span class="n">rename_parts</span><span class="p">()</span>  <span class="c1"># Modify the dictionary directly</span>
+                <span class="k">break</span>
+            <span class="k">elif</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;Use generic names&quot;</span><span class="p">:</span>
+                <span class="n">menu_text</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;menu_displayed_text&#39;</span><span class="p">:</span>
+                                 <span class="p">[</span><span class="s1">&#39;Selected Score Part Names&#39;</span><span class="p">,</span>
+                                  <span class="s1">&#39;These are the generated generic score part names:&#39;</span><span class="p">,</span>
+                                  <span class="s1">&#39;&lt;To continue, please press Enter&gt;&#39;</span><span class="p">,</span>
+                                  <span class="p">[</span><span class="s1">&#39;Part Names&#39;</span><span class="p">]],</span>
+                             <span class="s1">&#39;menu_entries_results&#39;</span><span class="p">:</span>
+                                 <span class="p">[[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">selected_score_part_names</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="o">!=</span> <span class="s1">&#39;Full Score&#39;</span><span class="p">]}</span>
+                <span class="n">display_menu_print_results</span><span class="p">(</span><span class="n">menu_text</span><span class="p">)</span>
+                <span class="k">break</span>
+            <span class="k">elif</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;View the score&quot;</span><span class="p">:</span>
+                <span class="n">view_score</span><span class="p">(</span><span class="n">selected_score</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">handle_error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="rename_parts"><a class="viewcode-back" href="../../../module_files/src.score_selection.html#src.score_selection.name_parts.rename_parts">[docs]</a><span class="k">def</span> <span class="nf">rename_parts</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Interactive function that allows the user to rename parts in a musical score.</span>
+<span class="sd">    The function operates on a global dictionary `selected_score_part_names`, where</span>
+<span class="sd">    keys are part names and values are part objects.</span>
+
+<span class="sd">    Here is an example of how the `selected_score_part_names` dictionary may look before renaming:</span>
+
+<span class="sd">    ```</span>
+<span class="sd">    selected_score_part_names = {</span>
+<span class="sd">        &#39;Full Score&#39;: &lt;music21.stream.Score 0x230ce950730&gt;,</span>
+<span class="sd">        &#39;Part 1&#39;: &lt;music21.stream.Part Soprano&gt;,</span>
+<span class="sd">        &#39;Part 2&#39;: &lt;music21.stream.Part Alto&gt;,</span>
+<span class="sd">        &#39;Part 3&#39;: &lt;music21.stream.Part Tenor&gt;,</span>
+<span class="sd">        &#39;Part 4&#39;: &lt;music21.stream.Part Bass&gt;</span>
+<span class="sd">    }</span>
+
+<span class="sd">    This function displays a list of current part names and prompts the user to enter</span>
+<span class="sd">    new names for each part, one at a time. If the user enters a new name that is not</span>
+<span class="sd">    already used by another part, the new name will be accepted and used to update the part&#39;s name.</span>
+<span class="sd">    If the user tries to enter a name that is already in use, they will be prompted to choose another name.</span>
+
+<span class="sd">    Once the user has been given the chance to rename all parts, a list of the new (or unchanged)</span>
+<span class="sd">    part names is displayed. The user is then asked to confirm whether the new names are correct.</span>
+
+<span class="sd">    If the user confirms that the new names are correct, the global `selected_score_part_names` dictionary</span>
+<span class="sd">    is updated with the new part names. If the user indicates that the new names are not correct,</span>
+<span class="sd">    the renaming process starts over.</span>
+
+<span class="sd">    The function continues to run until the user confirms that the part names are correct.</span>
+
+<span class="sd">    The function does not return any value. It directly modifies the `selected_score_part_names` dictionary.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        Any exceptions raised by this function are passed to the `handle_error` function for error handling.</span>
+
+<span class="sd">    See Also:</span>
+<span class="sd">        1. `display_menu_print_results()`: For displaying a list of current part names and to present new/unchanged names.</span>
+<span class="sd">        2. `display_menu_request_selection()`: For requesting the user to select between confirming or rejecting the new names.</span>
+<span class="sd">        3. `handle_error()`: For handling exceptions that occur during the renaming process.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">global</span> <span class="n">selected_score_part_names</span>
+
+        <span class="c1"># Operate on a local copy of the global dictionary</span>
+        <span class="n">local_copy</span> <span class="o">=</span> <span class="n">selected_score_part_names</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="c1"># Convert the dictionary to a list of tuples</span>
+            <span class="n">selected_score_part_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">local_copy</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">part</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">selected_score_part_list</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">part</span> <span class="o">!=</span> <span class="s1">&#39;Full Score&#39;</span><span class="p">:</span>
+                    <span class="c1"># Create I-MaT data container</span>
+                    <span class="n">part_name_dict</span> <span class="o">=</span> <span class="p">{</span>
+                        <span class="s2">&quot;menu_displayed_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+                            <span class="s2">&quot;Current Part Names&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Please review the current part names:&quot;</span><span class="p">,</span>
+                            <span class="sa">f</span><span class="s2">&quot;Enter a new name for </span><span class="si">{</span><span class="n">part</span><span class="si">}</span><span class="s2"> (leave blank to keep the existing name): &quot;</span><span class="p">,</span>
+                            <span class="p">[</span><span class="s2">&quot;Part Names&quot;</span><span class="p">],</span>
+                        <span class="p">],</span>
+                        <span class="s2">&quot;menu_entries_results&quot;</span><span class="p">:</span> <span class="p">[]</span>
+                    <span class="p">}</span>
+                    <span class="c1"># Fill in the part names</span>
+                    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">selected_score_part_names</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                        <span class="k">if</span> <span class="n">p</span> <span class="o">!=</span> <span class="s1">&#39;Full Score&#39;</span><span class="p">:</span>
+                            <span class="n">arrow</span> <span class="o">=</span> <span class="s2">&quot;  &lt;-----&quot;</span> <span class="k">if</span> <span class="n">p</span> <span class="o">==</span> <span class="n">part</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+                            <span class="n">part_name_dict</span><span class="p">[</span><span class="s2">&quot;menu_entries_results&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">p</span> <span class="o">+</span> <span class="n">arrow</span><span class="p">)])</span>
+                    <span class="c1"># Display the part names and get new name</span>
+                    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                        <span class="n">new_name</span> <span class="o">=</span> <span class="n">display_menu_print_results</span><span class="p">(</span><span class="n">part_name_dict</span><span class="p">)</span>
+                        <span class="c1"># Continue if no name entered</span>
+                        <span class="k">if</span> <span class="ow">not</span> <span class="n">new_name</span><span class="p">:</span>
+                            <span class="k">break</span>
+                        <span class="c1"># If the new name doesn&#39;t already exist, use it</span>
+                        <span class="k">elif</span> <span class="n">new_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">dict</span><span class="p">(</span><span class="n">selected_score_part_list</span><span class="p">)</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                            <span class="n">selected_score_part_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">new_name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>  <span class="c1"># update the key in the tuple</span>
+                            <span class="k">break</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">This name already exists. Please choose another name.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+                            <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;&lt;To continue, please press Enter&gt;&quot;</span><span class="p">)</span>
+
+            <span class="c1"># Create a new data container for displaying the new/unchanged names</span>
+            <span class="n">new_names_dict</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;menu_displayed_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;New Part Names&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;These are the new or unchanged part names:&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;&lt;To continue, please press Enter&gt;&quot;</span><span class="p">,</span>
+                    <span class="p">[</span><span class="s2">&quot;Part Names&quot;</span><span class="p">],</span>
+                <span class="p">],</span>
+                <span class="s2">&quot;menu_entries_results&quot;</span><span class="p">:</span> <span class="p">[]</span>
+            <span class="p">}</span>
+            <span class="c1"># Fill in the new part names</span>
+            <span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">selected_score_part_list</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">p</span> <span class="o">!=</span> <span class="s1">&#39;Full Score&#39;</span><span class="p">:</span>
+                    <span class="n">new_names_dict</span><span class="p">[</span><span class="s2">&quot;menu_entries_results&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">p</span><span class="p">])</span>
+            <span class="c1"># Display the new part names</span>
+            <span class="n">display_menu_print_results</span><span class="p">(</span><span class="n">new_names_dict</span><span class="p">)</span>
+
+            <span class="n">new_names_correct</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;menu_entries&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">[</span><span class="s2">&quot;CONF: Confirm&quot;</span><span class="p">,</span> <span class="s2">&quot;Yes&quot;</span><span class="p">,</span> <span class="s2">&quot;Confirm the names&quot;</span><span class="p">],</span>
+                    <span class="p">[</span><span class="s2">&quot;DONT: Do not confirm&quot;</span><span class="p">,</span> <span class="s2">&quot;No&quot;</span><span class="p">,</span> <span class="s2">&quot;Reject the names and rename&quot;</span><span class="p">]</span>
+                <span class="p">],</span>
+                <span class="s2">&quot;menu_displayed_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;Confirmation&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;Are these names correct?&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;Enter your choice (1-2): &quot;</span><span class="p">,</span>
+                    <span class="p">[</span><span class="s2">&quot;Menu item&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Explanation&gt;&quot;</span><span class="p">]</span>
+                <span class="p">]}</span>
+            <span class="n">confirmation</span> <span class="o">=</span> <span class="n">display_menu_request_selection</span><span class="p">(</span><span class="n">new_names_correct</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">confirmation</span> <span class="o">==</span> <span class="s2">&quot;Yes&quot;</span><span class="p">:</span>
+                <span class="c1"># Update the global dictionary only after the user has confirmed the changes</span>
+                <span class="n">selected_score_part_names</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+                <span class="n">selected_score_part_names</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">selected_score_part_list</span><span class="p">))</span>
+                <span class="k">break</span>  <span class="c1"># Break the while loop once all renaming operations are completed</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">handle_error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="view_score"><a class="viewcode-back" href="../../../module_files/src.score_selection.html#src.score_selection.name_parts.view_score">[docs]</a><span class="k">def</span> <span class="nf">view_score</span><span class="p">(</span><span class="n">selected_score</span><span class="p">:</span> <span class="n">music21</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">Score</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Opens the specified music21 Score object in the default sheet music viewer program.</span>
+
+<span class="sd">    The music21 library will attempt to open the Score object in the user&#39;s default sheet music</span>
+<span class="sd">    viewing program. The specific program used can vary depending on the user&#39;s system configuration.</span>
+
+<span class="sd">    Before the Score is opened, a notice is displayed to the user. The notice informs the user</span>
+<span class="sd">    that the sheet music viewer program likely needs to be closed before they can continue using</span>
+<span class="sd">    the tool. The user must press Enter to proceed after reading the notice.</span>
+
+<span class="sd">    After the user presses Enter, the Score is opened in the sheet music viewer program.</span>
+
+<span class="sd">    Once the Score is displayed, the user can view the sheet music as needed. When they are done,</span>
+<span class="sd">    they need to close the sheet music viewer program and return to the tool.</span>
+
+<span class="sd">    If any exceptions occur while attempting to display the Score or during user interaction,</span>
+<span class="sd">    they are passed to the `handle_error()` function for error handling.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        selected_score (music21.stream.Score): The Score object to be displayed.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        Any exceptions that occur during the execution of this function are caught and passed to</span>
+<span class="sd">        the `handle_error()` function for error handling.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        None. This function only performs actions and does not return a value.</span>
+
+<span class="sd">    See Also:</span>
+<span class="sd">        1. `display_menu_print_textblock()`: For displaying the notice before the Score is opened.</span>
+<span class="sd">        2. `handle_error()`: For handling exceptions that occur while attempting to display the Score or during user interaction.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;menu_displayed_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;Notice&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Please read the following message:&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;&lt;To open the program, please press Enter&gt;&quot;</span><span class="p">,</span>
+                <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;Message&quot;</span><span class="p">],</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;menu_entries_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">[</span><span class="s2">&quot;Message 1&quot;</span><span class="p">,</span> <span class="s2">&quot;The program used to view the sheet music probably needs to be closed in order to &quot;</span>
+                              <span class="s2">&quot;continue&quot;</span>
+                              <span class="s2">&quot;with the tool.&quot;</span><span class="p">]</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+        <span class="n">display_menu_print_textblock</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+        <span class="n">selected_score</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">handle_error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">I-MaT</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started.html">Getting Started: How to use I-MaT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contribute.html">How to Contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_files/src.html">I-MaT: Source Code</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Sebastian Oliver Eck.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 6.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

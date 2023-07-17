@@ -1,6 +1,6 @@
 """
-tokenization.main.py
-====================
+Module: tokenization.main.py
+============================
 
 This module provides functions for tokenizing MIDI files in a selected directory. These files are converted into token sequences
 using one or more tokenizers and saved as CSV files in a subdirectory of the original directory.
@@ -32,12 +32,12 @@ from miditok import CPWord, MIDILike, MuMIDI, Octuple, OctupleMono, REMI, REMIPl
 from openpyxl.workbook import Workbook
 from tqdm import tqdm
 
-from src.cli.menu_constructors import display_menu_print_textblock, \
+from iMaT.src.cli.menu_constructors import display_menu_print_textblock, \
     display_menu_request_selection
-from src.tokenization.utils import combine_csv_files_in_directory, create_log_entry, display_success_rate, \
+from iMaT.src.tokenization.utils import combine_csv_files_in_directory, create_log_entry, display_success_rate, \
     display_tokenizable_files_in_folder, \
     get_tokenizable_files_in_folder
-from src.utils.error_handling import handle_error
+from iMaT.src.utils.error_handling import handle_error
 
 MIDITOK_TOKENIZERS_LIST = [
     ['REMI', REMI, '<One-Dimensional: Event-based, includes timing, bar info>'],

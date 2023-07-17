@@ -1,11 +1,11 @@
 """
-analysis.main.py
-================
+Module: analysis.main.py
+========================
 
-This module includes the main function for handling the workflow for analyzing a single musical piece within the Interactive Music Analysis Tool (I-MaT) system.
+This module includes the main function for handling the workflow for analyzing a single musical piece within the Interactive Music Analysis Tool (I-MaT) tool.
 
 This module includes the function `analysis_workflow_single_musical_piece`, which is a key function to handle
-the workflow for analyzing a single musical piece in the Interactive Music Analysis Tool (I-MaT) system.
+the workflow for analyzing a single musical piece in the Interactive Music Analysis Tool (I-MaT) tool.
 
 It guides through the entire process of selecting a score, performing the analysis using a user-provided function,
 displaying the results, and handling post-analysis user options.
@@ -23,14 +23,14 @@ Functions
 
 The module utilizes several helper functions from different modules such as `score_selection`, `select_parts_and_measures`, `handle_error`, and more.
 """
-from src.analysis.utils import display_user_options_post_analysis
-from src.cli.menu_constructors import display_menu_print_results, util_convert_pd_dataframe_to_imat_datacont
-from src.score_selection.main import score_selection
-from src.score_selection.name_parts import selected_score_part_names
-from src.score_selection.select_parts_and_measures import select_parts_and_measures
-from src.utils.error_handling import handle_error
-from src.utils.misc import export_results_to_csv_auto
-from src.visualizations.analysis_results_graphs import map_analysis_functions_to_display_functions
+from iMaT.src.analysis.utils import display_user_options_post_analysis
+from iMaT.src.cli.menu_constructors import display_menu_print_results, util_convert_pd_dataframe_to_imat_datacont
+from iMaT.src.score_selection.main import score_selection
+from iMaT.src.score_selection.name_parts import selected_score_part_names
+from iMaT.src.score_selection.select_parts_and_measures import select_parts_and_measures
+from iMaT.src.utils.error_handling import handle_error
+from iMaT.src.utils.misc import export_results_to_csv_auto
+from iMaT.src.visualizations.analysis_results_graphs import map_analysis_functions_to_display_functions
 
 
 def analysis_workflow_single_musical_piece(analysis_func: callable):

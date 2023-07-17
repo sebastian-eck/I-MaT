@@ -1,0 +1,29 @@
+﻿src.analysis.main
+=================
+
+.. automodule:: src.analysis.main
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      analysis_workflow_single_musical_piece
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+

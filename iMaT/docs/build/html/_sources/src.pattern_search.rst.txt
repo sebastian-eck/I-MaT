@@ -1,0 +1,37 @@
+src.pattern\_search package
+===========================
+
+Submodules
+----------
+
+src.pattern\_search.functions module
+------------------------------------
+
+.. automodule:: src.pattern_search.functions
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.pattern\_search.main module
+-------------------------------
+
+.. automodule:: src.pattern_search.main
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.pattern\_search.utils module
+--------------------------------
+
+.. automodule:: src.pattern_search.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: src.pattern_search
+   :members:
+   :undoc-members:
+   :show-inheritance:

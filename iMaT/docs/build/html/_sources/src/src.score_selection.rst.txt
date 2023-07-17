@@ -1,0 +1,37 @@
+src.score\_selection package
+============================
+
+Submodules
+----------
+
+src.score\_selection.main module
+--------------------------------
+
+.. automodule:: src.score_selection.main
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.score\_selection.name\_parts module
+---------------------------------------
+
+.. automodule:: src.score_selection.name_parts
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.score\_selection.select\_parts\_and\_measures module
+--------------------------------------------------------
+
+.. automodule:: src.score_selection.select_parts_and_measures
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: src.score_selection
+   :members:
+   :undoc-members:
+   :show-inheritance:
