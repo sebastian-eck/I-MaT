@@ -1,0 +1,29 @@
+iMaT.src.cli package
+====================
+
+Submodules
+----------
+
+iMaT.src.cli.menu\_constructors module
+--------------------------------------
+
+.. automodule:: iMaT.src.cli.menu_constructors
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+iMaT.src.cli.menu\_entries module
+---------------------------------
+
+.. automodule:: iMaT.src.cli.menu_entries
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: iMaT.src.cli
+   :members:
+   :undoc-members:
+   :show-inheritance:

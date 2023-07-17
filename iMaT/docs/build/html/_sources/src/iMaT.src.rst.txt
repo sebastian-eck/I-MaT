@@ -1,0 +1,38 @@
+iMaT.src package
+================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   iMaT.src.analysis
+   iMaT.src.cli
+   iMaT.src.conversion
+   iMaT.src.examples
+   iMaT.src.m21_environment
+   iMaT.src.pattern_search
+   iMaT.src.score_selection
+   iMaT.src.tokenization
+   iMaT.src.utils
+   iMaT.src.visualizations
+
+Submodules
+----------
+
+iMaT.src.constants module
+-------------------------
+
+.. automodule:: iMaT.src.constants
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: iMaT.src
+   :members:
+   :undoc-members:
+   :show-inheritance:

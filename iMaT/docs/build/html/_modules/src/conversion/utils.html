@@ -1,0 +1,430 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>src.conversion.utils &#8212; I-MaT 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for src.conversion.utils</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Module: conversion.utils.py</span>
+<span class="sd">===========================</span>
+
+<span class="sd">A module to handle various utility tasks related to the music file conversion process.</span>
+
+<span class="sd">This module provides functions for:</span>
+
+<span class="sd">- Retrieving a list of parsable music files in a specified directory.</span>
+<span class="sd">- Displaying a list of parsable music files in a specified directory.</span>
+<span class="sd">- Displaying the success rate of file conversion.</span>
+<span class="sd">- Interactively selecting a folder containing parsable music files through a GUI.</span>
+<span class="sd">- Providing a user interface to select a music file conversion format.</span>
+<span class="sd">- Adding a new entry to a .xlsx log file.</span>
+
+<span class="sd">All of these functions are designed to be used in the conversion process, and exceptions raised during their</span>
+<span class="sd">execution are handled and displayed to the user.</span>
+
+<span class="sd">Functions</span>
+<span class="sd">---------</span>
+<span class="sd">- &#39;get_parsable_files_in_folder&#39;: Retrieve a list of parsable music files in a given directory.</span>
+<span class="sd">- &#39;display_parseable_files_in_folder&#39;: Display a list of parsable music files in a given directory.</span>
+<span class="sd">- &#39;display_success_rate&#39;: Display the success rate of file conversion.</span>
+<span class="sd">- &#39;select_folder&#39;: Interactively select a folder containing parsable music files.</span>
+<span class="sd">- &#39;select_conversion_format&#39;: Provide a user interface to select a music file conversion format.</span>
+<span class="sd">- &#39;create_log_entry&#39;: Add a new entry to a .xlsx log file.</span>
+
+<span class="sd">Raises</span>
+<span class="sd">------</span>
+<span class="sd">Exception:</span>
+<span class="sd">    Any exception that occurs during the execution of the function is handled and displayed to the user.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
+<span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="n">filedialog</span>
+
+<span class="kn">from</span> <span class="nn">openpyxl</span> <span class="kn">import</span> <span class="n">load_workbook</span>
+
+<span class="kn">from</span> <span class="nn">iMaT.src.cli.menu_constructors</span> <span class="kn">import</span> <span class="n">display_menu_print_results</span><span class="p">,</span> <span class="n">display_menu_print_textblock</span><span class="p">,</span> \
+    <span class="n">display_menu_request_selection</span>
+<span class="kn">from</span> <span class="nn">iMaT.src.utils.error_handling</span> <span class="kn">import</span> <span class="n">handle_error</span>
+
+
+<div class="viewcode-block" id="get_parsable_files_in_folder"><a class="viewcode-back" href="../../../module_files/src.conversion.html#src.conversion.utils.get_parsable_files_in_folder">[docs]</a><span class="k">def</span> <span class="nf">get_parsable_files_in_folder</span><span class="p">(</span><span class="n">folder_path</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Retrieve a list of parsable music files in a given directory.</span>
+
+<span class="sd">    This function checks a specified directory for files with parsable music file extensions.</span>
+<span class="sd">    It lists all the files with these extensions.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    folder_path : str</span>
+<span class="sd">        The path of the directory to check.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list</span>
+<span class="sd">        A list of filenames of parsable music files.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    Exception</span>
+<span class="sd">        Any exception that occurs during the execution of the function is handled and displayed to the user.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">parsable_extensions</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;.abc&#39;</span><span class="p">,</span> <span class="s1">&#39;.capx&#39;</span><span class="p">,</span> <span class="s1">&#39;.gex&#39;</span><span class="p">,</span> <span class="s1">&#39;.humdrum&#39;</span><span class="p">,</span> <span class="s1">&#39;.krn&#39;</span><span class="p">,</span> <span class="s1">&#39;.mei&#39;</span><span class="p">,</span> <span class="s1">&#39;.midi&#39;</span><span class="p">,</span> <span class="s1">&#39;.mid&#39;</span><span class="p">,</span> <span class="s1">&#39;.musedata&#39;</span><span class="p">,</span>
+                               <span class="s1">&#39;.musicxml&#39;</span><span class="p">,</span> <span class="s1">&#39;.mxl&#39;</span><span class="p">,</span> <span class="s1">&#39;.noteworthy&#39;</span><span class="p">,</span> <span class="s1">&#39;.nwc&#39;</span><span class="p">,</span> <span class="s1">&#39;.romanText&#39;</span><span class="p">,</span> <span class="s1">&#39;.rntxt&#39;</span><span class="p">,</span> <span class="s1">&#39;.scala&#39;</span><span class="p">,</span>
+                               <span class="s1">&#39;.tinynotation&#39;</span><span class="p">,</span> <span class="s1">&#39;.volpiano&#39;</span><span class="p">]</span>
+        <span class="n">parsable_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">folder_path</span><span class="p">)</span> <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">f</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">parsable_extensions</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">parsable_files</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">handle_error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="display_parseable_files_in_folder"><a class="viewcode-back" href="../../../module_files/src.conversion.html#src.conversion.utils.display_parseable_files_in_folder">[docs]</a><span class="k">def</span> <span class="nf">display_parseable_files_in_folder</span><span class="p">(</span><span class="n">folder_path</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Displays a list of parsable music files in a given directory.</span>
+
+<span class="sd">    This function first retrieves a list of parsable music files in the given directory.</span>
+<span class="sd">    It then displays these files to the user.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    folder_path : str</span>
+<span class="sd">        The path of the directory to check.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list</span>
+<span class="sd">        A list of filenames of parsable music files.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    Exception</span>
+<span class="sd">        Any exception that occurs during the execution of the function is handled and displayed to the user.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+
+            <span class="n">parsable_files</span> <span class="o">=</span> <span class="n">get_parsable_files_in_folder</span><span class="p">(</span><span class="n">folder_path</span><span class="p">)</span>
+            <span class="n">parsable_files_display</span> <span class="o">=</span> <span class="n">parsable_files</span><span class="p">[:</span><span class="mi">30</span><span class="p">]</span>  <span class="c1"># Only take the first 30 files for display</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">parsable_files</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">:</span>  <span class="c1"># If there are more than 30 files, add an indicator at the end</span>
+                <span class="n">parsable_files_display</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;... (more files not shown)&quot;</span><span class="p">)</span>
+
+            <span class="n">music_files_dict</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;menu_displayed_text&quot;</span><span class="p">:</span>
+                    <span class="p">[</span><span class="s2">&quot;File Conversion: Found music files&quot;</span><span class="p">,</span>
+                     <span class="sa">f</span><span class="s2">&quot;In Folder: &#39;</span><span class="si">{</span><span class="n">folder_path</span><span class="si">}</span><span class="s2">&#39;  (</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">parsable_files</span><span class="p">)</span><span class="si">}</span><span class="s2"> files found)&quot;</span><span class="p">,</span>
+                     <span class="s2">&quot;&lt;To continue, please press Enter (enter &#39;r&#39; to refresh)&gt; &quot;</span><span class="p">,</span>
+                     <span class="p">[</span><span class="s2">&quot;File Path&quot;</span><span class="p">]],</span>
+                <span class="s2">&quot;menu_entries_results&quot;</span><span class="p">:</span>
+                    <span class="p">[[</span><span class="n">file</span><span class="p">]</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">parsable_files_display</span><span class="p">]</span>
+            <span class="p">}</span>
+
+            <span class="n">refresh_choice</span> <span class="o">=</span> <span class="n">display_menu_print_results</span><span class="p">(</span><span class="n">music_files_dict</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">refresh_choice</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">!=</span> <span class="s1">&#39;r&#39;</span><span class="p">:</span>
+                <span class="k">break</span>
+        <span class="k">return</span> <span class="n">parsable_files</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">handle_error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="display_success_rate"><a class="viewcode-back" href="../../../module_files/src.conversion.html#src.conversion.utils.display_success_rate">[docs]</a><span class="k">def</span> <span class="nf">display_success_rate</span><span class="p">(</span><span class="n">files_status</span><span class="p">,</span> <span class="n">num_converted</span><span class="p">,</span> <span class="n">num_files</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Displays the success rate of file conversion.</span>
+
+<span class="sd">    This function calculates the success rate of file conversion based on the total number of files and</span>
+<span class="sd">    the number of successfully converted files. It then displays this information along with a list of file conversion statuses.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    files_status : list</span>
+<span class="sd">        A list of tuples where each tuple contains a file&#39;s name and its conversion status.</span>
+<span class="sd">    num_converted : int</span>
+<span class="sd">        The number of files that were successfully converted.</span>
+<span class="sd">    num_files : int</span>
+<span class="sd">        The total number of files that were attempted to be converted.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    Exception</span>
+<span class="sd">        Any exception that occurs during the execution of the function is handled and displayed to the user.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Create text_dict with both conversion success rate and failed files</span>
+        <span class="n">text_dict</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;menu_displayed_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;File Conversion: Conversion Summary&quot;</span><span class="p">,</span>
+                <span class="sa">f</span><span class="s2">&quot;Conversion Success Rate </span><span class="si">{</span><span class="n">num_converted</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">num_files</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="p">(</span><span class="n">num_converted</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">num_files</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%)&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;&lt;To continue, please press Enter&gt;&quot;</span><span class="p">,</span>
+                <span class="p">[</span><span class="s2">&quot;File name&quot;</span><span class="p">,</span> <span class="s2">&quot;Details&quot;</span><span class="p">]</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;menu_entries_results&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">file</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">status</span><span class="p">)</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">file</span><span class="p">,</span> <span class="n">status</span> <span class="ow">in</span> <span class="n">files_status</span><span class="p">]</span>
+        <span class="p">}</span>
+        <span class="n">display_menu_print_results</span><span class="p">(</span><span class="n">text_dict</span><span class="p">)</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">handle_error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="select_folder"><a class="viewcode-back" href="../../../module_files/src.conversion.html#src.conversion.utils.select_folder">[docs]</a><span class="k">def</span> <span class="nf">select_folder</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Interactively select a folder containing parsable music files.</span>
+
+<span class="sd">    This function displays a GUI file dialog to the user to select a folder. It ensures that the selected folder</span>
+<span class="sd">    contains at least one parsable music file of the supported types. The function loops until a valid folder is</span>
+<span class="sd">    selected or the user cancels the operation. It also provides information to the user about the types of parsable</span>
+<span class="sd">    music files and folder requirements.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    str</span>
+<span class="sd">        The path to the selected folder containing parsable music files. Returns None if the operation is cancelled.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    Exception</span>
+<span class="sd">        Any exception that occurs during the execution of the function is handled and displayed to the user.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">parsable_extensions</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;.abc&#39;</span><span class="p">,</span> <span class="s1">&#39;.capx&#39;</span><span class="p">,</span> <span class="s1">&#39;.gex&#39;</span><span class="p">,</span> <span class="s1">&#39;.humdrum&#39;</span><span class="p">,</span> <span class="s1">&#39;.krn&#39;</span><span class="p">,</span> <span class="s1">&#39;.mei&#39;</span><span class="p">,</span> <span class="s1">&#39;.midi&#39;</span><span class="p">,</span> <span class="s1">&#39;.mid&#39;</span><span class="p">,</span> <span class="s1">&#39;.musedata&#39;</span><span class="p">,</span>
+                           <span class="s1">&#39;.musicxml&#39;</span><span class="p">,</span> <span class="s1">&#39;.mxl&#39;</span><span class="p">,</span> <span class="s1">&#39;.noteworthy&#39;</span><span class="p">,</span> <span class="s1">&#39;.nwc&#39;</span><span class="p">,</span> <span class="s1">&#39;.romanText&#39;</span><span class="p">,</span> <span class="s1">&#39;.rntxt&#39;</span><span class="p">,</span> <span class="s1">&#39;.scala&#39;</span><span class="p">,</span>
+                           <span class="s1">&#39;.tinynotation&#39;</span><span class="p">,</span> <span class="s1">&#39;.volpiano&#39;</span><span class="p">]</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">textblock_dict</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;menu_displayed_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;-- Folder Selection --&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;Please read the following information:&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;&lt;To continue and select a folder, please press Enter&gt;&quot;</span><span class="p">,</span>
+                    <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;Information&quot;</span><span class="p">],</span>
+                <span class="p">],</span>
+                <span class="s2">&quot;menu_entries_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">[</span><span class="s2">&quot;Parsable Music File Types&quot;</span><span class="p">,</span>
+                     <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">parsable_extensions</span><span class="p">)],</span>
+                    <span class="p">[</span><span class="s2">&quot;Folder Requirements&quot;</span><span class="p">,</span>
+                     <span class="s2">&quot;The folder must contain at least one parsable music file of the above types to be processed by this tool.&quot;</span><span class="p">],</span>
+                    <span class="p">[</span><span class="s2">&quot;Return to Main Menu&quot;</span><span class="p">,</span>
+                     <span class="s2">&quot;If you do not have a suitable folder with valid files at the moment, press enter and close the selection display that will be displayed right after.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                     <span class="s2">&quot;You will then be returned to the Main Menu.&quot;</span><span class="p">]</span>
+                <span class="p">]</span>
+            <span class="p">}</span>
+
+            <span class="n">display_menu_print_textblock</span><span class="p">(</span><span class="n">textblock_dict</span><span class="p">)</span>
+
+            <span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+            <span class="c1"># root.withdraw()  # Hide the root window</span>
+
+            <span class="c1"># Open a file dialog and get the selected file path</span>
+            <span class="n">folder_path</span> <span class="o">=</span> <span class="n">filedialog</span><span class="o">.</span><span class="n">askdirectory</span><span class="p">()</span>
+
+            <span class="n">root</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span>  <span class="c1"># Destroy the root window</span>
+
+            <span class="k">if</span> <span class="n">folder_path</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>  <span class="c1"># If the user canceled the dialog</span>
+                <span class="k">return</span> <span class="kc">None</span>
+
+            <span class="n">parsable_files</span> <span class="o">=</span> <span class="n">get_parsable_files_in_folder</span><span class="p">(</span><span class="n">folder_path</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">parsable_files</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">error_message_dict</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="s2">&quot;menu_displayed_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="s2">&quot;File Conversion: Folder Selection - Error&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;The selected directory contains no parsable music files:&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;&lt;To continue, please press Enter&gt;&quot;</span><span class="p">,</span>
+                        <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;Troubleshooting assistance:&quot;</span><span class="p">]</span>
+                    <span class="p">],</span>
+                    <span class="s2">&quot;menu_entries_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="p">[</span><span class="s2">&quot;Parsable Music File Types&quot;</span><span class="p">,</span>
+                         <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">parsable_extensions</span><span class="p">)],</span>
+                        <span class="p">[</span><span class="s2">&quot;Reason 1:&quot;</span><span class="p">,</span> <span class="s2">&quot;There are no parsable music files in the selected directory.&quot;</span><span class="p">],</span>
+                        <span class="p">[</span><span class="s2">&quot;Reason 2:&quot;</span><span class="p">,</span> <span class="s2">&quot;Ensure the directory you select contains the music files you want to convert.&quot;</span><span class="p">],</span>
+                        <span class="p">[</span><span class="s2">&quot;Return to Main Menu&quot;</span><span class="p">,</span>
+                         <span class="s2">&quot;If you do not have a suitable folder with valid files at the moment, press enter and close the &quot;</span>
+                         <span class="s2">&quot;selection display that will be displayed right after.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                         <span class="s2">&quot;You will then be returned to the Main Menu.&quot;</span><span class="p">]</span>
+                    <span class="p">]</span>
+                <span class="p">}</span>
+                <span class="n">display_menu_print_textblock</span><span class="p">(</span><span class="n">error_message_dict</span><span class="p">)</span>
+                <span class="k">continue</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">folder_path</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">handle_error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="select_conversion_format"><a class="viewcode-back" href="../../../module_files/src.conversion.html#src.conversion.utils.select_conversion_format">[docs]</a><span class="k">def</span> <span class="nf">select_conversion_format</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Provides a user interface to select a music file conversion format.</span>
+
+<span class="sd">    This function displays a list of available music file conversion formats to the user and</span>
+<span class="sd">    prompts them to select one. It continues to prompt the user until a valid selection is made.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    str</span>
+<span class="sd">        The file extension of the chosen conversion format.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    Exception</span>
+<span class="sd">        Any exception that occurs during the execution of the function is handled and displayed to the user.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Get all available formats.</span>
+    <span class="n">formats</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">[</span><span class="s2">&quot;MIDI: MIDI (.midi, .mid)&quot;</span><span class="p">,</span> <span class="s1">&#39;.mid&#39;</span><span class="p">,</span> <span class="s2">&quot;&lt;Both .midi and .mid formats are supported without issues&gt;&quot;</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">&quot;MXML: MusicXML Compressed (.mxl)&quot;</span><span class="p">,</span> <span class="s1">&#39;.mxl&#39;</span><span class="p">,</span> <span class="s2">&quot;&lt;The compressed MusicXML (.mxl) format is supported without issues&gt;&quot;</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">&quot;MXML: MusicXML (.musicxml)&quot;</span><span class="p">,</span> <span class="s1">&#39;.musicxml&#39;</span><span class="p">,</span> <span class="s2">&quot;&lt;The .musicxml format is supported without issues&gt;&quot;</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">&quot;VOLP: Volpiano (.volpiano)&quot;</span><span class="p">,</span> <span class="s1">&#39;.volpiano&#39;</span><span class="p">,</span> <span class="s2">&quot;&lt;The .volpiano format is supported without issues&gt;&quot;</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">&quot;NOTE: Noteworthy (.noteworthy)&quot;</span><span class="p">,</span> <span class="s1">&#39;.noteworthy&#39;</span><span class="p">,</span> <span class="s2">&quot;&lt;Attention: a bytes-like object is required&gt;&quot;</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">&quot;NOTE: Noteworthy Compressed (.nwc)&quot;</span><span class="p">,</span> <span class="s1">&#39;.nwc&#39;</span><span class="p">,</span> <span class="s2">&quot;&lt;Attention: a bytes-like object is required&gt;&quot;</span><span class="p">]</span>
+<span class="p">]</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Loop to allow re-selection in case of invalid choice.</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="c1"># Construct data container for displaying the menu.</span>
+            <span class="n">imat_data_container</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;menu_displayed_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;File Conversion: Conversion formats&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;Please select one of the following conversion formats by entering the corresponding index number:&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;Which format do you want to select? (&lt;No. of menu item&gt;): &quot;</span><span class="p">,</span>
+                    <span class="p">[</span><span class="s2">&quot;Format&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Explanation&gt;&quot;</span><span class="p">]</span>
+                <span class="p">],</span>
+                <span class="s2">&quot;menu_entries&quot;</span><span class="p">:</span> <span class="n">formats</span>
+            <span class="p">}</span>
+
+            <span class="c1"># Display menu and return the user&#39;s choice.</span>
+            <span class="k">return</span> <span class="n">display_menu_request_selection</span><span class="p">(</span><span class="n">imat_data_container</span><span class="p">)</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">handle_error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="create_log_entry"><a class="viewcode-back" href="../../../module_files/src.conversion.html#src.conversion.utils.create_log_entry">[docs]</a><span class="k">def</span> <span class="nf">create_log_entry</span><span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="n">list_path</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Add a new entry to a .xlsx log file.</span>
+
+<span class="sd">    This function appends a new row to a specified .xlsx file.</span>
+<span class="sd">    If the file does not exist, it creates a new one.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    list : list</span>
+<span class="sd">        The new row to be added to the .xlsx file. Each element in the list represents a cell in the row.</span>
+<span class="sd">    list_path : str</span>
+<span class="sd">        The path of the .xlsx file.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    None</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    Exception</span>
+<span class="sd">        Any exception that occurs during the execution of the function is handled and displayed to the user.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">wb</span> <span class="o">=</span> <span class="n">load_workbook</span><span class="p">(</span><span class="n">list_path</span><span class="p">)</span>
+        <span class="n">ws</span> <span class="o">=</span> <span class="n">wb</span><span class="o">.</span><span class="n">active</span>
+        <span class="n">ws</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+        <span class="n">wb</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">list_path</span><span class="p">)</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">handle_error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">I-MaT</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started.html">Getting Started: How to use I-MaT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contribute.html">How to Contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_files/src.html">I-MaT: Source Code</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Sebastian Oliver Eck.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 6.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

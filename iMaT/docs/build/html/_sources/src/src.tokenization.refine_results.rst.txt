@@ -1,0 +1,45 @@
+src.tokenization.refine\_results package
+========================================
+
+Submodules
+----------
+
+src.tokenization.refine\_results.absolute\_duration module
+----------------------------------------------------------
+
+.. automodule:: src.tokenization.refine_results.absolute_duration
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.tokenization.refine\_results.calculate\_pitch\_intervals module
+-------------------------------------------------------------------
+
+.. automodule:: src.tokenization.refine_results.calculate_pitch_intervals
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.tokenization.refine\_results.remove\_prefixes module
+--------------------------------------------------------
+
+.. automodule:: src.tokenization.refine_results.remove_prefixes
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.tokenization.refine\_results.tokens\_to\_txt module
+-------------------------------------------------------
+
+.. automodule:: src.tokenization.refine_results.tokens_to_txt
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: src.tokenization.refine_results
+   :members:
+   :undoc-members:
+   :show-inheritance:

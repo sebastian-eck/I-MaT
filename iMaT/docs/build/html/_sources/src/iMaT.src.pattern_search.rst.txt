@@ -1,0 +1,37 @@
+iMaT.src.pattern\_search package
+================================
+
+Submodules
+----------
+
+iMaT.src.pattern\_search.functions module
+-----------------------------------------
+
+.. automodule:: iMaT.src.pattern_search.functions
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+iMaT.src.pattern\_search.main module
+------------------------------------
+
+.. automodule:: iMaT.src.pattern_search.main
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+iMaT.src.pattern\_search.utils module
+-------------------------------------
+
+.. automodule:: iMaT.src.pattern_search.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: iMaT.src.pattern_search
+   :members:
+   :undoc-members:
+   :show-inheritance:

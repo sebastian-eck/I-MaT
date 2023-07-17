@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Package: Tokenization (src.tokenization) &mdash; imat 0.0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Subpackage: Tokenization Refinement (src.tokenization.refine_results)" href="src.tokenization.refine_results.html" />
+    <link rel="prev" title="Package: Score Selection (src.score_selection)" href="src.score_selection.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            imat
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started with I-MaT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute.html">How to Contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="src.html">I-MaT: Source Code</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="src.analysis.html">Package: Analysis (src.analysis)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.cli.html">Package: Command Line Interface (src.cli)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.conversion.html">Package: File Conversion (src.conversion)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.m21_environment.html">Package: music21 Environment File Configuration (src.m21_environment)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.pattern_search.html">Package: Pattern Search (src.pattern_search)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.score_selection.html">Package: Score Selection (src.score_selection)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Package: Tokenization (src.tokenization)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#contained-subpackages">Contained Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.tokenization.refine_results.html">Subpackage: Tokenization Refinement (src.tokenization.refine_results)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-src.tokenization.main">Modules: Tokenization (src.tokenization)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#module-tokenization-main-py">Module: tokenization.main.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.tokenization.main.extract_tokens_from_token_string_within_list"><code class="docutils literal notranslate"><span class="pre">extract_tokens_from_token_string_within_list()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.tokenization.main.extract_tokens_from_token_string_within_nested_list"><code class="docutils literal notranslate"><span class="pre">extract_tokens_from_token_string_within_nested_list()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.tokenization.main.select_folder_midi_files"><code class="docutils literal notranslate"><span class="pre">select_folder_midi_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.tokenization.main.select_miditok_tokenizer"><code class="docutils literal notranslate"><span class="pre">select_miditok_tokenizer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.tokenization.main.tokenization_tokenize_folder_midi_files"><code class="docutils literal notranslate"><span class="pre">tokenization_tokenize_folder_midi_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.tokenization.main.tokenize_midi_file"><code class="docutils literal notranslate"><span class="pre">tokenize_midi_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-tokenization-utils-py">Module: tokenization.utils.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.tokenization.utils.combine_csv_files_in_directory"><code class="docutils literal notranslate"><span class="pre">combine_csv_files_in_directory()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.tokenization.utils.create_log_entry"><code class="docutils literal notranslate"><span class="pre">create_log_entry()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.tokenization.utils.display_success_rate"><code class="docutils literal notranslate"><span class="pre">display_success_rate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.tokenization.utils.display_tokenizable_files_in_folder"><code class="docutils literal notranslate"><span class="pre">display_tokenizable_files_in_folder()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.tokenization.utils.get_tokenizable_files_in_folder"><code class="docutils literal notranslate"><span class="pre">get_tokenizable_files_in_folder()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.tokenization.utils.save_data_to_new_csv_file"><code class="docutils literal notranslate"><span class="pre">save_data_to_new_csv_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.tokenization.utils.select_csv_file_2d_token_representation"><code class="docutils literal notranslate"><span class="pre">select_csv_file_2d_token_representation()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.utils.html">Package: Utility Functions (src.utils)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.visualizations.html">Package: Visualizations (src.visualizations)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.constants.html">Module: Constants (src.constants)</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">imat</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="src.html">I-MaT: Source Code</a></li>
+      <li class="breadcrumb-item active">Package: Tokenization (src.tokenization)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/module_files/src.tokenization.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="package-tokenization-src-tokenization">
+<h1>Package: Tokenization (src.tokenization)<a class="headerlink" href="#package-tokenization-src-tokenization" title="Permalink to this heading"></a></h1>
+<section id="contained-subpackages">
+<h2>Contained Subpackages<a class="headerlink" href="#contained-subpackages" title="Permalink to this heading"></a></h2>
+<p>The Tokenization package further contains subpackages which implement additional, specialized functionalities to support and enhance the main operations of the package.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="src.tokenization.refine_results.html">Subpackage: Tokenization Refinement (src.tokenization.refine_results)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="src.tokenization.refine_results.html#module-src.tokenization.refine_results.absolute_duration">Module: src.tokenization.refine_results.absolute_duration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tokenization.refine_results.html#module-tokenization-refine-results-asbolute-duration-py">Module: tokenization.refine_results.asbolute_duration.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tokenization.refine_results.html#src.tokenization.refine_results.absolute_duration.convert_duration_to_numerical"><code class="docutils literal notranslate"><span class="pre">convert_duration_to_numerical()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tokenization.refine_results.html#src.tokenization.refine_results.absolute_duration.corpus_tokenization_refine_data_absolute_duration"><code class="docutils literal notranslate"><span class="pre">corpus_tokenization_refine_data_absolute_duration()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tokenization.refine_results.html#src.tokenization.refine_results.absolute_duration.refine_data_function_absolute_duration"><code class="docutils literal notranslate"><span class="pre">refine_data_function_absolute_duration()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tokenization.refine_results.html#module-src.tokenization.refine_results.calculate_pitch_intervals">Module: src.tokenization.refine_results.calculate_pitch_intervals</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tokenization.refine_results.html#module-tokenization-refine-results-calculate-pitch-intervals-py">Module: tokenization.refine_results.calculate_pitch_intervals.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tokenization.refine_results.html#src.tokenization.refine_results.calculate_pitch_intervals.calculate_pitch_intervals_function"><code class="docutils literal notranslate"><span class="pre">calculate_pitch_intervals_function()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tokenization.refine_results.html#src.tokenization.refine_results.calculate_pitch_intervals.tokenization_calculate_pitch_intervals"><code class="docutils literal notranslate"><span class="pre">tokenization_calculate_pitch_intervals()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tokenization.refine_results.html#module-src.tokenization.refine_results.remove_prefixes">Module: src.tokenization.refine_results.remove_prefixes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tokenization.refine_results.html#module-tokenization-refine-results-remove-prefixes-py">Module: tokenization.refine_results.remove_prefixes.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tokenization.refine_results.html#src.tokenization.refine_results.remove_prefixes.corpus_tokenization_refine_data_remove_prefixes"><code class="docutils literal notranslate"><span class="pre">corpus_tokenization_refine_data_remove_prefixes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tokenization.refine_results.html#src.tokenization.refine_results.remove_prefixes.remove_prefixes_function"><code class="docutils literal notranslate"><span class="pre">remove_prefixes_function()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.tokenization.refine_results.html#module-src.tokenization.refine_results.tokens_to_txt">Module: src.tokenization.refine_results.tokens_to_txt</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.tokenization.refine_results.html#module-tokenization-refine-results-tokens-to-txt-py">Module: tokenization.refine_results.tokens_to_txt.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tokenization.refine_results.html#src.tokenization.refine_results.tokens_to_txt.save_txt_files_to_directory"><code class="docutils literal notranslate"><span class="pre">save_txt_files_to_directory()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.tokenization.refine_results.html#src.tokenization.refine_results.tokens_to_txt.tokenization_export_csv_columns_to_txt_file"><code class="docutils literal notranslate"><span class="pre">tokenization_export_csv_columns_to_txt_file()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="module-src.tokenization.main">
+<span id="modules-tokenization-src-tokenization"></span><h2>Modules: Tokenization (src.tokenization)<a class="headerlink" href="#module-src.tokenization.main" title="Permalink to this heading"></a></h2>
+<section id="module-tokenization-main-py">
+<h3>Module: tokenization.main.py<a class="headerlink" href="#module-tokenization-main-py" title="Permalink to this heading"></a></h3>
+<p>This module provides functions for tokenizing MIDI files in a selected directory. These files are converted into token sequences
+using one or more tokenizers and saved as CSV files in a subdirectory of the original directory.</p>
+<section id="functions">
+<h4>Functions<a class="headerlink" href="#functions" title="Permalink to this heading"></a></h4>
+<ul class="simple">
+<li><p><cite>tokenization_tokenize_folder_midi_files</cite>: Tokenizes all MIDI files in a user-selected directory using selected tokenizers.</p></li>
+<li><p><cite>select_miditok_tokenizer</cite>: Presents a user interface for tokenizer selection.</p></li>
+<li><p><cite>select_folder_midi_files</cite>: Presents a user interface for folder selection.</p></li>
+<li><p><cite>tokenize_midi_file</cite>: Tokenizes a MIDI file with a specified tokenizer class and saves the tokenized sequence to a CSV file.</p></li>
+<li><p><cite>extract_tokens_from_token_string_within_list</cite>: Extracts tokens from a string representation of a list using regex.</p></li>
+<li><p><cite>extract_tokens_from_token_string_within_nested_list</cite>: Extracts tokens from a string representation of a nested list using regex and abstract syntax trees (AST).</p></li>
+</ul>
+<p class="rubric">Notes</p>
+<p>Functions in this module can be used directly or through the CLI interface provided by the <cite>cli.cli_menu_structure</cite> module.
+The tokenized sequences are saved as CSV files in a subdirectory of the original directory.
+Please refer to the individual function docstrings for more detailed descriptions and examples of usage.</p>
+</section>
+</section>
+<dl class="py function">
+<dt class="sig sig-object py" id="src.tokenization.main.extract_tokens_from_token_string_within_list">
+<span class="sig-prename descclassname"><span class="pre">src.tokenization.main.</span></span><span class="sig-name descname"><span class="pre">extract_tokens_from_token_string_within_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tokens_string</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.tokenization.main.extract_tokens_from_token_string_within_list" title="Permalink to this definition"></a></dt>
+<dd><p>Extracts tokens from a string representation of a list using regular expressions.</p>
+<p>This function is designed to process a string that represents a list of tokens.
+It utilizes regular expressions to accurately identify and extract all tokens within the string.
+The extracted tokens are returned as a list of strings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>tokens_string</strong> (<em>str</em>) – String representation of a list of tokens. Expected to follow the pattern ‘= [&lt;tokens&gt;]’.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of extracted tokens as strings.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – If the provided tokens string is not formatted correctly or an error occurs during extraction.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#src.tokenization.main.tokenize_midi_file" title="src.tokenization.main.tokenize_midi_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tokenize_midi_file</span></code></a></dt><dd><p>Function to tokenize MIDI files.</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.tokenization.main.extract_tokens_from_token_string_within_nested_list">
+<span class="sig-prename descclassname"><span class="pre">src.tokenization.main.</span></span><span class="sig-name descname"><span class="pre">extract_tokens_from_token_string_within_nested_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tokens_string</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.tokenization.main.extract_tokens_from_token_string_within_nested_list" title="Permalink to this definition"></a></dt>
+<dd><p>Extracts tokens from a string representation of a nested list using regular expressions and
+abstract syntax trees (AST).</p>
+<p>This function is designed to handle complex token string that represents a nested list of tokens.
+It uses a combination of regular expressions and abstract syntax trees to extract the tokens accurately
+from the string. The result is returned as a list of lists, where each sublist contains the tokens extracted
+from one of the nested lists in the string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>tokens_string</strong> (<em>str</em>) – String representation of a nested list of tokens. Expected to follow the pattern ‘= [&lt;nested lists&gt;], ids=’.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of lists, with each sublist containing extracted tokens as strings.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – If the provided tokens string is not formatted correctly or an error occurs during extraction.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#src.tokenization.main.tokenize_midi_file" title="src.tokenization.main.tokenize_midi_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tokenize_midi_file</span></code></a></dt><dd><p>Function to tokenize MIDI files.</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.tokenization.main.select_folder_midi_files">
+<span class="sig-prename descclassname"><span class="pre">src.tokenization.main.</span></span><span class="sig-name descname"><span class="pre">select_folder_midi_files</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.tokenization.main.select_folder_midi_files" title="Permalink to this definition"></a></dt>
+<dd><p>Interacts with the user via a user interface for folder selection.</p>
+<p>This function prompts the user to input the path to the desired folder. It validates
+the input and ensures the folder contains parsable music files. If not, it prompts the
+user to input another path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong> – </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A string containing the path to the selected folder, or None if the user cancelled
+the dialog or didn’t select a suitable folder.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – If an error occurs while processing the user’s selection.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_tokenizable_files_in_folder</span></code></dt><dd><p>Function to get tokenizable files in the selected folder.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">display_menu_print_textblock</span></code></dt><dd><p>Function to display menu.</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.tokenization.main.select_miditok_tokenizer">
+<span class="sig-prename descclassname"><span class="pre">src.tokenization.main.</span></span><span class="sig-name descname"><span class="pre">select_miditok_tokenizer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.tokenization.main.select_miditok_tokenizer" title="Permalink to this definition"></a></dt>
+<dd><p>Interacts with the user via a user interface for tokenizer selection.</p>
+<p>This function prompts the user to select one or more tokenizers from a predefined list.
+Depending on the user’s choice, it returns the selected tokenizers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong> – </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list containing the selected tokenizer(s) classes.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – If an error occurs while processing the user’s selection.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">display_menu_request_selection</span></code></dt><dd><p>Function to display menu and request user selection.</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.tokenization.main.tokenization_tokenize_folder_midi_files">
+<span class="sig-prename descclassname"><span class="pre">src.tokenization.main.</span></span><span class="sig-name descname"><span class="pre">tokenization_tokenize_folder_midi_files</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.tokenization.main.tokenization_tokenize_folder_midi_files" title="Permalink to this definition"></a></dt>
+<dd><p>Tokenizes all MIDI files in a user-selected directory using the selected tokenizers.</p>
+<p>This function prompts the user to select a directory and one or more tokenizers.
+After selection, the function tokenizes all MIDI files in the directory using the
+chosen tokenizers. The tokenized sequences are saved as CSV files in a subdirectory
+of the original directory named “tokenized_YYYYMMDD_HHMMSS”. Additionally, any tokenization
+results and errors are logged in an Excel file named “tokenization_log.xlsx” in the
+same subdirectory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong> – </p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#src.tokenization.main.select_folder_midi_files" title="src.tokenization.main.select_folder_midi_files"><code class="xref py py-obj docutils literal notranslate"><span class="pre">select_folder_midi_files</span></code></a></dt><dd><p>Function to interact with user for selecting a folder.</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">display_tokenizable_files_in_folder</span></code></dt><dd><p>Function to display tokenizable files.</p>
+</dd>
+<dt><a class="reference internal" href="#src.tokenization.main.select_miditok_tokenizer" title="src.tokenization.main.select_miditok_tokenizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">select_miditok_tokenizer</span></code></a></dt><dd><p>Function to interact with user for selecting tokenizer(s).</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.tokenization.main.tokenize_midi_file">
+<span class="sig-prename descclassname"><span class="pre">src.tokenization.main.</span></span><span class="sig-name descname"><span class="pre">tokenize_midi_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">midi_file_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tokenizer_class</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tokenized_file_folder</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.tokenization.main.tokenize_midi_file" title="Permalink to this definition"></a></dt>
+<dd><p>Tokenizes a MIDI file using a specified tokenizer class and saves the tokenized sequence to a
+CSV file. It handles both single-layer and nested token lists.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>midi_file_path</strong> (<em>str</em>) – Path to the MIDI file to be tokenized.</p></li>
+<li><p><strong>tokenizer_class</strong> (<em>class</em>) – Class of the tokenizer to be used for tokenizing the MIDI file.</p></li>
+<li><p><strong>tokenized_file_folder</strong> (<em>str</em>) – Path to the folder where the CSV file containing the tokenized sequence will be saved.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>Exception</strong> – If an error occurs during tokenization or saving the tokenized sequence.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#src.tokenization.main.extract_tokens_from_token_string_within_list" title="src.tokenization.main.extract_tokens_from_token_string_within_list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extract_tokens_from_token_string_within_list</span></code></a></dt><dd><p>Function to extract tokens from a list.</p>
+</dd>
+<dt><a class="reference internal" href="#src.tokenization.main.extract_tokens_from_token_string_within_nested_list" title="src.tokenization.main.extract_tokens_from_token_string_within_nested_list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extract_tokens_from_token_string_within_nested_list</span></code></a></dt><dd><p>Function to extract tokens from a nested list.</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<span class="target" id="module-src.tokenization.utils"></span><section id="module-tokenization-utils-py">
+<h3>Module: tokenization.utils.py<a class="headerlink" href="#module-tokenization-utils-py" title="Permalink to this heading"></a></h3>
+<p>This module provides various utility functions that assist in the tokenization of MIDI files and handling of data.</p>
+<section id="functions">
+<h4>Functions<a class="headerlink" href="#functions" title="Permalink to this heading"></a></h4>
+<ul class="simple">
+<li><p><cite>save_data_to_new_csv_file</cite>: Saves a DataFrame to a new CSV file in a timestamped directory.</p></li>
+<li><p><cite>select_csv_file_2d_token_representation</cite>: Opens a dialog for the user to select a CSV file.</p></li>
+<li><p><cite>display_tokenizable_files_in_folder</cite>: Prints all the tokenizable files in a specific folder.</p></li>
+<li><p><cite>get_tokenizable_files_in_folder</cite>: Retrieves all tokenizable MIDI files in a specific folder.</p></li>
+<li><p><cite>display_success_rate</cite>: Shows the success rate of the tokenization process and any errors.</p></li>
+<li><p><cite>combine_csv_files_in_directory</cite>: Merges all CSV files in a specific directory into one CSV file.</p></li>
+<li><p><cite>create_log_entry</cite>: Adds a new entry to an existing Excel file, or creates a new one if it doesn’t exist.</p></li>
+</ul>
+<p class="rubric">Notes</p>
+<p>These functions are used throughout the package to facilitate the tokenization process for MIDI files and ensure correct data handling, saving, and logging.
+Please refer to the individual function docstrings for more detailed descriptions and examples of usage.</p>
+</section>
+</section>
+<dl class="py function">
+<dt class="sig sig-object py" id="src.tokenization.utils.combine_csv_files_in_directory">
+<span class="sig-prename descclassname"><span class="pre">src.tokenization.utils.</span></span><span class="sig-name descname"><span class="pre">combine_csv_files_in_directory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.tokenization.utils.combine_csv_files_in_directory" title="Permalink to this definition"></a></dt>
+<dd><p>Combines all CSV files in a given directory into a single CSV file.</p>
+<p>This function reads all CSV files in the provided directory, extracts the original filenames from these files,
+and adds these as a new column in the DataFrames. The DataFrames are then concatenated and saved as a new CSV file
+in the same directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>directory_path</strong> (<em>str</em>) – The path to the directory containing the CSV files.</p></li>
+<li><p><strong>output_file_name</strong> (<em>str</em>) – The name of the combined output CSV file.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>Exception</strong> – If an error occurs during the process.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.tokenization.utils.create_log_entry">
+<span class="sig-prename descclassname"><span class="pre">src.tokenization.utils.</span></span><span class="sig-name descname"><span class="pre">create_log_entry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_list_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.tokenization.utils.create_log_entry" title="Permalink to this definition"></a></dt>
+<dd><p>Appends a new entry to an existing .xlsx file or creates the file if it doesn’t exist.</p>
+<p>The function uses the openpyxl library to open or create a .xlsx file at the provided path.
+It then appends the provided log_list as a new row to the first sheet of the workbook.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>log_list</strong> (<em>list</em>) – A list of strings to be appended as a new row.</p></li>
+<li><p><strong>log_list_path</strong> (<em>str</em>) – The path to the .xlsx file.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>Exception</strong> – If an error occurs during the process.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.tokenization.utils.display_success_rate">
+<span class="sig-prename descclassname"><span class="pre">src.tokenization.utils.</span></span><span class="sig-name descname"><span class="pre">display_success_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">files_status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_files_tokenized</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_tokenized</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.tokenization.utils.display_success_rate" title="Permalink to this definition"></a></dt>
+<dd><p>Displays the tokenization success rate and details of failed tokenizations.</p>
+<p>This function calculates and displays the success rate of file tokenization. It also identifies
+and displays any failed tokenizations, including details of the associated tokenizer and file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>files_status</strong> (<em>list</em>) – A list of status messages from the file tokenization process.</p></li>
+<li><p><strong>num_files_tokenized</strong> (<em>int</em>) – The total number of files that were attempted to be tokenized.</p></li>
+<li><p><strong>num_tokenized</strong> (<em>int</em>) – The total number of files that were successfully tokenized.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>Exception</strong> – If an error occurs during the process.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.tokenization.utils.display_tokenizable_files_in_folder">
+<span class="sig-prename descclassname"><span class="pre">src.tokenization.utils.</span></span><span class="sig-name descname"><span class="pre">display_tokenizable_files_in_folder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.tokenization.utils.display_tokenizable_files_in_folder" title="Permalink to this definition"></a></dt>
+<dd><p>Displays the tokenizable files in the provided directory.</p>
+<p>The function uses the ‘get_tokenizable_files_in_folder’ function to fetch all tokenizable files from
+the directory. Then, it displays the files to the user. If more than 30 files exist in the directory,
+only the first 30 are displayed, along with a note indicating more files are not shown.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>folder_path</strong> (<em>str</em>) – The path of the directory to search for tokenizable files.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of tokenizable file names.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – If an error occurs during the process.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.tokenization.utils.get_tokenizable_files_in_folder">
+<span class="sig-prename descclassname"><span class="pre">src.tokenization.utils.</span></span><span class="sig-name descname"><span class="pre">get_tokenizable_files_in_folder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.tokenization.utils.get_tokenizable_files_in_folder" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieves all tokenizable MIDI files in the given folder.</p>
+<p>This function inspects the given directory and identifies all files with the extensions ‘.midi’ or ‘.mid’,
+which are considered tokenizable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>folder_path</strong> (<em>str</em>) – The path of the folder to be searched.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of filenames that can be tokenized.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – If an error occurs during the process.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.tokenization.utils.save_data_to_new_csv_file">
+<span class="sig-prename descclassname"><span class="pre">src.tokenization.utils.</span></span><span class="sig-name descname"><span class="pre">save_data_to_new_csv_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.tokenization.utils.save_data_to_new_csv_file" title="Permalink to this definition"></a></dt>
+<dd><p>Saves the refined DataFrame to a new CSV file in a directory named ‘enhanced_csv_[current date and time]’.</p>
+<p>This function extracts the directory path of the provided file, then creates a new directory in that path
+with the provided identifier and current timestamp. The DataFrame is then saved to this new directory
+with the identifier prepended to the original filename.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – The DataFrame to be saved.</p></li>
+<li><p><strong>file_name</strong> (<em>str</em>) – The original file name used to generate the new file name.</p></li>
+<li><p><strong>identifier</strong> (<em>str</em>) – A string to be used as an identifier for the new directory and file name.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The path to the new CSV file.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – If an error occurs during directory creation or file saving.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.tokenization.utils.select_csv_file_2d_token_representation">
+<span class="sig-prename descclassname"><span class="pre">src.tokenization.utils.</span></span><span class="sig-name descname"><span class="pre">select_csv_file_2d_token_representation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.tokenization.utils.select_csv_file_2d_token_representation" title="Permalink to this definition"></a></dt>
+<dd><p>Opens a file dialog allowing the user to select a CSV file.</p>
+<p>This function guides the user to select a suitable CSV file for further processing.
+It makes use of a graphical file dialog and informs the user about the requirements
+for the file selection via terminal outputs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><em>str</em> – The path to the selected file if a file was selected.</p></li>
+<li><p><em>None</em> – None if the user canceled the dialog.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – If an error occurs during file selection.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="src.score_selection.html" class="btn btn-neutral float-left" title="Package: Score Selection (src.score_selection)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="src.tokenization.refine_results.html" class="btn btn-neutral float-right" title="Subpackage: Tokenization Refinement (src.tokenization.refine_results)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Sebastian Oliver Eck.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

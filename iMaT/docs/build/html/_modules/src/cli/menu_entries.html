@@ -1,0 +1,471 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>src.cli.menu_entries &#8212; I-MaT 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for src.cli.menu_entries</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Module: cli.menu_entries.py</span>
+<span class="sd">===========================</span>
+
+<span class="sd">This module provides functionalities to construct the entries for various menus used within the command-line interface (CLI) of the Interactive Music Analysis Tool (I-MaT).</span>
+
+<span class="sd">This module is responsible for constructing the menu entries for different sections of the command line interface (CLI)</span>
+<span class="sd">of the Interactive Music Analysis Tool (I-MaT). The menus are used to navigate through the CLI, and the functions</span>
+<span class="sd">in this module return the entries for each menu in a structured format.</span>
+
+<span class="sd">Functions</span>
+<span class="sd">---------</span>
+<span class="sd">- `mainmenu_environment_settings_entries`: Returns the menu entries for the main environment settings menu.</span>
+<span class="sd">- `mainmenu_single_musical_piece_entries`: Returns the menu entries for the single musical piece menu.</span>
+<span class="sd">- `mainmenu_tokenization_entries`: Returns the menu entries for the tokenization menu.</span>
+<span class="sd">- `start_menu_entries`: Returns the menu entries for the start menu.</span>
+<span class="sd">- `submenu_single_musical_piece_basic_functions_entries`: Returns the menu entries for the basic functions submenu.</span>
+<span class="sd">- `submenu_single_musical_piece_pattern_search_entries`: Returns the menu entries for the pattern search submenu.</span>
+<span class="sd">- `submenu_single_musical_piece_statistical_analysis_page1_entries`: Returns the menu entries for the first page of the statistical analysis submenu.</span>
+<span class="sd">- `submenu_single_musical_piece_statistical_analysis_page2_entries`: Returns the menu entries for the second page of the statistical analysis submenu.</span>
+<span class="sd">- `submenu_single_musical_piece_visualizations_entries`: Returns the menu entries for the visualizations submenu.</span>
+<span class="sd">- `submenu_tokenization_calculations_entries`: Returns the menu entries for the calculations submenu in tokenization.</span>
+<span class="sd">- `submenu_tokenization_refine_data_entries`: Returns the menu entries for the refine data submenu in tokenization.</span>
+
+<span class="sd">Each function returns a dictionary representing the menu entries for a specific menu. The dictionary includes the</span>
+<span class="sd">menu text to be displayed, the function to be executed when the menu entry is selected, and other relevant information.</span>
+
+<span class="sd">These functions allow for easy modification of the menu structure and contents, providing flexibility in the design</span>
+<span class="sd">and functionality of the CLI. The module aids in ensuring that the command-line interface remains user-friendly</span>
+<span class="sd">and intuitive, providing clear navigation and straightforward access to the tool&#39;s functionalities.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">iMaT.src.analysis.functions</span> <span class="kn">import</span> <span class="n">analysis_advanced_calculate_activity_rate</span><span class="p">,</span> \
+    <span class="n">analysis_advanced_compare_pitches_and_pitch_classes_per_duration</span><span class="p">,</span> <span class="n">analysis_ambitus</span><span class="p">,</span> \
+    <span class="n">analysis_number_of_intervals_per_type</span><span class="p">,</span> <span class="n">analysis_number_of_intervals_per_type_with_direction</span><span class="p">,</span> \
+    <span class="n">analysis_number_of_notes</span><span class="p">,</span> <span class="n">analysis_number_of_pitch_classes_per_metrical_position</span><span class="p">,</span> \
+    <span class="n">analysis_number_of_pitch_classes_per_offset</span><span class="p">,</span> <span class="n">analysis_number_of_pitch_classes_per_tone_duration</span><span class="p">,</span> \
+    <span class="n">analysis_number_of_pitches_per_metrical_position</span><span class="p">,</span> <span class="n">analysis_number_of_pitches_per_offset</span><span class="p">,</span> \
+    <span class="n">analysis_number_of_pitches_per_tone_duration</span><span class="p">,</span> <span class="n">analysis_number_of_rests</span><span class="p">,</span> <span class="n">analysis_number_of_rests_per_rest_duration</span><span class="p">,</span> \
+    <span class="n">analysis_number_of_sound_events_per_metrical_position</span><span class="p">,</span> <span class="n">analysis_number_of_sound_events_per_pitch</span><span class="p">,</span> \
+    <span class="n">analysis_number_of_sound_events_per_pitch_class</span><span class="p">,</span> <span class="n">analysis_number_of_sound_events_per_tone_duration</span>
+<span class="kn">from</span> <span class="nn">iMaT.src.analysis.main</span> <span class="kn">import</span> <span class="n">analysis_workflow_single_musical_piece</span>
+<span class="kn">from</span> <span class="nn">iMaT.src.conversion.main</span> <span class="kn">import</span> <span class="n">convert_multiple_files_filetype</span>
+<span class="kn">from</span> <span class="nn">iMaT.src.m21_environment.main</span> <span class="kn">import</span> <span class="n">display_environment_file</span><span class="p">,</span> <span class="n">set_user_preferences</span>
+<span class="kn">from</span> <span class="nn">iMaT.src.pattern_search.functions</span> <span class="kn">import</span> <span class="n">pattern_search_only_rhythm</span><span class="p">,</span> \
+    <span class="n">pattern_search_with_transposition_with_rhythm</span><span class="p">,</span> \
+    <span class="n">pattern_search_with_transposition_without_rhythm</span><span class="p">,</span> \
+    <span class="n">pattern_search_without_transposition_with_rhythm</span><span class="p">,</span> <span class="n">pattern_search_without_transposition_without_rhythm</span>
+<span class="kn">from</span> <span class="nn">iMaT.src.pattern_search.main</span> <span class="kn">import</span> <span class="n">pattern_search_workflow_single_musical_piece</span>
+<span class="kn">from</span> <span class="nn">iMaT.src.visualizations.main</span> <span class="kn">import</span> <span class="n">generic_display_workflow</span>
+<span class="kn">from</span> <span class="nn">iMaT.src.score_selection.main</span> <span class="kn">import</span> <span class="n">score_selection</span>
+<span class="kn">from</span> <span class="nn">iMaT.src.tokenization.main</span> <span class="kn">import</span> <span class="n">tokenization_tokenize_folder_midi_files</span>
+<span class="kn">from</span> <span class="nn">iMaT.src.tokenization.refine_results.absolute_duration</span> <span class="kn">import</span> \
+    <span class="n">corpus_tokenization_refine_data_absolute_duration</span>
+<span class="kn">from</span> <span class="nn">iMaT.src.tokenization.refine_results.calculate_pitch_intervals</span> <span class="kn">import</span> \
+    <span class="n">tokenization_calculate_pitch_intervals</span>
+<span class="kn">from</span> <span class="nn">iMaT.src.tokenization.refine_results.remove_prefixes</span> <span class="kn">import</span> \
+    <span class="n">corpus_tokenization_refine_data_remove_prefixes</span>
+<span class="kn">from</span> <span class="nn">iMaT.src.tokenization.refine_results.tokens_to_txt</span> <span class="kn">import</span> <span class="n">tokenization_export_csv_columns_to_txt_file</span>
+<span class="kn">from</span> <span class="nn">iMaT.src.utils.misc</span> <span class="kn">import</span> <span class="n">change_part_names</span><span class="p">,</span> <span class="n">show_metadata</span><span class="p">,</span> <span class="n">show_part_names</span>
+<span class="kn">from</span> <span class="nn">iMaT.src.visualizations.m21_integrated</span> <span class="kn">import</span> <span class="n">play_midi_score</span><span class="p">,</span> <span class="n">show_chord_connections</span><span class="p">,</span> <span class="n">show_chord_scale_system</span><span class="p">,</span> \
+    <span class="n">show_figured_bass</span><span class="p">,</span> <span class="n">show_key_analysis</span><span class="p">,</span> <span class="n">show_musescore</span><span class="p">,</span> <span class="n">show_pianoroll</span><span class="p">,</span> <span class="n">show_voice_progression</span><span class="p">,</span> <span class="n">show_volume_change</span>
+
+
+<div class="viewcode-block" id="start_menu_entries"><a class="viewcode-back" href="../../../module_files/src.cli.html#src.cli.menu_entries.start_menu_entries">[docs]</a><span class="k">def</span> <span class="nf">start_menu_entries</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Entry point for the program, allowing navigation through various functionalities.</span>
+
+<span class="sd">    Level: Root</span>
+
+<span class="sd">    This function defines the top level menu of the application.</span>
+<span class="sd">    It provides options to either analyze a single sheet music file,</span>
+<span class="sd">    convert multiple music files, tokenize multiple music files, or</span>
+<span class="sd">    update the software paths and preferences.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;menu_displayed_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;LOCATION: Start Menu&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Please make a selection from the options below by entering the entry index number:&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Which menu item should be executed? (&lt;No. of menu item&gt;): &quot;</span><span class="p">,</span>
+            <span class="p">[</span><span class="s2">&quot;Menu item&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Explanation&gt;&quot;</span><span class="p">],</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;menu_entries&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">[</span><span class="s2">&quot;PROG: Analysis of one sheet music file&quot;</span><span class="p">,</span> <span class="n">mainmenu_single_musical_piece_entries</span><span class="p">,</span> <span class="s2">&quot;&lt;Analysis of a single piece of music&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;CONV: Conversion of multiple music files&quot;</span><span class="p">,</span> <span class="n">convert_multiple_files_filetype</span><span class="p">,</span> <span class="s2">&quot;&lt;Conversion of multiple music file wihthin one folder&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;TOKE: Tokenisation of multiple music files&quot;</span><span class="p">,</span> <span class="n">mainmenu_tokenization_entries</span><span class="p">,</span> <span class="s2">&quot;&lt;Tokenisation of multiple music file wihthin one folder&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;CONF: Update Software Paths and Preferences&quot;</span><span class="p">,</span> <span class="n">mainmenu_environment_settings_entries</span><span class="p">,</span> <span class="s2">&quot;&lt;Update or redefine paths to essential software and user preferences&gt;&quot;</span><span class="p">],</span>
+        <span class="p">]</span>
+    <span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="mainmenu_single_musical_piece_entries"><a class="viewcode-back" href="../../../module_files/src.cli.html#src.cli.menu_entries.mainmenu_single_musical_piece_entries">[docs]</a><span class="k">def</span> <span class="nf">mainmenu_single_musical_piece_entries</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Menu dedicated to operations and analyses related to a single piece of music.</span>
+
+<span class="sd">    Level: First Child (Parent: start_menu_entries)</span>
+
+<span class="sd">    This function defines the second level menu that is specific to</span>
+<span class="sd">    analyzing a single piece of music. It provides options to access</span>
+<span class="sd">    basic functions, statistical analysis tools, visualization tools,</span>
+<span class="sd">    and pattern search tools.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;menu_displayed_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;LOCATION: Start Menu &gt;&gt; Main Menu: Individual Piece&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Please make a selection from the options below by entering the entry index number:&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Which menu item should be executed? (&lt;No. of menu item&gt;): &quot;</span><span class="p">,</span>
+            <span class="p">[</span><span class="s2">&quot;Menu item&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Explanation&gt;&quot;</span><span class="p">],</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;menu_entries&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">[</span><span class="s2">&quot;FILE: Access Basic Functions&quot;</span><span class="p">,</span> <span class="n">submenu_single_musical_piece_basic_functions_entries</span><span class="p">,</span> <span class="s2">&quot;&lt;Access basic functions such as file selection, display metadata, etc.&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;TOOL: Statistical Analysis Tools&quot;</span><span class="p">,</span> <span class="n">submenu_single_musical_piece_statistical_analysis_page1_entries</span><span class="p">,</span> <span class="s2">&quot;&lt;Choose from various statistical analysis tools&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;TOOL: Visualization Tools&quot;</span><span class="p">,</span> <span class="n">submenu_single_musical_piece_visualizations_entries</span><span class="p">,</span> <span class="s2">&quot;&lt;Choose from different visualization tools&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;TOOL: Pattern Search Tools&quot;</span><span class="p">,</span> <span class="n">submenu_single_musical_piece_pattern_search_entries</span><span class="p">,</span> <span class="s2">&quot;&lt;Choose from different tools for pattern search&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;BACK: Return to Previous Menu&quot;</span><span class="p">,</span> <span class="s1">&#39;back&#39;</span><span class="p">,</span> <span class="s2">&quot;&lt;Go back to the previous menu.&quot;</span><span class="p">],</span>
+        <span class="p">]</span>
+    <span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="submenu_single_musical_piece_basic_functions_entries"><a class="viewcode-back" href="../../../module_files/src.cli.html#src.cli.menu_entries.submenu_single_musical_piece_basic_functions_entries">[docs]</a><span class="k">def</span> <span class="nf">submenu_single_musical_piece_basic_functions_entries</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Submenu offering basic operations such as score selection and metadata display.</span>
+
+<span class="sd">    Level: Second Child (Parent: mainmenu_single_musical_piece_entries)</span>
+
+<span class="sd">    This function defines the third level menu for accessing basic</span>
+<span class="sd">    functions of the program. It provides options such as selecting a</span>
+<span class="sd">    music score, displaying metadata, listing part names, and renaming</span>
+<span class="sd">    parts.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;menu_displayed_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;LOCATION: Start Menu &gt;&gt; Main Menu: Individual Piece &gt;&gt; Access Basic Functions&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Please make a selection from the options below by entering the entry index number:&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Which menu item should be executed? (&lt;No. of menu item&gt;): &quot;</span><span class="p">,</span>
+            <span class="p">[</span><span class="s2">&quot;Menu item&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Explanation&gt;&quot;</span><span class="p">],</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;menu_entries&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">[</span><span class="s2">&quot;FILE: Select Score&quot;</span><span class="p">,</span> <span class="n">score_selection</span><span class="p">,</span> <span class="s2">&quot;&lt;Select a new music score file&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;META: Display Metadata&quot;</span><span class="p">,</span> <span class="n">show_metadata</span><span class="p">,</span> <span class="s2">&quot;&lt;Display the metadata of the selected score&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;NAME: List Part Names&quot;</span><span class="p">,</span> <span class="n">show_part_names</span><span class="p">,</span> <span class="s2">&quot;&lt;Show the names of individual parts or voices in the selected score&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;NAME: Rename Parts&quot;</span><span class="p">,</span> <span class="n">change_part_names</span><span class="p">,</span> <span class="s2">&quot;&lt;Change the names of individual parts or voices in the selected score&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;BACK: Return to Previous Menu&quot;</span><span class="p">,</span> <span class="s1">&#39;back&#39;</span><span class="p">,</span> <span class="s2">&quot;&lt;Go back to the previous menu&gt;&quot;</span><span class="p">],</span>
+        <span class="p">]</span>
+    <span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="submenu_single_musical_piece_statistical_analysis_page1_entries"><a class="viewcode-back" href="../../../module_files/src.cli.html#src.cli.menu_entries.submenu_single_musical_piece_statistical_analysis_page1_entries">[docs]</a><span class="k">def</span> <span class="nf">submenu_single_musical_piece_statistical_analysis_page1_entries</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Submenu offering various statistical analyses for a single piece of music.</span>
+
+<span class="sd">    Level: Second Child (Parent: mainmenu_single_musical_piece_entries)</span>
+
+<span class="sd">    This function defines the third level menu for performing</span>
+<span class="sd">    statistical analysis on a single piece of music. It provides</span>
+<span class="sd">    options for analyzing different aspects of the piece, such as the</span>
+<span class="sd">    number of tones, number of rests, etc.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;menu_displayed_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;LOCATION: Start Menu &gt;&gt; Main Menu: Individual Piece &gt;&gt; Statistical Analysis Tools (Page 1)&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Please make a selection from the options below by entering the entry index number:&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Which menu item should be executed? (&lt;No. of menu item&gt;): &quot;</span><span class="p">,</span>
+            <span class="p">[</span><span class="s2">&quot;Menu item&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Explanation&gt;&quot;</span><span class="p">],</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;menu_entries&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">[</span><span class="s2">&quot;STAT: Ambitus&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">analysis_workflow_single_musical_piece</span><span class="p">,</span> <span class="n">analysis_ambitus</span><span class="p">),</span> <span class="s2">&quot;&lt;Analyzes range of pitches&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;STAT: Number of Tones&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">analysis_workflow_single_musical_piece</span><span class="p">,</span> <span class="n">analysis_number_of_notes</span><span class="p">),</span> <span class="s2">&quot;&lt;Attention: analyzes only monodic melody lines correctly&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;STAT: Number of Rests&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">analysis_workflow_single_musical_piece</span><span class="p">,</span> <span class="n">analysis_number_of_rests</span><span class="p">),</span> <span class="s2">&quot;&lt;Counts total rests in piece&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;BARS: Rests per Duration&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">analysis_workflow_single_musical_piece</span><span class="p">,</span> <span class="n">analysis_number_of_rests_per_rest_duration</span><span class="p">),</span> <span class="s2">&quot;&lt;Counts rests per specific duration&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;BARS: Interval Types Quantity&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">analysis_workflow_single_musical_piece</span><span class="p">,</span> <span class="n">analysis_number_of_intervals_per_type</span><span class="p">),</span> <span class="s2">&quot;&lt;Attention: analyzes only intervals in monodic melody lines correctly&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;BARS: Interval Types Quantity (up/down)&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">analysis_workflow_single_musical_piece</span><span class="p">,</span> <span class="n">analysis_number_of_intervals_per_type_with_direction</span><span class="p">),</span> <span class="s2">&quot;&lt;Attention: analyzes only intervals in monodic melody lines correctly&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;BARS: Sound Events per Pitch&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">analysis_workflow_single_musical_piece</span><span class="p">,</span> <span class="n">analysis_number_of_sound_events_per_pitch</span><span class="p">),</span> <span class="s2">&quot;&lt;Counts sound events per specific pitch&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;BARS: Sound Events per Pitch Class&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">analysis_workflow_single_musical_piece</span><span class="p">,</span> <span class="n">analysis_number_of_sound_events_per_pitch_class</span><span class="p">),</span> <span class="s2">&quot;&lt;Counts sound events per pitch class&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;BARS: Sound Events per Tone Duration&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">analysis_workflow_single_musical_piece</span><span class="p">,</span> <span class="n">analysis_number_of_sound_events_per_tone_duration</span><span class="p">),</span> <span class="s2">&quot;&lt;Counts sound events per specific tone duration&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;BARS: Sound Events per Metrical Position&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">analysis_workflow_single_musical_piece</span><span class="p">,</span> <span class="n">analysis_number_of_sound_events_per_metrical_position</span><span class="p">),</span> <span class="s2">&quot;&lt;Counts sound events per metrical position&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;MTRX: Pitches per Tone Duration&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">analysis_workflow_single_musical_piece</span><span class="p">,</span> <span class="n">analysis_number_of_pitches_per_tone_duration</span><span class="p">),</span> <span class="s2">&quot;&lt;Analyzes pitch distribution across different tone durations&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;MTRX: Pitches per Metrical Position&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">analysis_workflow_single_musical_piece</span><span class="p">,</span> <span class="n">analysis_number_of_pitches_per_metrical_position</span><span class="p">),</span> <span class="s2">&quot;&lt;Analyzes pitch distribution across metrical positions&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;MTRX: Pitches per Offset&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">analysis_workflow_single_musical_piece</span><span class="p">,</span> <span class="n">analysis_number_of_pitches_per_offset</span><span class="p">),</span> <span class="s2">&quot;&lt;Analyzes pitch distribution across offsets&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;MTRX: Pitch Classes per Tone Duration&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">analysis_workflow_single_musical_piece</span><span class="p">,</span> <span class="n">analysis_number_of_pitch_classes_per_tone_duration</span><span class="p">),</span> <span class="s2">&quot;&lt;Analyzes pitch class distribution across different tone durations&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;MTRX: Pitch Classes per Metrical Position&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">analysis_workflow_single_musical_piece</span><span class="p">,</span> <span class="n">analysis_number_of_pitch_classes_per_metrical_position</span><span class="p">),</span> <span class="s2">&quot;&lt;Analyzes pitch class distribution across metrical positions&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;MTRX: Pitch Classes per Offset&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">analysis_workflow_single_musical_piece</span><span class="p">,</span> <span class="n">analysis_number_of_pitch_classes_per_offset</span><span class="p">),</span> <span class="s2">&quot;&lt;Analyzes pitch class distribution across offsets&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;NEXT: Advanced Calculations&quot;</span><span class="p">,</span> <span class="n">submenu_single_musical_piece_statistical_analysis_page2_entries</span><span class="p">,</span> <span class="s2">&quot;&lt;Navigates to advanced calculations&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;BACK: Return to the Last Menu&quot;</span><span class="p">,</span> <span class="s1">&#39;back&#39;</span><span class="p">,</span> <span class="s2">&quot;&lt;Returns to the parent menu&gt;&quot;</span><span class="p">],</span>
+        <span class="p">]</span>
+    <span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="submenu_single_musical_piece_statistical_analysis_page2_entries"><a class="viewcode-back" href="../../../module_files/src.cli.html#src.cli.menu_entries.submenu_single_musical_piece_statistical_analysis_page2_entries">[docs]</a><span class="k">def</span> <span class="nf">submenu_single_musical_piece_statistical_analysis_page2_entries</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Submenu dedicated to advanced statistical analyses for a single piece of music.</span>
+
+<span class="sd">    Level: Third Child (Parent: submenu_single_musical_piece_statistical_analysis_page1_entries)</span>
+
+<span class="sd">    This function defines the fourth level menu for performing</span>
+<span class="sd">    advanced statistical calculations on a single piece of music.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;menu_displayed_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;LOCATION: Start Menu &gt;&gt; Main Menu: Individual Piece &gt;&gt; Statistical Analysis Tools (Page 2)&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Please make a selection from the options below by entering the entry index number:&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Which menu item should be executed? (&lt;No. of menu item&gt;): &quot;</span><span class="p">,</span>
+            <span class="p">[</span><span class="s2">&quot;Menu item&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Explanation&gt;&quot;</span><span class="p">],</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;menu_entries&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">[</span><span class="s2">&quot;ADV: Activity Index&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">analysis_workflow_single_musical_piece</span><span class="p">,</span> <span class="n">analysis_advanced_calculate_activity_rate</span><span class="p">),</span> <span class="s2">&quot;&lt;Calculates ratio of notes to rests [= Activity Index]&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;ADV: Pitches vs Pitch Classes/Dur.&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">analysis_workflow_single_musical_piece</span><span class="p">,</span> <span class="n">analysis_advanced_compare_pitches_and_pitch_classes_per_duration</span><span class="p">),</span> <span class="s2">&quot;&lt;Compares pitch &amp; pitch class counts per duration, including pitch to pitch class ratio&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;BACK: Return to Last Menu&quot;</span><span class="p">,</span> <span class="s1">&#39;back&#39;</span><span class="p">,</span> <span class="s2">&quot;&lt;Returns to previous menu&gt;&quot;</span><span class="p">],</span>
+        <span class="p">]</span>
+    <span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="submenu_single_musical_piece_visualizations_entries"><a class="viewcode-back" href="../../../module_files/src.cli.html#src.cli.menu_entries.submenu_single_musical_piece_visualizations_entries">[docs]</a><span class="k">def</span> <span class="nf">submenu_single_musical_piece_visualizations_entries</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Submenu offering various visualization tools for a single piece of music.</span>
+
+<span class="sd">    Level: Second Child (Parent: mainmenu_single_musical_piece_entries)</span>
+
+<span class="sd">    This function defines the third level menu for visualizing various</span>
+<span class="sd">    aspects of a single piece of music.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;menu_displayed_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;LOCATION: Start Menu &gt;&gt; Main Menu: Individual Piece &gt;&gt; Visualization Tools&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Please make a selection from the options below by entering the entry index number:&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Which menu item should be executed? (&lt;No. of menu item&gt;): &quot;</span><span class="p">,</span>
+            <span class="p">[</span><span class="s2">&quot;Menu item&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Explanation&gt;&quot;</span><span class="p">],</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;menu_entries&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">[</span><span class="s2">&quot;PLAY: MIDI Playback&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">generic_display_workflow</span><span class="p">,</span> <span class="n">play_midi_score</span><span class="p">),</span> <span class="s2">&quot;Play the selected score in MIDI format&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;SHOW: Sheet Music in MuseScore&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">generic_display_workflow</span><span class="p">,</span> <span class="n">show_musescore</span><span class="p">),</span> <span class="s2">&quot;Display the sheet music of the selected score in MuseScore&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;SHOW: Chord Connections&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">generic_display_workflow</span><span class="p">,</span> <span class="n">show_chord_connections</span><span class="p">),</span> <span class="s2">&quot;Display the chord connections of the selected score&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;SHOW: Figured Bass&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">generic_display_workflow</span><span class="p">,</span> <span class="n">show_figured_bass</span><span class="p">),</span> <span class="s2">&quot;Display the figured bass notation of the selected score&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;SHOW: Chord-Scale System&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">generic_display_workflow</span><span class="p">,</span> <span class="n">show_chord_scale_system</span><span class="p">),</span> <span class="s2">&quot;Display the chord-scale system of the selected score&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;SHOW: Pianoroll View&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">generic_display_workflow</span><span class="p">,</span> <span class="n">show_pianoroll</span><span class="p">),</span> <span class="s2">&quot;Display the pianoroll view of the selected score&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;SHOW: Voice Progression (Line Plot)&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">generic_display_workflow</span><span class="p">,</span> <span class="n">show_voice_progression</span><span class="p">),</span> <span class="s2">&quot;Display the voice progression of the selected score (Note: Only works with consistently monodic parts)&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;SHOW: Volume Change Over Time&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">generic_display_workflow</span><span class="p">,</span> <span class="n">show_volume_change</span><span class="p">),</span> <span class="s2">&quot;Display the change in volume over time for the selected score&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;SHOW: Key Analysis&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">generic_display_workflow</span><span class="p">,</span> <span class="n">show_key_analysis</span><span class="p">),</span> <span class="s2">&quot;Display the key analysis of the selected score in a color grid format&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;BACK: Return to Previous Menu&quot;</span><span class="p">,</span> <span class="s1">&#39;back&#39;</span><span class="p">,</span> <span class="s2">&quot;Return to the previous menu&quot;</span><span class="p">],</span>
+        <span class="p">]</span>
+    <span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="submenu_single_musical_piece_pattern_search_entries"><a class="viewcode-back" href="../../../module_files/src.cli.html#src.cli.menu_entries.submenu_single_musical_piece_pattern_search_entries">[docs]</a><span class="k">def</span> <span class="nf">submenu_single_musical_piece_pattern_search_entries</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Submenu for various pattern search tools in a single piece of music.</span>
+
+<span class="sd">    Level: Second Child (Parent: mainmenu_single_musical_piece_entries)</span>
+
+<span class="sd">    This function defines the third level menu for performing pattern</span>
+<span class="sd">    searches on a single piece of music.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;menu_displayed_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;LOCATION: Start Menu &gt;&gt; Main Menu: Individual Piece &gt;&gt; Pattern Search Tools&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Please make a selection from the options below by entering the entry index number:&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Which menu item should be executed? (&lt;No. of menu item&gt;): &quot;</span><span class="p">,</span>
+            <span class="p">[</span><span class="s2">&quot;Menu item&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Explanation&gt;&quot;</span><span class="p">],</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;menu_entries&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">[</span><span class="s2">&quot;SEARCH: Pitch sequence&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">pattern_search_workflow_single_musical_piece</span><span class="p">,</span> <span class="n">pattern_search_without_transposition_without_rhythm</span><span class="p">),</span> <span class="s2">&quot;&lt;Search for a sequence of pitches, ignoring rhythm&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;SEARCH: Pitch + transp.&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">pattern_search_workflow_single_musical_piece</span><span class="p">,</span> <span class="n">pattern_search_with_transposition_without_rhythm</span><span class="p">),</span> <span class="s2">&quot;&lt;Search for a pitch sequence and its transpositions, ignoring rhythm&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;SEARCH: Pitch + rhythm&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">pattern_search_workflow_single_musical_piece</span><span class="p">,</span> <span class="n">pattern_search_without_transposition_with_rhythm</span><span class="p">),</span> <span class="s2">&quot;&lt;Search for a sequence of pitches with rhythm&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;SEARCH: Pitch + rhythm + transp.&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">pattern_search_workflow_single_musical_piece</span><span class="p">,</span> <span class="n">pattern_search_with_transposition_with_rhythm</span><span class="p">),</span> <span class="s2">&quot;&lt;Search for a pitch sequence with rhythm and its transpositions&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;SEARCH: Rhythm only&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">pattern_search_workflow_single_musical_piece</span><span class="p">,</span> <span class="n">pattern_search_only_rhythm</span><span class="p">),</span> <span class="s2">&quot;&lt;Search for a rhythm pattern only&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;BACK: Return&quot;</span><span class="p">,</span> <span class="s1">&#39;back&#39;</span><span class="p">,</span> <span class="s2">&quot;&lt;Returns to the previous menu&gt;&quot;</span><span class="p">]</span>
+        <span class="p">]</span>
+    <span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="mainmenu_tokenization_entries"><a class="viewcode-back" href="../../../module_files/src.cli.html#src.cli.menu_entries.mainmenu_tokenization_entries">[docs]</a><span class="k">def</span> <span class="nf">mainmenu_tokenization_entries</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Main menu for operations related to music tokenization.</span>
+
+<span class="sd">    Level: First Child (Parent: start_menu_entries)</span>
+
+<span class="sd">    This function defines the second level menu for tokenization</span>
+<span class="sd">    operations. It provides options to tokenize a folder of midi files,</span>
+<span class="sd">    refine tokenization results, perform calculations on tokens, and</span>
+<span class="sd">    extract token data to a TXT file.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;menu_displayed_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;LOCATION: Start Menu &gt;&gt; Main Menu: Tokenization&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Please make a selection from the options below by entering the entry index number:&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Which menu item should be executed? (&lt;No. of menu item&gt;): &quot;</span><span class="p">,</span>
+            <span class="p">[</span><span class="s2">&quot;Menu item&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Explanation&gt;&quot;</span><span class="p">],</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;menu_entries&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">[</span><span class="s2">&quot;TOKN: Tokenize a folder of midi files&quot;</span><span class="p">,</span> <span class="n">tokenization_tokenize_folder_midi_files</span><span class="p">,</span> <span class="s2">&quot;&lt;Tokenize sheet music using the midiTok library&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;RFNE: Refine tokenization results&quot;</span><span class="p">,</span> <span class="n">submenu_tokenization_refine_data_entries</span><span class="p">,</span> <span class="s2">&quot;&lt;Prepare tokenization data (CSV) for further processing&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;CALC: Add columns by performing calculations&quot;</span><span class="p">,</span> <span class="n">submenu_tokenization_calculations_entries</span><span class="p">,</span> <span class="s2">&quot;&lt;Perform calculations on existing data and safe those in new columns&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;EXTR: Extract Columns to TXT&quot;</span><span class="p">,</span> <span class="n">tokenization_export_csv_columns_to_txt_file</span><span class="p">,</span> <span class="s2">&quot;&lt;Extract specified columns from the dataset and save to a TXT file&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;BACK: Return to the last menu&quot;</span><span class="p">,</span> <span class="s1">&#39;back&#39;</span><span class="p">,</span> <span class="s2">&quot;&lt;Returns to the parent menu&gt;&quot;</span><span class="p">],</span>
+        <span class="p">],</span>
+    <span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="submenu_tokenization_refine_data_entries"><a class="viewcode-back" href="../../../module_files/src.cli.html#src.cli.menu_entries.submenu_tokenization_refine_data_entries">[docs]</a><span class="k">def</span> <span class="nf">submenu_tokenization_refine_data_entries</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Submenu for refining tokenized data.</span>
+
+<span class="sd">    Level: Second Child (Parent: mainmenu_tokenization_entries)</span>
+
+<span class="sd">    This function defines the third level menu for refining</span>
+<span class="sd">    tokenization results. It provides options to remove string prefixes</span>
+<span class="sd">    and convert duration values to a different format.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;menu_displayed_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;LOCATION: Start Menu &gt;&gt; Main Menu: Tokenization &gt;&gt; Refine Data&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Please make a selection from the options below by entering the entry index number:&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Which menu item should be executed? (&lt;No. of menu item&gt;): &quot;</span><span class="p">,</span>
+            <span class="p">[</span><span class="s2">&quot;Menu item&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Explanation&gt;&quot;</span><span class="p">],</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;menu_entries&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">[</span><span class="s2">&quot;REFN: Refine data (remove string prefixes)&quot;</span><span class="p">,</span> <span class="n">corpus_tokenization_refine_data_remove_prefixes</span><span class="p">,</span> <span class="s2">&quot;&lt;Remove redundant string prefices from entries&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;REFN: Refine data (Duration: a.b.c -&gt; float)&quot;</span><span class="p">,</span> <span class="n">corpus_tokenization_refine_data_absolute_duration</span><span class="p">,</span> <span class="s2">&quot;&lt;Convert the Duration value (a.b.c) to another equal representation (-&gt; a + b/c [= float])&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;BACK: Return to the last menu&quot;</span><span class="p">,</span> <span class="s1">&#39;back&#39;</span><span class="p">,</span> <span class="s2">&quot;&lt;Return to the parent menu&gt;&quot;</span><span class="p">],</span>
+        <span class="p">]</span>
+    <span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="submenu_tokenization_calculations_entries"><a class="viewcode-back" href="../../../module_files/src.cli.html#src.cli.menu_entries.submenu_tokenization_calculations_entries">[docs]</a><span class="k">def</span> <span class="nf">submenu_tokenization_calculations_entries</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Submenu for conducting various calculations on tokenized data.</span>
+
+<span class="sd">    Level: Second Child (Parent: mainmenu_tokenization_entries)</span>
+
+<span class="sd">    This function defines the third level menu for performing</span>
+<span class="sd">    calculations on tokens. It provides an option to calculate intervals</span>
+<span class="sd">    between pitch values.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;menu_displayed_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;LOCATION: Start Menu &gt;&gt; Main Menu: Tokenization &gt;&gt; Calculate on Tokens&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Please make a selection from the options below by entering the entry index number:&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Which menu item should be executed? (&lt;No. of menu item&gt;): &quot;</span><span class="p">,</span>
+            <span class="p">[</span><span class="s2">&quot;Menu item&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Explanation&gt;&quot;</span><span class="p">],</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;menu_entries&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">[</span><span class="s2">&quot;CALC: Calculate intervals between pitch values&quot;</span><span class="p">,</span> <span class="n">tokenization_calculate_pitch_intervals</span><span class="p">,</span> <span class="s2">&quot;&lt;Add new column &#39;Pitch PitchDifferenceToNextPitch&#39;&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;BACK: Return to the last menu&quot;</span><span class="p">,</span> <span class="s1">&#39;back&#39;</span><span class="p">,</span> <span class="s2">&quot;&lt;Return to the parent menu&gt;&quot;</span><span class="p">],</span>
+        <span class="p">]</span>
+    <span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="mainmenu_environment_settings_entries"><a class="viewcode-back" href="../../../module_files/src.cli.html#src.cli.menu_entries.mainmenu_environment_settings_entries">[docs]</a><span class="k">def</span> <span class="nf">mainmenu_environment_settings_entries</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Menu for managing software paths and user preferences.</span>
+
+<span class="sd">    Level: First Child (Parent: start_menu_entries)</span>
+
+<span class="sd">    This function defines the second level menu for updating software</span>
+<span class="sd">    paths and preferences. It provides options to display the</span>
+<span class="sd">    environment file and to update paths and preferences.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;menu_displayed_text&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;LOCATION: Start Menu &gt;&gt; Main Menu: Update Software Paths and Preferences&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Please make a selection from the options below by entering the entry index number:&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Which menu item should be executed? (&lt;No. of menu item&gt;): &quot;</span><span class="p">,</span>
+            <span class="p">[</span><span class="s2">&quot;Menu item&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;Explanation&gt;&quot;</span><span class="p">],</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;menu_entries&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">[</span><span class="s2">&quot;ENVT: Display Environment File&quot;</span><span class="p">,</span> <span class="n">display_environment_file</span><span class="p">,</span> <span class="s2">&quot;&lt;Display the content of the current music21 environment file&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;CONF: Update Paths &amp; Preferences&quot;</span><span class="p">,</span> <span class="n">set_user_preferences</span><span class="p">,</span> <span class="s2">&quot;&lt;Update or redefine the paths to essential software and set user preferences&gt;&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;BACK: Return to Previous Menu&quot;</span><span class="p">,</span> <span class="s1">&#39;back&#39;</span><span class="p">,</span> <span class="s2">&quot;&lt;Return to the parent menu without making any changes&gt;&quot;</span><span class="p">],</span>
+        <span class="p">]</span>
+    <span class="p">}</span></div>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">I-MaT</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started.html">Getting Started: How to use I-MaT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contribute.html">How to Contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_files/src.html">I-MaT: Source Code</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Sebastian Oliver Eck.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 6.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
