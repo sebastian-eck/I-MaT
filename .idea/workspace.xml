@@ -9,25 +9,11 @@
   <component name="ChangeListManager">
     <list default="true" id="261d9175-119f-4a99-aab1-0189b930fb8c" name="Changes" comment="final changes (for now)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/doctrees/environment.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/doctrees/environment.pickle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/doctrees/index.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/doctrees/index.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.buildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.buildinfo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/api_reference.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/api_reference.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/contribute.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/contribute.doctree" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/environment.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/environment.pickle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/analysis/src.analysis.functions.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/analysis/src.analysis.functions.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/analysis/src.analysis.main.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/analysis/src.analysis.main.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/analysis/src.analysis.utils.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/analysis/src.analysis.utils.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/modules.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/modules.doctree" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/src.analysis.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/src.analysis.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/src.analysis.functions.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/src.analysis.functions.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/src.analysis.main.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/src.analysis.main.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/src.analysis.utils.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/src.analysis.utils.doctree" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/src.cli.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/src.cli.doctree" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/src.constants.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/src.constants.doctree" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/src.conversion.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/src.conversion.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/src.examples.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/src.examples.doctree" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/src.m21_environment.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/src.m21_environment.doctree" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/src.pattern_search.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/src.pattern_search.doctree" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/src.score_selection.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/src.score_selection.doctree" afterDir="false" />
@@ -35,107 +21,13 @@
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/src.tokenization.refine_results.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/src.tokenization.refine_results.doctree" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/src.utils.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/src.utils.doctree" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/src.visualizations.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/src.visualizations.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/modules.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/modules.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src.analysis.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src.analysis.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src.cli.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src.cli.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src.conversion.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src.conversion.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src.examples.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src.examples.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src.m21_environment.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src.m21_environment.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src.pattern_search.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src.pattern_search.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src.score_selection.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src.score_selection.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src.tokenization.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src.tokenization.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src.tokenization.refine_results.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src.tokenization.refine_results.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src.utils.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src.utils.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src.visualizations.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src.visualizations.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/iMaT.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/iMaT.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/iMaT.src.analysis.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/iMaT.src.analysis.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/iMaT.src.cli.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/iMaT.src.cli.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/iMaT.src.conversion.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/iMaT.src.conversion.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/iMaT.src.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/iMaT.src.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/iMaT.src.examples.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/iMaT.src.examples.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/iMaT.src.m21_environment.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/iMaT.src.m21_environment.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/iMaT.src.pattern_search.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/iMaT.src.pattern_search.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/iMaT.src.score_selection.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/iMaT.src.score_selection.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/iMaT.src.tokenization.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/iMaT.src.tokenization.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/iMaT.src.tokenization.refine_results.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/iMaT.src.tokenization.refine_results.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/iMaT.src.utils.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/iMaT.src.utils.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/iMaT.src.visualizations.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/iMaT.src.visualizations.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/modules.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/modules.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/src.analysis.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/src.analysis.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/src.cli.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/src.cli.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/src.conversion.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/src.conversion.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/src.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/src.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/src.examples.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/src.examples.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/src.m21_environment.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/src.m21_environment.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/src.pattern_search.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/src.pattern_search.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/src.score_selection.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/src.score_selection.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/src.tokenization.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/src.tokenization.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/src.tokenization.refine_results.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/src.tokenization.refine_results.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/src.utils.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/src.utils.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/src.visualizations.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/src/src.visualizations.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/usage.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/usage.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/analysis/functions.html" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/analysis/functions.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/analysis/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/analysis/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/analysis/utils.html" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/analysis/utils.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/cli/menu_constructors.html" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/cli/menu_constructors.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/cli/menu_entries.html" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/cli/menu_entries.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/conversion/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/conversion/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/conversion/utils.html" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/conversion/utils.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/m21_environment/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/m21_environment/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/pattern_search/functions.html" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/pattern_search/functions.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/pattern_search/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/pattern_search/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/pattern_search/utils.html" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/pattern_search/utils.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/score_selection/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/score_selection/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/score_selection/name_parts.html" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/score_selection/name_parts.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/score_selection/select_parts_and_measures.html" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/score_selection/select_parts_and_measures.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/tokenization/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/tokenization/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/tokenization/refine_results/absolute_duration.html" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/tokenization/refine_results/absolute_duration.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/tokenization/refine_results/calculate_pitch_intervals.html" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/tokenization/refine_results/calculate_pitch_intervals.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/tokenization/refine_results/remove_prefixes.html" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/tokenization/refine_results/remove_prefixes.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/tokenization/refine_results/tokens_to_txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/tokenization/refine_results/tokens_to_txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/tokenization/utils.html" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/tokenization/utils.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/utils/error_handling.html" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/utils/error_handling.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/utils/misc.html" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/utils/misc.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/visualizations/analysis_results_graphs.html" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/visualizations/analysis_results_graphs.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/visualizations/m21_integrated.html" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/visualizations/m21_integrated.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/visualizations/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_modules/src/visualizations/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_sources/contribute.md.txt" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_sources/contribute.md.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/_sphinx_javascript_frameworks_compat.js" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/_sphinx_javascript_frameworks_compat.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/Roboto-Slab-Bold.woff" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/Roboto-Slab-Bold.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/Roboto-Slab-Bold.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/Roboto-Slab-Bold.woff2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/Roboto-Slab-Regular.woff" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/Roboto-Slab-Regular.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/Roboto-Slab-Regular.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/Roboto-Slab-Regular.woff2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/fontawesome-webfont.eot" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/fontawesome-webfont.eot" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/fontawesome-webfont.svg" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/fontawesome-webfont.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/fontawesome-webfont.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/fontawesome-webfont.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/fontawesome-webfont.woff" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/fontawesome-webfont.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/fontawesome-webfont.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/fontawesome-webfont.woff2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/lato-bold-italic.woff" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/lato-bold-italic.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/lato-bold-italic.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/lato-bold-italic.woff2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/lato-bold.woff" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/lato-bold.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/lato-bold.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/lato-bold.woff2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/lato-normal-italic.woff" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/lato-normal-italic.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/lato-normal-italic.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/lato-normal-italic.woff2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/lato-normal.woff" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/lato-normal.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/lato-normal.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/fonts/lato-normal.woff2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/css/theme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/custom.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/debug.css" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/debug.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/doctools.js" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/doctools.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/documentation_options.js" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/documentation_options.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/jquery.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/js/html5shiv-printshiv.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/js/html5shiv-printshiv.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/js/html5shiv.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/js/html5shiv.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/pygments.css" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/pygments.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/scripts/furo.js" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/scripts/furo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/scripts/furo.js.LICENSE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/scripts/furo.js.LICENSE.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/searchtools.js" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/searchtools.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/skeleton.css" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/skeleton.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/sphinx_highlight.js" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/sphinx_highlight.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/styles/furo-extensions.css" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/styles/furo-extensions.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/styles/furo.css" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/styles/furo.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/contribute.html" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/contribute.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/genindex.html" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/genindex.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/getting_started.html" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/getting_started.html" afterDir="false" />
@@ -153,14 +45,10 @@
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/module_files/src.tokenization.refine_results.html" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/module_files/src.tokenization.refine_results.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/module_files/src.utils.html" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/module_files/src.utils.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/module_files/src.visualizations.html" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/module_files/src.visualizations.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/objects.inv" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/objects.inv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/py-modindex.html" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/py-modindex.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/search.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/searchindex.js" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/searchindex.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/user_guide.html" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/user_guide.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/source/conf.py" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/source/conf.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/source/contribute.md" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/source/contribute.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/src/cli/menu_constructors.py" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/src/cli/menu_constructors.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -636,7 +524,7 @@
       <workItem from="1689605091269" duration="76000" />
       <workItem from="1689605717270" duration="1607000" />
       <workItem from="1689607895633" duration="572000" />
-      <workItem from="1689608572510" duration="1066000" />
+      <workItem from="1689608572510" duration="1839000" />
     </task>
     <task id="LOCAL-00001" summary="Splitting (lots of work to do)">
       <created>1686194669168</created>
@@ -799,7 +687,42 @@
       <option name="project" value="LOCAL" />
       <updated>1689608105647</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="final changes (for now)">
+      <created>1689609726637</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1689609726637</updated>
+    </task>
+    <task id="LOCAL-00025" summary="final changes (for now)">
+      <created>1689610104027</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1689610104027</updated>
+    </task>
+    <task id="LOCAL-00026" summary="final changes (for now)">
+      <created>1689610207037</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1689610207037</updated>
+    </task>
+    <task id="LOCAL-00027" summary="final changes (for now)">
+      <created>1689610274506</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1689610274506</updated>
+    </task>
+    <task id="LOCAL-00028" summary="final changes (for now)">
+      <created>1689610418908</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1689610418908</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
