@@ -1,47 +1,130 @@
 <!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
-    <title>Package: Command Line Interface (src.cli) &#8212; I-MaT 3.0 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Package: Command Line Interface (src.cli) &mdash; I-MaT 3.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Package: File Conversion (src.conversion)" href="src.conversion.html" />
-    <link rel="prev" title="Package: Analysis (src.analysis)" href="src.analysis.html" />
-   
-  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+    <link rel="prev" title="Package: Analysis (src.analysis)" href="src.analysis.html" /> 
+</head>
 
-  </head><body>
-  
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
           
+          
+          <a href="../index.html" class="icon icon-home">
+            I-MaT
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started with I-MaT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute.html">How to Contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="src.html">I-MaT: Source Code</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="src.analysis.html">Package: Analysis (src.analysis)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Package: Command Line Interface (src.cli)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-cli-menu-constructors-py">Module: cli.menu_constructors.py</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#module-level-variables">Module-level variables:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.cli.menu_constructors.display_menu_print_results"><code class="docutils literal notranslate"><span class="pre">display_menu_print_results()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.cli.menu_constructors.display_menu_print_textblock"><code class="docutils literal notranslate"><span class="pre">display_menu_print_textblock()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.cli.menu_constructors.display_menu_request_selection"><code class="docutils literal notranslate"><span class="pre">display_menu_request_selection()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.cli.menu_constructors.display_menu_undirected"><code class="docutils literal notranslate"><span class="pre">display_menu_undirected()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.cli.menu_constructors.print_menu_entries"><code class="docutils literal notranslate"><span class="pre">print_menu_entries()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.cli.menu_constructors.print_textblock"><code class="docutils literal notranslate"><span class="pre">print_textblock()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.cli.menu_constructors.util_convert_imat_datacont_to_pd_dataframe"><code class="docutils literal notranslate"><span class="pre">util_convert_imat_datacont_to_pd_dataframe()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.cli.menu_constructors.util_convert_pd_dataframe_to_imat_datacont"><code class="docutils literal notranslate"><span class="pre">util_convert_pd_dataframe_to_imat_datacont()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-cli-menu-entries-py">Module: cli.menu_entries.py</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.cli.menu_entries.mainmenu_environment_settings_entries"><code class="docutils literal notranslate"><span class="pre">mainmenu_environment_settings_entries()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.cli.menu_entries.mainmenu_single_musical_piece_entries"><code class="docutils literal notranslate"><span class="pre">mainmenu_single_musical_piece_entries()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.cli.menu_entries.mainmenu_tokenization_entries"><code class="docutils literal notranslate"><span class="pre">mainmenu_tokenization_entries()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.cli.menu_entries.start_menu_entries"><code class="docutils literal notranslate"><span class="pre">start_menu_entries()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.cli.menu_entries.submenu_single_musical_piece_basic_functions_entries"><code class="docutils literal notranslate"><span class="pre">submenu_single_musical_piece_basic_functions_entries()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.cli.menu_entries.submenu_single_musical_piece_pattern_search_entries"><code class="docutils literal notranslate"><span class="pre">submenu_single_musical_piece_pattern_search_entries()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.cli.menu_entries.submenu_single_musical_piece_statistical_analysis_page1_entries"><code class="docutils literal notranslate"><span class="pre">submenu_single_musical_piece_statistical_analysis_page1_entries()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.cli.menu_entries.submenu_single_musical_piece_statistical_analysis_page2_entries"><code class="docutils literal notranslate"><span class="pre">submenu_single_musical_piece_statistical_analysis_page2_entries()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.cli.menu_entries.submenu_single_musical_piece_visualizations_entries"><code class="docutils literal notranslate"><span class="pre">submenu_single_musical_piece_visualizations_entries()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.cli.menu_entries.submenu_tokenization_calculations_entries"><code class="docutils literal notranslate"><span class="pre">submenu_tokenization_calculations_entries()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iMaT.src.cli.menu_entries.submenu_tokenization_refine_data_entries"><code class="docutils literal notranslate"><span class="pre">submenu_tokenization_refine_data_entries()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.conversion.html">Package: File Conversion (src.conversion)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.m21_environment.html">Package: music21 Environment File Configuration (src.m21_environment)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.pattern_search.html">Package: Pattern Search (src.pattern_search)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.score_selection.html">Package: Score Selection (src.score_selection)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.tokenization.html">Package: Tokenization (src.tokenization)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.utils.html">Package: Utility Functions (src.utils)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.visualizations.html">Package: Visualizations (src.visualizations)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.constants.html">Module: Constants (src.constants)</a></li>
+</ul>
+</li>
+</ul>
 
-          <div class="body" role="main">
-            
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">I-MaT</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="src.html">I-MaT: Source Code</a></li>
+      <li class="breadcrumb-item active">Package: Command Line Interface (src.cli)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/module_files/src.cli.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
   <section id="module-iMaT.src.cli.menu_constructors">
-<span id="package-command-line-interface-src-cli"></span><h1>Package: Command Line Interface (src.cli)<a class="headerlink" href="#module-iMaT.src.cli.menu_constructors" title="Permalink to this heading">¶</a></h1>
+<span id="package-command-line-interface-src-cli"></span><h1>Package: Command Line Interface (src.cli)<a class="headerlink" href="#module-iMaT.src.cli.menu_constructors" title="Permalink to this heading"></a></h1>
 <section id="module-cli-menu-constructors-py">
-<h2>Module: cli.menu_constructors.py<a class="headerlink" href="#module-cli-menu-constructors-py" title="Permalink to this heading">¶</a></h2>
+<h2>Module: cli.menu_constructors.py<a class="headerlink" href="#module-cli-menu-constructors-py" title="Permalink to this heading"></a></h2>
 <p>This module is designed to create, manage, and navigate through a menu interface in a console environment.</p>
 <p>This Python module is designed to create, manage, and navigate through a menu interface in a console environment.
 The module contains functions for constructing and displaying various types of menus (directed and undirected),
 handling user navigation, executing menu-associated functions, displaying structured text information, and presenting
 analysis results in an organized, readable format.</p>
 <section id="module-level-variables">
-<h3>Module-level variables:<a class="headerlink" href="#module-level-variables" title="Permalink to this heading">¶</a></h3>
+<h3>Module-level variables:<a class="headerlink" href="#module-level-variables" title="Permalink to this heading"></a></h3>
 <dl class="simple">
 <dt>menu_stack<span class="classifier">list</span></dt><dd><p>A stack to keep track of the previous menus. This stack is used to enable backward and forward navigation in
 undirected menus.</p>
@@ -49,7 +132,7 @@ undirected menus.</p>
 </dl>
 </section>
 <section id="functions">
-<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h3>
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>display_menu_print_results</p></li>
 <li><p>display_menu_print_textblock</p></li>
@@ -68,7 +151,7 @@ for music analysis.</p>
 </section>
 <dl class="py function">
 <dt class="sig sig-object py" id="iMaT.src.cli.menu_constructors.display_menu_print_results">
-<span class="sig-prename descclassname"><span class="pre">iMaT.src.cli.menu_constructors.</span></span><span class="sig-name descname"><span class="pre">display_menu_print_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#iMaT.src.cli.menu_constructors.display_menu_print_results" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.cli.menu_constructors.</span></span><span class="sig-name descname"><span class="pre">display_menu_print_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#iMaT.src.cli.menu_constructors.display_menu_print_results" title="Permalink to this definition"></a></dt>
 <dd><p>Display analysis results in a console in a formatted manner.</p>
 <p>This function receives a dictionary, which includes a description of the results and a
 list of result entries. The function uses this information to print the content in a well-formatted manner.</p>
@@ -140,7 +223,7 @@ passed to the <cite>display_menu_print_results</cite> function.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="iMaT.src.cli.menu_constructors.display_menu_print_textblock">
-<span class="sig-prename descclassname"><span class="pre">iMaT.src.cli.menu_constructors.</span></span><span class="sig-name descname"><span class="pre">display_menu_print_textblock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">textblock_sep_line</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#iMaT.src.cli.menu_constructors.display_menu_print_textblock" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.cli.menu_constructors.</span></span><span class="sig-name descname"><span class="pre">display_menu_print_textblock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">textblock_sep_line</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#iMaT.src.cli.menu_constructors.display_menu_print_textblock" title="Permalink to this definition"></a></dt>
 <dd><p>Prints a formatted text block in the console based on a provided dictionary.</p>
 <p>This function takes a dictionary which includes a title, a request, column descriptions, and an input prompt,
 as well as a list of text entries to display. It uses this information to print the content in a formatted
@@ -197,7 +280,7 @@ This dictionary is then passed as a parameter to the <cite>display_menu_print_te
 
 <dl class="py function">
 <dt class="sig sig-object py" id="iMaT.src.cli.menu_constructors.display_menu_request_selection">
-<span class="sig-prename descclassname"><span class="pre">iMaT.src.cli.menu_constructors.</span></span><span class="sig-name descname"><span class="pre">display_menu_request_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">imat_data_container</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_column_width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#iMaT.src.cli.menu_constructors.display_menu_request_selection" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.cli.menu_constructors.</span></span><span class="sig-name descname"><span class="pre">display_menu_request_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">imat_data_container</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_column_width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#iMaT.src.cli.menu_constructors.display_menu_request_selection" title="Permalink to this definition"></a></dt>
 <dd><p>Display menu items in a console in a formatted manner.</p>
 <p>This function receives a dictionary, which includes a description of the menu items and a
 list of menu entries. The function uses this information to print the content in a well-formatted manner.</p>
@@ -241,7 +324,7 @@ In this example, we have a dictionary <cite>imat_data_container</cite> that repr
 
 <dl class="py function">
 <dt class="sig sig-object py" id="iMaT.src.cli.menu_constructors.display_menu_undirected">
-<span class="sig-prename descclassname"><span class="pre">iMaT.src.cli.menu_constructors.</span></span><span class="sig-name descname"><span class="pre">display_menu_undirected</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">menu_content_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent_menu_func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#iMaT.src.cli.menu_constructors.display_menu_undirected" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.cli.menu_constructors.</span></span><span class="sig-name descname"><span class="pre">display_menu_undirected</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">menu_content_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent_menu_func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#iMaT.src.cli.menu_constructors.display_menu_undirected" title="Permalink to this definition"></a></dt>
 <dd><p>Display a menu allowing the user to navigate between different levels.</p>
 <p>This function prints an interactive, navigation-capable menu from a dictionary.
 The dictionary represents the current menu, including its title, guidelines, requested input, and menu entries.
@@ -295,7 +378,7 @@ the user will find themselves back in the menu where the function was selected.<
 
 <dl class="py function">
 <dt class="sig sig-object py" id="iMaT.src.cli.menu_constructors.print_menu_entries">
-<span class="sig-prename descclassname"><span class="pre">iMaT.src.cli.menu_constructors.</span></span><span class="sig-name descname"><span class="pre">print_menu_entries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">menu_columns_description</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">menu_entries</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_col_width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">45</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_all_columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#iMaT.src.cli.menu_constructors.print_menu_entries" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.cli.menu_constructors.</span></span><span class="sig-name descname"><span class="pre">print_menu_entries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">menu_columns_description</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">menu_entries</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_col_width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">45</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_all_columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#iMaT.src.cli.menu_constructors.print_menu_entries" title="Permalink to this definition"></a></dt>
 <dd><p>Prints a formatted list of menu entries in the console.</p>
 <p>This function takes a list of menu entries and column descriptions, along with an optional minimum column width.
 It formats and prints the entries in a table-like structure. An additional optional parameter controls whether all
@@ -339,7 +422,7 @@ can also be used independently to print a list of results or menu entries withou
 
 <dl class="py function">
 <dt class="sig sig-object py" id="iMaT.src.cli.menu_constructors.print_textblock">
-<span class="sig-prename descclassname"><span class="pre">iMaT.src.cli.menu_constructors.</span></span><span class="sig-name descname"><span class="pre">print_textblock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">menu_columns_description</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">menu_entries</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">textblock_sep_line</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#iMaT.src.cli.menu_constructors.print_textblock" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.cli.menu_constructors.</span></span><span class="sig-name descname"><span class="pre">print_textblock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">menu_columns_description</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">menu_entries</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">textblock_sep_line</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#iMaT.src.cli.menu_constructors.print_textblock" title="Permalink to this definition"></a></dt>
 <dd><p>Prints a formatted text block in the console.</p>
 <p>This function takes in a description for menu columns, a list of menu entries, and a boolean indicating whether
 to separate text blocks with a line. It uses this information to print a formatted text block on the console.</p>
@@ -380,7 +463,7 @@ without displaying a full menu.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="iMaT.src.cli.menu_constructors.util_convert_imat_datacont_to_pd_dataframe">
-<span class="sig-prename descclassname"><span class="pre">iMaT.src.cli.menu_constructors.</span></span><span class="sig-name descname"><span class="pre">util_convert_imat_datacont_to_pd_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">imat_cont</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#iMaT.src.cli.menu_constructors.util_convert_imat_datacont_to_pd_dataframe" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.cli.menu_constructors.</span></span><span class="sig-name descname"><span class="pre">util_convert_imat_datacont_to_pd_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">imat_cont</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#iMaT.src.cli.menu_constructors.util_convert_imat_datacont_to_pd_dataframe" title="Permalink to this definition"></a></dt>
 <dd><p>Converts an I-MaT data container to a pandas DataFrame format.</p>
 <p>This function takes an I-MaT data container and converts it into a pandas DataFrame. It’s an excellent way to
 facilitate user-friendly, manual data entry, as the vertical orientation of the I-MaT data container is easier to
@@ -438,7 +521,7 @@ data processing or analysis.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="iMaT.src.cli.menu_constructors.util_convert_pd_dataframe_to_imat_datacont">
-<span class="sig-prename descclassname"><span class="pre">iMaT.src.cli.menu_constructors.</span></span><span class="sig-name descname"><span class="pre">util_convert_pd_dataframe_to_imat_datacont</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pd_dataframe</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">menu_title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Analysis</span> <span class="pre">Results'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">menu_guideline</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Please</span> <span class="pre">see</span> <span class="pre">the</span> <span class="pre">following</span> <span class="pre">analysis</span> <span class="pre">results:'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">menu_requested_input</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'&lt;To</span> <span class="pre">continue,</span> <span class="pre">please</span> <span class="pre">press</span> <span class="pre">Enter&gt;'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">menu_columns_description</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#iMaT.src.cli.menu_constructors.util_convert_pd_dataframe_to_imat_datacont" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.cli.menu_constructors.</span></span><span class="sig-name descname"><span class="pre">util_convert_pd_dataframe_to_imat_datacont</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pd_dataframe</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">menu_title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Analysis</span> <span class="pre">Results'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">menu_guideline</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Please</span> <span class="pre">see</span> <span class="pre">the</span> <span class="pre">following</span> <span class="pre">analysis</span> <span class="pre">results:'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">menu_requested_input</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'&lt;To</span> <span class="pre">continue,</span> <span class="pre">please</span> <span class="pre">press</span> <span class="pre">Enter&gt;'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">menu_columns_description</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#iMaT.src.cli.menu_constructors.util_convert_pd_dataframe_to_imat_datacont" title="Permalink to this definition"></a></dt>
 <dd><p>Converts a pandas DataFrame to an I-MaT data container format.</p>
 <p>This function converts a pandas DataFrame into a data format compatible with I-MaT’s display functions. It’s
 particularly useful for preparing data to be displayed in the console via <cite>display_menu_print_results()</cite>.</p>
@@ -503,13 +586,13 @@ returned from <cite>util_convert_pd_dataframe_to_imat_datacont()</cite>.</p>
 </dd></dl>
 
 <span class="target" id="module-iMaT.src.cli.menu_entries"><span id="menu-entries"></span></span><section id="module-cli-menu-entries-py">
-<h2>Module: cli.menu_entries.py<a class="headerlink" href="#module-cli-menu-entries-py" title="Permalink to this heading">¶</a></h2>
+<h2>Module: cli.menu_entries.py<a class="headerlink" href="#module-cli-menu-entries-py" title="Permalink to this heading"></a></h2>
 <p>This module provides functionalities to construct the entries for various menus used within the command-line interface (CLI) of the Interactive Music Analysis Tool (I-MaT).</p>
 <p>This module is responsible for constructing the menu entries for different sections of the command line interface (CLI)
 of the Interactive Music Analysis Tool (I-MaT). The menus are used to navigate through the CLI, and the functions
 in this module return the entries for each menu in a structured format.</p>
 <section id="functions">
-<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h3>
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p><cite>mainmenu_environment_settings_entries</cite>: Returns the menu entries for the main environment settings menu.</p></li>
 <li><p><cite>mainmenu_single_musical_piece_entries</cite>: Returns the menu entries for the single musical piece menu.</p></li>
@@ -532,7 +615,7 @@ and intuitive, providing clear navigation and straightforward access to the tool
 </section>
 <dl class="py function">
 <dt class="sig sig-object py" id="iMaT.src.cli.menu_entries.mainmenu_environment_settings_entries">
-<span class="sig-prename descclassname"><span class="pre">iMaT.src.cli.menu_entries.</span></span><span class="sig-name descname"><span class="pre">mainmenu_environment_settings_entries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.cli.menu_entries.mainmenu_environment_settings_entries" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.cli.menu_entries.</span></span><span class="sig-name descname"><span class="pre">mainmenu_environment_settings_entries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.cli.menu_entries.mainmenu_environment_settings_entries" title="Permalink to this definition"></a></dt>
 <dd><p>Menu for managing software paths and user preferences.</p>
 <p>Level: First Child (Parent: start_menu_entries)</p>
 <p>This function defines the second level menu for updating software
@@ -542,7 +625,7 @@ environment file and to update paths and preferences.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="iMaT.src.cli.menu_entries.mainmenu_single_musical_piece_entries">
-<span class="sig-prename descclassname"><span class="pre">iMaT.src.cli.menu_entries.</span></span><span class="sig-name descname"><span class="pre">mainmenu_single_musical_piece_entries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.cli.menu_entries.mainmenu_single_musical_piece_entries" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.cli.menu_entries.</span></span><span class="sig-name descname"><span class="pre">mainmenu_single_musical_piece_entries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.cli.menu_entries.mainmenu_single_musical_piece_entries" title="Permalink to this definition"></a></dt>
 <dd><p>Menu dedicated to operations and analyses related to a single piece of music.</p>
 <p>Level: First Child (Parent: start_menu_entries)</p>
 <p>This function defines the second level menu that is specific to
@@ -553,7 +636,7 @@ and pattern search tools.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="iMaT.src.cli.menu_entries.mainmenu_tokenization_entries">
-<span class="sig-prename descclassname"><span class="pre">iMaT.src.cli.menu_entries.</span></span><span class="sig-name descname"><span class="pre">mainmenu_tokenization_entries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.cli.menu_entries.mainmenu_tokenization_entries" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.cli.menu_entries.</span></span><span class="sig-name descname"><span class="pre">mainmenu_tokenization_entries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.cli.menu_entries.mainmenu_tokenization_entries" title="Permalink to this definition"></a></dt>
 <dd><p>Main menu for operations related to music tokenization.</p>
 <p>Level: First Child (Parent: start_menu_entries)</p>
 <p>This function defines the second level menu for tokenization
@@ -564,7 +647,7 @@ extract token data to a TXT file.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="iMaT.src.cli.menu_entries.start_menu_entries">
-<span class="sig-prename descclassname"><span class="pre">iMaT.src.cli.menu_entries.</span></span><span class="sig-name descname"><span class="pre">start_menu_entries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.cli.menu_entries.start_menu_entries" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.cli.menu_entries.</span></span><span class="sig-name descname"><span class="pre">start_menu_entries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.cli.menu_entries.start_menu_entries" title="Permalink to this definition"></a></dt>
 <dd><p>Entry point for the program, allowing navigation through various functionalities.</p>
 <p>Level: Root</p>
 <p>This function defines the top level menu of the application.
@@ -575,7 +658,7 @@ update the software paths and preferences.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="iMaT.src.cli.menu_entries.submenu_single_musical_piece_basic_functions_entries">
-<span class="sig-prename descclassname"><span class="pre">iMaT.src.cli.menu_entries.</span></span><span class="sig-name descname"><span class="pre">submenu_single_musical_piece_basic_functions_entries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.cli.menu_entries.submenu_single_musical_piece_basic_functions_entries" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.cli.menu_entries.</span></span><span class="sig-name descname"><span class="pre">submenu_single_musical_piece_basic_functions_entries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.cli.menu_entries.submenu_single_musical_piece_basic_functions_entries" title="Permalink to this definition"></a></dt>
 <dd><p>Submenu offering basic operations such as score selection and metadata display.</p>
 <p>Level: Second Child (Parent: mainmenu_single_musical_piece_entries)</p>
 <p>This function defines the third level menu for accessing basic
@@ -586,7 +669,7 @@ parts.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="iMaT.src.cli.menu_entries.submenu_single_musical_piece_pattern_search_entries">
-<span class="sig-prename descclassname"><span class="pre">iMaT.src.cli.menu_entries.</span></span><span class="sig-name descname"><span class="pre">submenu_single_musical_piece_pattern_search_entries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.cli.menu_entries.submenu_single_musical_piece_pattern_search_entries" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.cli.menu_entries.</span></span><span class="sig-name descname"><span class="pre">submenu_single_musical_piece_pattern_search_entries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.cli.menu_entries.submenu_single_musical_piece_pattern_search_entries" title="Permalink to this definition"></a></dt>
 <dd><p>Submenu for various pattern search tools in a single piece of music.</p>
 <p>Level: Second Child (Parent: mainmenu_single_musical_piece_entries)</p>
 <p>This function defines the third level menu for performing pattern
@@ -595,7 +678,7 @@ searches on a single piece of music.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="iMaT.src.cli.menu_entries.submenu_single_musical_piece_statistical_analysis_page1_entries">
-<span class="sig-prename descclassname"><span class="pre">iMaT.src.cli.menu_entries.</span></span><span class="sig-name descname"><span class="pre">submenu_single_musical_piece_statistical_analysis_page1_entries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.cli.menu_entries.submenu_single_musical_piece_statistical_analysis_page1_entries" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.cli.menu_entries.</span></span><span class="sig-name descname"><span class="pre">submenu_single_musical_piece_statistical_analysis_page1_entries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.cli.menu_entries.submenu_single_musical_piece_statistical_analysis_page1_entries" title="Permalink to this definition"></a></dt>
 <dd><p>Submenu offering various statistical analyses for a single piece of music.</p>
 <p>Level: Second Child (Parent: mainmenu_single_musical_piece_entries)</p>
 <p>This function defines the third level menu for performing
@@ -606,7 +689,7 @@ number of tones, number of rests, etc.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="iMaT.src.cli.menu_entries.submenu_single_musical_piece_statistical_analysis_page2_entries">
-<span class="sig-prename descclassname"><span class="pre">iMaT.src.cli.menu_entries.</span></span><span class="sig-name descname"><span class="pre">submenu_single_musical_piece_statistical_analysis_page2_entries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.cli.menu_entries.submenu_single_musical_piece_statistical_analysis_page2_entries" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.cli.menu_entries.</span></span><span class="sig-name descname"><span class="pre">submenu_single_musical_piece_statistical_analysis_page2_entries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.cli.menu_entries.submenu_single_musical_piece_statistical_analysis_page2_entries" title="Permalink to this definition"></a></dt>
 <dd><p>Submenu dedicated to advanced statistical analyses for a single piece of music.</p>
 <p>Level: Third Child (Parent: submenu_single_musical_piece_statistical_analysis_page1_entries)</p>
 <p>This function defines the fourth level menu for performing
@@ -615,7 +698,7 @@ advanced statistical calculations on a single piece of music.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="iMaT.src.cli.menu_entries.submenu_single_musical_piece_visualizations_entries">
-<span class="sig-prename descclassname"><span class="pre">iMaT.src.cli.menu_entries.</span></span><span class="sig-name descname"><span class="pre">submenu_single_musical_piece_visualizations_entries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.cli.menu_entries.submenu_single_musical_piece_visualizations_entries" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.cli.menu_entries.</span></span><span class="sig-name descname"><span class="pre">submenu_single_musical_piece_visualizations_entries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.cli.menu_entries.submenu_single_musical_piece_visualizations_entries" title="Permalink to this definition"></a></dt>
 <dd><p>Submenu offering various visualization tools for a single piece of music.</p>
 <p>Level: Second Child (Parent: mainmenu_single_musical_piece_entries)</p>
 <p>This function defines the third level menu for visualizing various
@@ -624,7 +707,7 @@ aspects of a single piece of music.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="iMaT.src.cli.menu_entries.submenu_tokenization_calculations_entries">
-<span class="sig-prename descclassname"><span class="pre">iMaT.src.cli.menu_entries.</span></span><span class="sig-name descname"><span class="pre">submenu_tokenization_calculations_entries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.cli.menu_entries.submenu_tokenization_calculations_entries" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.cli.menu_entries.</span></span><span class="sig-name descname"><span class="pre">submenu_tokenization_calculations_entries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.cli.menu_entries.submenu_tokenization_calculations_entries" title="Permalink to this definition"></a></dt>
 <dd><p>Submenu for conducting various calculations on tokenized data.</p>
 <p>Level: Second Child (Parent: mainmenu_tokenization_entries)</p>
 <p>This function defines the third level menu for performing
@@ -634,7 +717,7 @@ between pitch values.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="iMaT.src.cli.menu_entries.submenu_tokenization_refine_data_entries">
-<span class="sig-prename descclassname"><span class="pre">iMaT.src.cli.menu_entries.</span></span><span class="sig-name descname"><span class="pre">submenu_tokenization_refine_data_entries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.cli.menu_entries.submenu_tokenization_refine_data_entries" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">iMaT.src.cli.menu_entries.</span></span><span class="sig-name descname"><span class="pre">submenu_tokenization_refine_data_entries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iMaT.src.cli.menu_entries.submenu_tokenization_refine_data_entries" title="Permalink to this definition"></a></dt>
 <dd><p>Submenu for refining tokenized data.</p>
 <p>Level: Second Child (Parent: mainmenu_tokenization_entries)</p>
 <p>This function defines the third level menu for refining
@@ -645,88 +728,34 @@ and convert duration values to a different format.</p>
 </section>
 
 
+           </div>
           </div>
-          
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="src.analysis.html" class="btn btn-neutral float-left" title="Package: Analysis (src.analysis)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="src.conversion.html" class="btn btn-neutral float-right" title="Package: File Conversion (src.conversion)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Sebastian Oliver Eck.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="../index.html">I-MaT</a></h1>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
 
-
-
-
-
-
-
-
-<h3>Navigation</h3>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started with I-MaT</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contribute.html">How to Contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="src.html">I-MaT: Source Code</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="src.analysis.html">Package: Analysis (src.analysis)</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Package: Command Line Interface (src.cli)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="src.conversion.html">Package: File Conversion (src.conversion)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="src.m21_environment.html">Package: music21 Environment File Configuration (src.m21_environment)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="src.pattern_search.html">Package: Pattern Search (src.pattern_search)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="src.score_selection.html">Package: Score Selection (src.score_selection)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="src.tokenization.html">Package: Tokenization (src.tokenization)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="src.utils.html">Package: Utility Functions (src.utils)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="src.visualizations.html">Package: Visualizations (src.visualizations)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="src.constants.html">Module: Constants (src.constants)</a></li>
-</ul>
-</li>
-</ul>
-
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="../index.html">Documentation overview</a><ul>
-  <li><a href="src.html">I-MaT: Source Code</a><ul>
-      <li>Previous: <a href="src.analysis.html" title="previous chapter">Package: Analysis (src.analysis)</a></li>
-      <li>Next: <a href="src.conversion.html" title="next chapter">Package: File Conversion (src.conversion)</a></li>
-  </ul></li>
-  </ul></li>
-</ul>
-</div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-
-
-
-
-
-
-
-
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2023, Sebastian Oliver Eck.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.0.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
-      
-      |
-      <a href="../_sources/module_files/src.cli.md.txt"
-          rel="nofollow">Page source</a>
-    </div>
-
-    
-
-    
-  </body>
+</body>
 </html>
