@@ -4,6 +4,8 @@ The **Interactive Music Analysis Tool (I-MaT)**[^1] is a modular program designe
 
 The project was located at the Department of Musicology Weimar-Jena at the Franz Liszt University of Music Weimar[^4] and was funded by the Thuringian Ministry for Economy, Science and Digital Change and the Deutscher Stifterverband.[^5]
 
+A comprehensive documentation is available on: https://i-mat.readthedocs.io/en/latest/
+
 ## Project Overview
 
 The aim of the aforementioned project was to design, test, teach with and evaluate a comprehensive set of teaching modules for music analysis that make use of various computer-assisted, primarily quantitative analysis tools. The teaching modules were intended to complement conventional musicological and analysis courses and mainly focus on:
