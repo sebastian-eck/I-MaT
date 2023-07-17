@@ -8,364 +8,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="261d9175-119f-4a99-aab1-0189b930fb8c" name="Changes" comment="final changes (for now)">
-      <change afterPath="$PROJECT_DIR$/imat/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/__main__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/Makefile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/doctrees/environment.pickle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/doctrees/index.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.buildinfo" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/api_reference.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/contribute.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/environment.pickle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/getting_started.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/index.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/license.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/module_files/analysis/src.analysis.functions.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/module_files/analysis/src.analysis.main.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/module_files/analysis/src.analysis.utils.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/module_files/modules.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/module_files/src.analysis.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/module_files/src.analysis.functions.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/module_files/src.analysis.main.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/module_files/src.analysis.utils.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/module_files/src.cli.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/module_files/src.constants.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/module_files/src.conversion.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/module_files/src.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/module_files/src.examples.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/module_files/src.m21_environment.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/module_files/src.pattern_search.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/module_files/src.score_selection.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/module_files/src.tokenization.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/module_files/src.tokenization.refine_results.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/module_files/src.utils.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/module_files/src.visualizations.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/modules.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/src.analysis.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/src.cli.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/src.conversion.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/src.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/src.examples.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/src.m21_environment.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/src.pattern_search.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/src.score_selection.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/src.tokenization.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/src.tokenization.refine_results.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/src.utils.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/src.visualizations.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/src/iMaT.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/src/iMaT.src.analysis.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/src/iMaT.src.cli.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/src/iMaT.src.conversion.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/src/iMaT.src.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/src/iMaT.src.examples.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/src/iMaT.src.m21_environment.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/src/iMaT.src.pattern_search.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/src/iMaT.src.score_selection.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/src/iMaT.src.tokenization.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/src/iMaT.src.tokenization.refine_results.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/src/iMaT.src.utils.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/src/iMaT.src.visualizations.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/src/modules.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/src/src.analysis.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/src/src.cli.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/src/src.conversion.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/src/src.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/src/src.examples.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/src/src.m21_environment.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/src/src.pattern_search.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/src/src.score_selection.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/src/src.tokenization.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/src/src.tokenization.refine_results.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/src/src.utils.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/src/src.visualizations.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/usage.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/.doctrees/user_guide.doctree" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_modules/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_modules/src/analysis/functions.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_modules/src/analysis/main.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_modules/src/analysis/utils.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_modules/src/cli/menu_constructors.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_modules/src/cli/menu_entries.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_modules/src/conversion/main.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_modules/src/conversion/utils.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_modules/src/m21_environment/main.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_modules/src/pattern_search/functions.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_modules/src/pattern_search/main.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_modules/src/pattern_search/utils.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_modules/src/score_selection/main.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_modules/src/score_selection/name_parts.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_modules/src/score_selection/select_parts_and_measures.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_modules/src/tokenization/main.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_modules/src/tokenization/refine_results/absolute_duration.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_modules/src/tokenization/refine_results/calculate_pitch_intervals.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_modules/src/tokenization/refine_results/remove_prefixes.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_modules/src/tokenization/refine_results/tokens_to_txt.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_modules/src/tokenization/utils.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_modules/src/utils/error_handling.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_modules/src/utils/misc.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_modules/src/visualizations/analysis_results_graphs.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_modules/src/visualizations/m21_integrated.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_modules/src/visualizations/main.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/api_reference.md.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/contribute.md.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/getting_started.md.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/index.md.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/index.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/license.md.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/module_files/analysis/src.analysis.functions.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/module_files/analysis/src.analysis.main.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/module_files/analysis/src.analysis.utils.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/module_files/modules.md.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/module_files/src.analysis.functions.md.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/module_files/src.analysis.functions.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/module_files/src.analysis.main.md.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/module_files/src.analysis.main.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/module_files/src.analysis.md.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/module_files/src.analysis.utils.md.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/module_files/src.analysis.utils.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/module_files/src.cli.md.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/module_files/src.constants.md.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/module_files/src.conversion.md.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/module_files/src.examples.md.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/module_files/src.m21_environment.md.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/module_files/src.md.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/module_files/src.pattern_search.md.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/module_files/src.score_selection.md.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/module_files/src.tokenization.md.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/module_files/src.tokenization.refine_results.md.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/module_files/src.utils.md.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/module_files/src.visualizations.md.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/modules.md.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/modules.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src.analysis.md.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src.analysis.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src.cli.md.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src.cli.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src.conversion.md.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src.conversion.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src.examples.md.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src.examples.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src.m21_environment.md.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src.m21_environment.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src.md.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src.pattern_search.md.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src.pattern_search.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src.score_selection.md.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src.score_selection.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src.tokenization.md.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src.tokenization.refine_results.md.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src.tokenization.refine_results.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src.tokenization.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src.utils.md.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src.utils.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src.visualizations.md.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src.visualizations.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src/iMaT.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src/iMaT.src.analysis.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src/iMaT.src.cli.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src/iMaT.src.conversion.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src/iMaT.src.examples.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src/iMaT.src.m21_environment.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src/iMaT.src.pattern_search.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src/iMaT.src.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src/iMaT.src.score_selection.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src/iMaT.src.tokenization.refine_results.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src/iMaT.src.tokenization.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src/iMaT.src.utils.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src/iMaT.src.visualizations.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src/modules.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src/src.analysis.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src/src.cli.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src/src.conversion.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src/src.examples.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src/src.m21_environment.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src/src.pattern_search.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src/src.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src/src.score_selection.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src/src.tokenization.refine_results.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src/src.tokenization.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src/src.utils.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/src/src.visualizations.rst.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/usage.md.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_sources/user_guide.md.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/_sphinx_javascript_frameworks_compat.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/alabaster.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/basic.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/css/badge_only.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/Roboto-Slab-Bold.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/Roboto-Slab-Bold.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/Roboto-Slab-Regular.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/Roboto-Slab-Regular.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/fontawesome-webfont.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/fontawesome-webfont.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/fontawesome-webfont.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/fontawesome-webfont.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/fontawesome-webfont.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/lato-bold-italic.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/lato-bold-italic.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/lato-bold.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/lato-bold.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/lato-normal-italic.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/lato-normal-italic.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/lato-normal.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/css/fonts/lato-normal.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/css/theme.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/custom.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/debug.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/doctools.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/documentation_options.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/file.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/jquery.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/js/badge_only.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/js/html5shiv-printshiv.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/js/html5shiv.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/js/theme.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/language_data.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/minus.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/plus.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/pygments.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/scripts/furo-extensions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/scripts/furo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/scripts/furo.js.LICENSE.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/scripts/furo.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/searchtools.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/skeleton.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/sphinx_highlight.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/styles/furo-extensions.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/styles/furo-extensions.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/styles/furo.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/_static/styles/furo.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/api_reference.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/contribute.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/genindex.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/getting_started.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/license.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/module_files/analysis/src.analysis.functions.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/module_files/analysis/src.analysis.main.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/module_files/analysis/src.analysis.utils.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/module_files/modules.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/module_files/src.analysis.functions.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/module_files/src.analysis.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/module_files/src.analysis.main.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/module_files/src.analysis.utils.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/module_files/src.cli.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/module_files/src.constants.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/module_files/src.conversion.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/module_files/src.examples.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/module_files/src.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/module_files/src.m21_environment.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/module_files/src.pattern_search.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/module_files/src.score_selection.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/module_files/src.tokenization.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/module_files/src.tokenization.refine_results.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/module_files/src.utils.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/module_files/src.visualizations.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/modules.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/objects.inv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/py-modindex.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/search.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/searchindex.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/src.analysis.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/src.cli.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/src.conversion.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/src.examples.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/src.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/src.m21_environment.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/src.pattern_search.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/src.score_selection.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/src.tokenization.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/src.tokenization.refine_results.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/src.utils.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/src.visualizations.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/src/modules.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/src/src.analysis.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/src/src.cli.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/src/src.conversion.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/src/src.examples.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/src/src.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/src/src.m21_environment.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/src/src.pattern_search.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/src/src.score_selection.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/src/src.tokenization.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/src/src.tokenization.refine_results.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/src/src.utils.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/src/src.visualizations.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/usage.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/build/html/user_guide.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/make.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/source/conf.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/source/contribute.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/source/getting_started.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/source/index.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/source/license.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/source/module_files/src.analysis.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/source/module_files/src.cli.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/source/module_files/src.constants.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/source/module_files/src.conversion.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/source/module_files/src.m21_environment.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/source/module_files/src.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/source/module_files/src.pattern_search.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/source/module_files/src.score_selection.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/source/module_files/src.tokenization.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/source/module_files/src.tokenization.refine_results.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/source/module_files/src.utils.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/source/module_files/src.visualizations.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/docs/source/user_guide.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/src/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/src/analysis/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/src/analysis/functions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/src/analysis/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/src/analysis/utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/src/cli/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/src/cli/menu_constructors.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/src/cli/menu_entries.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/src/constants.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/src/conversion/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/src/conversion/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/src/conversion/utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/src/m21_environment/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/src/m21_environment/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/src/pattern_search/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/src/pattern_search/functions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/src/pattern_search/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/src/pattern_search/utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/src/score_selection/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/src/score_selection/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/src/score_selection/name_parts.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/src/score_selection/select_parts_and_measures.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/src/tokenization/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/src/tokenization/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/src/tokenization/refine_results/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/src/tokenization/refine_results/absolute_duration.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/src/tokenization/refine_results/calculate_pitch_intervals.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/src/tokenization/refine_results/remove_prefixes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/src/tokenization/refine_results/tokens_to_txt.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/src/tokenization/utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/src/utils/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/src/utils/error_handling.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/src/utils/misc.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/src/visualizations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/src/visualizations/analysis_results_graphs.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/src/visualizations/m21_integrated.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/src/visualizations/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/imat/tests/test_main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT.egg-info/PKG-INFO" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT.egg-info/SOURCES.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT.egg-info/dependency_links.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT.egg-info/entry_points.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT.egg-info/requires.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT.egg-info/top_level.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/doctrees/environment.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/doctrees/environment.pickle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/doctrees/index.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/doctrees/index.doctree" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.buildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.buildinfo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/api_reference.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/api_reference.doctree" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/contribute.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/contribute.doctree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/environment.pickle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/environment.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/environment.pickle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/analysis/src.analysis.functions.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/analysis/src.analysis.functions.doctree" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/analysis/src.analysis.main.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/analysis/src.analysis.main.doctree" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/analysis/src.analysis.utils.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.doctrees/module_files/analysis/src.analysis.utils.doctree" afterDir="false" />
@@ -474,6 +124,7 @@
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/custom.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/debug.css" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/debug.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/doctools.js" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/doctools.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/documentation_options.js" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/documentation_options.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/jquery.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/js/html5shiv-printshiv.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/js/html5shiv-printshiv.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/js/html5shiv.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/js/html5shiv.min.js" afterDir="false" />
@@ -510,7 +161,6 @@
       <change beforePath="$PROJECT_DIR$/iMaT/docs/source/conf.py" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/source/conf.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/source/contribute.md" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/source/contribute.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/src/cli/menu_constructors.py" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/src/cli/menu_constructors.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -985,7 +635,8 @@
       <workItem from="1689604976230" duration="7000" />
       <workItem from="1689605091269" duration="76000" />
       <workItem from="1689605717270" duration="1607000" />
-      <workItem from="1689607895633" duration="166000" />
+      <workItem from="1689607895633" duration="572000" />
+      <workItem from="1689608572510" duration="1066000" />
     </task>
     <task id="LOCAL-00001" summary="Splitting (lots of work to do)">
       <created>1686194669168</created>
@@ -1141,7 +792,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688121510925</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="final changes (for now)">
+      <created>1689608105647</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1689608105647</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1189,7 +847,8 @@
     <MESSAGE value="Added module docstrings" />
     <MESSAGE value="added building dependency. Added html theme" />
     <MESSAGE value="added crossreferences functions" />
-    <option name="LAST_COMMIT_MESSAGE" value="added crossreferences functions" />
+    <MESSAGE value="final changes (for now)" />
+    <option name="LAST_COMMIT_MESSAGE" value="final changes (for now)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

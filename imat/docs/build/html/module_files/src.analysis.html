@@ -1,40 +1,129 @@
 <!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
-    <title>Package: Analysis (src.analysis) &#8212; I-MaT 0.0.1 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Package: Analysis (src.analysis) &mdash; I-MaT 3.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Package: Command Line Interface (src.cli)" href="src.cli.html" />
-    <link rel="prev" title="I-MaT: Source Code" href="src.html" />
-   
-  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+    <link rel="prev" title="I-MaT: Source Code" href="src.html" /> 
+</head>
 
-  </head><body>
-  
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
           
+          
+          <a href="../index.html" class="icon icon-home">
+            I-MaT
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started with I-MaT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute.html">How to Contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="src.html">I-MaT: Source Code</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Package: Analysis (src.analysis)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-analysis-functions-py">Module: analysis.functions.py</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#src.analysis.functions.analysis_advanced_calculate_activity_rate"><code class="docutils literal notranslate"><span class="pre">analysis_advanced_calculate_activity_rate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.analysis.functions.analysis_advanced_compare_pitches_and_pitch_classes_per_duration"><code class="docutils literal notranslate"><span class="pre">analysis_advanced_compare_pitches_and_pitch_classes_per_duration()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.analysis.functions.analysis_ambitus"><code class="docutils literal notranslate"><span class="pre">analysis_ambitus()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.analysis.functions.analysis_number_of_intervals_per_type"><code class="docutils literal notranslate"><span class="pre">analysis_number_of_intervals_per_type()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.analysis.functions.analysis_number_of_intervals_per_type_with_direction"><code class="docutils literal notranslate"><span class="pre">analysis_number_of_intervals_per_type_with_direction()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.analysis.functions.analysis_number_of_notes"><code class="docutils literal notranslate"><span class="pre">analysis_number_of_notes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.analysis.functions.analysis_number_of_pitch_classes_per_metrical_position"><code class="docutils literal notranslate"><span class="pre">analysis_number_of_pitch_classes_per_metrical_position()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.analysis.functions.analysis_number_of_pitch_classes_per_offset"><code class="docutils literal notranslate"><span class="pre">analysis_number_of_pitch_classes_per_offset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.analysis.functions.analysis_number_of_pitch_classes_per_tone_duration"><code class="docutils literal notranslate"><span class="pre">analysis_number_of_pitch_classes_per_tone_duration()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.analysis.functions.analysis_number_of_pitches_per_metrical_position"><code class="docutils literal notranslate"><span class="pre">analysis_number_of_pitches_per_metrical_position()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.analysis.functions.analysis_number_of_pitches_per_offset"><code class="docutils literal notranslate"><span class="pre">analysis_number_of_pitches_per_offset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.analysis.functions.analysis_number_of_pitches_per_tone_duration"><code class="docutils literal notranslate"><span class="pre">analysis_number_of_pitches_per_tone_duration()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.analysis.functions.analysis_number_of_rests"><code class="docutils literal notranslate"><span class="pre">analysis_number_of_rests()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.analysis.functions.analysis_number_of_rests_per_rest_duration"><code class="docutils literal notranslate"><span class="pre">analysis_number_of_rests_per_rest_duration()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.analysis.functions.analysis_number_of_sound_events_per_metrical_position"><code class="docutils literal notranslate"><span class="pre">analysis_number_of_sound_events_per_metrical_position()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.analysis.functions.analysis_number_of_sound_events_per_pitch"><code class="docutils literal notranslate"><span class="pre">analysis_number_of_sound_events_per_pitch()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.analysis.functions.analysis_number_of_sound_events_per_pitch_class"><code class="docutils literal notranslate"><span class="pre">analysis_number_of_sound_events_per_pitch_class()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.analysis.functions.analysis_number_of_sound_events_per_tone_duration"><code class="docutils literal notranslate"><span class="pre">analysis_number_of_sound_events_per_tone_duration()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-analysis-main-py">Module: analysis.main.py</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#src.analysis.main.analysis_workflow_single_musical_piece"><code class="docutils literal notranslate"><span class="pre">analysis_workflow_single_musical_piece()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-analysis-utils-py">Module: analysis.utils.py</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#src.analysis.utils.display_user_options_post_analysis"><code class="docutils literal notranslate"><span class="pre">display_user_options_post_analysis()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.cli.html">Package: Command Line Interface (src.cli)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.conversion.html">Package: File Conversion (src.conversion)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.m21_environment.html">Package: music21 Environment File Configuration (src.m21_environment)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.pattern_search.html">Package: Pattern Search (src.pattern_search)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.score_selection.html">Package: Score Selection (src.score_selection)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.tokenization.html">Package: Tokenization (src.tokenization)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.utils.html">Package: Utility Functions (src.utils)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.visualizations.html">Package: Visualizations (src.visualizations)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.constants.html">Module: Constants (src.constants)</a></li>
+</ul>
+</li>
+</ul>
 
-          <div class="body" role="main">
-            
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">I-MaT</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="src.html">I-MaT: Source Code</a></li>
+      <li class="breadcrumb-item active">Package: Analysis (src.analysis)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/module_files/src.analysis.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
   <section id="package-analysis-src-analysis">
-<h1>Package: Analysis (src.analysis)<a class="headerlink" href="#package-analysis-src-analysis" title="Permalink to this heading">¶</a></h1>
+<h1>Package: Analysis (src.analysis)<a class="headerlink" href="#package-analysis-src-analysis" title="Permalink to this heading"></a></h1>
 <span class="target" id="module-src.analysis.functions"><span id="analysis-functions"></span></span><section id="module-analysis-functions-py">
-<h2>Module: analysis.functions.py<a class="headerlink" href="#module-analysis-functions-py" title="Permalink to this heading">¶</a></h2>
+<h2>Module: analysis.functions.py<a class="headerlink" href="#module-analysis-functions-py" title="Permalink to this heading"></a></h2>
 <p>This module includes various functions for musical analysis in the Interactive Music Analysis Tool (I-MaT). These functions take a music21 stream object and return the result as a pandas DataFrame.</p>
 <p>This module contains various musical analysis functions to be used within the Interactive Music Analysis Tool (I-MaT).
 Each function in this module performs a specific type of music analysis on a music21 stream object and returns the
@@ -45,7 +134,7 @@ comparing pitches and pitch classes per duration.</p>
 are designed to be easily readable, making them flexible tools for musical analysis. They also use a standard interface,
 accepting a music21 stream object and an identifier string as input and returning a pandas DataFrame as output.</p>
 <section id="functions">
-<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h3>
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>analysis_advanced_calculate_activity_rate</p></li>
 <li><p>analysis_advanced_compare_pitches_and_pitch_classes_per_duration</p></li>
@@ -71,7 +160,7 @@ accepting a music21 stream object and an identifier string as input and returnin
 </section>
 <dl class="py function">
 <dt class="sig sig-object py" id="src.analysis.functions.analysis_advanced_calculate_activity_rate">
-<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_advanced_calculate_activity_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_advanced_calculate_activity_rate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_advanced_calculate_activity_rate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_advanced_calculate_activity_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_advanced_calculate_activity_rate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_advanced_calculate_activity_rate" title="Permalink to this definition"></a></dt>
 <dd><p>Calculate the activity index of a music21 stream object, representing the ratio of the number of notes to the number of rests.</p>
 <p>The function calculates the number of notes and rests separately, and then calculates their ratio. If the number of rests is zero,
 it treats the activity rate as NaN to avoid division by zero.</p>
@@ -101,7 +190,7 @@ while a lower activity index means more rests relative to notes, suggesting a mo
 
 <dl class="py function">
 <dt class="sig sig-object py" id="src.analysis.functions.analysis_advanced_compare_pitches_and_pitch_classes_per_duration">
-<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_advanced_compare_pitches_and_pitch_classes_per_duration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_advanced_compare_pitches_and_pitch_classes_per_duration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_advanced_compare_pitches_and_pitch_classes_per_duration" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_advanced_compare_pitches_and_pitch_classes_per_duration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_advanced_compare_pitches_and_pitch_classes_per_duration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_advanced_compare_pitches_and_pitch_classes_per_duration" title="Permalink to this definition"></a></dt>
 <dd><p>Compare the number of distinct pitches and pitch classes per duration in a music21 stream object.</p>
 <p>This function combines the analysis of the number of distinct pitches per duration and the number of distinct pitch classes per duration.
 By comparing these two analyses, one can observe how the tonal variety (in terms of both specific pitches and pitch classes)
@@ -139,7 +228,7 @@ the greater the repetition of certain pitches, suggesting a focus or emphasis on
 
 <dl class="py function">
 <dt class="sig sig-object py" id="src.analysis.functions.analysis_ambitus">
-<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_ambitus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_ambitus"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_ambitus" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_ambitus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_ambitus"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_ambitus" title="Permalink to this definition"></a></dt>
 <dd><p>Analyze and calculate the ambitus (range) of pitches in a music21 stream object and associate it with an identifier.</p>
 <p>The function first prepares the music object by removing tied notes, which might alter the true ambitus range.
 Then, it goes through all the note elements in the music object to determine the lowest and highest pitches.
@@ -178,7 +267,7 @@ If there are no pitches in the music, the ambitus values will be indicated with 
 
 <dl class="py function">
 <dt class="sig sig-object py" id="src.analysis.functions.analysis_number_of_intervals_per_type">
-<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_intervals_per_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_intervals_per_type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_intervals_per_type" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_intervals_per_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_intervals_per_type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_intervals_per_type" title="Permalink to this definition"></a></dt>
 <dd><p>Analyze and count the number of different interval types in a music21 stream object and associate it with an identifier.</p>
 <p>The function first prepares the music object by removing tied notes to ensure that each interval is counted separately.
 Then, it goes through all the pairs of consecutive notes in the music object to determine the type of interval between
@@ -215,7 +304,7 @@ interval type in the music.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="src.analysis.functions.analysis_number_of_intervals_per_type_with_direction">
-<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_intervals_per_type_with_direction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_intervals_per_type_with_direction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_intervals_per_type_with_direction" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_intervals_per_type_with_direction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_intervals_per_type_with_direction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_intervals_per_type_with_direction" title="Permalink to this definition"></a></dt>
 <dd><p>Analyze and count the number of different interval types in a music21 stream object and associate it with an identifier,
 considering the direction of the interval.</p>
 <p>The function first prepares the music object by removing tied notes to ensure that each interval is counted separately.
@@ -256,7 +345,7 @@ both ascending and descending directions.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="src.analysis.functions.analysis_number_of_notes">
-<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_notes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_notes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_notes" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_notes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_notes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_notes" title="Permalink to this definition"></a></dt>
 <dd><p>Analyze and count the number of notes (individual pitches) in a music21 stream object and associate it with an identifier.</p>
 <p>The function first prepares the music object by removing tied notes to ensure that each pitch is counted separately.
 Then, it goes through all the note elements in the music object to count the number of notes. Note that only
@@ -290,7 +379,7 @@ notes in the stream.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="src.analysis.functions.analysis_number_of_pitch_classes_per_metrical_position">
-<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_pitch_classes_per_metrical_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_pitch_classes_per_metrical_position"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_pitch_classes_per_metrical_position" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_pitch_classes_per_metrical_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_pitch_classes_per_metrical_position"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_pitch_classes_per_metrical_position" title="Permalink to this definition"></a></dt>
 <dd><p>Analyze and count the number of occurrences of each pitch class at each metrical position in a music21 stream object, and associate it with an identifier.</p>
 <p>The function first prepares the music object by removing tied notes to ensure that each pitch class-metrical position pair is counted separately.
 Then, it goes through all the notes in the music object to count the number of occurrences of each pitch class-metrical position combination.</p>
@@ -322,7 +411,7 @@ the number and name of each pitch class, and the count of each pitch class at ea
 
 <dl class="py function">
 <dt class="sig sig-object py" id="src.analysis.functions.analysis_number_of_pitch_classes_per_offset">
-<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_pitch_classes_per_offset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_pitch_classes_per_offset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_pitch_classes_per_offset" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_pitch_classes_per_offset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_pitch_classes_per_offset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_pitch_classes_per_offset" title="Permalink to this definition"></a></dt>
 <dd><p>Analyze and count the number of pitch classes per offset (time position) in a music21 stream object, and associate it with an identifier.</p>
 <p>The function first prepares the music object by removing tied notes to ensure that each pitch class-offset pair is counted separately.
 Then, it goes through all the notes in the music object to count the number of occurrences of each pitch class-offset combination.</p>
@@ -358,7 +447,7 @@ events (number of occurrences) for each combination of offset and pitch class.</
 
 <dl class="py function">
 <dt class="sig sig-object py" id="src.analysis.functions.analysis_number_of_pitch_classes_per_tone_duration">
-<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_pitch_classes_per_tone_duration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_pitch_classes_per_tone_duration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_pitch_classes_per_tone_duration" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_pitch_classes_per_tone_duration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_pitch_classes_per_tone_duration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_pitch_classes_per_tone_duration" title="Permalink to this definition"></a></dt>
 <dd><p>Analyze and count the number of pitch classes per tone duration (quarter length) in a music21 stream object, and associate it with an identifier.</p>
 <p>The function first prepares the music object by removing tied notes to ensure that each pitch class-duration pair is counted separately.
 Then, it goes through all the notes in the music object to count the number of occurrences of each pitch class-duration combination.</p>
@@ -384,7 +473,7 @@ pitch class, tone duration, pitch class symbol, and the count of sound events.</
 
 <dl class="py function">
 <dt class="sig sig-object py" id="src.analysis.functions.analysis_number_of_pitches_per_metrical_position">
-<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_pitches_per_metrical_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_pitches_per_metrical_position"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_pitches_per_metrical_position" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_pitches_per_metrical_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_pitches_per_metrical_position"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_pitches_per_metrical_position" title="Permalink to this definition"></a></dt>
 <dd><p>Analyze and count the number of occurrences of each pitch at each metrical position in a music21 stream object and associate it with an identifier.</p>
 <p>The function first prepares the music object by removing tied notes to ensure that each pitch-metrical position pair is counted separately.
 Then, it goes through all the notes in the music object to count the number of occurrences of each pitch-metrical position combination.</p>
@@ -415,7 +504,7 @@ the MIDI number and name of each pitch, and the count of each pitch at each metr
 
 <dl class="py function">
 <dt class="sig sig-object py" id="src.analysis.functions.analysis_number_of_pitches_per_offset">
-<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_pitches_per_offset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_pitches_per_offset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_pitches_per_offset" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_pitches_per_offset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_pitches_per_offset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_pitches_per_offset" title="Permalink to this definition"></a></dt>
 <dd><p>Analyze and count the number of pitches per offset (time position) in a music21 stream object, and associate it with an identifier.</p>
 <p>The function first prepares the music object by removing tied notes to ensure that each pitch-offset pair is counted separately.
 Then, it goes through all the notes in the music object to count the number of occurrences of each pitch-offset combination.</p>
@@ -451,7 +540,7 @@ of offset and pitch.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="src.analysis.functions.analysis_number_of_pitches_per_tone_duration">
-<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_pitches_per_tone_duration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_pitches_per_tone_duration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_pitches_per_tone_duration" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_pitches_per_tone_duration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_pitches_per_tone_duration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_pitches_per_tone_duration" title="Permalink to this definition"></a></dt>
 <dd><p>Analyze and count the number of pitches per tone duration (quarter length) in a music21 stream object and associate it with an identifier.</p>
 <p>The function first prepares the music object by removing tied notes to ensure that each pitch-duration pair is counted separately.
 Then, it goes through all the notes in the music object to count the number of occurrences of each pitch-duration combination.</p>
@@ -483,7 +572,7 @@ Pitch Names, Duration, Duration Names, and the count of sound events for each co
 
 <dl class="py function">
 <dt class="sig sig-object py" id="src.analysis.functions.analysis_number_of_rests">
-<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_rests</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_rests"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_rests" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_rests</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_rests"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_rests" title="Permalink to this definition"></a></dt>
 <dd><p>Analyze and count the number of rests in a music21 stream object and associate it with an identifier.</p>
 <p>The function first prepares the music object by removing tied notes to ensure that each rest is counted separately.
 Then, it goes through all the rest elements in the music object to count the number of rests.</p>
@@ -515,7 +604,7 @@ of rests in the music.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="src.analysis.functions.analysis_number_of_rests_per_rest_duration">
-<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_rests_per_rest_duration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_rests_per_rest_duration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_rests_per_rest_duration" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_rests_per_rest_duration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_rests_per_rest_duration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_rests_per_rest_duration" title="Permalink to this definition"></a></dt>
 <dd><p>Analyze and count the number of rests per duration in a music21 stream object and associate it with an identifier.</p>
 <p>The function first prepares the music object by removing tied notes to ensure that each rest is counted separately.
 Then, it goes through all the rest elements in the music object to count the number of rests per duration.</p>
@@ -548,7 +637,7 @@ duration in the music.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="src.analysis.functions.analysis_number_of_sound_events_per_metrical_position">
-<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_sound_events_per_metrical_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_sound_events_per_metrical_position"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_sound_events_per_metrical_position" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_sound_events_per_metrical_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_sound_events_per_metrical_position"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_sound_events_per_metrical_position" title="Permalink to this definition"></a></dt>
 <dd><p>Analyze and count the number of sound events per metrical position in a music21 stream object and associate it with an identifier.</p>
 <p>The function first prepares the music object by removing tied notes to ensure that each sound event is counted separately.
 Then, it goes through all the notes in the music object to count the number of occurrences of each metrical position.</p>
@@ -578,7 +667,7 @@ and the count of sound events for each metrical position.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="src.analysis.functions.analysis_number_of_sound_events_per_pitch">
-<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_sound_events_per_pitch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_sound_events_per_pitch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_sound_events_per_pitch" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_sound_events_per_pitch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_sound_events_per_pitch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_sound_events_per_pitch" title="Permalink to this definition"></a></dt>
 <dd><p>Analyze and count the number of sound events per pitch in a music21 stream object and associate it with an identifier.</p>
 <p>The function first prepares the music object by removing tied notes to ensure that each sound event is counted separately.
 Then, it goes through all the notes in the music object to count the number of occurrences of each pitch.</p>
@@ -611,7 +700,7 @@ value, the pitch name, and the count of sound events for each pitch.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="src.analysis.functions.analysis_number_of_sound_events_per_pitch_class">
-<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_sound_events_per_pitch_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_sound_events_per_pitch_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_sound_events_per_pitch_class" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_sound_events_per_pitch_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_sound_events_per_pitch_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_sound_events_per_pitch_class" title="Permalink to this definition"></a></dt>
 <dd><p>Analyze and count the number of sound events per pitch class in a music21 stream object and associate it with an identifier.</p>
 <p>The function first prepares the music object by removing tied notes to ensure that each sound event is counted separately.
 Then, it goes through all the notes in the music object to count the number of occurrences of each pitch class.</p>
@@ -646,7 +735,7 @@ class value, the pitch class symbol, and the count of sound events for each pitc
 
 <dl class="py function">
 <dt class="sig sig-object py" id="src.analysis.functions.analysis_number_of_sound_events_per_tone_duration">
-<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_sound_events_per_tone_duration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_sound_events_per_tone_duration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_sound_events_per_tone_duration" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.analysis.functions.</span></span><span class="sig-name descname"><span class="pre">analysis_number_of_sound_events_per_tone_duration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/functions.html#analysis_number_of_sound_events_per_tone_duration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.functions.analysis_number_of_sound_events_per_tone_duration" title="Permalink to this definition"></a></dt>
 <dd><p>Analyze and count the number of sound events per tone duration (quarter length) in a music21 stream object,
 and associate it with an identifier.</p>
 <p>The function first prepares the music object by removing tied notes to ensure that each sound event is counted separately.
@@ -679,7 +768,7 @@ the tone duration name, and the count of sound events for each tone duration.</p
 </dd></dl>
 
 <span class="target" id="module-src.analysis.main"></span><section id="module-analysis-main-py">
-<h2>Module: analysis.main.py<a class="headerlink" href="#module-analysis-main-py" title="Permalink to this heading">¶</a></h2>
+<h2>Module: analysis.main.py<a class="headerlink" href="#module-analysis-main-py" title="Permalink to this heading"></a></h2>
 <p>This module includes the main function for handling the workflow for analyzing a single musical piece within the Interactive Music Analysis Tool (I-MaT) tool.</p>
 <p>This module includes the function <cite>analysis_workflow_single_musical_piece</cite>, which is a key function to handle
 the workflow for analyzing a single musical piece in the Interactive Music Analysis Tool (I-MaT) tool.</p>
@@ -690,7 +779,7 @@ displaying the results, and handling post-analysis user options.</p>
 <p>For a detailed workflow, refer to the docstring of <cite>analysis_workflow_single_musical_piece</cite> function.</p>
 <p>This module is intended to be imported and used by the main entry point of the I-MaT system.</p>
 <section id="functions">
-<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h3>
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p><cite>analysis_workflow_single_musical_piece</cite>: Manages the complete process of selecting a score, performing analysis using a user-specified function, displaying the results, and handling post-analysis user options.</p></li>
 </ul>
@@ -699,7 +788,7 @@ displaying the results, and handling post-analysis user options.</p>
 </section>
 <dl class="py function">
 <dt class="sig sig-object py" id="src.analysis.main.analysis_workflow_single_musical_piece">
-<span class="sig-prename descclassname"><span class="pre">src.analysis.main.</span></span><span class="sig-name descname"><span class="pre">analysis_workflow_single_musical_piece</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">analysis_func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">callable</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/main.html#analysis_workflow_single_musical_piece"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.main.analysis_workflow_single_musical_piece" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.analysis.main.</span></span><span class="sig-name descname"><span class="pre">analysis_workflow_single_musical_piece</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">analysis_func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">callable</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/main.html#analysis_workflow_single_musical_piece"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.main.analysis_workflow_single_musical_piece" title="Permalink to this definition"></a></dt>
 <dd><p>Handles the workflow for analyzing a single musical piece.</p>
 <p>This function manages the entire process of selecting a score,
 performing the analysis using the provided function, displaying the results,
@@ -739,7 +828,7 @@ a music score object and a string identifier.</p>
 </dd></dl>
 
 <span class="target" id="module-src.analysis.utils"></span><section id="module-analysis-utils-py">
-<h2>Module: analysis.utils.py<a class="headerlink" href="#module-analysis-utils-py" title="Permalink to this heading">¶</a></h2>
+<h2>Module: analysis.utils.py<a class="headerlink" href="#module-analysis-utils-py" title="Permalink to this heading"></a></h2>
 <p>This module contains utility functions that are used within the analysis package, particularly
 for displaying menus and handling user input post analysis. These functions are used to enhance
 the interaction of the users with the Interactive Music Analysis Tool (I-MaT) system.</p>
@@ -751,7 +840,7 @@ exporting results, displaying results, or going back to the main menu.</p>
 <cite>menu_constructors</cite> module and <cite>handle_error</cite> from <cite>error_handling</cite> module are used to handle menu
 displays and error scenarios respectively.</p>
 <section id="functions">
-<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h3>
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p><cite>display_user_options_post_analysis</cite>: Presents the user with a menu of options after the analysis of a piece. This includes options to repeat the analysis, export results, display results, or go back to the main menu.</p></li>
 </ul>
@@ -760,7 +849,7 @@ displays and error scenarios respectively.</p>
 </section>
 <dl class="py function">
 <dt class="sig sig-object py" id="src.analysis.utils.display_user_options_post_analysis">
-<span class="sig-prename descclassname"><span class="pre">src.analysis.utils.</span></span><span class="sig-name descname"><span class="pre">display_user_options_post_analysis</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/utils.html#display_user_options_post_analysis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.utils.display_user_options_post_analysis" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.analysis.utils.</span></span><span class="sig-name descname"><span class="pre">display_user_options_post_analysis</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/utils.html#display_user_options_post_analysis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.analysis.utils.display_user_options_post_analysis" title="Permalink to this definition"></a></dt>
 <dd><p>Display a menu with post-analysis options and return the user’s choice.</p>
 <p>This function presents the user with a list of options after a musical piece has been analyzed.
 The available options are: ‘repeat’, ‘export’, ‘display_results’, or ‘back’. The user’s selection
@@ -796,88 +885,34 @@ is then returned as a string.</p>
 </section>
 
 
+           </div>
           </div>
-          
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="src.html" class="btn btn-neutral float-left" title="I-MaT: Source Code" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="src.cli.html" class="btn btn-neutral float-right" title="Package: Command Line Interface (src.cli)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Sebastian Oliver Eck.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="../index.html">I-MaT</a></h1>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
 
-
-
-
-
-
-
-
-<h3>Navigation</h3>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started with I-MaT</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contribute.html">How to Contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="src.html">I-MaT: Source Code</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Package: Analysis (src.analysis)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="src.cli.html">Package: Command Line Interface (src.cli)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="src.conversion.html">Package: File Conversion (src.conversion)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="src.m21_environment.html">Package: music21 Environment File Configuration (src.m21_environment)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="src.pattern_search.html">Package: Pattern Search (src.pattern_search)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="src.score_selection.html">Package: Score Selection (src.score_selection)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="src.tokenization.html">Package: Tokenization (src.tokenization)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="src.utils.html">Package: Utility Functions (src.utils)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="src.visualizations.html">Package: Visualizations (src.visualizations)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="src.constants.html">Module: Constants (src.constants)</a></li>
-</ul>
-</li>
-</ul>
-
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="../index.html">Documentation overview</a><ul>
-  <li><a href="src.html">I-MaT: Source Code</a><ul>
-      <li>Previous: <a href="src.html" title="previous chapter">I-MaT: Source Code</a></li>
-      <li>Next: <a href="src.cli.html" title="next chapter">Package: Command Line Interface (src.cli)</a></li>
-  </ul></li>
-  </ul></li>
-</ul>
-</div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-
-
-
-
-
-
-
-
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2023, Sebastian Oliver Eck.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.0.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
-      
-      |
-      <a href="../_sources/module_files/src.analysis.md.txt"
-          rel="nofollow">Page source</a>
-    </div>
-
-    
-
-    
-  </body>
+</body>
 </html>

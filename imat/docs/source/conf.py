@@ -9,7 +9,7 @@
 project = 'I-MaT'
 copyright = '2023, Sebastian Oliver Eck'
 author = 'Sebastian Oliver Eck'
-release = '0.0.1'
+release = '3.0'
 
 import os
 import sys

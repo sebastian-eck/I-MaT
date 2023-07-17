@@ -1,45 +1,116 @@
 <!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
-    <title>Package: Utility Functions (src.utils) &#8212; I-MaT 0.0.1 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Package: Utility Functions (src.utils) &mdash; I-MaT 3.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Package: Visualizations (src.visualizations)" href="src.visualizations.html" />
-    <link rel="prev" title="Subpackage: Tokenization Refinement (src.tokenization.refine_results)" href="src.tokenization.refine_results.html" />
-   
-  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+    <link rel="prev" title="Subpackage: Tokenization Refinement (src.tokenization.refine_results)" href="src.tokenization.refine_results.html" /> 
+</head>
 
-  </head><body>
-  
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
           
+          
+          <a href="../index.html" class="icon icon-home">
+            I-MaT
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started with I-MaT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute.html">How to Contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="src.html">I-MaT: Source Code</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="src.analysis.html">Package: Analysis (src.analysis)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.cli.html">Package: Command Line Interface (src.cli)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.conversion.html">Package: File Conversion (src.conversion)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.m21_environment.html">Package: music21 Environment File Configuration (src.m21_environment)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.pattern_search.html">Package: Pattern Search (src.pattern_search)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.score_selection.html">Package: Score Selection (src.score_selection)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.tokenization.html">Package: Tokenization (src.tokenization)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Package: Utility Functions (src.utils)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-utils-error-handling-py">Module: utils.error_handling.py</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#src.utils.error_handling.handle_error"><code class="docutils literal notranslate"><span class="pre">handle_error()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.utils.error_handling.text_exception_general"><code class="docutils literal notranslate"><span class="pre">text_exception_general()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-utils-misc-py">Module: utils.misc.py</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#src.utils.misc.change_part_names"><code class="docutils literal notranslate"><span class="pre">change_part_names()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.utils.misc.export_results_to_csv_auto"><code class="docutils literal notranslate"><span class="pre">export_results_to_csv_auto()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.utils.misc.show_metadata"><code class="docutils literal notranslate"><span class="pre">show_metadata()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.utils.misc.show_part_names"><code class="docutils literal notranslate"><span class="pre">show_part_names()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.visualizations.html">Package: Visualizations (src.visualizations)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.constants.html">Module: Constants (src.constants)</a></li>
+</ul>
+</li>
+</ul>
 
-          <div class="body" role="main">
-            
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">I-MaT</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="src.html">I-MaT: Source Code</a></li>
+      <li class="breadcrumb-item active">Package: Utility Functions (src.utils)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/module_files/src.utils.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
   <section id="module-src.utils.error_handling">
-<span id="package-utility-functions-src-utils"></span><h1>Package: Utility Functions (src.utils)<a class="headerlink" href="#module-src.utils.error_handling" title="Permalink to this heading">¶</a></h1>
+<span id="package-utility-functions-src-utils"></span><h1>Package: Utility Functions (src.utils)<a class="headerlink" href="#module-src.utils.error_handling" title="Permalink to this heading"></a></h1>
 <section id="module-utils-error-handling-py">
-<h2>Module: utils.error_handling.py<a class="headerlink" href="#module-utils-error-handling-py" title="Permalink to this heading">¶</a></h2>
+<h2>Module: utils.error_handling.py<a class="headerlink" href="#module-utils-error-handling-py" title="Permalink to this heading"></a></h2>
 <p>This module, which is part of the <cite>utils</cite> package, contains functions for handling and reporting errors in a detailed
 and user-friendly manner. This allows for better debugging and understanding of any exceptions that occur during
 the execution of the code.</p>
 <section id="functions">
-<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h3>
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p><cite>text_exception_general(e: Exception) -&gt; str</cite>: This function takes an exception as an input and returns a detailed
 error message. The error message includes the file, function, and line number where the exception occurred, and
@@ -59,7 +130,7 @@ error message.</p></li>
 </section>
 <dl class="py function">
 <dt class="sig sig-object py" id="src.utils.error_handling.handle_error">
-<span class="sig-prename descclassname"><span class="pre">src.utils.error_handling.</span></span><span class="sig-name descname"><span class="pre">handle_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">e</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Exception</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/src/utils/error_handling.html#handle_error"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.utils.error_handling.handle_error" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.utils.error_handling.</span></span><span class="sig-name descname"><span class="pre">handle_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">e</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Exception</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/src/utils/error_handling.html#handle_error"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.utils.error_handling.handle_error" title="Permalink to this definition"></a></dt>
 <dd><p>Handle an error by displaying a detailed error message.</p>
 <p>This function takes an exception as input and prints a detailed error message to the console.
 The error message is generated using the <cite>text_exception_general</cite> function, and includes
@@ -79,7 +150,7 @@ information about where the error occurred and the nature of the error.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="src.utils.error_handling.text_exception_general">
-<span class="sig-prename descclassname"><span class="pre">src.utils.error_handling.</span></span><span class="sig-name descname"><span class="pre">text_exception_general</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">e</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Exception</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/src/utils/error_handling.html#text_exception_general"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.utils.error_handling.text_exception_general" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.utils.error_handling.</span></span><span class="sig-name descname"><span class="pre">text_exception_general</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">e</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Exception</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/src/utils/error_handling.html#text_exception_general"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.utils.error_handling.text_exception_general" title="Permalink to this definition"></a></dt>
 <dd><p>Generate a detailed error message.</p>
 <p>This function extracts traceback information from an exception and generates a detailed error message.
 This includes information about the file, function and line number where the error occurred as well
@@ -108,12 +179,12 @@ as the error message itself.</p>
 </dd></dl>
 
 <span class="target" id="module-src.utils.misc"></span><section id="module-utils-misc-py">
-<h2>Module: utils.misc.py<a class="headerlink" href="#module-utils-misc-py" title="Permalink to this heading">¶</a></h2>
+<h2>Module: utils.misc.py<a class="headerlink" href="#module-utils-misc-py" title="Permalink to this heading"></a></h2>
 <p>This module, part of the <cite>utils</cite> package, provides various utilities for manipulating, displaying and exporting
 musical score metadata, part names, and analysis results. It uses the <cite>music21</cite> library for handling music data
 and the pandas library for managing and exporting analysis results as a CSV file.</p>
 <section id="functions">
-<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h3>
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p><cite>show_metadata()</cite>: Displays the metadata of the selected musical score.</p></li>
 <li><p><cite>show_part_names()</cite>: Lists the names of the individual parts in the selected score.</p></li>
@@ -129,7 +200,7 @@ identifier (selected scores + selected measures), and the current timestamp.</p>
 </section>
 <dl class="py function">
 <dt class="sig sig-object py" id="src.utils.misc.change_part_names">
-<span class="sig-prename descclassname"><span class="pre">src.utils.misc.</span></span><span class="sig-name descname"><span class="pre">change_part_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/utils/misc.html#change_part_names"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.utils.misc.change_part_names" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.utils.misc.</span></span><span class="sig-name descname"><span class="pre">change_part_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/utils/misc.html#change_part_names"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.utils.misc.change_part_names" title="Permalink to this definition"></a></dt>
 <dd><p>Modify the names of individual parts in the selected score.</p>
 <p>This function allows the user to rename the individual parts/voices in the selected
 musical score. If no score has been selected, it prompts the user to select a score first.</p>
@@ -142,7 +213,7 @@ musical score. If no score has been selected, it prompts the user to select a sc
 
 <dl class="py function">
 <dt class="sig sig-object py" id="src.utils.misc.export_results_to_csv_auto">
-<span class="sig-prename descclassname"><span class="pre">src.utils.misc.</span></span><span class="sig-name descname"><span class="pre">export_results_to_csv_auto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">previous_results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">function_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/utils/misc.html#export_results_to_csv_auto"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.utils.misc.export_results_to_csv_auto" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.utils.misc.</span></span><span class="sig-name descname"><span class="pre">export_results_to_csv_auto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">previous_results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">function_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/utils/misc.html#export_results_to_csv_auto"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.utils.misc.export_results_to_csv_auto" title="Permalink to this definition"></a></dt>
 <dd><p>Export previous analysis results to a CSV file.</p>
 <p>This function automatically exports the results of the previous analysis to a CSV file with a unique name.
 The file name is based on the function_name, a modified identifier (selected scores + selected measures),
@@ -163,7 +234,7 @@ and the current time. The file is saved in the music21’s scratch directory.</p
 
 <dl class="py function">
 <dt class="sig sig-object py" id="src.utils.misc.show_metadata">
-<span class="sig-prename descclassname"><span class="pre">src.utils.misc.</span></span><span class="sig-name descname"><span class="pre">show_metadata</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/utils/misc.html#show_metadata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.utils.misc.show_metadata" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.utils.misc.</span></span><span class="sig-name descname"><span class="pre">show_metadata</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/utils/misc.html#show_metadata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.utils.misc.show_metadata" title="Permalink to this definition"></a></dt>
 <dd><p>Display metadata of the selected score.</p>
 <p>This function extracts and displays the metadata of the selected musical score.
 If no score has been selected, it prompts the user to select a score first.</p>
@@ -176,7 +247,7 @@ If no score has been selected, it prompts the user to select a score first.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="src.utils.misc.show_part_names">
-<span class="sig-prename descclassname"><span class="pre">src.utils.misc.</span></span><span class="sig-name descname"><span class="pre">show_part_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/utils/misc.html#show_part_names"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.utils.misc.show_part_names" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.utils.misc.</span></span><span class="sig-name descname"><span class="pre">show_part_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/utils/misc.html#show_part_names"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.utils.misc.show_part_names" title="Permalink to this definition"></a></dt>
 <dd><p>Display the names of individual parts in the selected score.</p>
 <p>This function extracts and displays the names of the individual parts/voices
 in the selected musical score. If no score has been selected, it prompts the
@@ -191,88 +262,34 @@ user to select a score first.</p>
 <span class="target" id="module-src.utils"></span></section>
 
 
+           </div>
           </div>
-          
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="src.tokenization.refine_results.html" class="btn btn-neutral float-left" title="Subpackage: Tokenization Refinement (src.tokenization.refine_results)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="src.visualizations.html" class="btn btn-neutral float-right" title="Package: Visualizations (src.visualizations)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Sebastian Oliver Eck.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="../index.html">I-MaT</a></h1>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
 
-
-
-
-
-
-
-
-<h3>Navigation</h3>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started with I-MaT</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../contribute.html">How to Contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="src.html">I-MaT: Source Code</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="src.analysis.html">Package: Analysis (src.analysis)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="src.cli.html">Package: Command Line Interface (src.cli)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="src.conversion.html">Package: File Conversion (src.conversion)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="src.m21_environment.html">Package: music21 Environment File Configuration (src.m21_environment)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="src.pattern_search.html">Package: Pattern Search (src.pattern_search)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="src.score_selection.html">Package: Score Selection (src.score_selection)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="src.tokenization.html">Package: Tokenization (src.tokenization)</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Package: Utility Functions (src.utils)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="src.visualizations.html">Package: Visualizations (src.visualizations)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="src.constants.html">Module: Constants (src.constants)</a></li>
-</ul>
-</li>
-</ul>
-
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="../index.html">Documentation overview</a><ul>
-  <li><a href="src.html">I-MaT: Source Code</a><ul>
-      <li>Previous: <a href="src.tokenization.refine_results.html" title="previous chapter">Subpackage: Tokenization Refinement (src.tokenization.refine_results)</a></li>
-      <li>Next: <a href="src.visualizations.html" title="next chapter">Package: Visualizations (src.visualizations)</a></li>
-  </ul></li>
-  </ul></li>
-</ul>
-</div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-
-
-
-
-
-
-
-
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2023, Sebastian Oliver Eck.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.0.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
-      
-      |
-      <a href="../_sources/module_files/src.utils.md.txt"
-          rel="nofollow">Page source</a>
-    </div>
-
-    
-
-    
-  </body>
+</body>
 </html>
