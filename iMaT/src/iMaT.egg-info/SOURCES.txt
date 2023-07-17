@@ -1,6 +1,0 @@
-setup.py
-src/iMaT.egg-info/PKG-INFO
-src/iMaT.egg-info/SOURCES.txt
-src/iMaT.egg-info/dependency_links.txt
-src/iMaT.egg-info/requires.txt
-src/iMaT.egg-info/top_level.txt

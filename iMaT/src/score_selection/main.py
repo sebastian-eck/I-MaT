@@ -1,6 +1,6 @@
 """
-score_selection.main.py
-=======================
+Module: score_selection.main.py
+===============================
 
 This module facilitates the selection and loading of a music score for further analysis or processing.
 
@@ -47,10 +47,10 @@ from urllib.parse import urlparse
 import requests
 from music21 import converter
 
-from src.cli.menu_constructors import display_menu_print_textblock, display_menu_request_selection
-from src.constants import EXAMPLE_SCORES_DICT
-from src.score_selection.name_parts import select_and_name_parts
-from src.utils.error_handling import handle_error
+from iMaT.src.cli.menu_constructors import display_menu_print_textblock, display_menu_request_selection
+from iMaT.src.constants import EXAMPLE_SCORES_DICT
+from iMaT.src.score_selection.name_parts import select_and_name_parts
+from iMaT.src.utils.error_handling import handle_error
 
 
 def score_selection():

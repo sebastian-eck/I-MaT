@@ -1,6 +1,6 @@
 """
-tokenization.refine_results.asbolute_duration.py
-================================================
+Module: tokenization.refine_results.asbolute_duration.py
+========================================================
 
 This module, a part of the `tokenization.refine_results` package, refines MIDI data by converting string representations of duration to absolute numerical values.
 
@@ -22,12 +22,12 @@ import re
 import pandas as pd
 from tqdm import tqdm
 
-from src.tokenization.utils import save_data_to_new_csv_file, select_csv_file_2d_token_representation
-from src.utils.error_handling import handle_error
+from iMaT.src.tokenization.utils import save_data_to_new_csv_file, select_csv_file_2d_token_representation
+from iMaT.src.utils.error_handling import handle_error
 
 tqdm.pandas()
 
-from src.cli.menu_constructors import display_menu_print_results, display_menu_print_textblock, \
+from iMaT.src.cli.menu_constructors import display_menu_print_results, display_menu_print_textblock, \
     display_menu_request_selection, util_convert_pd_dataframe_to_imat_datacont
 
 tokenizers_available_for_refining = ['CPWord', 'Octuple', 'OctupleMono', 'MuMIDI']

@@ -1,6 +1,6 @@
 """
-analysis.utils.py
-=================
+Module: analysis.utils.py
+=========================
 
 This module contains utility functions that are used within the analysis package, particularly
 for displaying menus and handling user input post analysis. These functions are used to enhance
@@ -21,8 +21,8 @@ Functions
 
 The module interacts with other modules like `menu_constructors` for displaying menus and `error_handling` for managing errors.
 """
-from src.cli.menu_constructors import display_menu_request_selection
-from src.utils.error_handling import handle_error
+from iMaT.src.cli.menu_constructors import display_menu_request_selection
+from iMaT.src.utils.error_handling import handle_error
 
 
 def display_user_options_post_analysis():

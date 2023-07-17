@@ -1,211 +1,128 @@
-<!doctype html>
-<html class="no-js" lang="en">
-  <head><meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Usage" href="usage.html" />
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <!-- Generated with Sphinx 6.2.1 and Furo 2023.05.20 -->
-        <title>I-MaT 0.0.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=e6660623a769aa55fea372102b9bf3151b292993" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
-    
-    
-
-
-<style>
-  body {
-    --color-code-background: #f8f8f8;
-  --color-code-foreground: black;
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documentation: The Interactive Music Analysis Tool (I-MaT) &mdash; imat 0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
-  }
-  @media not print {
-    body[data-theme="dark"] {
-      --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
-  
-    }
-    @media (prefers-color-scheme: dark) {
-      body:not([data-theme="light"]) {
-        --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
-  
-      }
-    }
-  }
-</style></head>
-  <body>
-    
-    <script>
-      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
-    </script>
-    
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Getting Started with I-MaT" href="getting_started.html" /> 
+</head>
 
-<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-  <symbol id="svg-toc" viewBox="0 0 24 24">
-    <title>Contents</title>
-    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
-      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
-    </svg>
-  </symbol>
-  <symbol id="svg-menu" viewBox="0 0 24 24">
-    <title>Menu</title>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
-      <line x1="3" y1="12" x2="21" y2="12"></line>
-      <line x1="3" y1="6" x2="21" y2="6"></line>
-      <line x1="3" y1="18" x2="21" y2="18"></line>
-    </svg>
-  </symbol>
-  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
-    <title>Expand</title>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
-      <polyline points="9 18 15 12 9 6"></polyline>
-    </svg>
-  </symbol>
-  <symbol id="svg-sun" viewBox="0 0 24 24">
-    <title>Light mode</title>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
-      <circle cx="12" cy="12" r="5"></circle>
-      <line x1="12" y1="1" x2="12" y2="3"></line>
-      <line x1="12" y1="21" x2="12" y2="23"></line>
-      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-      <line x1="1" y1="12" x2="3" y2="12"></line>
-      <line x1="21" y1="12" x2="23" y2="12"></line>
-      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-    </svg>
-  </symbol>
-  <symbol id="svg-moon" viewBox="0 0 24 24">
-    <title>Dark mode</title>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
-    </svg>
-  </symbol>
-  <symbol id="svg-sun-half" viewBox="0 0 24 24">
-    <title>Auto light/dark mode</title>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-      <circle cx="12" cy="12" r="9" />
-      <path d="M13 12h5" />
-      <path d="M13 15h4" />
-      <path d="M13 18h1" />
-      <path d="M13 9h4" />
-      <path d="M13 6h1" />
-    </svg>
-  </symbol>
-</svg>
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
 
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
-<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
-<label class="overlay sidebar-overlay" for="__navigation">
-  <div class="visually-hidden">Hide navigation sidebar</div>
-</label>
-<label class="overlay toc-overlay" for="__toc">
-  <div class="visually-hidden">Hide table of contents sidebar</div>
-</label>
-
-
-
-<div class="page">
-  <header class="mobile-header">
-    <div class="header-left">
-      <label class="nav-overlay-icon" for="__navigation">
-        <div class="visually-hidden">Toggle site navigation sidebar</div>
-        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
-      </label>
-    </div>
-    <div class="header-center">
-      <a href="#"><div class="brand">I-MaT 0.0.1 documentation</div></a>
-    </div>
-    <div class="header-right">
-      <div class="theme-toggle-container theme-toggle-header">
-        <button class="theme-toggle">
-          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
-          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
-          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
-          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
-        </button>
-      </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
-        <div class="visually-hidden">Toggle table of contents sidebar</div>
-        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
-      </label>
-    </div>
-  </header>
-  <aside class="sidebar-drawer">
-    <div class="sidebar-container">
-      
-      <div class="sidebar-sticky"><a class="sidebar-brand" href="#">
-  
-  
-  <span class="sidebar-brand-text">I-MaT 0.0.1 documentation</span>
-  
-</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
-  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
-  <input type="hidden" name="check_keywords" value="yes">
-  <input type="hidden" name="area" value="default">
-</form>
-<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+          
+          
+          <a href="#" class="icon icon-home">
+            imat
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started with I-MaT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">How to Contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module_files/src.html">I-MaT: Source Code</a></li>
 </ul>
 
-</div>
-</div>
-
-      </div>
-      
-    </div>
-  </aside>
-  <div class="main">
-    <div class="content">
-      <div class="article-container">
-        <a href="#" class="back-to-top muted-link">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
-          </svg>
-          <span>Back to top</span>
-        </a>
-        <div class="content-icon-container">
-          
-<div class="theme-toggle-container theme-toggle-content">
-            <button class="theme-toggle">
-              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
-              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
-              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
-              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
-            </button>
-          </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
-            <div class="visually-hidden">Toggle table of contents sidebar</div>
-            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
-          </label>
         </div>
-        <article role="main">
-          <section id="welcome-to-i-mat-s-documentation">
-<h1>Welcome to I-MaT’s documentation.<a class="headerlink" href="#welcome-to-i-mat-s-documentation" title="Permalink to this heading">#</a></h1>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>This is under heavy development.</p>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">imat</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Documentation: The Interactive Music Analysis Tool (I-MaT)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
 </div>
-<p>For further informations, check out <a class="reference internal" href="usage.html"><span class="doc">Usage</span></a>.
-How to start the program: <a class="reference internal" href="usage.html#starting-the-program"><span class="std std-ref">Starting the Program</span></a></p>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="documentation-the-interactive-music-analysis-tool-i-mat">
+<h1>Documentation: The Interactive Music Analysis Tool (I-MaT)<a class="headerlink" href="#documentation-the-interactive-music-analysis-tool-i-mat" title="Permalink to this heading"></a></h1>
+<p>Welcome to the Interactive Music Analysis Tool (I-MaT) documentation!</p>
+<p>This documentation provides you with the following information:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started with I-MaT</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#running-the-program">Running the Program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">How to Contribute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contribute.html#writing-new-analysis-functions-for-i-mat-a-comprehensive-tutorial">Writing New Analysis Functions for I-MaT: A Comprehensive Tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module_files/src.html">I-MaT: Source Code</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="module_files/src.analysis.html">Package: Analysis (src.analysis)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module_files/src.cli.html">Package: Command Line Interface (src.cli)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module_files/src.conversion.html">Package: File Conversion (src.conversion)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module_files/src.m21_environment.html">Package: music21 Environment File Configuration (src.m21_environment)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module_files/src.pattern_search.html">Package: Pattern Search (src.pattern_search)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module_files/src.score_selection.html">Package: Score Selection (src.score_selection)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module_files/src.tokenization.html">Package: Tokenization (src.tokenization)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module_files/src.utils.html">Package: Utility Functions (src.utils)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module_files/src.visualizations.html">Package: Visualizations (src.visualizations)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module_files/src.constants.html">Module: Constants (src.constants)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>I-MaT is an innovative tool designed to facilitate in-depth musical analysis through an easy-to-use interface. It offers a comprehensive suite of functionalities allowing for the examination of musical pieces from a wide range of perspectives. This documentation serves as a comprehensive guide, aiming to provide detailed insights into the workings of I-MaT, and assist both first-time users and experienced researchers in utilizing the tool effectively.</p>
+<p>The sections below provide detailed information on how to use the Interactive Music Analysis Tool, from downloading and installation to its application in music analysis. Furthermore, they delve into the structure of the source code, describing the different packages and modules that make up the tool. Through this documentation, I hope to provide you with the necessary knowledge to navigate I-MaT, explore its features, and conduct your own analyses by using my tool!</p>
+<p>Start by installing the Interactive Music Analysis Tool (I-MaT):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip install imat
+</pre></div>
+</div>
+<p>To run the tool, simply type the following command into your shell:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>imat
+</pre></div>
+</div>
+<p>If that was too fast, don’t worry.
+You can find a detailed User Guide for how to install and start I-MaT in the <a class="reference internal" href="getting_started.html"><span class="std std-doc">Getting Started with I-MaT</span></a> section.</p>
 </section>
-<section id="interactive-music-analysis-tool-i-mat">
-<h1>Interactive Music Analysis Tool (I-MaT)<a class="headerlink" href="#interactive-music-analysis-tool-i-mat" title="Permalink to this heading">#</a></h1>
+<section id="an-introduction-the-interactive-music-analysis-tool-i-mat">
+<h1>An Introduction: The Interactive Music Analysis Tool (I-MaT)<a class="headerlink" href="#an-introduction-the-interactive-music-analysis-tool-i-mat" title="Permalink to this heading"></a></h1>
 <p>The <strong>Interactive Music Analysis Tool (I-MaT)</strong><a class="footnote-reference brackets" href="#id17" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> is a modular program designed for producing visualizations and statistical analyses of sheet music files. It is based on the <strong>music21</strong> python library (<a class="reference external" href="https://github.com/cuthbertLab/music21.git">GitHub repository</a>), developed by the Massachusetts Institute of Technology (MIT),<a class="footnote-reference brackets" href="#id18" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> and was originally created as a subproject of the fellowship project Computer-assisted Music Analysis in Digital University Teaching (<a class="reference external" href="https://stifterverband.org/file/10986/download?token=tl9S2EL_">Computergestützte Musikanalyse in der digitalen Hochschullehre, 2021, project report (PDF)</a>).<a class="footnote-reference brackets" href="#id19" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a></p>
 <p>The project was located at the Department of Musicology Weimar-Jena at the Franz Liszt University of Music Weimar<a class="footnote-reference brackets" href="#id20" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> and was funded by the Thuringian Ministry for Economy, Science and Digital Change and the Deutscher Stifterverband.<a class="footnote-reference brackets" href="#id21" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a></p>
 <section id="project-overview">
-<h2>Project Overview<a class="headerlink" href="#project-overview" title="Permalink to this heading">#</a></h2>
+<h2>Project Overview<a class="headerlink" href="#project-overview" title="Permalink to this heading"></a></h2>
 <p>The aim of the aforementioned project was to design, test, teach with and evaluate a comprehensive set of teaching modules for music analysis that make use of various computer-assisted, primarily quantitative analysis tools. The teaching modules were intended to complement conventional musicological and analysis courses and mainly focus on:</p>
 <ul class="simple">
 <li><p>“the computer-based annotation and visualization of sheet music texts and audio files,</p></li>
@@ -216,27 +133,25 @@ How to start the program: <a class="reference internal" href="usage.html#startin
 <p>Within the project “Computer-assisted Music Analysis […]”, three computerized approaches to music score analysis were utilized, namely music21,<a class="footnote-reference brackets" href="#id23" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a> CAMAT,<a class="footnote-reference brackets" href="#id24" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></a> and I-MaT itself. Music21 is a Python library developed at MIT for symbolic music representation and processing. CAMAT (<a class="reference external" href="https://github.com/Christon-Ragavan/CAMAT">GitHub repository</a>), on the other hand, is a Computer-Assisted Music Analysis Toolkit developed by Egor Poliakov<a class="footnote-reference brackets" href="#id25" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>9<span class="fn-bracket">]</span></a> and Christon R. Nadar<a class="footnote-reference brackets" href="#id26" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>10<span class="fn-bracket">]</span></a> within the fellowship project. CAMAT uses its own unique data structure, developed within the project to overcome certain design problems found within the music21 framework.<a class="footnote-reference brackets" href="#id27" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>11<span class="fn-bracket">]</span></a> Tutorials for musicological courses were prepared using music examples and code that can be executed as Jupyter Notebooks.<a class="footnote-reference brackets" href="#id28" id="id12" role="doc-noteref"><span class="fn-bracket">[</span>12<span class="fn-bracket">]</span></a></p>
 <p>Both music21 and CAMAT require rudimentary knowledge of Python command syntax. In contrast, the Interactive Music Analysis Tool (I-MaT) is designed for users who have none to only limited knowledge of computer commands or programming languages as it utilizes a new and innovative approach to access and work with the music21 toolkit.</p>
 <section id="i-mat-features-and-accessibility">
-<h3>I-MaT: Features and Accessibility<a class="headerlink" href="#i-mat-features-and-accessibility" title="Permalink to this heading">#</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>I-MaT - Interactive music analysis tool, (2.2, 01.2022)
+<h3>I-MaT: Features and Accessibility<a class="headerlink" href="#i-mat-features-and-accessibility" title="Permalink to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>I-MaT - Interactive Music Analysis Tool, v3.0, (2023). Project: &quot;Computer-Assisted Music Analysis&quot;
 
-Fellowship project &quot;Computer-assisted Music Analysis&quot;
+Department of Musicology Weimar-Jena, University of Music Franz Liszt Weimar, Germany
 
-
-Fellowship for innovations in digital university teaching
+MIT License, Copyright (c) 2023 S.O. Eck.
 
 ----------------------------------------------------------------------
 
--- Start menu --
+LOCATION: Start Menu
 
-Please select:
+Please make a selection from the options below by entering the entry index number:
 
-No.  Menu item                                                         &lt;Explanation&gt;
+No.       Menu item                                           &lt;Explanation&gt;
 
-1    PROG: Analysis of a single piece of music                         &lt;Analysis of a single piece of music&gt;
-2    SETT: Settings                                                    &lt;View the settings in the music21 environment file&gt;
-3    HELP: Project overview                                            &lt;Information about the project &quot;Computer-Aided Music Analysis&quot;&gt;
-4    LANG: Ändere Ausgabesprache auf DEUTSCH                           &lt;Ändert die Ausgabesprache des Programms auf Deutsch&gt;
-5    EXIT: Exit programm                                               &lt;Exits the Python script&gt;
+1         PROG: Analysis of one sheet music file              &lt;Analysis of a single piece of music&gt;
+2         CONV: Conversion of multiple music files            &lt;Conversion of multiple music file wihthin one folder&gt;
+3         TOKE: Tokenisation of multiple music files          &lt;Tokenisation of multiple music file wihthin one folder&gt;
+4         CONF: Update Software Paths and Preferences         &lt;Update or redefine paths to essential software and user preferences&gt;
 
 Which menu item should be executed? (&lt;No. of menu item&gt;):
 </pre></div>
@@ -246,7 +161,7 @@ Which menu item should be executed? (&lt;No. of menu item&gt;):
 <p>Moreover, the modular structure of I-MaT not only facilitates the addition of new analysis modules based on music21 or other libraries, but also enables easier maintenance and updates of the tool as new analysis methods and techniques become available over time. This makes I-MaT a flexible and therefore powerful tool that can cater to the needs of a diverse range of users, from novice music analysts to advanced researchers.</p>
 </section>
 <section id="education-and-training">
-<h3>Education and Training<a class="headerlink" href="#education-and-training" title="Permalink to this heading">#</a></h3>
+<h3>Education and Training<a class="headerlink" href="#education-and-training" title="Permalink to this heading"></a></h3>
 <p>I-MaT is an innovative tool for music analysis that can provide valuable support for music and musicology courses at both high school and university levels. Its user-friendly interface and modular design make it an ideal tool for students to quickly obtain results and explore various analytical approaches using computational methods, allowing them to gain a deeper understanding of the musical works they are studying. In addition to its analytical capabilities, I-MaT can serve as an effective didactic tool to introduce students to computer-assisted musicology and programming concepts in general, as well as music21 or other libraries used in the tool.</p>
 <p>By using I-MaT, students can develop valuable analytical skills that will be useful not only in musicology but also in other areas of the humanities where data-driven methods are becoming increasingly important.</p>
 <p>Lastly, I-MaT’s modular structure enables collaborative work not only in the classroom but also bears the possibility to connect through platforms like GitHub, providing opportunities for its further development.</p>
@@ -255,14 +170,14 @@ Which menu item should be executed? (&lt;No. of menu item&gt;):
 </section>
 </section>
 <section id="sheet-music-databases-curated-within-the-project">
-<h2>Sheet Music Databases curated within the project<a class="headerlink" href="#sheet-music-databases-curated-within-the-project" title="Permalink to this heading">#</a></h2>
+<h2>Sheet Music Databases curated within the project<a class="headerlink" href="#sheet-music-databases-curated-within-the-project" title="Permalink to this heading"></a></h2>
 <p>The fellowship project contains two larger databases:<a class="footnote-reference brackets" href="#id29" id="id13" role="doc-noteref"><span class="fn-bracket">[</span>13<span class="fn-bracket">]</span></a></p>
 <ul class="simple">
 <li><p>The main database<a class="footnote-reference brackets" href="#id30" id="id14" role="doc-noteref"><span class="fn-bracket">[</span>14<span class="fn-bracket">]</span></a> comprises several thousand individual sheet music files (MusicXML).</p></li>
 <li><p>The subcorpus<a class="footnote-reference brackets" href="#id31" id="id15" role="doc-noteref"><span class="fn-bracket">[</span>15<span class="fn-bracket">]</span></a> contains all scores used in the two teaching modules for score analysis<a class="footnote-reference brackets" href="#id32" id="id16" role="doc-noteref"><span class="fn-bracket">[</span>16<span class="fn-bracket">]</span></a> and was carefully curated by student members of the project team.</p></li>
 </ul>
-<section id="list-of-incorporated-databases-last-accessed-on-2023-04-25">
-<h3>List of incorporated databases (last accessed on: 2023-04-25)<a class="headerlink" href="#list-of-incorporated-databases-last-accessed-on-2023-04-25" title="Permalink to this heading">#</a></h3>
+<section id="list-of-incorporated-databases">
+<h3>List of incorporated databases<a class="headerlink" href="#list-of-incorporated-databases" title="Permalink to this heading"></a></h3>
 <p>The fellowship project uses several, under the Common Licence freely available online databases as sources for its own sheet music corpora. These include:</p>
 <ul class="simple">
 <li><p>The Classical Music Score Digitization Project (weblink no longer available).</p></li>
@@ -274,348 +189,8 @@ Which menu item should be executed? (&lt;No. of menu item&gt;):
 </ul>
 </section>
 </section>
-<section id="appendix-figures">
-<h2>Appendix: Figures<a class="headerlink" href="#appendix-figures" title="Permalink to this heading">#</a></h2>
-<section id="general">
-<h3>General<a class="headerlink" href="#general" title="Permalink to this heading">#</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>I-MaT - Interactive music analysis tool, (2.2, 01.2022)
-
-Fellowship project &quot;Computer-assisted Music Analysis&quot;
-
-
-Fellowship for innovations in digital university teaching
-
-----------------------------------------------------------------------
-
--- main menu individual piece --
-
-Please select:
-
-No.  Menu item                                                         &lt;Explanation&gt;
-
-1    FILE: Menu selection                                              &lt;Basic functions&gt;
-2    TOOL: Menu selection (statistical analysis)                       &lt;Selection of various statistical analysis tools&gt;      
-3    TOOL: Menu selection (visualisation)                              &lt;Selection of different visualisation tools&gt;
-4    TOOL: Menu selection (pattern search)                             &lt;Selection of different tools for pattern search&gt;      
-5    SETT: Settings                                                    &lt;Settings in the music21 environment file/language settings&gt;
-6    HELP: Project overview                                            &lt;Information about the project &quot;Computer-Aided Music Analysis&quot;&gt;
-7    EXIT: Exit program                                                &lt;Exits the Python script&gt;
-
-Which menu item should be executed? (&lt;No. of menu item&gt;):
-</pre></div>
-</div>
-<p>Figure 2:  <em>I-Mat - main menu</em></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>I-MaT - Interactive music analysis tool, (2.2, 01.2022)
-
-Fellowship project &quot;Computer-assisted Music Analysis&quot;
-
-
-Fellowship for innovations in digital university teaching
-
-----------------------------------------------------------------------
-
--- Submenu individual piece (Files) --
-
-Please select:
-
-No.  Menu item                                                         &lt;Explanation&gt;
-
-1    FILE: Select new score                                            &lt;Allows you to select a new score&gt;
-2    SHOW: Show metadata (score)                                       &lt;Displays the metadata of the selected score&gt;
-3    PLAY: Play selected score (midi)                                  &lt;Plays score as midi&gt;
-4    NAME: Change the names of the individual voices                   &lt;Allows you to rename the individual voices&gt;
-5    NAME: Show names of individual voices                             &lt;Displays the names of the individual voices&gt;
-6    EXPO: Export file                                                 &lt;Saves a selection of notes as .xml/.midi/.ly/.pdf file&gt;
-7    BACK: Back to the main menu                                       &lt;Return to the main menu&gt;
-
-Which menu item should be executed? (&lt;No. of menu item&gt;): 
-</pre></div>
-</div>
-<p>Figure 3:  <em>I-Mat - Submenu individual piece (Files)</em></p>
-</section>
-<section id="statistical-analysis">
-<h3>Statistical Analysis<a class="headerlink" href="#statistical-analysis" title="Permalink to this heading">#</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>I-MaT - Interactive music analysis tool, (2.2, 01.2022)
-
-Fellowship project &quot;Computer-assisted Music Analysis&quot;
-
-
-Fellowship for innovations in digital university teaching
-
-----------------------------------------------------------------------
-
--- Submenu individual piece (statistical analysis) --
-
-Please select:
-
-No.  Menu item                                                         &lt;Explanation&gt;
-
-1    STAT: Ambitus
-2    STAT: Ambitus (comparison)
-3    STAT: Interval types                                              &lt;Attention: currently only consistently monodic melody lines are correctly analyzed&gt;.
-4    STAT: Interval types and frequency                                &lt;Attention: currently only consistently monodic melody lines are correctly analyzed&gt;
-5    STAT: Interval types and frequency (comparison)                   &lt;Attention: currently only consistently monodic melody lines are correctly analyzed&gt;
-6    STAT: Number of intervals                                         &lt;Attention: currently only consistently monodic melody lines are correctly analyzed&gt;
-7    STAT: Number of tones                                             &lt;Attention: currently only consistently monodic melody lines are correctly analyzed&gt;
-8    HIST: Sound events per pitch                                      &lt;A histogram of the pitch space&gt;
-9    HIST: Sound events per pitch class                                &lt;A pitch class histogram&gt;
-10   HIST: Sound events per tone durations                             &lt;A histogram of the pitch lengths&gt;
-11   BARS: Pitches over time (pitch lengths)                           &lt;A graph of events sorted by pitch space over time&gt;    
-12   BARS: Pitch classes over time (pitch durations)                   &lt;A graph of events sorted by pitch space over time&gt;    
-13   HIST: Tone starting frequency on types of metrical positions      &lt;Metric weight; Explanations: https://analyse.hfm-weimar.de/doku.php?id=basics1&gt;
-14   MORE: Further graphs                                              &lt;Two-dimensional frequency distributions/scatter diagrams&gt;
-15   BACK: Back to the main menu                                       &lt;Return to the main menu&gt;
-
-Which menu item should be executed? (&lt;No. of menu item&gt;):
-</pre></div>
-</div>
-<p>Figure 4:  <em>I-Mat - Submenu individual piece (statistical analysis), page 1</em></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">I</span><span class="o">-</span><span class="n">MaT</span> <span class="o">-</span> <span class="n">Interactive</span> <span class="n">music</span> <span class="n">analysis</span> <span class="n">tool</span><span class="p">,</span> <span class="p">(</span><span class="mf">2.2</span><span class="p">,</span> <span class="mf">01.2022</span><span class="p">)</span>
-
-<span class="n">Fellowship</span> <span class="n">project</span> <span class="s2">&quot;Computer-assisted Music Analysis&quot;</span>
-
-
-<span class="n">Fellowship</span> <span class="k">for</span> <span class="n">innovations</span> <span class="ow">in</span> <span class="n">digital</span> <span class="n">university</span> <span class="n">teaching</span>
-
-<span class="o">----------------------------------------------------------------------</span>
-
-<span class="o">--</span> <span class="n">Results</span> <span class="o">--</span>
-
-
-<span class="n">Identifier</span>                 <span class="n">Rhythm</span> <span class="n">value</span> <span class="p">(</span><span class="n">quarter</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span>       <span class="n">Rhythm</span> <span class="n">value</span> <span class="n">name</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">axis</span><span class="p">)</span>       <span class="n">Frequency</span> <span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">axis</span><span class="p">)</span>
-
-
-<span class="n">Partitur</span><span class="p">,</span> <span class="n">Meas</span><span class="o">.</span> <span class="mi">1</span><span class="o">-</span><span class="mi">71</span>       <span class="mf">1.0</span>                                <span class="n">Quarter</span>                          <span class="mi">142</span>
-
-<span class="n">Partitur</span><span class="p">,</span> <span class="n">Meas</span><span class="o">.</span> <span class="mi">1</span><span class="o">-</span><span class="mi">71</span>       <span class="mf">2.0</span>                                <span class="n">Half</span>                             <span class="mi">201</span>
-
-<span class="n">Partitur</span><span class="p">,</span> <span class="n">Meas</span><span class="o">.</span> <span class="mi">1</span><span class="o">-</span><span class="mi">71</span>       <span class="mf">3.0</span>                                <span class="n">Dotted</span> <span class="n">Half</span>                      <span class="mi">36</span>
-
-<span class="n">Partitur</span><span class="p">,</span> <span class="n">Meas</span><span class="o">.</span> <span class="mi">1</span><span class="o">-</span><span class="mi">71</span>       <span class="mf">4.0</span>                                <span class="n">Whole</span>                            <span class="mi">153</span>
-
-<span class="n">Partitur</span><span class="p">,</span> <span class="n">Meas</span><span class="o">.</span> <span class="mi">1</span><span class="o">-</span><span class="mi">71</span>       <span class="mf">6.0</span>                                <span class="n">Dotted</span> <span class="n">Whole</span>                     <span class="mi">29</span>
-
-<span class="n">Partitur</span><span class="p">,</span> <span class="n">Meas</span><span class="o">.</span> <span class="mi">1</span><span class="o">-</span><span class="mi">71</span>       <span class="mf">8.0</span>                                <span class="n">Breve</span>                            <span class="mi">50</span>
-
-<span class="n">Partitur</span><span class="p">,</span> <span class="n">Meas</span><span class="o">.</span> <span class="mi">1</span><span class="o">-</span><span class="mi">71</span>       <span class="mf">12.0</span>                               <span class="n">Dotted</span> <span class="n">Breve</span>                     <span class="mi">30</span>
-
-<span class="n">Partitur</span><span class="p">,</span> <span class="n">Meas</span><span class="o">.</span> <span class="mi">1</span><span class="o">-</span><span class="mi">71</span>       <span class="mf">14.0</span>                               <span class="n">Double</span> <span class="n">Dotted</span> <span class="n">Breve</span>              <span class="mi">1</span>
-
-<span class="n">Partitur</span><span class="p">,</span> <span class="n">Meas</span><span class="o">.</span> <span class="mi">1</span><span class="o">-</span><span class="mi">71</span>       <span class="mf">16.0</span>                               <span class="n">Imperfect</span> <span class="n">Longa</span>                  <span class="mi">10</span>
-
-<span class="n">Partitur</span><span class="p">,</span> <span class="n">Meas</span><span class="o">.</span> <span class="mi">1</span><span class="o">-</span><span class="mi">71</span>       <span class="mf">24.0</span>                               <span class="n">Perfect</span> <span class="n">Longa</span>                    <span class="mi">1</span>
-
-<span class="n">Partitur</span><span class="p">,</span> <span class="n">Meas</span><span class="o">.</span> <span class="mi">1</span><span class="o">-</span><span class="mi">71</span>       <span class="mf">32.0</span>                               <span class="n">Imperfect</span> <span class="n">Maxima</span>                 <span class="mi">3</span>
-
-
-
-<span class="o">&lt;</span><span class="n">To</span> <span class="k">continue</span><span class="p">,</span> <span class="n">please</span> <span class="n">press</span> <span class="n">Enter</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-<p>Figure 5:  <em>I-Mat - statistical analyzes: 10  HIST: Sound events per tone durations (results)</em></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>I-MaT - Interactive music analysis tool, (2.2, 01.2022)
-
-Fellowship project &quot;Computer-assisted Music Analysis&quot;
-
-
-Fellowship for innovations in digital university teaching
-
-----------------------------------------------------------------------
-
-Please select:
-
-No.  Menu item                                                         &lt;Explanation&gt;
-
-1    REPT: New score selection                                         &lt;Repeat the tool with new score selection&gt;
-2    EXPT: Export results as CSV file                                  &lt;Exports and saves the results as CSV file&gt;
-3    GRPH: Display results as graphic                                  &lt;Exports and saves the results as graphic&gt; 
-4    BACK: Back to the main menu                                       &lt;Return to the main menu&gt;
-
-Which menu item should be executed? (&lt;No. of menu item&gt;):
-</pre></div>
-</div>
-<p>Figure 6:  <em>I-Mat - statistical analyzes: 10  HIST: Sound events per tone durations (export menu)</em></p>
-<p><img alt="Figure 7" src="https://user-images.githubusercontent.com/130949054/234640457-f6768147-4e48-4ec8-9bdc-c9ce5ba2ec75.PNG" /></p>
-<p>Figure 7:  <em>I-Mat - statistical analyzes: 10  HIST: Sound events per tone durations (3 GRPH: Display results as graphic)</em></p>
-</section>
-<section id="pattern-search">
-<h3>Pattern Search<a class="headerlink" href="#pattern-search" title="Permalink to this heading">#</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>I-MaT - Interactive music analysis tool, (2.2, 01.2022)
-
-Fellowship project &quot;Computer-assisted Music Analysis&quot;
-
-
-Fellowship for innovations in digital university teaching
-
-----------------------------------------------------------------------
-
--- Submenu individual piece (Pattern search) --
-
-Please select:
-
-No.  Menu item                                                         &lt;Explanation&gt;
-
-1    SEAR: Pattern search (without rhythmic values)                    &lt;Search for a sequence of notes (without rhythmic values)&gt;
-2    SEAR: Pattern search (without rhythmic values/transposed)         &lt;Search for a sequence of notes and all of its transpositions (without rhythmic values)&gt;
-3    SEAR: Pattern search (with rhythmic values)                       &lt;Search for a sequence of notes (with rhythmic values)&gt;
-4    SEAR: Pattern search (with rhythmic values/transposed)            &lt;Search for a sequence of notes and all of its transpositions (with rhythmic values)&gt;   
-5    SEAR: Pattern search (only rhythm)                                &lt;Search for a specific rhythm&gt;
-6    BACK: Back to the main menu                                       &lt;Return to the main menu&gt;
-
-Which menu item should be executed? (&lt;No. of menu item&gt;):
-</pre></div>
-</div>
-<p>Figure 8: <em>I-Mat - Submenu individual piece (Pattern search)</em></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>I-MaT - Interactive music analysis tool, (2.2, 01.2022)
-
-Fellowship project &quot;Computer-assisted Music Analysis&quot;
-
-
-Fellowship for innovations in digital university teaching
-
-----------------------------------------------------------------------
-
-Please enter the note / rhythm pattern (1.0 = quarter) used for the pattern search here.
-
-Selection: [&#39;C&#39;, &#39;D&#39;, &#39;C&#39;]
-
-Please select:
-
-No.  Menu item
-
-1    ‾‾‾‾  -   C-flat
-2    C         C
-3    ____  ♯   C-sharp
-4    ‾‾‾‾  -   D-flat
-5    D         D
-6    ____  ♯   D-sharp
-7    ‾‾‾‾  -   E-flat
-8    E         E
-9    ____  ♯   E-sharp
-10   ‾‾‾‾  -   F-flat
-11   F         F
-12   ____  ♯   F-sharp
-13   ‾‾‾‾  -   G-flat
-14   G         G
-15   ____  ♯   G-sharp
-16   ‾‾‾‾  -   A-flat
-17   A         A
-18   ____  ♯   A-sharp
-19   ‾‾‾‾  -   B-flat
-20   B         B
-21   ____  ♯   B-sharp
-22   BACK: Remove the last note entered
-23   DONE: Finish input
-
-Which menu item should be executed? (&lt;No. of menu item&gt;):
-</pre></div>
-</div>
-<p>Figure 9: <em>I-Mat - 2  SEAR: Pattern search (without rhythmic values/transposed) (search pattern input menu)</em></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">I</span><span class="o">-</span><span class="n">MaT</span> <span class="o">-</span> <span class="n">Interactive</span> <span class="n">music</span> <span class="n">analysis</span> <span class="n">tool</span><span class="p">,</span> <span class="p">(</span><span class="mf">2.2</span><span class="p">,</span> <span class="mf">01.2022</span><span class="p">)</span>
-
-<span class="n">Fellowship</span> <span class="n">project</span> <span class="s2">&quot;Computer-assisted Music Analysis&quot;</span>
-
-
-<span class="n">Fellowship</span> <span class="k">for</span> <span class="n">innovations</span> <span class="ow">in</span> <span class="n">digital</span> <span class="n">university</span> <span class="n">teaching</span>
-
-<span class="o">----------------------------------------------------------------------</span>
-
-<span class="o">--</span> <span class="n">Results</span> <span class="o">--</span>
-
-
-<span class="n">No</span><span class="o">.</span>       <span class="n">Pitch</span>                       <span class="n">Measure</span>       <span class="n">Beat</span>       <span class="n">Voice</span>          <span class="n">Search</span> <span class="n">pattern</span>       
-
-
-<span class="mi">1</span>         <span class="o">&lt;</span><span class="n">music21</span><span class="o">.</span><span class="n">note</span><span class="o">.</span><span class="n">Note</span> <span class="n">C</span><span class="o">&gt;</span>       <span class="mi">5</span>             <span class="mf">1.0</span>        <span class="n">Superius</span>       <span class="n">C</span> <span class="n">D</span> <span class="n">C</span>
-
-<span class="mi">2</span>         <span class="o">&lt;</span><span class="n">music21</span><span class="o">.</span><span class="n">note</span><span class="o">.</span><span class="n">Note</span> <span class="n">C</span><span class="o">&gt;</span>       <span class="mi">62</span>            <span class="mf">1.0</span>        <span class="n">Superius</span>       <span class="n">C</span> <span class="n">D</span> <span class="n">C</span>
-
-<span class="mi">3</span>         <span class="o">&lt;</span><span class="n">music21</span><span class="o">.</span><span class="n">note</span><span class="o">.</span><span class="n">Note</span> <span class="n">C</span><span class="o">&gt;</span>       <span class="mi">67</span>            <span class="mf">3.0</span>        <span class="n">Superius</span>       <span class="n">C</span> <span class="n">D</span> <span class="n">C</span>
-
-<span class="mi">4</span>         <span class="o">&lt;</span><span class="n">music21</span><span class="o">.</span><span class="n">note</span><span class="o">.</span><span class="n">Note</span> <span class="n">C</span><span class="o">&gt;</span>       <span class="mi">33</span>            <span class="mf">2.0</span>        <span class="n">Tenor</span>          <span class="n">C</span> <span class="n">D</span> <span class="n">C</span>
-
-<span class="mi">5</span>         <span class="o">&lt;</span><span class="n">music21</span><span class="o">.</span><span class="n">note</span><span class="o">.</span><span class="n">Note</span> <span class="n">C</span><span class="o">&gt;</span>       <span class="mi">16</span>            <span class="mf">2.0</span>        <span class="n">Bassus</span>         <span class="n">C</span> <span class="n">D</span> <span class="n">C</span>
-
-<span class="mi">6</span>         <span class="o">&lt;</span><span class="n">music21</span><span class="o">.</span><span class="n">note</span><span class="o">.</span><span class="n">Note</span> <span class="n">C</span><span class="o">&gt;</span>       <span class="mi">53</span>            <span class="mf">1.0</span>        <span class="n">Bassus</span>         <span class="n">C</span> <span class="n">D</span> <span class="n">C</span>
-
-<span class="mi">7</span>         <span class="o">&lt;</span><span class="n">music21</span><span class="o">.</span><span class="n">note</span><span class="o">.</span><span class="n">Note</span> <span class="n">F</span><span class="o">&gt;</span>       <span class="mi">3</span>             <span class="mf">2.5</span>        <span class="n">Altus</span>          <span class="n">F</span> <span class="n">G</span> <span class="n">F</span>
-
-<span class="mi">8</span>         <span class="o">&lt;</span><span class="n">music21</span><span class="o">.</span><span class="n">note</span><span class="o">.</span><span class="n">Note</span> <span class="n">F</span><span class="o">&gt;</span>       <span class="mi">33</span>            <span class="mf">2.25</span>       <span class="n">Altus</span>          <span class="n">F</span> <span class="n">G</span> <span class="n">F</span>
-
-<span class="mi">9</span>         <span class="o">&lt;</span><span class="n">music21</span><span class="o">.</span><span class="n">note</span><span class="o">.</span><span class="n">Note</span> <span class="n">F</span><span class="o">&gt;</span>       <span class="mi">52</span>            <span class="mf">1.0</span>        <span class="n">Altus</span>          <span class="n">F</span> <span class="n">G</span> <span class="n">F</span>
-
-<span class="mi">10</span>        <span class="o">&lt;</span><span class="n">music21</span><span class="o">.</span><span class="n">note</span><span class="o">.</span><span class="n">Note</span> <span class="n">F</span><span class="o">&gt;</span>       <span class="mi">40</span>            <span class="mf">2.0</span>        <span class="n">Bassus</span>         <span class="n">F</span> <span class="n">G</span> <span class="n">F</span>
-
-<span class="mi">11</span>        <span class="o">&lt;</span><span class="n">music21</span><span class="o">.</span><span class="n">note</span><span class="o">.</span><span class="n">Note</span> <span class="n">G</span><span class="o">&gt;</span>       <span class="mi">14</span>            <span class="mf">3.5</span>        <span class="n">Superius</span>       <span class="n">G</span> <span class="n">A</span> <span class="n">G</span>
-
-<span class="mi">12</span>        <span class="o">&lt;</span><span class="n">music21</span><span class="o">.</span><span class="n">note</span><span class="o">.</span><span class="n">Note</span> <span class="n">G</span><span class="o">&gt;</span>       <span class="mi">36</span>            <span class="mf">2.0</span>        <span class="n">Superius</span>       <span class="n">G</span> <span class="n">A</span> <span class="n">G</span>
-
-<span class="mi">13</span>        <span class="o">&lt;</span><span class="n">music21</span><span class="o">.</span><span class="n">note</span><span class="o">.</span><span class="n">Note</span> <span class="n">G</span><span class="o">&gt;</span>       <span class="mi">57</span>            <span class="mf">1.0</span>        <span class="n">Superius</span>       <span class="n">G</span> <span class="n">A</span> <span class="n">G</span>
-
-<span class="mi">14</span>        <span class="o">&lt;</span><span class="n">music21</span><span class="o">.</span><span class="n">note</span><span class="o">.</span><span class="n">Note</span> <span class="n">G</span><span class="o">&gt;</span>       <span class="mi">57</span>            <span class="mf">3.0</span>        <span class="n">Superius</span>       <span class="n">G</span> <span class="n">A</span> <span class="n">G</span>
-
-<span class="mi">15</span>        <span class="o">&lt;</span><span class="n">music21</span><span class="o">.</span><span class="n">note</span><span class="o">.</span><span class="n">Note</span> <span class="n">G</span><span class="o">&gt;</span>       <span class="mi">24</span>            <span class="mf">1.0</span>        <span class="n">Altus</span>          <span class="n">G</span> <span class="n">A</span> <span class="n">G</span>
-
-<span class="mi">16</span>        <span class="o">&lt;</span><span class="n">music21</span><span class="o">.</span><span class="n">note</span><span class="o">.</span><span class="n">Note</span> <span class="n">G</span><span class="o">&gt;</span>       <span class="mi">47</span>            <span class="mf">2.5</span>        <span class="n">Altus</span>          <span class="n">G</span> <span class="n">A</span> <span class="n">G</span>
-
-<span class="mi">17</span>        <span class="o">&lt;</span><span class="n">music21</span><span class="o">.</span><span class="n">note</span><span class="o">.</span><span class="n">Note</span> <span class="n">G</span><span class="o">&gt;</span>       <span class="mi">47</span>            <span class="mf">1.0</span>        <span class="n">Tenor</span>          <span class="n">G</span> <span class="n">A</span> <span class="n">G</span>
-
-<span class="mi">18</span>        <span class="o">&lt;</span><span class="n">music21</span><span class="o">.</span><span class="n">note</span><span class="o">.</span><span class="n">Note</span> <span class="n">G</span><span class="o">&gt;</span>       <span class="mi">10</span>            <span class="mf">1.0</span>        <span class="n">Bassus</span>         <span class="n">G</span> <span class="n">A</span> <span class="n">G</span>
-
-
-
-<span class="o">&lt;</span><span class="n">To</span> <span class="k">continue</span><span class="p">,</span> <span class="n">please</span> <span class="n">press</span> <span class="n">Enter</span><span class="o">&gt;</span>
-</pre></div>
-</div>
-<p>Figure 10: <em>I-Mat - 2  SEAR: Pattern search (without rhythmic values/transposed) (results)</em></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>I-MaT - Interactive music analysis tool, (2.2, 01.2022)
-
-Fellowship project &quot;Computer-assisted Music Analysis&quot;
-
-
-Fellowship for innovations in digital university teaching
-
-----------------------------------------------------------------------
-
-Please select:
-
-No.  Menu item                                                         &lt;Explanation&gt;
-
-1    REPT: New search pattern selection                                &lt;Repeat the tool with new score selection&gt;
-2    EXPT: Export results as CSV file                                  &lt;Exports and saves the results as CSV file&gt;
-3    GRPH: Export results as XML file                                  &lt;Exports and saves the results highlighted in a xml file&gt;
-4    BACK: Back to the main menu                                       &lt;Return to the main menu&gt;
-
-Which menu item should be executed? (&lt;No. of menu item&gt;):
-</pre></div>
-</div>
-<p>Figure 11: <em>I-Mat - 2  SEAR: Pattern search (without rhythmic values/transposed) (export menu)</em></p>
-<p><img alt="I-Mat - 2  SEAR Pattern search (without rhythmic values - transposed) (3  GRPH Export results as XML file)" src="https://user-images.githubusercontent.com/130949054/236673524-30fee5c7-0a66-4156-8b6b-fe24661aad18.png" /></p>
-<p>Figure 12: <em>I-Mat - 2  SEAR: Pattern search (without rhythmic values/transposed) (3  GRPH: Export results as XML file)</em></p>
-</section>
-</section>
 <section id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="usage.html#download-and-installation">Download and Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage.html#starting-the-program">Starting the Program</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage.html#troubleshooting">Troubleshooting</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</section>
-</section>
-<section id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading">#</a></h1>
-<ul class="simple">
-<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
-<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
-<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
-</ul>
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading"></a></h2>
 <hr class="footnotes docutils" />
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="id17" role="note">
@@ -684,49 +259,36 @@ Which menu item should be executed? (&lt;No. of menu item&gt;):
 </aside>
 </aside>
 </section>
+</section>
 
-        </article>
-      </div>
-      <footer>
-        
-        <div class="related-pages">
-          <a class="next-page" href="usage.html">
-              <div class="page-info">
-                <div class="context">
-                  <span>Next</span>
-                </div>
-                <div class="title">Usage</div>
-              </div>
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-            </a>
-          
-        </div>
-        <div class="bottom-of-page">
-          <div class="left-details">
-            <div class="copyright">
-                Copyright &#169; 2023, Sebastian Oliver Eck
-            </div>
-            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
-            
-            <a href="https://github.com/pradyunsg/furo">Furo</a>
-            
+
+           </div>
           </div>
-          <div class="right-details">
-            
-          </div>
-        </div>
-        
-      </footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="getting_started.html" class="btn btn-neutral float-right" title="Getting Started with I-MaT" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-    <aside class="toc-drawer no-toc">
-      
-      
-      
-    </aside>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Sebastian Oliver Eck.</p>
   </div>
-</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
-    <script src="_static/scripts/furo.js"></script>
-    </body>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
 </html>

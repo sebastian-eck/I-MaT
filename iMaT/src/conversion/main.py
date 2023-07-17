@@ -1,6 +1,6 @@
 """
-conversion.main.py
-==================
+Module: conversion.main.py
+==========================
 
 This module provides functionality to convert multiple music files from a user-selected folder to a user-selected format.
 
@@ -34,9 +34,9 @@ from music21 import converter
 from openpyxl import Workbook
 from tqdm import tqdm
 
-from src.conversion.utils import create_log_entry, display_parseable_files_in_folder, display_success_rate, \
+from iMaT.src.conversion.utils import create_log_entry, display_parseable_files_in_folder, display_success_rate, \
     select_conversion_format, select_folder
-from src.utils.error_handling import handle_error
+from iMaT.src.utils.error_handling import handle_error
 
 
 def convert_multiple_files_filetype():

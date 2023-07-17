@@ -1,6 +1,6 @@
 """
-tokenization.refine_results.remove_prefixes.py
-==============================================
+Module: tokenization.refine_results.remove_prefixes.py
+======================================================
 
 This module, part of the `tokenization.refine_results` package, refines tokenized data in a CSV file by removing unwanted prefixes.
 
@@ -20,10 +20,10 @@ import re
 import pandas as pd
 from tqdm import tqdm
 
-from src.cli.menu_constructors import display_menu_print_results, display_menu_print_textblock, \
+from iMaT.src.cli.menu_constructors import display_menu_print_results, display_menu_print_textblock, \
     display_menu_request_selection, util_convert_pd_dataframe_to_imat_datacont
-from src.tokenization.utils import save_data_to_new_csv_file, select_csv_file_2d_token_representation
-from src.utils.error_handling import handle_error
+from iMaT.src.tokenization.utils import save_data_to_new_csv_file, select_csv_file_2d_token_representation
+from iMaT.src.utils.error_handling import handle_error
 
 
 def corpus_tokenization_refine_data_remove_prefixes():

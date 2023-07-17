@@ -1,6 +1,6 @@
 """
-cli.menu_entries.py
-===================
+Module: cli.menu_entries.py
+===========================
 
 This module provides functionalities to construct the entries for various menus used within the command-line interface (CLI) of the Interactive Music Analysis Tool (I-MaT).
 
@@ -29,7 +29,7 @@ These functions allow for easy modification of the menu structure and contents, 
 and functionality of the CLI. The module aids in ensuring that the command-line interface remains user-friendly
 and intuitive, providing clear navigation and straightforward access to the tool's functionalities.
 """
-from src.analysis.functions import analysis_advanced_calculate_activity_rate, \
+from iMaT.src.analysis.functions import analysis_advanced_calculate_activity_rate, \
     analysis_advanced_compare_pitches_and_pitch_classes_per_duration, analysis_ambitus, \
     analysis_number_of_intervals_per_type, analysis_number_of_intervals_per_type_with_direction, \
     analysis_number_of_notes, analysis_number_of_pitch_classes_per_metrical_position, \
@@ -38,26 +38,26 @@ from src.analysis.functions import analysis_advanced_calculate_activity_rate, \
     analysis_number_of_pitches_per_tone_duration, analysis_number_of_rests, analysis_number_of_rests_per_rest_duration, \
     analysis_number_of_sound_events_per_metrical_position, analysis_number_of_sound_events_per_pitch, \
     analysis_number_of_sound_events_per_pitch_class, analysis_number_of_sound_events_per_tone_duration
-from src.analysis.main import analysis_workflow_single_musical_piece
-from src.conversion.main import convert_multiple_files_filetype
-from src.m21_environment.main import display_environment_file, set_user_preferences
-from src.pattern_search.functions import pattern_search_only_rhythm, \
+from iMaT.src.analysis.main import analysis_workflow_single_musical_piece
+from iMaT.src.conversion.main import convert_multiple_files_filetype
+from iMaT.src.m21_environment.main import display_environment_file, set_user_preferences
+from iMaT.src.pattern_search.functions import pattern_search_only_rhythm, \
     pattern_search_with_transposition_with_rhythm, \
     pattern_search_with_transposition_without_rhythm, \
     pattern_search_without_transposition_with_rhythm, pattern_search_without_transposition_without_rhythm
-from src.pattern_search.main import pattern_search_workflow_single_musical_piece
-from src.visualizations.main import generic_display_workflow
-from src.score_selection.main import score_selection
-from src.tokenization.main import tokenization_tokenize_folder_midi_files
-from src.tokenization.refine_results.absolute_duration import \
+from iMaT.src.pattern_search.main import pattern_search_workflow_single_musical_piece
+from iMaT.src.visualizations.main import generic_display_workflow
+from iMaT.src.score_selection.main import score_selection
+from iMaT.src.tokenization.main import tokenization_tokenize_folder_midi_files
+from iMaT.src.tokenization.refine_results.absolute_duration import \
     corpus_tokenization_refine_data_absolute_duration
-from src.tokenization.refine_results.calculate_pitch_intervals import \
+from iMaT.src.tokenization.refine_results.calculate_pitch_intervals import \
     tokenization_calculate_pitch_intervals
-from src.tokenization.refine_results.remove_prefixes import \
+from iMaT.src.tokenization.refine_results.remove_prefixes import \
     corpus_tokenization_refine_data_remove_prefixes
-from src.tokenization.refine_results.tokens_to_txt import tokenization_export_csv_columns_to_txt_file
-from src.utils.misc import change_part_names, show_metadata, show_part_names
-from src.visualizations.m21_integrated import play_midi_score, show_chord_connections, show_chord_scale_system, \
+from iMaT.src.tokenization.refine_results.tokens_to_txt import tokenization_export_csv_columns_to_txt_file
+from iMaT.src.utils.misc import change_part_names, show_metadata, show_part_names
+from iMaT.src.visualizations.m21_integrated import play_midi_score, show_chord_connections, show_chord_scale_system, \
     show_figured_bass, show_key_analysis, show_musescore, show_pianoroll, show_voice_progression, show_volume_change
 
 

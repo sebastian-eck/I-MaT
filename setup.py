@@ -1,18 +1,24 @@
-from setuptools import setup
+import setuptools
 
-with open("../README.md", "r") as fh:
+with open("README.md", "r") as fh:
     long_description = fh.read()
 
-setup(
-    name='iMaT',
-    version='0.0.1',
+setuptools.setup(
+    include_package_data=True,
+    name='imat',
+    version='3.0',
     author='Sebastian Oliver Eck',
     url="https://github.com/sebastian-eck/I-MaT",
     description='Interactive Music Analysis Tool (I-MaT)',
     long_description=long_description,
     long_description_content_type="text/markdown",
-    py_modules=['iMaT'],
-    package_dir={'': 'src'},
+    license="MIT License",
+    packages=setuptools.find_packages(),
+    entry_points={
+        'console_scripts': [
+            'iMaT = iMaT.__main__:main'
+        ]
+    },
     classifiers=[
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.8",

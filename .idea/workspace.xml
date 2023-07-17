@@ -7,11 +7,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="261d9175-119f-4a99-aab1-0189b930fb8c" name="Changes" comment="added building dependency. Added html theme">
-      <change afterPath="$PROJECT_DIR$/iMaT/docs/source/usage.md" afterDir="false" />
+    <list default="true" id="261d9175-119f-4a99-aab1-0189b930fb8c" name="Changes" comment="added crossreferences functions">
+      <change afterPath="$PROJECT_DIR$/iMaT/docs/source/license.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/iMaT/docs/source/module_files/src.constants.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/iMaT/docs/source/user_guide.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/__main__.py" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/__main__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/.buildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/.buildinfo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_sources/index.md.txt" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_sources/index.md.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/_static/pygments.css" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/_static/pygments.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/genindex.html" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/genindex.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/objects.inv" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/objects.inv" afterDir="false" />
@@ -19,6 +24,41 @@
       <change beforePath="$PROJECT_DIR$/iMaT/docs/build/html/searchindex.js" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/build/html/searchindex.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/source/conf.py" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/source/conf.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iMaT/docs/source/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/source/index.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/docs/source/usage.md" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/source/getting_started.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/src/analysis/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/src/analysis/functions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/src/analysis/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/src/analysis/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/src/analysis/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/src/analysis/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/src/cli/menu_constructors.py" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/src/cli/menu_constructors.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/src/cli/menu_entries.py" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/src/cli/menu_entries.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/src/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/src/constants.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/src/conversion/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/src/conversion/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/src/conversion/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/src/conversion/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/src/examples/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/docs/source/contribute.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/src/examples/examples_demos.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/src/iMaT.egg-info/PKG-INFO" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/src/iMaT.egg-info/SOURCES.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/src/iMaT.egg-info/dependency_links.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/src/iMaT.egg-info/requires.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/src/iMaT.egg-info/top_level.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/src/m21_environment/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/src/m21_environment/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/src/pattern_search/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/src/pattern_search/functions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/src/pattern_search/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/src/pattern_search/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/src/pattern_search/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/src/pattern_search/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/src/score_selection/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/src/score_selection/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/src/score_selection/name_parts.py" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/src/score_selection/name_parts.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/src/score_selection/select_parts_and_measures.py" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/src/score_selection/select_parts_and_measures.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/src/tokenization/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/src/tokenization/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/src/tokenization/refine_results/absolute_duration.py" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/src/tokenization/refine_results/absolute_duration.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/src/tokenization/refine_results/calculate_pitch_intervals.py" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/src/tokenization/refine_results/calculate_pitch_intervals.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/src/tokenization/refine_results/remove_prefixes.py" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/src/tokenization/refine_results/remove_prefixes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/src/tokenization/refine_results/tokens_to_txt.py" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/src/tokenization/refine_results/tokens_to_txt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/src/tokenization/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/src/tokenization/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/src/utils/error_handling.py" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/src/utils/error_handling.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/src/utils/misc.py" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/src/utils/misc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/src/visualizations/analysis_results_graphs.py" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/src/visualizations/analysis_results_graphs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/src/visualizations/m21_integrated.py" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/src/visualizations/m21_integrated.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iMaT/src/visualizations/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/iMaT/src/visualizations/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +68,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Jupyter Notebook" />
         <option value="Python Script" />
       </list>
     </option>
@@ -58,45 +99,46 @@
     <option name="showScratchesAndConsoles" value="false" />
     <option name="sortByType" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "full.screen.before.presentation.mode": "false",
-    "git-widget-placeholder": "Refractoring",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/sebas/PycharmProjects/I-MaT-development-/iMaT/src/visualizations",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.stylelint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.stylelint": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.code.analysis.last.selected.profile": "aDefault",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;full.screen.before.presentation.mode&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Refractoring&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/sebas/PycharmProjects/I-MaT-development-&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;aDefault&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\sebas\PycharmProjects\I-MaT-development-\iMaT\docs\source" />
       <recent name="C:\Users\sebas\PycharmProjects\I-MaT-development-\iMaT\src\tokenization\tokenization_refine_results" />
       <recent name="C:\Users\sebas\PycharmProjects\I-MaT-development-\iMaT\src\m21_environment" />
       <recent name="C:\Users\sebas\PycharmProjects\I-MaT-development-" />
       <recent name="C:\Users\sebas\Desktop" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\sebas\PycharmProjects\I-MaT-development-\iMaT\src\visualizations" />
+      <recent name="C:\Users\sebas\PycharmProjects\I-MaT-development-\iMaT\docs\source\module_files" />
       <recent name="C:\Users\sebas\PycharmProjects\I-MaT-development-" />
-      <recent name="C:\Users\sebas\PycharmProjects\I-MaT-development-\iMaT\src\tokenization\tokenization_refine_results" />
-      <recent name="C:\Users\sebas\PycharmProjects\I-MaT-development-\iMaT\src\m21_environment" />
-      <recent name="C:\Users\sebas\PycharmProjects\I-MaT-development-\iMaT\src\pattern_search" />
+      <recent name="C:\Users\sebas\PycharmProjects\I-MaT-development-\iMaT" />
+      <recent name="C:\Users\sebas\PycharmProjects\I-MaT-development-\iMaT\src" />
+      <recent name="C:\Users\sebas\PycharmProjects\I-MaT-development-\iMaT\src\visualizations" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.__main__">
+  <component name="RunManager" selected="Python.test">
     <configuration name="__main__" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="I-MaT-development-" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -110,7 +152,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/iMaT/__main__.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\sebas\PycharmProjects\I-MaT-development-\iMaT\__main__.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="true" />
@@ -339,6 +381,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="I-MaT-development-" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="testfield" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="I-MaT-development-" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -367,6 +431,7 @@
       <item itemvalue="Python.cli_menu_structure" />
       <item itemvalue="Python.main" />
       <item itemvalue="Python.routines_score_selection" />
+      <item itemvalue="Python.test" />
       <item itemvalue="Python.pattern_search_selection" />
       <item itemvalue="Python.routines_configure_m21_environment" />
       <item itemvalue="Python.i-MaT" />
@@ -374,6 +439,7 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.test" />
         <item itemvalue="Python.routines_configure_m21_environment" />
         <item itemvalue="Python.pattern_search_selection" />
         <item itemvalue="Python.i-MaT" />
@@ -451,7 +517,19 @@
       <workItem from="1688090012725" duration="6326000" />
       <workItem from="1688099162906" duration="751000" />
       <workItem from="1688110309151" duration="5930000" />
-      <workItem from="1688116876003" duration="4570000" />
+      <workItem from="1688116876003" duration="8140000" />
+      <workItem from="1688125270673" duration="1614000" />
+      <workItem from="1688127510549" duration="1475000" />
+      <workItem from="1688132607573" duration="2954000" />
+      <workItem from="1688135896918" duration="374000" />
+      <workItem from="1688136806614" duration="1816000" />
+      <workItem from="1688149126310" duration="1928000" />
+      <workItem from="1688342497825" duration="3097000" />
+      <workItem from="1688370078333" duration="14000" />
+      <workItem from="1688382878278" duration="894000" />
+      <workItem from="1688472432478" duration="733000" />
+      <workItem from="1689428766055" duration="809000" />
+      <workItem from="1689573363840" duration="22189000" />
     </task>
     <task id="LOCAL-00001" summary="Splitting (lots of work to do)">
       <created>1686194669168</created>
@@ -600,7 +678,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688120847683</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="added crossreferences functions">
+      <created>1688121510925</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1688121510925</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -647,7 +732,8 @@
     <MESSAGE value="added the rest of the exception handling and checked file formats for file conversion" />
     <MESSAGE value="Added module docstrings" />
     <MESSAGE value="added building dependency. Added html theme" />
-    <option name="LAST_COMMIT_MESSAGE" value="added building dependency. Added html theme" />
+    <MESSAGE value="added crossreferences functions" />
+    <option name="LAST_COMMIT_MESSAGE" value="added crossreferences functions" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -670,12 +756,12 @@
     <SUITE FILE_PATH="coverage/I_MaT_development_$cli_menu_structure.coverage" NAME="cli_menu_structure Coverage Results" MODIFIED="1686751849128" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/i_mat_new/src/cli" />
     <SUITE FILE_PATH="coverage/I_MaT_development_$routines_select_parts_and_measures.coverage" NAME="routines_select_parts_and_measures Coverage Results" MODIFIED="1686757995753" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/i_mat_new/src/routines" />
     <SUITE FILE_PATH="coverage/I_MaT_development_$conversion.coverage" NAME="conversion Coverage Results" MODIFIED="1687173174198" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/i_mat_new/src/conversion" />
-    <SUITE FILE_PATH="coverage/I_MaT_development_$test.coverage" NAME="test Coverage Results" MODIFIED="1686158682878" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/i_mat_new/src/cli" />
     <SUITE FILE_PATH="coverage/I_MaT_development_$.coverage" NAME=" Coverage Results" MODIFIED="1686885553336" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/I_MaT_development_$test.coverage" NAME="test Coverage Results" MODIFIED="1689600383875" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/I_MaT_development_$tokenization_clean_data__1_.coverage" NAME="emulate terminal output Coverage Results" MODIFIED="1687445294057" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/i_mat_new/src/tokenization" />
     <SUITE FILE_PATH="coverage/I_MaT_development_$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1687705881516" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/iMaT/src" />
     <SUITE FILE_PATH="coverage/I_MaT_development_$tokenization__1_.coverage" NAME="tokenization (1) Coverage Results" MODIFIED="1687355075400" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/i_mat_new/src/tokenization" />
-    <SUITE FILE_PATH="coverage/I_MaT_development_$__main__.coverage" NAME="__main__ Coverage Results" MODIFIED="1688056680112" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/iMaT" />
+    <SUITE FILE_PATH="coverage/I_MaT_development_$__main__.coverage" NAME="__main__ Coverage Results" MODIFIED="1688150968994" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/iMaT" />
     <SUITE FILE_PATH="coverage/I_MaT_development_$i_mat_2.coverage" NAME="i_mat_2 Coverage Results" MODIFIED="1686132073293" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/i_mat/src/test_program" />
     <SUITE FILE_PATH="coverage/I_MaT_development_$tokenization.coverage" NAME="tokenization Coverage Results" MODIFIED="1686196756220" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/i_mat_new/src/tokenization" />
     <SUITE FILE_PATH="coverage/I_MaT_development_$cli_menu_entries.coverage" NAME="cli_menu_entries Coverage Results" MODIFIED="1686142155079" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/i_mat_new/src/cli" />

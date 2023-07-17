@@ -1,6 +1,6 @@
 """
-cli.menu_constructors.py
-========================
+Module: cli.menu_constructors.py
+================================
 
 This module is designed to create, manage, and navigate through a menu interface in a console environment.
 
@@ -10,7 +10,7 @@ handling user navigation, executing menu-associated functions, displaying struct
 analysis results in an organized, readable format.
 
 Module-level variables:
-----------------------
+-----------------------
 menu_stack : list
     A stack to keep track of the previous menus. This stack is used to enable backward and forward navigation in
     undirected menus.
@@ -36,8 +36,8 @@ import textwrap
 
 import pandas as pd
 
-from src.constants import TITLE_TEXT
-from src.utils.error_handling import handle_error
+from iMaT.src.constants import TITLE_TEXT
+from iMaT.src.utils.error_handling import handle_error
 
 menu_stack = []  # Stack to keep track of the previous menus
 

@@ -1,6 +1,6 @@
 """
-pattern_search.utils.py
-=======================
+Module: pattern_search.utils.py
+===============================
 
 Provides utility functions for selecting musical patterns based on notes, rhythm,
 or a combination of both in the pattern_search package. Each function prompts the
@@ -38,9 +38,9 @@ src.utils.error_handling.handle_error
 """
 from music21 import note
 
-from src.cli.menu_constructors import display_menu_request_selection
-from src.constants import NOTES_LIST, RHYTHMIC_VALUES_LIST
-from src.utils.error_handling import handle_error
+from iMaT.src.cli.menu_constructors import display_menu_request_selection
+from iMaT.src.constants import NOTES_LIST, RHYTHMIC_VALUES_LIST
+from iMaT.src.utils.error_handling import handle_error
 
 
 def pattern_selection_notes_only():

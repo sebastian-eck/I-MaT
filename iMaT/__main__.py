@@ -5,7 +5,7 @@ __main__.py
 This is the entry point of the Interactive Music Analysis Tool (I-MaT) Command Line Interface (CLI) application.
 The CLI app starts with a loading animation to simulate the time it takes to import the necessary modules.
 
-The main function, start_imat_CLI(), first checks the existence of the environment file using
+The main function, main(), first checks the existence of the environment file using
 check_environmentFile() function. If the environment file exists, it then displays the start menu to the
 user using display_menu_undirected() function.
 
@@ -20,7 +20,7 @@ from time import sleep
 
 from tqdm import tqdm
 
-from src.constants import TITLE_TEXT
+from iMaT.src.constants import TITLE_TEXT
 
 print(TITLE_TEXT)
 
@@ -40,16 +40,16 @@ loading_thread = threading.Thread(target=animate_loading)
 loading_thread.start()
 
 # Importing modules
-from src.cli.menu_constructors import display_menu_undirected
-from src.cli.menu_entries import start_menu_entries
-from src.m21_environment.main import check_environmentFile
+from iMaT.src.cli.menu_constructors import display_menu_undirected
+from iMaT.src.cli.menu_entries import start_menu_entries
+from iMaT.src.m21_environment.main import check_environmentFile
 
 # Once all modules are imported, stop the animation
 loading_thread.do_run = False
 loading_thread.join()
 
 
-def start_imat_CLI():
+def main():
     """
     Main function to start the Interactive Music Analysis Tool (I-MaT) Command Line Interface (CLI).
     First, it checks if the environment file exists using check_environmentFile function. If it exists,
@@ -66,4 +66,4 @@ def start_imat_CLI():
 
 
 if __name__ == '__main__':
-    start_imat_CLI()
+    main()

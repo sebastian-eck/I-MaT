@@ -1,6 +1,6 @@
 """
-pattern_search.main.py
-======================
+Module: pattern_search.main.py
+==============================
 
 This module contains functions to perform pattern search in musical scores.
 It is a part of the `pattern_search` package and provides the main workflow
@@ -34,15 +34,15 @@ from matplotlib import pyplot as plt
 from matplotlib.lines import Line2D
 from music21 import note
 
-from src.cli.menu_constructors import display_menu_print_results, display_menu_request_selection, \
+from iMaT.src.cli.menu_constructors import display_menu_print_results, display_menu_request_selection, \
     util_convert_pd_dataframe_to_imat_datacont
-from src.pattern_search.utils import pattern_selection_notes_and_rhythm, \
+from iMaT.src.pattern_search.utils import pattern_selection_notes_and_rhythm, \
     pattern_selection_notes_only, pattern_selection_rhythm_only
-from src.score_selection.main import score_selection
-from src.score_selection.name_parts import selected_score_part_names
-from src.score_selection.select_parts_and_measures import select_parts_and_measures
-from src.utils.error_handling import handle_error
-from src.utils.misc import export_results_to_csv_auto
+from iMaT.src.score_selection.main import score_selection
+from iMaT.src.score_selection.name_parts import selected_score_part_names
+from iMaT.src.score_selection.select_parts_and_measures import select_parts_and_measures
+from iMaT.src.utils.error_handling import handle_error
+from iMaT.src.utils.misc import export_results_to_csv_auto
 
 
 def map_pattern_search_function_to_pattern_selection_function(pattern_search_func: callable):

@@ -1,6 +1,6 @@
 """
-score_selection.select_parts_and_measures.py
-============================================
+Module: score_selection.select_parts_and_measures.py
+====================================================
 
 This module provides a user interface to facilitate the selection of musical parts and measures from a given musical
 score using music21, a toolkit for computer-aided musicology.
@@ -39,9 +39,9 @@ for some of its operations.
 import music21
 from music21 import stream
 
-from src.cli.menu_constructors import display_menu_print_textblock, display_menu_request_selection
-from src.score_selection.name_parts import selected_score_part_names
-from src.utils.error_handling import handle_error
+from iMaT.src.cli.menu_constructors import display_menu_print_textblock, display_menu_request_selection
+from iMaT.src.score_selection.name_parts import selected_score_part_names
+from iMaT.src.utils.error_handling import handle_error
 
 previous_score_selection = ()
 

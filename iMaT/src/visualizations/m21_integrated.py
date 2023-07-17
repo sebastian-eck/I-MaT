@@ -1,6 +1,6 @@
 """
-visualizations.m21_integrated.py
-================================
+Module: visualizations.m21_integrated.py
+========================================
 
 This module, part of the `visualizations` package, leverages the `music21` library to provide various methods of
 displaying and analyzing musical scores.
@@ -21,18 +21,14 @@ Functions
 These functions manage exceptions by leveraging the `handle_error` function from the `src.utils` package.
 The `display_menu_print_textblock` and `display_menu_request_selection` functions from `src.cli.menu_constructors` are
 used to interact with the user.
-
-Examples
---------
-Please refer to the individual function docstrings for specific examples of how to use these functions.
 """
 import music21
 from music21 import environment, roman
 from tqdm import tqdm
 
-from src.cli.menu_constructors import display_menu_print_textblock, display_menu_request_selection
-from src.constants import KEYS_LIST
-from src.utils.error_handling import handle_error
+from iMaT.src.cli.menu_constructors import display_menu_print_textblock, display_menu_request_selection
+from iMaT.src.constants import KEYS_LIST
+from iMaT.src.utils.error_handling import handle_error
 
 
 def play_midi_score(selected_score):

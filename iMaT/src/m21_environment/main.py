@@ -1,6 +1,6 @@
 """
-m21_environment.main.py
-=======================
+Module: m21_environment.main.py
+===============================
 
 This module contains the implementation of various functions for managing user preferences
 for the Music21 library, including setting user preferences, checking the environment file,
@@ -42,8 +42,8 @@ from tkinter.filedialog import askdirectory, askopenfilename
 
 from music21 import environment
 
-from src.cli.menu_constructors import display_menu_print_textblock, display_menu_request_selection
-from src.utils.error_handling import handle_error
+from iMaT.src.cli.menu_constructors import display_menu_print_textblock, display_menu_request_selection
+from iMaT.src.utils.error_handling import handle_error
 
 
 def set_user_preferences():

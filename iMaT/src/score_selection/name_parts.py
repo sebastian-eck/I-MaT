@@ -1,6 +1,6 @@
 """
-score_selection.name_parts.py
-=============================
+Module: score_selection.name_parts.py
+=====================================
 
 This module provides functionalities to interact with and manipulate music scores using the music21 library. It takes
 into account predefined names for each part of the score within the files and assigns them to the corresponding
@@ -39,9 +39,9 @@ is reserved for the whole Score object. The structure of the dictionary is as fo
 
 import music21
 
-from src.cli.menu_constructors import display_menu_print_results, display_menu_print_textblock, \
+from iMaT.src.cli.menu_constructors import display_menu_print_results, display_menu_print_textblock, \
     display_menu_request_selection
-from src.utils.error_handling import handle_error
+from iMaT.src.utils.error_handling import handle_error
 
 selected_score_part_names = {}
 

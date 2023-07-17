@@ -1,6 +1,6 @@
 """
-visualizations.main.py
-======================
+Module: visualizations.main.py
+==============================
 
 This module, part of the `visualizations` package, provides workflow management for the display and playback of musical
 scores. It includes functions that manage score selection and handle user interaction post-analysis.
@@ -17,10 +17,10 @@ Examples
 --------
 Please see the docstrings of individual functions for specific examples of their use.
 """
-from src.cli.menu_constructors import display_menu_request_selection
-from src.score_selection.main import score_selection
-from src.score_selection.name_parts import selected_score_part_names
-from src.score_selection.select_parts_and_measures import select_parts_and_measures
+from iMaT.src.cli.menu_constructors import display_menu_request_selection
+from iMaT.src.score_selection.main import score_selection
+from iMaT.src.score_selection.name_parts import selected_score_part_names
+from iMaT.src.score_selection.select_parts_and_measures import select_parts_and_measures
 
 
 def generic_display_workflow(display_func: callable):
