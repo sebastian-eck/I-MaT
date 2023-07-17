@@ -221,6 +221,6 @@ To add your analysis function 'my_new_analysis_function' to the menu displayed a
 
 Your new analysis function will now be displayed within I-MaT! If your code does not work properly, don't worry. The exception part of your function will tell you what to change!
 
-Please contact the author of this documentation via GitHub or per mail (imat.inquiries[at]gmail.com), if you want to contribute to the tool, so that everyone can profit from your ideas. :)
+Please contact the author of this documentation directly via [GitHub](https://github.com/sebastian-eck/I-MaT) or E-Mail (imat.inquiries[at]gmail.com), if you want to contribute to the tool, so that everyone can profit from your ideas. :)
 
 I hope you enjoy contributing to the Interactive Music Analysis Tool I-MaT!

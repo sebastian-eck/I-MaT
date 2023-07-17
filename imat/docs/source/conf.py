@@ -6,10 +6,10 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'I-MaT'
+project = 'imat'
 copyright = '2023, Sebastian Oliver Eck'
 author = 'Sebastian Oliver Eck'
-release = '3.0'
+release = '0.0.1'
 
 import os
 import sys
@@ -25,8 +25,6 @@ extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.napoleon",
     "sphinx.ext.autosummary",
-    "sphinx.ext.viewcode",
-    "sphinx_rtd_theme"
 ]
 
 templates_path = ['_templates']

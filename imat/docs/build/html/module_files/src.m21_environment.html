@@ -4,15 +4,13 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Package: music21 Environment File Configuration (src.m21_environment) &mdash; I-MaT 3.0 documentation</title>
+  <title>Package: music21 Environment File Configuration (src.m21_environment) &mdash; imat 0.0.1 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/sphinx_highlight.js"></script>
@@ -32,7 +30,7 @@
           
           
           <a href="../index.html" class="icon icon-home">
-            I-MaT
+            imat
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -76,7 +74,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">I-MaT</a>
+          <a href="../index.html">imat</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -131,7 +129,7 @@ execution and display these to the user.</p>
 </section>
 <dl class="py function">
 <dt class="sig sig-object py" id="src.m21_environment.main.check_environmentFile">
-<span class="sig-prename descclassname"><span class="pre">src.m21_environment.main.</span></span><span class="sig-name descname"><span class="pre">check_environmentFile</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/m21_environment/main.html#check_environmentFile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.m21_environment.main.check_environmentFile" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.m21_environment.main.</span></span><span class="sig-name descname"><span class="pre">check_environmentFile</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.m21_environment.main.check_environmentFile" title="Permalink to this definition"></a></dt>
 <dd><p>Check if the music21 environment file exists.</p>
 <p>This function checks whether the music21 environment file already exists. If it does not, it prompts the user
 to create a new one or continue without creating it (not recommended). If the user chooses to create a new
@@ -145,7 +143,7 @@ environment file, the function calls <cite>set_user_preferences</cite> to do so.
 
 <dl class="py function">
 <dt class="sig sig-object py" id="src.m21_environment.main.display_environment_file">
-<span class="sig-prename descclassname"><span class="pre">src.m21_environment.main.</span></span><span class="sig-name descname"><span class="pre">display_environment_file</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/m21_environment/main.html#display_environment_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.m21_environment.main.display_environment_file" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.m21_environment.main.</span></span><span class="sig-name descname"><span class="pre">display_environment_file</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.m21_environment.main.display_environment_file" title="Permalink to this definition"></a></dt>
 <dd><p>Display the contents of the music21 environment file.</p>
 <p>This function reads the music21 environment file and displays its key-value pairs to the user.
 If the environment file does not exist, it informs the user and provides instructions on how to create a new one.
@@ -159,7 +157,7 @@ The function is useful for users to check and understand their current music21 s
 
 <dl class="py function">
 <dt class="sig sig-object py" id="src.m21_environment.main.set_user_preferences">
-<span class="sig-prename descclassname"><span class="pre">src.m21_environment.main.</span></span><span class="sig-name descname"><span class="pre">set_user_preferences</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/m21_environment/main.html#set_user_preferences"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.m21_environment.main.set_user_preferences" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.m21_environment.main.</span></span><span class="sig-name descname"><span class="pre">set_user_preferences</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.m21_environment.main.set_user_preferences" title="Permalink to this definition"></a></dt>
 <dd><p>Prompt user for settings and set preferences in music21.</p>
 <p>This function creates a new environment file if it does not already exist, prompts the user for their scratch directory
 and MuseScore path, and sets their autoDownload preference to “allow”. It is crucial to use this function to set user

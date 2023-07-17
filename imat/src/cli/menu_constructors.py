@@ -10,7 +10,7 @@ handling user navigation, executing menu-associated functions, displaying struct
 analysis results in an organized, readable format.
 
 Module-level variables:
-----------------------
+-----------------------
 menu_stack : list
     A stack to keep track of the previous menus. This stack is used to enable backward and forward navigation in
     undirected menus.
