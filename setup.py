@@ -59,6 +59,6 @@ setuptools.setup(
                 "sphinxcontrib-napoleon~=0.7",
                 "sphinx-autobuild",
                 "myst_parser",
-                "furo"]
+                "sphinx_rtd_theme"]
     }
 )
