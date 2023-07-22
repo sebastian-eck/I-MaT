@@ -49,7 +49,10 @@ setuptools.setup(
         "tokenizers~=0.13.3",
         "requests~=2.31.0",
         "openpyxl~=3.1.2",
-        "tqdm~=4.65.0"
+        "tqdm~=4.65.0",
+        "seaborn~=0.12.2",
+        "scipy~=1.10.1"
+
     ],
     extras_require={
         "doc": ["sphinx~=7.0.0",
