@@ -44,7 +44,7 @@ with a selection of example scores for analysis.
 """
 
 TITLE_TEXT = (
-    '\nI-MaT - Interactive Music Analysis Tool, v3.2.0, (2023). Project: "Computer-Assisted Music Analysis"\n\n'
+    '\nI-MaT - Interactive Music Analysis Tool, v3.2.1, (2023). Project: "Computer-Assisted Music Analysis"\n\n'
     'Department of Musicology Weimar-Jena, University of Music Franz Liszt Weimar, Germany\n\n'
     'MIT License, Copyright (c) 2023 S.O. Eck.\n\n'
     '----------------------------------------------------------------------\n'

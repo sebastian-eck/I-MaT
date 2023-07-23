@@ -6,7 +6,7 @@ with open("README.md", "r", encoding='utf-8') as fh:
 setuptools.setup(
     include_package_data=True,
     name='imat',
-    version='3.2.0',
+    version='3.2.1',
     author='Sebastian Oliver Eck',
     url="https://github.com/sebastian-eck/I-MaT",
     description='Interactive Music Analysis Tool (I-MaT)',
