@@ -81,8 +81,8 @@ def start_menu_entries():
         ],
         "menu_entries": [
             ["PROG: Analysis of one sheet music file", mainmenu_single_musical_piece_entries, "<Analysis of a single piece of music>"],
-            ["CONV: Conversion of multiple music files", convert_multiple_files_filetype, "<Conversion of multiple music file wihthin one folder>"],
-            ["TOKE: Tokenisation of multiple music files", mainmenu_tokenization_entries, "<Tokenisation of multiple music file wihthin one folder>"],
+            ["CONV: Conversion of multiple music files", convert_multiple_files_filetype, "<Conversion of multiple music files within one folder>"],
+            ["TOKE: Tokenisation of multiple music files", mainmenu_tokenization_entries, "<Tokenisation of multiple music files within one folder>"],
             ["CONF: Update Software Paths and Preferences", mainmenu_environment_settings_entries, "<Update or redefine paths to essential software and user preferences>"],
         ]
     }
