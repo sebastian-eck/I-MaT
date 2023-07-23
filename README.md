@@ -75,6 +75,7 @@ No.       Menu item                                           <Explanation>
 
 Which menu item should be executed? (<No. of menu item>):
 ```
+Figure 1: The Interactive Music Analysis Tool (I-MaT) - Start Menu
 
 Addressing the steep learning curve often encountered with Python-based music analysis tools like Music21 or CAMAT, the Interactive Music Analysis Tool (I-MaT) was designed specifically with user accessibility in mind. I-MaT utilizes a new and innovative approach to access, work with and implement various python libraries, such as, but not limited to, music21 or MidiTok for textual music analysis, within one unified, user friendly text-based command-line-interface (CLI).
 
