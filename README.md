@@ -54,7 +54,7 @@ Since then, this research endeavor has been guided by two primary objectives:
 ## I-MaT: Features and Accessibility
 
 ```
-I-MaT - Interactive Music Analysis Tool, v3.1, (2023). Project: "Computer-Assisted Music Analysis"
+I-MaT - Interactive Music Analysis Tool, v3.2.1, (2023). Project: "Computer-Assisted Music Analysis"
 
 Department of Musicology Weimar-Jena, University of Music Franz Liszt Weimar, Germany
 
