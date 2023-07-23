@@ -69,8 +69,8 @@ Please make a selection from the options below by entering the entry index numbe
 No.       Menu item                                           <Explanation>
 
 1         PROG: Analysis of one sheet music file              <Analysis of a single piece of music>
-2         CONV: Conversion of multiple music files            <Conversion of multiple music file wihthin one folder>
-3         TOKE: Tokenisation of multiple music files          <Tokenisation of multiple music file wihthin one folder>
+2         CONV: Conversion of multiple music files            <Conversion of multiple music files within one folder>
+3         TOKE: Tokenisation of multiple music files          <Tokenisation of multiple music files within one folder>
 4         CONF: Update Software Paths and Preferences         <Update or redefine paths to essential software and user preferences>
 
 Which menu item should be executed? (<No. of menu item>):
