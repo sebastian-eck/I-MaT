@@ -55,7 +55,7 @@ setuptools.setup(
 
     ],
     extras_require={
-        "doc": ["sphinx~=7.0.0",
+        "doc": ["sphinx<7.0.0",
                 "sphinxcontrib-napoleon~=0.7",
                 "sphinx-autobuild",
                 "myst_parser",
