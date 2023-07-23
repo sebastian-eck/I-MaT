@@ -102,8 +102,8 @@ The Interactive Music Analysis Tool, I-MaT, should be seen as a contribution to 
 
 The fellowship project contains [two larger databases](https://analyse.hfm-weimar.de/doku.php?id=en:datenbank):
 
-- The [main database](https://analyse.hfm-weimar.de/doku.php?id=en:datenbank) comprises several thousand individual sheet music files (MusicXML).
-- The [subcorpus](https://analyse.hfm-weimar.de/doku.php?id=en:komponisten) contains all scores used in the two teaching modules for score analysis and was carefully curated by student members of the project team.
+- The [main database](https://analyse.hfm-weimar.de/doku.php?id=en:komponisten) comprises several thousand individual sheet music files (.xml).
+- The [subcorpus](https://analyse.hfm-weimar.de/doku.php?id=en:notenauswahl) contains all scores used in the two teaching modules for score analysis and was carefully curated by student members of the project team.
 
 ### List of incorporated databases
 
