@@ -69,8 +69,8 @@ def display_user_options_post_analysis():
             "menu_entries": [
                 ["REPT: Repeat analysis function", 'repeat',
                  "<Repeat the chosen analysis function with a different score selection>"],
-                ["EXPT: Export Results to CSV", 'export', "<Explanation>"],
-                ["SHOW: Display Results", 'display_results', "<Explanation>"],
+                ["EXPT: Export Results to CSV", 'export', "<Export the analysis results to a CSV file>"],
+                ["SHOW: Display Results", 'display_results', "<Display the analysis results as a graph>"],
                 ["BACK: Return to the Last Menu", 'back', "<Returns to the main menu>"],
             ],
         }
