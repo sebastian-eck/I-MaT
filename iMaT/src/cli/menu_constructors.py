@@ -574,14 +574,14 @@ def print_menu_entries(menu_columns_description: list, menu_entries: list[list],
         # Print menu_columns_description in one line
         print("{:<8}".format("No."), end='  ')
         for header, width in zip(menu_columns_description, col_widths):
-            print("{:<{}}".format(header, width), end='  ')
+            print("{:<{}}".format(str(header), width), end='  ')
         print("\n")
 
         # Print menu_entries in multiple lines
         for index, item in enumerate(menu_entries, 1):
             print("{:<8}".format(index), end='  ')
             for i, (entry, width) in enumerate(zip(item, col_widths)):
-                print("{:<{}}".format(entry, width), end='  ')
+                print("{:<{}}".format(str(entry), width), end='  ')
             print()
         print("")
 
